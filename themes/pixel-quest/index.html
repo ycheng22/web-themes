@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tomo Vega · Pixel Quest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600;700&family=Rethink+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#24234a;--panel:#fff6e0;--ink:#1b1a2e;--mut:#4b4766;--plum:#5b4e9e;--peach:#e98a6b;--sun:#ffd27a;--leaf:#5cb85c;--sky2:#3a3874;--px:"Pixelify Sans",ui-monospace,monospace;--s:"Rethink Sans",system-ui,sans-serif}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--panel);font:400 17px/1.55 var(--s);-webkit-font-smoothing:antialiased;background-image:radial-gradient(#3a3874 1px,transparent 1.5px);background-size:12px 12px}
+a{color:inherit;text-decoration:none}:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.w{max-width:1160px;margin:0 auto;padding:0 24px}
+.px{font-family:var(--px)}
+/* pixel border */
+.pb{background:var(--panel);color:var(--ink);box-shadow:0 -4px 0 0 var(--ink),0 4px 0 0 var(--ink),-4px 0 0 0 var(--ink),4px 0 0 0 var(--ink),8px 8px 0 0 rgba(0,0,0,.35);margin:4px}
+.hd{display:flex;align-items:center;gap:20px;padding:22px 0}
+.lg{font:700 24px var(--px);color:var(--sun);display:flex;gap:10px;align-items:center}.lg canvas{width:30px;height:36px;image-rendering:pixelated}
+.nv{margin-left:auto;display:flex;gap:18px;font:600 17px var(--px)}.nv a{padding:4px 2px}.nv a:hover{color:var(--sun)}.nv a:hover::before{content:"▸ ";}
+/* game */
+.game{position:relative;padding:0;overflow:hidden}
+.game canvas{display:block;width:100%;height:auto;image-rendering:pixelated;cursor:pointer;touch-action:manipulation}
+.hud{position:absolute;left:14px;right:14px;top:10px;display:flex;justify-content:space-between;font:700 18px var(--px);color:#fff;text-shadow:2px 2px 0 var(--ink);pointer-events:none}
+.pop{position:absolute;font:700 18px var(--px);color:var(--sun);text-shadow:2px 2px 0 var(--ink);pointer-events:none;transition:transform .8s,opacity .8s}
+.intro{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:end;margin-top:30px}
+h1{font:700 clamp(40px,5.6vw,72px)/1 var(--px);margin:0;color:#fff;letter-spacing:.01em}h1 span{color:var(--sun)}
+.intro p{margin:0 0 6px;font-size:18px;color:#e5e1f5}
+.keys{display:flex;gap:10px;align-items:center;font:600 15px var(--px);color:#cfcae6;margin-top:14px;flex-wrap:wrap}.keys kbd{font:700 14px var(--px);background:var(--panel);color:var(--ink);padding:3px 8px;box-shadow:0 3px 0 #8b86a8}
+.bt{display:inline-block;font:700 18px var(--px);padding:12px 18px;background:var(--sun);color:var(--ink);box-shadow:0 -3px 0 0 var(--ink),0 3px 0 0 var(--ink),-3px 0 0 0 var(--ink),3px 0 0 0 var(--ink),0 7px 0 0 #b98a2b;margin:6px 10px 6px 3px;transition:transform .05s}.bt:active{transform:translateY(4px)}.bt.l{background:var(--panel)}
+/* sections */
+.sec{padding-top:88px}
+.sh{display:flex;align-items:baseline;gap:16px;margin-bottom:22px}.sh h2{margin:0;font:700 clamp(32px,4vw,48px) var(--px);color:#fff}.sh span{font:500 16px var(--px);color:#cfcae6}
+.ql{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.qc{padding:18px 20px;display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:start;transition:transform .1s}.qc:hover{transform:translate(-2px,-2px)}
+.qc canvas{width:120px;height:120px;image-rendering:pixelated;background:#2f2d5e}
+.qc h3{margin:0 0 4px;font:700 26px var(--px)}.qc p{margin:0 0 10px;font-size:15.5px}
+.xp{height:14px;background:#d9d0b5;position:relative;box-shadow:inset 0 0 0 2px var(--ink)}.xp i{position:absolute;left:2px;top:2px;bottom:2px;background:var(--leaf)}
+.qm{display:flex;justify-content:space-between;font:600 13px var(--px);color:var(--mut);margin:6px 0 0}
+/* inventory */
+.inv{display:grid;grid-template-columns:repeat(8,1fr);gap:10px;padding:18px}
+.slot{aspect-ratio:1;background:#e9dfc4;box-shadow:inset 0 0 0 3px var(--ink),inset 4px 4px 0 #c9bd9d;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;border:0;padding:6px;font:600 12px/1.1 var(--px);color:var(--ink);text-align:center;position:relative}
+.slot canvas{width:32px;height:32px;image-rendering:pixelated;opacity:.25;filter:grayscale(1)}.slot.got canvas{opacity:1;filter:none}.slot.got{background:#fff3c4}
+.slot[aria-pressed=true]{box-shadow:inset 0 0 0 3px var(--peach),inset 4px 4px 0 #c9bd9d}
+.desc{padding:14px 18px;margin-top:14px;font-size:16px;min-height:56px}
+/* saves */
+.sv a{display:grid;grid-template-columns:90px 1fr 170px;gap:16px;align-items:center;padding:14px 18px;margin-bottom:14px;transition:transform .1s}.sv a:hover{transform:translateX(6px)}.sv a:hover h4::before{content:"▸ "}
+.sv .n{font:700 15px var(--px);color:var(--plum)}.sv h4{margin:0;font:700 21px var(--px)}.sv .t{font:500 14px var(--px);color:var(--mut);text-align:right}
+/* credits */
+.cr{display:grid;grid-template-columns:1.2fr 1fr;gap:24px}.cr .pb{padding:22px 24px}.cr p{margin:0 0 12px;font-size:17px}
+.cr dl{display:grid;grid-template-columns:120px 1fr;gap:8px 12px;margin:0}.cr dt{font:600 15px var(--px);color:var(--mut)}.cr dd{margin:0}
+/* continue */
+.cont{margin:96px 4px 0;text-align:center;padding:56px 20px 64px;background:#1b1a2e;box-shadow:0 -4px 0 0 var(--sun),0 4px 0 0 var(--sun),-4px 0 0 0 var(--sun),4px 0 0 0 var(--sun)}
+.cont h2{font:700 clamp(46px,7vw,92px)/1 var(--px);margin:0;color:#fff}.cont .cd{font:700 120px/1 var(--px);color:var(--sun);margin:10px 0 20px;min-height:120px}
+.ft{display:flex;justify-content:space-between;padding:24px 0 40px;font:500 14px var(--px);color:#cfcae6;gap:10px;flex-wrap:wrap}
+@media(max-width:900px){.w{padding:0 14px}.nv{display:none}.intro,.ql,.cr{grid-template-columns:1fr}.inv{grid-template-columns:repeat(4,1fr)}.qc{grid-template-columns:80px 1fr}.qc canvas{width:80px;height:80px}.sv a{grid-template-columns:1fr}.sv .t{text-align:left}.hud{font-size:14px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="w">
+<header class="hd"><a class="lg" href="#"><canvas id="logo" width="10" height="12" aria-hidden="true"></canvas>Tomo Vega</a><nav class="nv" aria-label="Primary"><a href="#quests">Projects</a><a href="#inventory">Skills</a><a href="#saves">Writing</a><a href="#credits">About</a><a href="#continue">Contact</a></nav></header>
+
+<section class="game pb" aria-label="Playable mini game: a robot runs, jump to collect skill gems"><canvas id="cv" width="320" height="120" aria-label="Game: press Space, click or tap to jump"></canvas><div class="hud"><span id="sc">Gems 0/8</span><span id="bg">Bugs fixed 0</span></div></section>
+<div class="intro"><div><h1>Graphics and game engineer. <span>Level 12.</span></h1><p style="margin-top:14px">I write renderers, physics and the tools that let small teams ship games. Collect the gems above to unlock my skills below.</p><div class="keys"><kbd>Space</kbd> or <kbd>Click</kbd> to jump · land on bugs to fix them</div></div><div><a class="bt" href="#quests">Start the tour</a><a class="bt l" href="#continue">Insert coin</a></div></div>
+
+<section class="sec" id="quests"><div class="sh"><h2>Quest log</h2><span>Projects, with progress</span></div><div class="ql" id="ql"></div></section>
+<section class="sec" id="inventory"><div class="sh"><h2>Inventory</h2><span>Gems you collect in the game light up here</span></div><div class="pb"><div class="inv" id="inv"></div></div><div class="pb desc" id="desc" aria-live="polite">Select a slot to read about the skill.</div></section>
+<section class="sec" id="saves"><div class="sh"><h2>Save files</h2><span>Writing</span></div><div class="sv" id="sv"></div></section>
+<section class="sec" id="credits"><div class="sh"><h2>Credits</h2><span>About and now</span></div><div class="cr"><div class="pb"><p>I started by making levels for games I did not own. Now I work on engines: lighting, collision, and the editors designers spend all day inside.</p><p>I like tiny teams, fast iteration and frame budgets.</p></div><div class="pb"><dl><dt>Now playing</dt><dd>A deterministic physics engine for the web</dd><dt>Side quest</dt><dd>Teaching shaders to illustrators</dd><dt>Base</dt><dd>Valencia, works remote</dd><dt>Party</dt><dd>Open to joining a studio from March</dd></dl></div></div></section>
+
+<section class="cont" id="continue"><h2>Continue?</h2><div class="cd" id="cd" aria-hidden="true">9</div><a class="bt" href="mailto:hello@tomo.example">Yes: hello@tomo.example</a></section>
+<footer class="ft"><span>Tomo Vega · placeholder identity</span><span>Set in Pixelify Sans and Rethink Sans</span></footer>
+</div>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)};
+var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+// sprites as strings
+var ROBOT=['..oooooo..','.oyyyyyyo.','.oy@yy@yo.','.oyyyyyyo.','..oooooo..','...o..o...','.oppppppo.','.oppppppo.','.oppppppo.','..o....o..','..o....o..','.oo....oo.'];
+var ROBOT2=['..oooooo..','.oyyyyyyo.','.oy@yy@yo.','.oyyyyyyo.','..oooooo..','...o..o...','.oppppppo.','.oppppppo.','.oppppppo.','..o...o...','.o.....o..','oo......oo'];
+var GEM=['..oo..','.ossos','osssso','osssso','.osso.','..oo..'];
+var BUG=['.o..o.','..oo..','obbbbo','bbbbbb','obbbbo','o.oo.o'];
+var PAL={o:'#1b1a2e',y:'#ffd27a','@':'#1b1a2e',p:'#e98a6b',s:'#7fe0c7',b:'#5cb85c'};
+function spr(ctx,m,x,y,pal,sc){sc=sc||1;m.forEach(function(r,j){for(var i=0;i<r.length;i++){var c=r[i];if(c!='.'){ctx.fillStyle=(pal||PAL)[c];ctx.fillRect(Math.round(x+i*sc),Math.round(y+j*sc),sc,sc)}}})}
+spr($('#logo').getContext('2d'),ROBOT,0,0);
+var SK=[['Rendering','#7fe0c7','Lighting, shadows and the frame budget: 16 ms, no excuses.'],['Physics','#ffd27a','Deterministic collision and rigid bodies that do not explode.'],['C++','#e98a6b','Engine code that is boring to read and fast to run.'],['Rust','#ff9f6b','Tools and servers where memory bugs are not an option.'],['WebGPU','#9fb8ff','Shaders in the browser for tools and playable prototypes.'],['Tools','#c9a6ff','Level editors designers enjoy spending their day in.'],['Netcode','#8de08d','Rollback networking for fighting and racing games.'],['Teaching','#ffb3cf','Workshops on shaders and maths for artists.']];
+var got={};
+// game
+var cv=$('#cv'),cx=cv.getContext('2d'),W=320,H=120,GY=100,t=0,player={x:40,y:GY-12,vy:0,on:true},gems=[],bugs=[],score=0,fixed=0,flash=0,running=!rm,next=0;
+var clouds=[[20,18],[120,30],[230,14],[300,26]];
+function jump(){if(!running){running=true;loop()}if(player.on){player.vy=-3.6;player.on=false}}
+cv.addEventListener('click',jump);
+window.addEventListener('keydown',function(e){if(e.code=='Space'){var r=cv.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0&&document.activeElement.tagName!='INPUT'){e.preventDefault();jump()}}});
+function spawn(){var gi=Object.keys(got).length+gems.length;if(Math.random()<.55&&gi<SK.length*3){var k=Math.floor(Math.random()*SK.length);gems.push({x:W+10,y:GY-30-Math.random()*24,k:k})}else bugs.push({x:W+10,y:GY-6,dead:0})}
+function hill(off,amp,base,col,sp){cx.fillStyle=col;for(var x=0;x<W;x++){var h=base+Math.round(Math.sin((x+off*sp)/26)*amp+Math.sin((x+off*sp)/9)*amp/3);cx.fillRect(x,h,1,H-h)}}
+function draw(){
+var bands=['#24234a','#3a3874','#5b4e9e','#8a5f9e','#e98a6b','#ffd27a'];bands.forEach(function(c,i){cx.fillStyle=c;cx.fillRect(0,i*12,W,12)});
+cx.fillStyle='#ffe9b0';cx.fillRect(250,40,14,14);cx.fillRect(248,42,18,10);cx.fillRect(252,38,10,18);
+clouds.forEach(function(c){var x=((c[0]-t*.15)%(W+40)+W+40)%(W+40)-30;cx.fillStyle='#fff6e0';cx.fillRect(x,c[1],22,5);cx.fillRect(x+4,c[1]-3,12,3)});
+hill(t,8,62,'#3a3874',.25);hill(t+90,6,76,'#4a3f88',.5);
+cx.fillStyle='#2f2d5e';cx.fillRect(0,GY,W,H-GY);for(var x=-(t%8);x<W;x+=8){cx.fillStyle='#5cb85c';cx.fillRect(x,GY,8,3);cx.fillStyle='#3e8e3e';cx.fillRect(x,GY+3,8,1);cx.fillStyle='#3a3874';cx.fillRect(x+2,GY+8,2,2)}
+gems.forEach(function(g){var pal={o:'#1b1a2e',s:SK[g.k][1]};spr(cx,GEM,g.x,g.y+Math.round(Math.sin((t+g.x)/8)),pal)});
+bugs.forEach(function(b){if(b.dead){cx.fillStyle='#5cb85c';cx.fillRect(b.x,GY-2,6,2)}else spr(cx,BUG,b.x,b.y+(Math.floor(t/6)%2))});
+if(!(flash&&Math.floor(flash/3)%2))spr(cx,player.on&&Math.floor(t/5)%2?ROBOT2:ROBOT,player.x,Math.round(player.y))}
+function pop(txt,x,y){var g=document.querySelector('.game'),r=cv.getBoundingClientRect(),s=r.width/W,el=document.createElement('span');el.className='pop';el.textContent=txt;el.style.left=(x*s)+'px';el.style.top=(y*s)+'px';g.appendChild(el);requestAnimationFrame(function(){el.style.transform='translateY(-30px)';el.style.opacity='0'});setTimeout(function(){el.remove()},900)}
+function step(){t++;if(t>=next){spawn();next=t+50+Math.random()*60}
+player.vy+=.18;player.y+=player.vy;if(player.y>=GY-12){player.y=GY-12;player.vy=0;player.on=true}
+// auto-jump helper in idle demo: hop over bugs if user has not played
+gems.forEach(function(g){g.x-=1.2});bugs.forEach(function(b){b.x-=b.dead?1.2:1.6;if(b.dead)b.dead++});
+gems=gems.filter(function(g){if(g.x>player.x-6&&g.x<player.x+10&&g.y+6>player.y&&g.y<player.y+12){if(!got[g.k]){got[g.k]=1;unlock(g.k)}score=Object.keys(got).length;$('#sc').textContent='Gems '+score+'/8';pop(SK[g.k][0],g.x,g.y);return false}return g.x>-10});
+bugs=bugs.filter(function(b){if(!b.dead&&b.x>player.x-5&&b.x<player.x+9&&player.y+12>=b.y&&player.y+12<=b.y+6&&player.vy>0){b.dead=1;player.vy=-2.6;fixed++;$('#bg').textContent='Bugs fixed '+fixed;pop('Fixed!',b.x,b.y-10)}else if(!b.dead&&b.x>player.x-4&&b.x<player.x+8&&player.y+12>b.y+2&&!flash){flash=30}return b.x>-10&&b.dead<40});
+if(flash)flash--}
+function loop(){if(!running)return;step();draw();requestAnimationFrame(loop)}
+draw();if(running){if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){var was=running;running=e.isIntersecting;if(running&&!was)loop()})}).observe(cv)}loop()}
+// quest log
+function pic(c,k){var x=c.getContext('2d');x.fillStyle='#2f2d5e';x.fillRect(0,0,24,24);
+if(k==0){for(var i=0;i<24;i++){x.fillStyle=i%2?'#ffd27a':'#e98a6b';x.fillRect(i,20-Math.round(Math.sin(i/3)*4+6),1,Math.round(Math.sin(i/3)*4+6))}x.fillStyle='#fff6e0';x.fillRect(16,4,4,4)}
+if(k==1){[[4,16],[10,10],[16,14],[8,4]].forEach(function(p,i){x.fillStyle=['#7fe0c7','#ffd27a','#e98a6b','#c9a6ff'][i];x.fillRect(p[0],p[1],5,5)});x.fillStyle='#5cb85c';x.fillRect(0,21,24,3)}
+if(k==2){x.fillStyle='#fff6e0';x.fillRect(3,4,18,14);x.fillStyle='#1b1a2e';x.fillRect(5,6,6,2);x.fillRect(5,10,10,2);x.fillRect(5,14,8,2);x.fillStyle='#e98a6b';x.fillRect(16,12,4,4)}
+if(k==3){for(var j=0;j<4;j++){x.fillStyle=j%2?'#7fe0c7':'#9fb8ff';x.fillRect(2+j*6,12-j*2,4,8+j*2)}x.fillStyle='#ffd27a';x.fillRect(19,3,3,3)}}
+var Q=[['Lumen','A tiny real-time renderer for the browser with soft shadows and 60 fps on a laptop.','WebGPU, TypeScript',92,'Main quest'],['Jolt Kit','Deterministic 2D physics so replays and netcode stay in sync.','Rust, WASM',74,'Main quest'],['Tilewright','A level editor that designers can learn in ten minutes.','C++, ImGui',60,'Side quest'],['Rollback','Rollback netcode for a two-player fighting game jam.','C++, ENet',100,'Completed']];
+$('#ql').innerHTML=Q.map(function(q,i){return '<a class="qc pb" href="#"><canvas width="24" height="24" data-k="'+i+'" aria-hidden="true"></canvas><div><span class="px" style="font-size:14px;color:#5b4e9e">'+q[4]+'</span><h3>'+q[0]+'</h3><p>'+q[1]+'</p><div class="xp"><i style="width:calc('+q[3]+'% - 4px)"></i></div><div class="qm"><span>'+q[2]+'</span><span>'+q[3]+'% XP</span></div></div></a>'}).join('');
+document.querySelectorAll('.qc canvas').forEach(function(c){pic(c,+c.dataset.k)});
+// inventory
+$('#inv').innerHTML=SK.map(function(s,i){return '<button class="slot" data-i="'+i+'" aria-pressed="false"><canvas width="6" height="6" aria-hidden="true"></canvas><span>'+s[0]+'</span></button>'}).join('');
+document.querySelectorAll('.slot').forEach(function(b){spr(b.querySelector('canvas').getContext('2d'),GEM,0,0,{o:'#1b1a2e',s:SK[b.dataset.i][1]});b.addEventListener('click',function(){document.querySelectorAll('.slot').forEach(function(x){x.setAttribute('aria-pressed',x==b)});var s=SK[b.dataset.i];$('#desc').innerHTML='<b class="px" style="font-size:19px">'+s[0]+'</b>'+(got[b.dataset.i]?' · collected':' · not collected yet')+'<br>'+s[2]})});
+function unlock(k){var b=document.querySelector('.slot[data-i="'+k+'"]');if(b)b.classList.add('got')}
+// saves
+var SV=[['Save 04','Frame budgets are a design tool','Oct 2026 · 7 min'],['Save 03','Writing collision you can trust','Aug 2026 · 11 min'],['Save 02','Shaders for people who draw','Jun 2026 · 6 min'],['Save 01','What I learned shipping a game in 48 hours','Mar 2026 · 5 min']];
+$('#sv').innerHTML=SV.map(function(s){return '<a class="pb" href="#"><span class="n">'+s[0]+'</span><h4>'+s[1]+'</h4><span class="t">'+s[2]+'</span></a>'}).join('');
+// continue countdown when visible
+var cd=$('#cd'),n=9,iv=null;
+if(!rm&&'IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!iv){n=9;cd.textContent=n;iv=setInterval(function(){n--;cd.textContent=n<0?'Game over? Never.':n;if(n<0){clearInterval(iv);cd.style.fontSize='40px'}},900)}})}).observe(cd)}
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Juno Arai · Clay Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--felt:#dfe7e2;--ink:#2a2522;--mut:#55504b;--tom:#e8553e;--mus:#f2b134;--teal:#2f9c95;--sky:#8cc7e8;--pink:#f4a6b8;--d:"Fredoka",system-ui,sans-serif;--s:"Rubik",system-ui,sans-serif}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--felt);color:var(--ink);font:400 17px/1.6 var(--s);-webkit-font-smoothing:antialiased;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3'/><feColorMatrix values='0 0 0 0 .2 0 0 0 0 .25 0 0 0 0 .22 0 0 0 .12 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>")}
+a{color:inherit;text-decoration:none}:focus-visible{outline:3px solid var(--teal);outline-offset:4px}
+.w{max-width:1180px;margin:0 auto;padding:0 28px}
+/* clay material */
+.clay{--c:var(--tom);background:radial-gradient(120% 90% at 30% 22%,rgba(255,255,255,.45),transparent 42%),radial-gradient(90% 80% at 75% 90%,rgba(0,0,0,.18),transparent 60%),var(--c);box-shadow:inset -6px -8px 14px rgba(0,0,0,.18),inset 6px 6px 10px rgba(255,255,255,.25),0 10px 0 -2px rgba(0,0,0,.12),0 18px 24px -12px rgba(0,0,0,.35)}
+.fp{position:relative}.fp::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:.07;background:repeating-radial-gradient(circle at 70% 30%,#000 0 1px,transparent 1px 5px)}
+/* boil: shape changes at 6 fps */
+.boil{animation:boil .5s steps(1) infinite}
+@keyframes boil{0%{border-radius:42% 58% 55% 45%/50% 44% 56% 50%}33%{border-radius:46% 54% 50% 50%/46% 50% 50% 54%}66%{border-radius:40% 60% 58% 42%/54% 46% 54% 46%}}
+.jig{animation:jig .5s steps(1) infinite}@keyframes jig{0%{transform:translate(0,0) rotate(0)}33%{transform:translate(1px,-1px) rotate(.6deg)}66%{transform:translate(-1px,1px) rotate(-.5deg)}}
+/* header */
+.hd{display:flex;align-items:center;gap:20px;padding:22px 0}
+.lg{display:flex;align-items:center;gap:12px;font:700 22px var(--d)}.lg i{width:34px;height:30px;display:block;--c:var(--tom)}
+.nv{margin-left:auto;display:flex;gap:10px}.nv a{font:600 16px var(--d);padding:8px 16px;border-radius:999px;transition:background .2s}.nv a:hover{background:rgba(255,255,255,.6)}
+.fc{font:500 13px ui-monospace,Menlo,monospace;color:var(--mut);background:rgba(255,255,255,.5);padding:5px 10px;border-radius:8px}
+/* hero */
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;padding:20px 0 0}
+h1{font:700 clamp(50px,6.6vw,92px)/.96 var(--d);margin:0 0 22px;letter-spacing:-.02em}
+h1 .l{display:inline-block;color:var(--c);text-shadow:0 1px 0 rgba(0,0,0,.2),0 2px 0 rgba(0,0,0,.2),0 4px 0 rgba(0,0,0,.18),0 8px 10px rgba(0,0,0,.2)}
+.hero p{font-size:20px;max-width:34ch;margin:0 0 26px}
+.btn{display:inline-block;font:700 18px var(--d);padding:15px 26px;border-radius:999px;color:#fff;margin-right:10px;transition:transform .12s steps(2)}.btn:hover{transform:scale(1.06,.94)}.btn:active{transform:scale(1.12,.86)}
+.btn.y{--c:var(--mus);color:var(--ink)}
+.scene{position:relative;height:500px}
+.scene>*{position:absolute}
+.desk{left:4%;right:2%;bottom:30px;height:70px;border-radius:30px;--c:#b98b62}
+.lap{left:16%;bottom:94px;width:56%;height:180px;border-radius:20px 20px 10px 10px;--c:#5d6a75}.lap .scr{position:absolute;inset:16px 16px 26px;border-radius:12px;background:#cfe9f2;overflow:hidden}
+.lap .scr i{position:absolute;display:block;border-radius:8px}
+.lap .base{position:absolute;left:-8%;right:-8%;bottom:-26px;height:28px;border-radius:12px;--c:#4a555f}
+.pot{left:76%;bottom:94px;width:80px;height:70px;border-radius:12px 12px 30px 30px;--c:var(--tom)}
+.leaf{width:44px;height:80px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;--c:#5fae6b;bottom:150px}
+.sun{right:6%;top:10px;width:100px;height:100px;--c:var(--mus)}
+.blob{width:70px;height:60px;--c:var(--pink);left:4%;top:70px}
+.cup{left:2%;bottom:94px;width:62px;height:70px;border-radius:10px 10px 22px 22px;--c:var(--sky)}
+/* sections */
+.sec{padding-top:110px}
+.sh{display:flex;align-items:end;gap:20px;justify-content:space-between;margin-bottom:30px}.sh h2{margin:0;font:700 clamp(36px,4.8vw,60px)/1 var(--d);letter-spacing:-.02em}.sh p{margin:0;max-width:40ch;color:var(--mut)}
+.plates{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.pl{display:block;border-radius:34px;padding:22px 22px 24px;--c:#f7f2ea;transition:transform .15s steps(2)}.pl:hover{transform:scale(1.03,.97) rotate(-1deg)}
+.pl .ic{height:120px;display:grid;place-items:center;margin-bottom:12px}
+.pl .ic span{display:block}
+.pl h3{margin:0 0 6px;font:700 26px var(--d)}.pl p{margin:0 0 10px;font-size:15.5px}
+.tg{display:inline-block;font:600 12.5px var(--d);padding:3px 10px;border-radius:99px;background:rgba(42,37,34,.08);margin:0 4px 4px 0}
+/* timeline */
+.tl{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center}
+.stage{height:340px;border-radius:30px;background:#f7f2ea;position:relative;overflow:hidden;box-shadow:inset 0 0 0 10px #c9d4cd,inset 0 0 40px rgba(0,0,0,.08)}
+.stage .fr{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);transition:none}
+.stage .on{opacity:.25;filter:blur(1px) grayscale(.4)}
+.stage .lbl{position:absolute;left:20px;bottom:16px;font:500 13px ui-monospace,Menlo,monospace;color:var(--mut)}
+.strip{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:16px 0 12px}
+.strip button{aspect-ratio:4/3;border-radius:12px;border:3px solid transparent;background:#f7f2ea;cursor:pointer;display:grid;place-items:center;padding:0;font:600 12px var(--d);color:var(--mut)}
+.strip button[aria-pressed=true]{border-color:var(--ink);color:var(--ink)}
+input[type=range]{width:100%;accent-color:var(--tom)}
+.tl h3{font:700 30px var(--d);margin:0 0 8px}.tl p{margin:0 0 10px;max-width:42ch}
+.play{font:700 15px var(--d);border:0;border-radius:99px;padding:9px 18px;cursor:pointer;color:#fff;--c:var(--teal)}
+/* writing */
+.wr{display:grid;gap:14px}
+.wr a{display:grid;grid-template-columns:60px 1fr 150px;gap:18px;align-items:center;padding:16px 22px;border-radius:24px;background:rgba(255,255,255,.55);transition:transform .15s steps(2),background .2s}.wr a:hover{background:#fff;transform:rotate(-.6deg)}
+.wr .dot{width:46px;height:40px}.wr h4{margin:0;font:600 22px/1.2 var(--d)}.wr span{color:var(--mut);font-size:15px;text-align:right}
+.ab{display:grid;grid-template-columns:1.2fr 1fr;gap:30px}.ab p{font-size:19px;margin:0 0 14px;max-width:44ch}
+.now{border-radius:30px;padding:26px;--c:var(--sky)}.now h3{margin:0 0 10px;font:700 24px var(--d)}.now ul{margin:0;padding-left:20px}.now li{margin-bottom:8px}
+.ct{margin-top:110px;text-align:center;padding-bottom:30px}.ct h2{font:700 clamp(40px,6vw,80px)/1 var(--d);margin:0 0 28px;letter-spacing:-.02em}
+.big{display:inline-block;font:700 clamp(22px,3vw,34px) var(--d);padding:30px 44px;border-radius:999px;color:#fff;--c:var(--tom);transition:transform .1s steps(2);overflow-wrap:anywhere}.big:hover{transform:scale(1.05,.95)}.big:active{transform:scale(1.14,.82)}
+.ft{display:flex;justify-content:space-between;padding:40px 0;color:var(--mut);font-size:14px;gap:10px;flex-wrap:wrap}
+@media(max-width:900px){.w{padding:0 16px}.nv,.fc{display:none}.hero,.tl,.ab{grid-template-columns:1fr}.scene{height:380px}.plates{grid-template-columns:1fr 1fr}.wr a{grid-template-columns:44px 1fr}.wr span{grid-column:2;text-align:left}.wr .dot{width:36px;height:32px}.sh{flex-direction:column;align-items:flex-start}.big{padding:24px 26px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="wob"><feTurbulence id="turb" type="fractalNoise" baseFrequency=".03" numOctaves="2" seed="1"/><feDisplacementMap in="SourceGraphic" scale="5"/></filter></svg>
+<div class="w">
+<header class="hd"><a class="lg" href="#"><i class="clay boil"></i>Juno Arai</a><span class="fc" id="fc" aria-hidden="true">Frame 0000 · 12 fps</span><nav class="nv" aria-label="Primary"><a href="#work">Work</a><a href="#process">Process</a><a href="#writing">Writing</a><a href="#about">About</a><a href="#contact">Contact</a></nav></header>
+
+<section class="hero"><div><h1 id="h1" aria-label="Made by hand, one frame at a time."></h1><p>I am a product designer who sculpts interfaces the slow way: sketch, shape, test, repeat. Then I write the code so it ships as it was made.</p><a class="btn clay" href="#work" style="--c:var(--ink)">See the work</a><a class="btn clay y" href="#process">Watch the process</a></div>
+<div class="scene" aria-hidden="true" style="filter:url(#wob)">
+<span class="sun clay fp boil"></span><span class="blob clay fp boil"></span>
+<span class="desk clay fp"></span>
+<span class="cup clay fp jig"></span>
+<div class="lap clay"><div class="scr"><i class="clay" style="--c:var(--tom);left:12%;top:16%;width:40%;height:18%"></i><i class="clay" style="--c:var(--mus);left:12%;top:44%;width:66%;height:12%"></i><i class="clay" style="--c:var(--teal);left:12%;top:64%;width:26%;height:18%;border-radius:20px"></i><i class="clay boil" style="--c:var(--pink);right:10%;top:16%;width:22%;height:30%"></i></div><span class="base clay"></span></div>
+<span class="leaf clay jig" style="left:79%;transform:rotate(-18deg)"></span><span class="leaf clay jig" style="left:84%;height:96px"></span><span class="leaf clay jig" style="left:89%;transform:rotate(16deg)"></span>
+<span class="pot clay fp"></span>
+</div></section>
+
+<section class="sec" id="work"><div class="sh"><h2>Moulded work</h2><p>Four projects, each shaped by hand before it was built in code.</p></div><div class="plates" id="plates"></div></section>
+
+<section class="sec" id="process"><div class="sh"><h2>Frame by frame</h2><p>How a lump of an idea becomes a component. Scrub the timeline or press play.</p></div>
+<div class="tl"><div><div class="stage" id="stage"><span class="lbl" id="lbl">Frame 1 of 6</span></div></div>
+<div><h3 id="pt">Lump</h3><p id="pd"></p><div class="strip" id="strip" role="group" aria-label="Frames"></div><input type="range" id="scrub" min="0" max="5" value="0" aria-label="Scrub frames"><p style="margin-top:12px"><button class="play clay" id="play">Play at 6 fps</button></p></div></div></section>
+
+<section class="sec" id="writing"><div class="sh"><h2>Notes from the bench</h2><p>Writing on design, craft and making things that feel good to hold.</p></div><div class="wr" id="wr"></div></section>
+
+<section class="sec" id="about"><div class="sh"><h2>About</h2><p></p></div><div class="ab"><div><p>I studied sculpture before I studied interaction design, and I still think with my hands. Most of my projects start as paper and clay prototypes on a desk before they become Figma files and pull requests.</p><p>Ten years across product teams, design systems and creative tools.</p></div><div class="now clay fp"><h3>On the bench now</h3><ul><li>A tactile design system for a kids' learning app</li><li>A stop-motion intro for a friend's podcast</li><li>Available for one product team from February</li></ul></div></div></section>
+
+<section class="ct" id="contact"><h2>Let's make something you can almost touch.</h2><a class="big clay" href="mailto:hello@juno.example">hello@juno.example</a></section>
+<footer class="ft"><span>Juno Arai · placeholder identity</span><span>Set in Fredoka and Rubik · every motion runs at 6 to 12 fps</span></footer>
+</div>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)};
+var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+// clay headline, letters jitter at 6 fps
+var txt='Made by hand, one frame at a time.',cols=['var(--tom)','var(--mus)','var(--teal)','var(--sky)','var(--pink)'],k=0;
+$('#h1').innerHTML=txt.split(' ').map(function(w){return '<span style="white-space:nowrap" aria-hidden="true">'+w.split('').map(function(c){return '<span class="l" style="--c:'+cols[(k++)%5]+'">'+c+'</span>'}).join('')+'</span>'}).join(' ');
+var L=document.querySelectorAll('h1 .l'),fr=0,turb=$('#turb');
+function tick(){fr++;$('#fc').textContent='Frame '+String(fr).padStart(4,'0')+' · 12 fps';if(fr%2==0){L.forEach(function(l){l.style.transform='translate('+(Math.random()*2-1).toFixed(1)+'px,'+(Math.random()*2-1).toFixed(1)+'px) rotate('+(Math.random()*4-2).toFixed(1)+'deg)'});turb.setAttribute('seed',(fr/2)%3+1)}}
+if(!rm)setInterval(tick,83);else L.forEach(function(l,i){l.style.transform='rotate('+((i%3)-1)*1.5+'deg)'});
+// plates with moulded icons
+function ic(i){var s=[
+'<span class="clay boil" style="--c:var(--teal);width:90px;height:90px"></span>',
+'<span class="clay" style="--c:var(--mus);width:110px;height:56px;border-radius:30px"></span>',
+'<span class="clay boil" style="--c:var(--pink);width:70px;height:96px;border-radius:26px"></span>',
+'<span class="clay" style="--c:var(--sky);width:96px;height:96px;border-radius:24px;transform:rotate(12deg)"></span>'][i];return s}
+var P=[['Pebble','A tactile design system for a meditation app, every control shaped like a smooth stone.',['Design system','SwiftUI']],['Squish','Toggle and slider components with squash-and-stretch motion that tests better with kids.',['Components','React']],['Kiln','A colour tool that previews palettes on real materials before they hit a screen.',['Tool','WebGL']],['Moulds','Twelve onboarding illustrations made from real clay, photographed frame by frame.',['Illustration','Motion']]];
+$('#plates').innerHTML=P.map(function(p,i){return '<a class="pl clay" href="#"><div class="ic">'+ic(i)+'</div><h3>'+p[0]+'</h3><p>'+p[1]+'</p>'+p[2].map(function(t){return '<span class="tg">'+t+'</span>'}).join('')+'</a>'}).join('');
+// frame-by-frame process
+var F=[['Lump','A rough idea, no edges yet. Just volume and intent.','width:150px;height:120px;border-radius:48% 52% 60% 40%/55% 45% 55% 45%','var(--pink)'],['Pinch','Find the main shape: what is this thing for?','width:190px;height:110px;border-radius:40% 60% 45% 55%/50% 50% 50% 50%','var(--pink)'],['Flatten','Give it a surface people can press.','width:230px;height:90px;border-radius:44px','var(--mus)'],['Edge','Tighten the proportions, the corners and the hit area.','width:240px;height:80px;border-radius:30px','var(--mus)'],['Label','Add type, colour and states.','width:240px;height:80px;border-radius:26px','var(--teal)'],['Ship','Build it in code, test it, and keep the hand-made feel.','width:240px;height:80px;border-radius:24px','var(--tom)']],cur=0,playing=null;
+$('#strip').innerHTML=F.map(function(f,i){return '<button aria-pressed="'+(i==0)+'" data-i="'+i+'">'+(i+1)+'</button>'}).join('');
+function show(i){cur=i;var st=$('#stage');st.querySelectorAll('.fr').forEach(function(e){e.remove()});
+if(i>0){var o=document.createElement('span');o.className='fr clay on';o.style.cssText=F[i-1][2]+';--c:'+F[i-1][3];st.appendChild(o)}
+var e=document.createElement('span');e.className='fr clay fp';e.style.cssText=F[i][2]+';--c:'+F[i][3]+';display:grid;place-items:center;color:#fff;font:700 24px var(--d)';if(i>=4)e.textContent=i==4?'Continue':'Continue';st.appendChild(e);
+$('#lbl').textContent='Frame '+(i+1)+' of 6'+(i>0?' · onion skin on':'');$('#pt').textContent=F[i][0];$('#pd').textContent=F[i][1];$('#scrub').value=i;document.querySelectorAll('#strip button').forEach(function(b){b.setAttribute('aria-pressed',+b.dataset.i==i)})}
+show(0);
+document.querySelectorAll('#strip button').forEach(function(b){b.addEventListener('click',function(){show(+b.dataset.i)})});
+$('#scrub').addEventListener('input',function(){show(+this.value)});
+$('#play').addEventListener('click',function(){var b=this;if(playing){clearInterval(playing);playing=null;b.textContent='Play at 6 fps';return}b.textContent='Pause';playing=setInterval(function(){show((cur+1)%6)},rm?1000:167)});
+// writing
+var W=[['Why prototypes should be ugly','Oct 2026 · 6 min','var(--tom)'],['Squash and stretch for interface designers','Sep 2026 · 9 min','var(--mus)'],['Designing with your hands first','Jul 2026 · 5 min','var(--teal)'],['What clay taught me about corner radius','May 2026 · 4 min','var(--pink)']];
+$('#wr').innerHTML=W.map(function(w){return '<a href="#"><span class="dot clay boil" style="--c:'+w[2]+'"></span><h4>'+w[0]+'</h4><span>'+w[1]+'</span></a>'}).join('');
+})();
+</script>
+</body>
+</html>

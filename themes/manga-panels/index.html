@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Slow Pixels · Manga Panels</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#fbfbf8;--ink:#111;--mut:#4a4a4a;--red:#e5322d;--d:"Dela Gothic One",system-ui,sans-serif;--s:"Zen Kaku Gothic New",system-ui,sans-serif}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:#e9e8e3;color:var(--ink);font:500 17px/1.6 var(--s);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.page{max-width:1180px;margin:24px auto;background:var(--paper);padding:26px 30px 40px;box-shadow:0 1px 0 #ccc,0 20px 40px -24px rgba(0,0,0,.35)}
+.tone{background-image:radial-gradient(#111 1.1px,transparent 1.3px);background-size:6px 6px}
+.tone2{background-image:radial-gradient(#111 .8px,transparent 1px);background-size:5px 5px}
+/* masthead */
+.mh{display:flex;align-items:flex-end;gap:20px;border-bottom:6px solid var(--ink);padding-bottom:10px}
+.mh .t{font:400 clamp(40px,6vw,76px)/.9 var(--d);letter-spacing:-.02em}.mh .t span{color:var(--red)}
+.mh .ch{font:900 15px var(--s);background:var(--ink);color:var(--paper);padding:4px 10px;transform:rotate(-3deg);margin-bottom:10px}
+.nv{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;margin-bottom:6px}.nv a{font:700 15px var(--s);border:2.5px solid var(--ink);border-radius:999px;padding:4px 14px;background:var(--paper);transition:background .15s,color .15s}.nv a:hover{background:var(--ink);color:var(--paper)}
+/* panels */
+.grid{display:grid;gap:14px;margin-top:14px}
+.pnl{position:relative;background:var(--ink);clip-path:var(--cp);min-height:120px}
+.pnl>.in{position:absolute;inset:5px;clip-path:var(--cp);background:var(--paper);overflow:hidden}
+.hero{grid-template-columns:7fr 5fr;grid-template-rows:300px 220px}
+.h1{grid-row:1/3;--cp:polygon(0 0,100% 0,94% 100%,0 100%)}
+.h2{--cp:polygon(4% 0,100% 0,100% 92%,0 100%)}
+.h3{--cp:polygon(0 8%,100% 0,100% 100%,6% 100%)}
+.sl{position:absolute;inset:0;width:100%;height:100%}
+.sl g{transform-origin:50% 50%;animation:jit .24s steps(1) infinite}@keyframes jit{33%{transform:rotate(1.2deg)}66%{transform:rotate(-1deg)}}
+.htx{position:absolute;left:36px;right:60px;bottom:34px;z-index:2}
+h1{font:400 clamp(38px,4.6vw,62px)/1.18 var(--d);margin:0 0 14px;letter-spacing:-.02em;background:var(--paper);display:inline;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 8px}
+.cap{display:inline-block;background:var(--paper);border:3px solid var(--ink);padding:10px 14px;font-size:17px;max-width:40ch;margin-top:14px}
+.sfx{position:absolute;font:400 clamp(44px,6vw,84px)/1 var(--d);color:var(--red);-webkit-text-stroke:3px var(--ink);paint-order:stroke fill;transform:rotate(-12deg);z-index:3;pointer-events:none;letter-spacing:-.02em}
+.balloon{position:relative;background:var(--paper);border:3px solid var(--ink);border-radius:50%/45%;padding:28px 34px;text-align:center;font:700 19px/1.35 var(--s)}
+.balloon::after{content:"";position:absolute;width:30px;height:34px;background:var(--paper);border-right:3px solid var(--ink);border-bottom:3px solid var(--ink);transform:skew(30deg) rotate(18deg);bottom:-18px;left:30%}
+.h2 .balloon{position:absolute;left:12%;right:10%;top:26px}
+.h2 .who{position:absolute;right:20px;bottom:16px;font:900 13px var(--s)}
+.h3 .in{display:grid;place-items:center;text-align:center;padding:20px 30px 20px 50px}
+.h3 .in b{font:400 26px/1.15 var(--d);display:block;margin:6px 0 12px}
+.go{display:inline-block;font:900 15px var(--s);background:var(--red);color:#fff;padding:8px 16px;border:3px solid var(--ink);transform:rotate(-2deg);transition:transform .15s}.go:hover{transform:rotate(2deg) scale(1.05)}
+/* chapters */
+.sec{margin-top:56px}
+.sh{display:flex;align-items:center;gap:16px;margin-bottom:6px}.sh h2{margin:0;font:400 clamp(32px,4vw,48px)/1 var(--d)}.sh .rule{flex:1;height:6px;background:var(--ink)}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 4px}.tags button{font:700 15px var(--s);border:2.5px solid var(--ink);border-radius:999px;background:var(--paper);padding:5px 14px;cursor:pointer;color:var(--ink)}.tags button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+.posts{grid-template-columns:repeat(6,1fr);grid-auto-rows:220px}
+.post{display:block;--cp:polygon(0 0,100% 0,100% 100%,0 100%);transition:transform .2s}
+.post .in{padding:20px 22px;display:flex;flex-direction:column;justify-content:flex-end;transition:background .2s,color .2s}
+.post .bgx{position:absolute;inset:0;opacity:.18;transition:opacity .2s}
+.post .art{position:absolute;right:28px;top:26px;width:46%;height:auto}.post:hover .art path,.post:hover .art rect{stroke:#fbfbf8}.post .k{font:900 13px var(--s);background:var(--ink);color:var(--paper);align-self:flex-start;padding:2px 8px;position:relative;margin-bottom:auto}
+.post h3{font:400 clamp(22px,2.4vw,30px)/1.12 var(--d);margin:0 0 6px;position:relative}.post p{margin:0;font-size:15px;position:relative;max-width:42ch}.post .m{font:700 13px var(--s);margin-top:8px;position:relative}
+.post .imp{position:absolute;inset:0;opacity:0;transition:opacity .15s}
+.post:hover .in,.post:focus-visible .in{background:var(--ink);color:var(--paper)}.post:hover .imp,.post:focus-visible .imp{opacity:1}.post:hover .bgx{opacity:0}.post:hover .k{background:var(--red)}
+.p0{grid-column:span 4;grid-row:span 2;--cp:polygon(0 0,100% 0,100% 94%,0 100%)!important}.p0 h3{font-size:clamp(30px,3.6vw,48px)}
+.p1{grid-column:span 2;--cp:polygon(0 0,100% 0,100% 100%,0 92%)!important}.p2{grid-column:span 2;--cp:polygon(0 8%,100% 0,100% 100%,0 100%)!important}
+.p3{grid-column:span 3;--cp:polygon(0 0,97% 0,100% 100%,0 100%)!important}.p4{grid-column:span 3;--cp:polygon(0 0,100% 0,100% 100%,3% 100%)!important}
+.post.hide{display:none}
+/* newsletter */
+.nl{display:grid;grid-template-columns:1fr 1.3fr;gap:30px;align-items:center;margin-top:60px}
+.nl .bl{padding:40px 50px}
+.nl form{display:flex;gap:8px;margin-top:14px;justify-content:center;flex-wrap:wrap}.nl input{font:700 17px var(--s);border:3px solid var(--ink);padding:10px 14px;min-width:0;flex:1;max-width:280px;background:#fff}.nl button{font:900 16px var(--s);border:3px solid var(--ink);background:var(--red);color:#fff;padding:10px 18px;cursor:pointer}
+.nl .ok{font:400 30px var(--d);color:var(--red);min-height:36px;margin-top:10px}
+.nl h2{font:400 clamp(34px,4.6vw,60px)/1 var(--d);margin:0}
+/* 4-koma */
+.koma{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.km{--cp:polygon(0 0,100% 0,100% 100%,0 100%);height:300px}.km .in{padding:14px;display:flex;flex-direction:column}
+.km svg{flex:1;width:100%;min-height:0}.km p{margin:8px 0 0;font:700 15px/1.4 var(--s);border-top:2.5px solid var(--ink);padding-top:8px}
+.ft{display:flex;justify-content:space-between;margin-top:40px;font:700 14px var(--s);gap:10px;flex-wrap:wrap;border-top:6px solid var(--ink);padding-top:12px}
+@media(max-width:900px){.page{margin:0;padding:16px 14px 30px}.nv{display:none}.hero{grid-template-columns:1fr;grid-template-rows:440px 200px 200px}.h1{grid-row:auto}.posts{grid-template-columns:1fr;grid-auto-rows:minmax(200px,auto)}.post{grid-column:1/-1!important;grid-row:auto!important;min-height:200px}.nl,.koma{grid-template-columns:1fr 1fr}.nl{grid-template-columns:1fr}.km{height:260px}.htx{left:18px;right:24px}.post .art{display:none}.nl .bl{padding:30px 24px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="page">
+<header class="mh"><div class="t">Slow <span>Pixels</span></div><span class="ch">Ch. 48</span><nav class="nv" aria-label="Primary"><a href="#chapters">Posts</a><a href="#subscribe">Newsletter</a><a href="#about">About</a><a href="mailto:hi@slowpixels.example">Contact</a></nav></header>
+
+<section class="grid hero" aria-label="Latest">
+<div class="pnl h1"><div class="in"><svg class="sl" id="speed" viewBox="0 0 700 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg><span class="sfx" style="right:70px;top:34px">fwoosh</span>
+<div class="htx"><h1>A blog about building things slowly, on purpose.</h1><br><span class="cap">Essays on technology, design and the craft of making software by Mika Sol. One chapter every two weeks.</span></div></div></div>
+<div class="pnl h2"><div class="in tone2"><div class="balloon">"Your side project does not need a database. It needs a deadline."</div><span class="who">From chapter 47</span></div></div>
+<div class="pnl h3"><div class="in"><div><span style="font:900 13px var(--s)">New chapter</span><b>The case for boring HTML</b><a class="go" href="#chapters">Read chapter 48</a></div></div></div>
+</section>
+
+<section class="sec" id="chapters"><div class="sh"><h2>Chapters</h2><span class="rule"></span></div>
+<div class="tags" id="tags" role="group" aria-label="Filter posts"></div>
+<div class="grid posts" id="posts"></div></section>
+
+<section class="nl" id="subscribe"><div><h2>Never miss a chapter.</h2><p style="max-width:34ch">A short letter every two weeks. No tracking pixels, which is ironic given the name.</p></div>
+<div class="balloon bl"><span>Get the next chapter by email</span><form id="form"><input type="email" placeholder="you@example.com" aria-label="Email address" required><button>Subscribe</button></form><div class="ok" id="ok" aria-live="polite"></div></div></section>
+
+<section class="sec" id="about"><div class="sh"><h2>About, in four panels</h2><span class="rule"></span></div><div class="koma" id="koma"></div></section>
+<footer class="ft"><span>Slow Pixels by Mika Sol · placeholder identity</span><span>Set in Dela Gothic One and Zen Kaku Gothic New</span></footer>
+</div>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)};
+function R(s){return function(){s|=0;s=s+0x6D2B79F5|0;var t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function speed(cx,cy,n,inner,seed,col,w){var r=R(seed),s='<g>';for(var i=0;i<n;i++){var a=i/n*Math.PI*2+r()*.04,r0=inner+r()*60,r1=1200,ww=(w||2)+r()*(w||2)*2;var x0=cx+Math.cos(a)*r0,y0=cy+Math.sin(a)*r0,x1=cx+Math.cos(a)*r1,y1=cy+Math.sin(a)*r1,px=-Math.sin(a)*ww,py=Math.cos(a)*ww;s+='<path d="M'+x0.toFixed(1)+' '+y0.toFixed(1)+'L'+(x1+px).toFixed(1)+' '+(y1+py).toFixed(1)+'L'+(x1-px).toFixed(1)+' '+(y1-py).toFixed(1)+'Z" fill="'+(col||'#111')+'"/>'}return s+'</g>'}
+$('#speed').innerHTML=speed(470,170,150,120,3);
+// posts
+var P=[['Craft','The case for boring HTML','Every framework I loved is gone. The form element is still here, still working.','Ch. 48 · 9 min'],['Tools','My desk is a text file','How one plain file replaced four productivity apps.','Ch. 47 · 6 min'],['Design','Buttons should look like buttons','A small rant with a large bibliography.','Ch. 46 · 5 min'],['Life','Shipping on a slow internet connection','Notes from a month of working on a train.','Ch. 45 · 8 min'],['Craft','Write the README first','The cheapest design document you will ever write.','Ch. 44 · 4 min']];
+var tags=['All','Craft','Design','Tools','Life'],cur='All';
+$('#tags').innerHTML=tags.map(function(t){return '<button aria-pressed="'+(t=='All')+'">'+t+'</button>'}).join('');
+$('#posts').innerHTML=P.map(function(p,i){return '<a class="pnl post p'+i+'" href="#" data-t="'+p[0]+'"><div class="in"><div class="bgx '+(i%2?'tone':'tone2')+'"></div><svg class="imp" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'+speed(200,150,90,60,i+5,'#fbfbf8',1.2)+'</svg>'+(i==0?'<svg class="art" viewBox="0 0 300 200" aria-hidden="true"><rect x="10" y="10" width="280" height="180" stroke="#111" stroke-width="5" fill="none"/><path d="M10 40H290" stroke="#111" stroke-width="5"/><rect x="40" y="70" width="220" height="34" stroke="#111" stroke-width="4" fill="none"/><rect x="40" y="124" width="100" height="40" stroke="#111" stroke-width="5" fill="#e5322d"/><path d="M160 150l40-10M170 168l30-4" stroke="#111" stroke-width="4"/></svg>':'')+'<span class="k">'+p[0]+'</span><h3>'+p[1]+'</h3><p>'+p[2]+'</p><span class="m">'+p[3]+'</span></div></a>'}).join('');
+document.querySelectorAll('#tags button').forEach(function(b){b.addEventListener('click',function(){cur=b.textContent;document.querySelectorAll('#tags button').forEach(function(x){x.setAttribute('aria-pressed',x==b)});document.querySelectorAll('.post').forEach(function(p){p.classList.toggle('hide',cur!='All'&&p.dataset.t!=cur)})})});
+// newsletter
+$('#form').addEventListener('submit',function(e){e.preventDefault();$('#ok').textContent='Ka-ching! You are in.'});
+// 4-koma
+var I='stroke="#111" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"';
+var K=[['I worked at a startup that moved fast and broke everything, mostly me.','<svg viewBox="0 0 200 150" aria-hidden="true"><rect x="40" y="60" width="120" height="70" '+I+'/><path d="M60 60l20-30h40l20 30" '+I+'/><path d="M30 20l20 20M170 20l-20 20M100 6v22" '+I+' stroke="#e5322d"/></svg>'],['So I started writing things down. Slowly.','<svg viewBox="0 0 200 150" aria-hidden="true"><rect x="50" y="20" width="100" height="120" '+I+'/><path d="M66 50h68M66 72h68M66 94h44" '+I+'/><path d="M150 110l30-50" '+I+' stroke="#e5322d"/></svg>'],['Forty-eight chapters later, about nine thousand people read along.','<svg viewBox="0 0 200 150" aria-hidden="true">'+[30,60,90,120,150].map(function(x,i){return '<circle cx="'+x+'" cy="'+(80-i%2*20)+'" r="16" '+I+'/><path d="M'+(x-20)+' '+(130-i%2*20)+'q20-28 40 0" '+I+'/>'}).join('')+'</svg>'],['Now I write, consult on front-end craft, and drink too much coffee.','<svg viewBox="0 0 200 150" aria-hidden="true"><path d="M60 50h70v60a20 20 0 0 1-20 20H80a20 20 0 0 1-20-20Z" '+I+'/><path d="M130 64h14a14 14 0 0 1 0 28h-14" '+I+'/><path d="M80 34q6-12 0-22M104 34q6-12 0-22" '+I+' stroke="#e5322d"/></svg>']];
+$('#koma').innerHTML=K.map(function(k,i){return '<div class="pnl km"><div class="in'+(i==2?' tone2':'')+'" style="'+(i==2?'background-color:#fbfbf8':'')+'">'+k[1]+'<p>'+k[0]+'</p></div></div>'}).join('');
+})();
+</script>
+</body>
+</html>

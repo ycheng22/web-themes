@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ren Okafor · Miniature City</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@500;700;900&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,800&display=swap" rel="stylesheet">
+<style>
+:root{--sky:#e9f1f5;--ink:#1f2a37;--mut:#4f5d6b;--grass:#9fd09a;--grass2:#86bf82;--road:#5b6270;--coral:#f0866a;--teal:#3fa79b;--butter:#f4cd62;--lav:#b3a3e6;--card:#fff;--d:"Gabarito",system-ui,sans-serif;--s:"Nunito Sans",system-ui,sans-serif}
+body.night{--sky:#1b2236;--ink:#eef2f8;--mut:#b4bed0;--card:#252e46;--grass:#3e6550;--grass2:#355845;--road:#2e3445}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--sky);color:var(--ink);font:400 17px/1.55 var(--s);-webkit-font-smoothing:antialiased;transition:background .8s,color .8s}
+a{color:inherit;text-decoration:none}:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.w{max-width:1200px;margin:0 auto;padding:0 28px}
+.k{font:700 13px var(--s);color:var(--mut)}
+.hd{display:flex;align-items:center;gap:22px;padding:20px 0}
+.lg{font:900 22px var(--d);display:flex;align-items:center;gap:10px;letter-spacing:-.02em}.lg svg{width:30px;height:30px}
+.nv{margin-left:auto;display:flex;gap:4px}.nv a{font:700 15px var(--s);padding:8px 14px;border-radius:12px;transition:background .2s}.nv a:hover{background:var(--card)}
+.tog{border:0;background:var(--card);color:var(--ink);font:800 14px var(--s);padding:9px 14px;border-radius:12px;cursor:pointer;box-shadow:0 3px 0 rgba(31,42,55,.15)}
+/* hero */
+.hero{display:grid;grid-template-columns:4fr 7fr;gap:20px;align-items:center;padding:8px 0 0}
+h1{font:900 clamp(40px,4.9vw,64px)/.98 var(--d);letter-spacing:-.035em;margin:12px 0 18px}
+h1 em{font-style:normal;background:var(--butter);color:#1f2a37;padding:0 .12em;border-radius:.18em}
+.hero p{font-size:19px;max-width:34ch;margin:0 0 24px}
+.bt{display:inline-block;font:800 16px var(--s);padding:13px 20px;border-radius:14px;background:var(--ink);color:var(--sky);margin-right:8px;box-shadow:0 4px 0 rgba(0,0,0,.25);transition:transform .15s}.bt:hover{transform:translateY(-2px)}.bt.l{background:var(--card);color:var(--ink)}
+.dio{position:relative}.dio svg{width:100%;height:auto;display:block;overflow:visible}
+.tilt{position:absolute;left:0;right:0;height:70px;pointer-events:none;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}.tilt.t{top:0;mask-image:linear-gradient(#000,transparent);-webkit-mask-image:linear-gradient(#000,transparent)}.tilt.b{bottom:0;mask-image:linear-gradient(transparent,#000);-webkit-mask-image:linear-gradient(transparent,#000)}
+.bld{cursor:pointer;transition:transform .25s}.bld:hover{transform:translateY(-6px)}
+.tip{position:absolute;pointer-events:none;background:var(--card);color:var(--ink);border-radius:12px;padding:10px 12px;font:600 14px/1.35 var(--s);box-shadow:0 8px 20px rgba(0,0,0,.15);opacity:0;transform:translateY(6px);transition:opacity .15s,transform .15s;max-width:220px;z-index:5}.tip.on{opacity:1;transform:none}.tip b{font:800 15px var(--d);display:block}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:6px}.legend span{display:flex;gap:6px;align-items:center}.legend i{width:12px;height:12px;border-radius:4px;display:block}
+/* sections */
+.sec{padding-top:96px}
+.sh{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:26px}.sh h2{margin:0;font:900 clamp(34px,4.4vw,54px)/1 var(--d);letter-spacing:-.03em}.sh p{margin:0;max-width:40ch;color:var(--mut)}
+.dist{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.dc{background:var(--card);border-radius:22px;padding:16px 16px 18px;box-shadow:0 5px 0 rgba(31,42,55,.12);display:block;transition:transform .2s}.dc:hover{transform:translateY(-5px) rotate(-.6deg)}
+.dc svg{width:100%;height:auto;display:block;margin-bottom:10px}
+.dc h3{margin:0 0 4px;font:900 26px var(--d);letter-spacing:-.02em}.dc p{margin:0 0 10px;font-size:15.5px}
+.chip{display:inline-block;font:800 12px var(--s);padding:3px 9px;border-radius:99px;margin:0 4px 4px 0;background:var(--sky)}
+/* departures board */
+.board{background:#22262d;color:#f4cd62;border-radius:22px;padding:22px 26px;font:700 16px/1 ui-monospace,"SF Mono",Menlo,monospace;box-shadow:0 6px 0 rgba(0,0,0,.2)}
+.board .row{display:grid;grid-template-columns:90px 1fr 140px 110px;gap:16px;padding:12px 0;border-bottom:1px dashed #444a55;align-items:center}.board .row:last-child{border:0}
+.board .hdr{color:#9aa2b1;font-size:12.5px}
+.board .ok{color:#7ed7a2}.board .wn{color:#f0866a}
+.flap{display:inline-block;min-width:1ch}
+/* notes */
+.nt{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.nt a{background:var(--card);border-radius:20px;padding:20px 22px;display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:center;box-shadow:0 4px 0 rgba(31,42,55,.1);transition:transform .2s}.nt a:hover{transform:translateY(-3px)}
+.nt .sg{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;font:900 22px var(--d);color:#1f2a37}.nt h4{margin:0 0 2px;font:800 20px/1.2 var(--d)}.nt span{font-size:14px;color:var(--mut)}
+.ab{display:grid;grid-template-columns:1.2fr 1fr;gap:28px}.ab .c{background:var(--card);border-radius:22px;padding:26px;box-shadow:0 5px 0 rgba(31,42,55,.12)}.ab p{margin:0 0 12px;font-size:18px}
+.ab dl{margin:0;display:grid;grid-template-columns:100px 1fr;gap:8px 14px}.ab dt{color:var(--mut);font-weight:700}.ab dd{margin:0}
+.po{margin-top:96px;background:var(--coral);color:#1f2a37;border-radius:30px;padding:44px;display:grid;grid-template-columns:1.5fr 1fr;gap:30px;align-items:center}
+.po h2{margin:0;font:900 clamp(36px,5vw,64px)/.98 var(--d);letter-spacing:-.035em}.po a{font:800 20px var(--s);background:#1f2a37;color:#fff;padding:18px 22px;border-radius:18px;display:block;text-align:center;overflow-wrap:anywhere}
+.ft{display:flex;justify-content:space-between;padding:26px 0 40px;gap:10px;flex-wrap:wrap}
+@media(max-width:900px){.w{padding:0 16px}.nv{display:none}.hero,.ab,.po,.nt{grid-template-columns:1fr}.dist{grid-template-columns:1fr 1fr}.board{font-size:13px;padding:16px}.board .row{grid-template-columns:62px 1fr 74px}.board .row>:nth-child(3){display:none}.sh{flex-direction:column;align-items:flex-start}.po{padding:28px 20px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="w">
+<header class="hd"><a class="lg" href="#"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M15 3l12 7-12 7-12-7Z" fill="#f4cd62"/><path d="M3 10v9l12 7v-9Z" fill="#3fa79b"/><path d="M27 10v9l-12 7v-9Z" fill="#f0866a"/></svg>Ren Okafor</a><nav class="nv" aria-label="Primary"><a href="#districts">Projects</a><a href="#board">Status</a><a href="#notes">Writing</a><a href="#about">About</a><a href="#contact">Contact</a></nav><button class="tog" id="tog" aria-pressed="false">Night shift</button></header>
+
+<section class="hero"><div><span class="k">Platform engineer · open-source maintainer</span><h1>I build the <em>quiet</em> infrastructure your app runs on.</h1><p>Every building in this little city is a system I designed or maintain. Hover one to see what it does; the cars are real requests, roughly.</p><a class="bt" href="#districts">Tour the projects</a><a class="bt l" href="#contact">Get in touch</a>
+<div class="legend k" style="margin-top:22px"><span><i style="background:#f0866a"></i>Services</span><span><i style="background:#3fa79b"></i>Data</span><span><i style="background:#f4cd62"></i>Edge</span><span><i style="background:#b3a3e6"></i>Tooling</span></div></div>
+<div class="dio" id="dio"><svg id="city" viewBox="0 0 720 520" role="img" aria-label="Isometric miniature city of services, with small cars travelling between them"></svg><div class="tip" id="tip" role="status"></div></div></section>
+
+<section class="sec" id="districts"><div class="sh"><h2>Districts</h2><p>Four open-source projects, each a neighbourhood of the city.</p></div><div class="dist" id="dist"></div></section>
+
+<section class="sec" id="board"><div class="sh"><h2>Departures</h2><p>Live-ish status of the systems I run, styled as a station board.</p></div><div class="board" id="brd" aria-live="polite"></div></section>
+
+<section class="sec" id="notes"><div class="sh"><h2>Field guides</h2><p>Writing about running systems without drama.</p></div><div class="nt" id="nt"></div></section>
+
+<section class="sec" id="about"><div class="sh"><h2>Town hall</h2><p>About and now</p></div><div class="ab"><div class="c"><p>I have spent twelve years making servers boring: deploy tools, queues, observability and the runbooks that go with them. I maintain two open-source projects used by a few thousand teams.</p><p>Good infrastructure is a town where nobody notices the plumbing.</p></div><div class="c"><dl><dt>Building</dt><dd>A deploy tool that explains itself</dd><dt>Reading</dt><dd>Old railway signalling manuals</dd><dt>Based</dt><dd>Rotterdam, works remote</dd><dt>Open to</dt><dd>Staff roles on platform teams</dd></dl></div></div></section>
+
+<section class="po" id="contact"><h2>Need a city planner for your stack?</h2><a href="mailto:hello@ren.example">hello@ren.example</a></section>
+<footer class="ft k"><span>Ren Okafor · placeholder identity</span><span>Set in Gabarito and Nunito Sans</span></footer>
+</div>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)};
+var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var C={coral:'#f0866a',teal:'#3fa79b',butter:'#f4cd62',lav:'#b3a3e6'};
+function shade(hex,f){var n=parseInt(hex.slice(1),16),r=n>>16,g=n>>8&255,b=n&255;return 'rgb('+Math.round(r*f)+','+Math.round(g*f)+','+Math.round(b*f)+')'}
+// iso projection: grid (x,y,z) -> screen
+var OX=360,OY=150,TW=34,TH=17;
+function P(x,y,z){return [OX+(x-y)*TW,OY+(x+y)*TH-(z||0)]}
+function pts(a){return a.map(function(p){return p[0].toFixed(1)+','+p[1].toFixed(1)}).join(' ')}
+function box(x,y,w,d,h,col,id){var t=[P(x,y,h),P(x+w,y,h),P(x+w,y+d,h),P(x,y+d,h)],l=[P(x,y+d,0),P(x+w,y+d,0),P(x+w,y+d,h),P(x,y+d,h)],r=[P(x+w,y,0),P(x+w,y+d,0),P(x+w,y+d,h),P(x+w,y,h)];
+var s='<polygon points="'+pts(l)+'" fill="'+shade(col,.82)+'"/><polygon points="'+pts(r)+'" fill="'+shade(col,.68)+'"/><polygon points="'+pts(t)+'" fill="'+col+'"/>';
+// windows on left face
+var rows=Math.floor(h/18),cols=Math.max(1,Math.floor(w*2));for(var i=0;i<rows;i++)for(var j=0;j<cols;j++){var fx=x+(j+.5)/cols*w,fy=y+d,z=10+i*18,a=P(fx-.14,fy,z),b=P(fx+.14,fy,z),c=P(fx+.14,fy,z+8),e=P(fx-.14,fy,z+8);s+='<polygon class="win" points="'+pts([a,b,c,e])+'" fill="#ffffff" fill-opacity=".55"/>'}
+return s}
+var B=[['api','API gateway','Routes 40k requests a second with 2 ms overhead.',4,1,2,2,90,C.coral],['db','Primary database','Postgres with logical replicas in three zones.',8,2,2.4,2.4,60,C.teal],['queue','Tidepool queue','Durable queue, 99.99% delivery in 2025.',1,5,2,1.4,44,C.lav],['cache','Edge cache','Serves 82% of reads before they reach a server.',8,6,1.6,1.6,70,C.butter],['ci','Ferry deploys','Ships 60 deploys a day with automatic rollback.',4,7,2.4,1.6,36,C.lav],['obs','Lantern','Traces, metrics and logs in one place.',1,1.5,1.6,1.6,110,C.coral]];
+var s='';
+// ground slab
+var g=[P(0,0),P(11,0),P(11,10),P(0,10)];s+='<polygon points="'+pts([P(0,10,0),P(11,10,0),[P(11,10,0)[0],P(11,10,0)[1]+18],[P(0,10,0)[0],P(0,10,0)[1]+18]])+'" fill="#8a6a50"/><polygon points="'+pts([P(11,0,0),P(11,10,0),[P(11,10,0)[0],P(11,10,0)[1]+18],[P(11,0,0)[0],P(11,0,0)[1]+18]])+'" fill="#6f523e"/>';
+s+='<polygon id="ground" points="'+pts(g)+'" fill="var(--grass)"/>';
+// roads (centre lines along grid)
+var roads=[[[0,4],[11,4]],[[6.5,0],[6.5,10]],[[0,8.6],[11,8.6]]];
+roads.forEach(function(r){var a=r[0],b=r[1],hor=a[1]==b[1],q=hor?[P(a[0],a[1]-.45),P(b[0],b[1]-.45),P(b[0],b[1]+.45),P(a[0],a[1]+.45)]:[P(a[0]-.45,a[1]),P(b[0]-.45,b[1]),P(b[0]+.45,b[1]),P(a[0]+.45,a[1])];s+='<polygon points="'+pts(q)+'" fill="var(--road)"/>';var m1=P(a[0],a[1]),m2=P(b[0],b[1]);s+='<path d="M'+m1.join(' ')+'L'+m2.join(' ')+'" stroke="#f4cd62" stroke-width="1.6" stroke-dasharray="6 7" opacity=".8"/>'});
+// trees
+var trees=[[0.6,9.4],[2.3,9.4],[10.4,0.6],[10.4,2.4],[5.3,0.5],[10.3,9.5],[3.4,3.1],[0.5,6.6]];
+// draw order by x+y
+var items=B.map(function(b,i){return {k:b[3]+b[4],t:'b',i:i}}).concat(trees.map(function(t){return {k:t[0]+t[1],t:'t',p:t}}));items.sort(function(a,b){return a.k-b.k});
+s+='<g id="cars"></g>';
+items.forEach(function(it){if(it.t=='t'){var p=P(it.p[0],it.p[1]);s+='<ellipse cx="'+p[0]+'" cy="'+(p[1]+2)+'" rx="10" ry="5" fill="rgba(0,0,0,.15)"/><rect x="'+(p[0]-2)+'" y="'+(p[1]-14)+'" width="4" height="14" fill="#7b5b45"/><circle cx="'+p[0]+'" cy="'+(p[1]-20)+'" r="11" fill="var(--grass2)"/><circle cx="'+(p[0]-4)+'" cy="'+(p[1]-24)+'" r="5" fill="#b9e0b3" opacity=".55"/>'}
+else{var b=B[it.i];s+='<g class="bld" data-i="'+it.i+'" tabindex="0" role="button" aria-label="'+b[1]+'"><ellipse cx="'+P(b[3]+b[5]/2,b[4]+b[6]/2)[0]+'" cy="'+(P(b[3]+b[5]/2,b[4]+b[6]/2)[1]+6)+'" rx="'+(b[5]*30)+'" ry="'+(b[6]*14)+'" fill="rgba(0,0,0,.12)"/>'+box(b[3],b[4],b[5],b[6],b[7],b[8])+'</g>'}});
+// lamps
+[[3.5,4.6],[7.1,6.2],[9.2,8.1],[5.9,2.2]].forEach(function(l){var p=P(l[0],l[1]);s+='<line x1="'+p[0]+'" y1="'+p[1]+'" x2="'+p[0]+'" y2="'+(p[1]-22)+'" stroke="#4a4f5c" stroke-width="2"/><circle class="lamp" cx="'+p[0]+'" cy="'+(p[1]-24)+'" r="3.5" fill="#d9dce3"/>'});
+$('#city').innerHTML=s;
+// cars along roads
+var cars=[],carG=$('#cars'),CC=['#ffffff','#f0866a','#3fa79b','#b3a3e6','#1f2a37'];
+for(var i=0;i<9;i++){var r=roads[i%3],dir=i%2?1:-1,el=document.createElementNS('http://www.w3.org/2000/svg','g');el.innerHTML='<rect x="-6" y="-4" width="12" height="7" rx="2.5" fill="'+CC[i%5]+'" stroke="rgba(0,0,0,.25)"/><rect x="-3" y="-3" width="5" height="3" rx="1" fill="#9fd3f0"/>';carG.appendChild(el);cars.push({el:el,r:r,t:Math.random(),v:(.0016+Math.random()*.0018)*dir,lane:dir>0?.2:-.2})}
+function place(c){var a=c.r[0],b=c.r[1],x=a[0]+(b[0]-a[0])*c.t,y=a[1]+(b[1]-a[1])*c.t,hor=a[1]==b[1];if(hor)y+=c.lane;else x+=c.lane;var p=P(x,y,3),ang=hor?26.6:-26.6;c.el.setAttribute('transform','translate('+p[0].toFixed(1)+','+p[1].toFixed(1)+') rotate('+ang+')')}
+cars.forEach(place);
+if(!rm)(function loop(){cars.forEach(function(c){c.t+=c.v;if(c.t>1)c.t-=1;if(c.t<0)c.t+=1;place(c)});requestAnimationFrame(loop)})();
+// tooltips
+var tip=$('#tip'),dio=$('#dio');
+document.querySelectorAll('.bld').forEach(function(g){function show(e){var b=B[g.dataset.i],r=dio.getBoundingClientRect(),gb=g.getBoundingClientRect();tip.innerHTML='<b>'+b[1]+'</b>'+b[2];tip.style.left=Math.min(r.width-230,Math.max(0,gb.left-r.left+gb.width/2-110))+'px';tip.style.top=Math.max(0,gb.top-r.top-80)+'px';tip.classList.add('on')}g.addEventListener('mouseenter',show);g.addEventListener('focus',show);g.addEventListener('mouseleave',function(){tip.classList.remove('on')});g.addEventListener('blur',function(){tip.classList.remove('on')})});
+// night toggle
+$('#tog').addEventListener('click',function(){var on=document.body.classList.toggle('night');this.setAttribute('aria-pressed',on);this.textContent=on?'Day shift':'Night shift';document.querySelectorAll('.win').forEach(function(w,i){w.setAttribute('fill',on&&i%3?'#ffd56b':'#ffffff');w.setAttribute('fill-opacity',on?(i%3?'.95':'.15'):'.55')});document.querySelectorAll('.lamp').forEach(function(l){l.setAttribute('fill',on?'#ffd56b':'#d9dce3');l.setAttribute('r',on?5:3.5)})});
+// districts
+function mini(col,h){var o=OX,oy=OY;OX=110;OY=62;TW=22;TH=11;var s='<polygon points="'+pts([P(0,0),P(4,0),P(4,4),P(0,4)])+'" fill="var(--grass)"/>'+box(1,1,2,2,h,col);OX=o;OY=oy;TW=34;TH=17;return '<svg viewBox="0 0 220 150" aria-hidden="true">'+s+'</svg>'}
+var D=[['Ferry','Deploy tool with automatic rollback and plain-English diffs.',['Go','Kubernetes'],C.lav,46,'3.1k stars'],['Lantern','Observability that fits on one screen: traces, metrics, logs.',['Rust','ClickHouse'],C.coral,90,'5.4k stars'],['Tidepool','A durable queue that is boring on purpose.',['Go','Postgres'],C.teal,60,'1.9k stars'],['Gatekeeper','Rate limiting at the edge, shared across regions.',['TypeScript','Redis'],C.butter,70,'860 stars']];
+$('#dist').innerHTML=D.map(function(d){return '<a class="dc" href="#">'+mini(d[3],d[4])+'<span class="k">'+d[5]+'</span><h3>'+d[0]+'</h3><p>'+d[1]+'</p>'+d[2].map(function(t){return '<span class="chip">'+t+'</span>'}).join('')+'</a>'}).join('');
+// board with split-flap updates
+var R=[['09:41','Ferry deploy to eu-west','On time','ok'],['09:44','Lantern ingest pipeline','On time','ok'],['09:47','Tidepool replay','Delayed 2m','wn'],['09:52','Gatekeeper sync','On time','ok'],['10:05','Nightly backups','Boarding','ok']];
+function board(){$('#brd').innerHTML='<div class="row hdr"><span>Time</span><span>Service</span><span>Platform</span><span>Status</span></div>'+R.map(function(r,i){return '<div class="row"><span>'+r[0]+'</span><span>'+r[1]+'</span><span>'+(i+1)+'</span><span class="'+r[3]+'" data-i="'+i+'">'+r[2]+'</span></div>'}).join('')}
+board();
+var ST=[['On time','ok'],['Boarding','ok'],['Delayed 2m','wn'],['Departed','ok']];
+function flap(el,target){var ch='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 ',n=0,iv=setInterval(function(){n++;el.textContent=target.split('').map(function(c,i){return i<n/2?c:ch[Math.floor(Math.random()*ch.length)]}).join('');if(n>=target.length*2){clearInterval(iv);el.textContent=target}},35)}
+if(!rm)setInterval(function(){var i=Math.floor(Math.random()*R.length),s=ST[Math.floor(Math.random()*ST.length)];R[i][2]=s[0];R[i][3]=s[1];var el=document.querySelector('#brd [data-i="'+i+'"]');el.className=s[1];flap(el,s[0])},2600);
+// notes
+var N=[['Runbooks people actually read','Oct 2026 · 7 min',C.butter,'R'],['Rollbacks should be boring','Sep 2026 · 6 min',C.coral,'B'],['Queues are promises with paperwork','Jul 2026 · 9 min',C.teal,'Q'],['The two dashboards every team needs','May 2026 · 5 min',C.lav,'D']];
+$('#nt').innerHTML=N.map(function(n){return '<a href="#"><span class="sg" style="background:'+n[2]+'">'+n[3]+'</span><div><h4>'+n[0]+'</h4><span>'+n[1]+'</span></div></a>'}).join('');
+})();
+</script>
+</body>
+</html>

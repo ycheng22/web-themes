@@ -1,11 +1,11 @@
 # Web themes
 
-Homepage design directions for technology and design portfolios. Every theme is one self-contained HTML page with its own layout, typography and interaction. There is no build step.
+Homepage design directions for technologists, bloggers, designers and researchers. Every theme is one self-contained HTML page with its own layout, typography and interaction. There is no build step.
 
 Open `index.html` for a gallery of every theme. If GitHub Pages is enabled for this repository, the gallery is also the site's home page.
 
 ```
-themes/                    six new designer-engineer portfolio themes
+themes/                    fourteen themes: six designer-engineer portfolios and eight animation-inspired themes
 existing/                  twelve earlier directions exported from the openloop design system
 existing/tokens.css        shared colour, spacing, radius and font tokens for existing/
 openloop-design-system/    the design system source: tokens.json, component previews, notes
@@ -109,6 +109,138 @@ None of the six reuse a palette, typeface pairing or layout from the earlier set
 - **Specimen** if typography and restraint are the brand.
 - **Riso or Playground** if the work is expressive and the audience is creative studios.
 - **Workbench** as a side project or "about me" page rather than a main portfolio.
+
+## Animation-inspired themes
+
+Eight directions that borrow techniques from animation and print, two for each audience:
+
+| Audience | Placeholder person |
+| --- | --- |
+| Technology | Ren Okafor, platform engineer; Tomo Vega, game engineer |
+| Blogger | Mika Sol, *Slow Pixels*; Theo Marsh, *The Long Reel* |
+| Designer | Juno Arai; Lio Park |
+| Researcher | Amara Lind, biophysicist; Sami Haddad, mathematician |
+
+Every mascot, character and illustration is original and drawn in code. Nothing is copied from an existing film, game or comic.
+
+### Technology
+
+#### Miniature City (`themes/miniature-city`)
+![Miniature City](assets/thumbs/miniature-city.jpg)
+
+- **Borrows:** tilt-shift miniatures and isometric city builders.
+- **Hero:** each building in an isometric diorama is a service. Hovering explains it, and little cars (requests) drive the roads.
+- **Interaction:**
+  - A night-shift toggle lights the windows and street lamps.
+  - Projects are "districts".
+  - System status is a departures board whose statuses flip like split-flap letters.
+- **Palette:** pastel coral, teal, butter and lavender on pale sky.
+- **Type:** Gabarito and Nunito Sans.
+- **Best for:** infrastructure, platform and backend engineers. It makes invisible work visible and friendly.
+- **Watch:** the diorama is hand-placed. Adding services means placing new buildings.
+
+#### Pixel Quest (`themes/pixel-quest`)
+![Pixel Quest](assets/thumbs/pixel-quest.jpg)
+
+- **Borrows:** 8-bit platformers.
+- **Hero:** a playable runner with an original robot sprite. Space, click or tap jumps. Collecting gems unlocks the matching skills in the inventory below, and landing on bugs "fixes" them.
+- **Sections:** projects are a quest log with XP bars, writing is save files, and contact is a "Continue?" countdown.
+- **Palette:** dusk bands of navy, plum, peach and sun on a dotted night grid.
+- **Type:** Pixelify Sans with Rethink Sans for reading.
+- **Best for:** game, graphics and creative-coding engineers.
+- **Watch:** the game is a delight but not essential. Everything is also readable without playing.
+
+### Blogger
+
+#### Manga Panels (`themes/manga-panels`)
+![Manga Panels](assets/thumbs/manga-panels.jpg)
+
+- **Borrows:** manga page layout. The page is a comic page with slanted panel gutters, screentone dots and red sound-effect lettering.
+- **Hero:** jittering radial speed lines.
+- **Sections:**
+  - Posts are panels of different sizes; hovering flips one into an inverted "impact frame".
+  - Category chips filter the posts.
+  - The newsletter sign-up sits in a speech balloon.
+  - About is a four-panel strip.
+- **Palette:** black, paper and one spot red.
+- **Type:** Dela Gothic One and Zen Kaku Gothic New.
+- **Best for:** opinionated personal blogs and essay newsletters.
+- **Watch:** the panel grid needs a featured post with an illustration to feel full.
+
+#### Old Reel (`themes/old-reel`)
+![Old Reel](assets/thumbs/old-reel.jpg)
+
+- **Borrows:** 1930s rubber-hose cartoons and silent-film title cards.
+- **Opening:** a 3-2-1 film leader, which can be skipped.
+- **Look:** live film grain and scratches, flicker, a vignette and sprocket strips. The intertitle has ornate corners, and an original vacuum-tube mascot bounces with squash and stretch.
+- **Interaction:** sections open with an iris wipe as you scroll. Hovering a "reel" irises in its excerpt from the cursor position. The page ends on "The End".
+- **Palette:** film black, silver and one sepia accent.
+- **Type:** Limelight and Old Standard TT.
+- **Best for:** history, culture and long-form storytelling blogs.
+- **Watch:** keep the grain subtle for long reading; the leader runs once per visit.
+
+### Designer
+
+#### Clay Studio (`themes/clay-studio`)
+![Clay Studio](assets/thumbs/clay-studio.jpg)
+
+- **Borrows:** claymation and stop-motion.
+- **Animation:** every idle movement runs at 6 to 12 frames per second, like stop-motion. Clay letters jitter, blobs "boil", an SVG wobble filter changes seed each frame, and a frame counter ticks in the header.
+- **Look:** shapes are plasticine, with soft highlights, fingerprint texture and squash on press.
+- **Process:** a six-frame stop-motion with onion skinning. Scrub it, click frames or press play.
+- **Palette:** tomato, mustard, teal, sky and pink on mint felt.
+- **Type:** Fredoka and Rubik.
+- **Best for:** product and brand designers with a tactile, playful style.
+- **Watch:** the hero scene is the signature. Real projects should get their own clay illustrations.
+
+#### Pop-up Book (`themes/pop-up-book`)
+![Pop-up Book](assets/thumbs/pop-up-book.jpg)
+
+- **Borrows:** paper engineering.
+- **Hero:** an open book whose right page pops up a layered paper scene (mountains, sun, hills, house, tree) that rises on load. The spread tilts with the pointer.
+- **Sections:** project cards pop up their figures as they scroll into view. About has a working pull tab, writing is ribbon bookmarks, and contact is an envelope that opens to reveal the letter.
+- **Palette:** paper white on a slate desk with indigo, coral, mint and mustard.
+- **Type:** Young Serif and Work Sans.
+- **Best for:** illustrators and product designers, especially in education and publishing.
+- **Watch:** 3D transforms are kept shallow, and on phones the book flattens into a single page.
+
+### Researcher
+
+#### Powers of Ten (`themes/powers-of-ten`)
+![Powers of Ten](assets/thumbs/powers-of-ten.jpg)
+
+- **Borrows:** the classic continuous-zoom film idea.
+- **Hero:** scrolling falls through sixteen orders of magnitude in one sticky stage: planet, forest canopy, leaf, plant cell, one photoreceptor protein. Each scene zooms continuously into the next.
+- **Readouts:**
+  - a field-of-view number and an exponent ruler;
+  - a caption with the research and paper at that scale;
+  - a background colour that shifts from space to the lab.
+- **Sections:** papers can be filtered by scale.
+- **Palette:** shifts with scale, with amber and violet accents.
+- **Type:** Literata and Red Hat Mono.
+- **Best for:** researchers whose work spans scales (ecology, biology, physics, climate).
+- **Watch:** the zoom is long (about eight screens). Consider a "skip to papers" link for returning visitors.
+
+#### Chalk Lecture (`themes/chalk-lecture`)
+![Chalk Lecture](assets/thumbs/chalk-lecture.jpg)
+
+- **Borrows:** blackboard lectures and hand-drawn explainer animation.
+- **Look:** a framed chalkboard with dust, smudges and a chalk tray. The title writes itself stroke by stroke, and the update rule is chalked in yellow.
+- **Hero interaction:**
+  - Contour lines draw on.
+  - Clicking anywhere on the loss surface runs a gradient descent with momentum and leaves a dotted chalk trail.
+  - "Erase and redraw" sweeps a felt eraser across the board and starts again.
+- **Sections:** research threads draw their chalk diagrams on scroll, papers are a numbered reading list, and teaching is a timetable.
+- **Palette:** slate green with white, yellow, pink and blue chalk, framed in wood.
+- **Type:** Caveat and Crimson Pro.
+- **Best for:** academics and teachers in mathematics, machine learning, physics and economics.
+- **Watch:** handwriting fonts are for headings only. Body text stays in a readable serif.
+
+### Picking one
+- **Technology:** Miniature City for infrastructure work, Pixel Quest for graphics and games.
+- **Bloggers:** Manga Panels for punchy essays, Old Reel for history and storytelling.
+- **Designers:** Clay Studio for tactile, playful work, Pop-up Book for illustration-led product design.
+- **Researchers:** Powers of Ten when the work spans scales, Chalk Lecture when teaching is part of the identity.
 
 ## openloop design system (`existing/`)
 
