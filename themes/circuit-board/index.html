@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ezra Lin · Circuit Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{--mask:#3d2470;--mask2:#341f60;--cu:#c58b4a;--gold:#e2b85c;--silk:#f1efe6;--chip:#16141a;--led:#7cf7c8;--d:"Chakra Petch",system-ui,sans-serif;--m:"Share Tech Mono",ui-monospace,monospace}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:#1c1230;color:var(--silk);font:400 17px/1.55 var(--d);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}:focus-visible{outline:2px dashed var(--gold);outline-offset:4px}
+.board{position:relative;max-width:1240px;margin:24px auto;background:var(--mask);border-radius:18px;padding:28px 44px 56px;box-shadow:0 0 0 2px #4b2d86,0 30px 60px -20px rgba(0,0,0,.6);background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1.4px);background-size:16px 16px}
+.hole{position:absolute;width:26px;height:26px;border-radius:50%;background:#1c1230;box-shadow:0 0 0 7px var(--gold),0 0 0 9px #8e6a2b}.h1{left:16px;top:16px}.h2{right:16px;top:16px}.h3{left:16px;bottom:16px}.h4{right:16px;bottom:16px}
+#traces{position:absolute;left:0;top:0;pointer-events:none;z-index:0}
+.z{position:relative;z-index:1}
+.m{font:400 13px var(--m);color:#cbbfe6}
+.silk{font:400 12px var(--m);color:var(--silk);opacity:.85}
+.hd{display:flex;align-items:center;gap:24px;padding:16px 26px 26px}
+.lg{font:700 22px var(--d);letter-spacing:.04em;display:flex;align-items:center;gap:10px}.lg i{width:12px;height:12px;border-radius:50%;background:var(--led);box-shadow:0 0 10px var(--led);animation:bl 1.6s steps(1) infinite}@keyframes bl{50%{opacity:.25}}
+.nv{margin-left:auto;display:flex;gap:6px}.nv a{font:500 14px var(--m);padding:5px 10px;border:1.5px solid var(--silk);border-radius:3px;transition:background .2s,color .2s}.nv a:hover{background:var(--silk);color:var(--mask)}
+/* hero */
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:30px;align-items:center;padding:20px 0 30px}
+h1{font:700 clamp(46px,6vw,84px)/.95 var(--d);margin:10px 0 18px;letter-spacing:.01em;text-transform:none}
+h1 span{color:var(--gold)}
+.hero p{font-size:19px;max-width:38ch;margin:0 0 22px;color:#e6e0f4}
+.bt{display:inline-block;font:600 15px var(--d);padding:11px 18px;border-radius:3px;background:var(--gold);color:var(--chip);margin-right:8px;box-shadow:0 3px 0 #8e6a2b;transition:transform .1s}.bt:active{transform:translateY(2px)}.bt.l{background:transparent;color:var(--silk);box-shadow:inset 0 0 0 1.5px var(--silk)}
+.cpu{justify-self:center;position:relative;width:300px;height:300px}
+.cpu .pkg{position:absolute;inset:34px;background:var(--chip);border-radius:6px;display:grid;place-items:center;text-align:center;box-shadow:inset 0 0 0 2px #2a2730}
+.cpu .pkg b{font:700 30px var(--d);display:block;letter-spacing:.06em}.cpu .pkg span{font:400 12px var(--m);color:#9b97a8}
+.cpu .dot{position:absolute;left:46px;top:46px;width:10px;height:10px;border-radius:50%;background:#2c2933}
+.pins{position:absolute;display:flex;justify-content:space-between}.pins i{background:linear-gradient(#e9e6df,#a9a6a0);display:block}
+.pt,.pb{left:52px;right:52px;height:34px}.pt{top:0}.pb{bottom:0}.pt i,.pb i{width:7px;height:34px}
+.pl,.pr{top:52px;bottom:52px;width:34px;flex-direction:column}.pl{left:0}.pr{right:0}.pl i,.pr i{height:7px;width:34px}
+/* sections */
+.sec{padding-top:110px}
+.sh{display:flex;align-items:baseline;gap:16px;margin-bottom:24px}.sh h2{margin:0;font:700 clamp(32px,4vw,48px) var(--d)}.sh .silk{border:1.5px solid var(--silk);padding:2px 8px;border-radius:3px}
+.ics{display:grid;grid-template-columns:repeat(2,1fr);gap:40px 48px}
+.ic{display:block;position:relative;padding:14px 26px}
+.ic .body{background:var(--chip);border-radius:5px;padding:20px 22px;position:relative;transition:box-shadow .3s}
+.ic .body::before{content:"";position:absolute;left:12px;top:12px;width:8px;height:8px;border-radius:50%;background:#2c2933}
+.ic .pinr{position:absolute;top:0;bottom:0;width:14px;display:flex;flex-direction:column;justify-content:space-around;padding:14px 0}.ic .pinr i{height:6px;background:linear-gradient(90deg,#a9a6a0,#e9e6df)}.ic .pl2{left:12px}.ic .pr2{right:12px}
+.ic h3{margin:4px 0 6px;font:700 28px var(--d)}.ic p{margin:0 0 8px;color:#d6d2e2;font-size:15.5px}
+.ic:hover .body,.ic.hot .body{box-shadow:0 0 0 2px var(--gold),0 0 30px rgba(226,184,92,.35)}
+.ref{position:absolute;left:30px;top:-6px}
+.tg{display:flex;gap:6px;flex-wrap:wrap}.tg span{font:400 12px var(--m);color:var(--gold);border:1px solid #5a4c2b;padding:0 6px;border-radius:2px}
+/* bom */
+.bom{display:flex;flex-wrap:wrap;gap:22px 26px}
+.smd{display:flex;align-items:center;cursor:default}.smd .cap{width:14px;height:24px;background:linear-gradient(#e9e6df,#a9a6a0);border-radius:2px}
+.smd .bd{background:#1d1a22;padding:6px 12px;font:600 14px var(--d);border-top:3px solid var(--c,#2c66d9);border-bottom:3px solid var(--c,#2c66d9);transition:background .2s}.smd:hover .bd{background:#2a2633}
+.smd small{display:block;font:400 11px var(--m);color:#9b97a8}
+/* test points */
+.tp a{display:grid;grid-template-columns:40px 70px 1fr 110px;gap:14px;align-items:center;padding:14px 0;border-bottom:1px dashed rgba(241,239,230,.25)}
+.tp .pad{width:22px;height:22px;border-radius:50%;background:var(--gold);box-shadow:inset 0 0 0 6px #8e6a2b;transition:box-shadow .2s}.tp a:hover .pad{box-shadow:inset 0 0 0 6px #8e6a2b,0 0 14px var(--gold)}
+.tp h4{margin:0;font:600 21px/1.25 var(--d)}.tp .r{text-align:right}
+.rev{display:grid;grid-template-columns:1.2fr 1fr;gap:40px}.rev p{margin:0 0 14px;max-width:48ch;color:#e6e0f4}
+.rb{border:1.5px solid var(--silk);font:400 14px var(--m)}.rb div{display:grid;grid-template-columns:90px 1fr;border-top:1px solid rgba(241,239,230,.4)}.rb div:first-child{border-top:0}.rb span{padding:8px 10px}.rb span:first-child{border-right:1px solid rgba(241,239,230,.4);color:#cbbfe6}
+.j1{margin-top:110px;display:grid;grid-template-columns:1.3fr 1fr;gap:30px;align-items:center;border:1.5px solid var(--silk);border-radius:6px;padding:34px}
+.j1 h2{margin:0;font:700 clamp(36px,4.6vw,60px)/1 var(--d)}
+.dip{display:flex;gap:10px;align-items:center;margin-bottom:14px}.sw{width:44px;height:70px;border-radius:4px;background:#2b51c9;border:0;padding:6px;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end}
+.sw i{display:block;height:28px;background:#f1efe6;border-radius:2px;transition:transform .2s}.sw[aria-pressed=true] i{transform:translateY(-28px)}
+.leds{display:flex;gap:8px;margin-left:10px}.leds b{width:14px;height:14px;border-radius:50%;background:#2a3b33;transition:background .3s,box-shadow .3s}.leds b.on{background:var(--led);box-shadow:0 0 12px var(--led)}
+.mail{font:700 22px var(--d);color:var(--gold);opacity:.25;transition:opacity .3s;overflow-wrap:anywhere}.mail.on{opacity:1}
+.ft{display:flex;justify-content:space-between;padding:30px 0 0;gap:10px;flex-wrap:wrap}
+@media(max-width:900px){.board{margin:0;border-radius:0;padding:20px 16px 40px}.hole{display:none}.nv{display:none}.hd{padding:10px 0 16px}.hero,.ics,.rev,.j1{grid-template-columns:1fr}.cpu{width:220px;height:220px}.tp a{grid-template-columns:30px 1fr}.tp a .m{display:none}.j1{padding:22px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="board" id="board">
+<svg id="traces" aria-hidden="true"></svg>
+<span class="hole h1"></span><span class="hole h2"></span><span class="hole h3"></span><span class="hole h4"></span>
+<header class="hd z"><a class="lg" href="#" id="nhd"><i></i>EZRA-LIN-01</a><nav class="nv" aria-label="Primary"><a href="#u2">Projects</a><a href="#bom">Skills</a><a href="#tp">Writing</a><a href="#rev">About</a><a href="#j1">Contact</a></nav></header>
+
+<section class="hero z"><div><span class="silk">REV 2026-11 · SOFTWARE AND AI ENGINEER</span><h1>Ezra Lin, <span>wired for</span> reliable AI.</h1><p>I build the systems between a model and a product: gateways, evaluations, retrieval and agents that do not fall over at 3 a.m.</p><a class="bt" href="#u2">Probe the board</a><a class="bt l" href="#j1">Connect to J1</a></div>
+<div class="cpu" id="cpu" aria-hidden="true"><div class="pins pt" id="ptop"></div><div class="pins pb" id="pbot"></div><div class="pins pl" id="pleft"></div><div class="pins pr" id="pright"></div><div class="pkg"><span class="dot"></span><div><span>U1</span><b>EZRA</b><span>LLM-SYS · 2026</span></div></div></div></section>
+
+<section class="sec z" id="u2"><div class="sh"><span class="silk">U2–U5</span><h2>Projects</h2><span class="m">Hover a chip to send a signal to it</span></div><div class="ics" id="ics"></div></section>
+<section class="sec z" id="bom"><div class="sh"><span class="silk">BOM</span><h2>Bill of materials</h2><span class="m">What every project is built from</span></div><div class="bom" id="bomx"></div></section>
+<section class="sec z" id="tp"><div class="sh"><span class="silk">TP1–TP4</span><h2>Test points</h2><span class="m">Writing</span></div><div class="tp" id="tpx"></div></section>
+<section class="sec z" id="rev"><div class="sh"><span class="silk">REV</span><h2>Revision block</h2><span class="m">About and now</span></div><div class="rev"><div><p>I have shipped software for twelve years: payments first, then search, now language-model systems. I like the unglamorous half of AI, the parts that decide whether a demo survives contact with users.</p><p>I write about evaluations, latency and failure modes, and I maintain two small open-source tools.</p></div><div class="rb"><div><span>Rev</span><span>2026-11, current</span></div><div><span>Building</span><span>An eval harness for coding agents</span></div><div><span>Location</span><span>Toronto, remote friendly</span></div><div><span>Status</span><span>Open to staff roles from January</span></div></div></div></section>
+
+<section class="j1 z" id="j1"><div><span class="silk">J1 · CONTACT HEADER</span><h2>Flip the switches to power up the contact line.</h2></div><div><div class="dip" role="group" aria-label="Switches"><button class="sw" aria-pressed="false" aria-label="Switch 1"><i></i></button><button class="sw" aria-pressed="false" aria-label="Switch 2"><i></i></button><button class="sw" aria-pressed="false" aria-label="Switch 3"><i></i></button><div class="leds"><b></b><b></b><b></b></div></div><a class="mail" id="mail" href="mailto:hello@ezra.example">hello@ezra.example</a><p class="m" id="pw">Power: 0 of 3</p></div></section>
+<footer class="ft silk z"><span>Ezra Lin · placeholder identity · not a real circuit</span><span>Set in Chakra Petch and Share Tech Mono</span></footer>
+</main>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)};
+var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+['ptop','pbot','pleft','pright'].forEach(function(id){$('#'+id).innerHTML=new Array(14).join('<i></i>')});
+var P=[['U2','Relay','A gateway that routes requests across model providers with fallbacks, budgets and caching.',['Go','Redis','OpenTelemetry']],['U3','Sieve','An evaluation harness: every prompt change runs against 1,200 graded examples before merge.',['Python','DuckDB']],['U4','Atlas','Hybrid vector and keyword search over 40 million documents with 80 ms p95.',['Rust','pgvector']],['U5','Patchwork','A code-review agent that proposes small, tested patches instead of long comments.',['TypeScript','LangGraph']]];
+$('#ics').innerHTML=P.map(function(p){return '<a class="ic" href="#" data-u="'+p[0]+'"><span class="silk ref">'+p[0]+'</span><span class="pinr pl2"><i></i><i></i><i></i><i></i><i></i></span><span class="pinr pr2"><i></i><i></i><i></i><i></i><i></i></span><div class="body"><h3>'+p[1]+'</h3><p>'+p[2]+'</p><div class="tg">'+p[3].map(function(t){return '<span>'+t+'</span>'}).join('')+'</div></div></a>'}).join('');
+var B=[['TypeScript','R1 · 10 yrs','#2c66d9'],['Python','R2 · 9 yrs','#e2b85c'],['Go','R3 · 6 yrs','#38b2ac'],['Rust','R4 · 3 yrs','#d9643a'],['Postgres','C1 · 11 yrs','#7c8cff'],['LLM evals','C2 · 3 yrs','#7cf7c8'],['Agents','C3 · 2 yrs','#f472b6'],['Kubernetes','L1 · 6 yrs','#a3a3a3']];
+$('#bomx').innerHTML=B.map(function(b){return '<span class="smd" style="--c:'+b[2]+'"><span class="cap"></span><span class="bd">'+b[0]+'<small>'+b[1]+'</small></span><span class="cap"></span></span>'}).join('');
+var T=[['TP1','Evals are unit tests for vibes','Oct 2026'],['TP2','Your fallback model is a feature flag','Sep 2026'],['TP3','Measuring retrieval without a labelled set','Jul 2026'],['TP4','The four ways agents fail in production','May 2026']];
+$('#tpx').innerHTML=T.map(function(t){return '<a href="#"><span class="pad"></span><span class="m">'+t[0]+'</span><h4>'+t[1]+'</h4><span class="m r">'+t[2]+'</span></a>'}).join('');
+// traces: from cpu to each chip, and chips down the board
+var svg=$('#traces'),board=$('#board'),paths=[],sig=[];
+function route(a,b,off){var mx=a[0]+(b[0]-a[0])*.5,y1=a[1]+off;var d='M'+a[0]+' '+a[1]+'V'+y1;var dx=b[0]-a[0],dy=b[1]-y1,diag=Math.min(Math.abs(dx),Math.abs(dy))*.6;d+='L'+(a[0]+Math.sign(dx)*diag)+' '+(y1+Math.sign(dy)*diag)+'H'+b[0]+'V'+b[1];return d}
+function draw(){var br=board.getBoundingClientRect();svg.setAttribute('width',br.width);svg.setAttribute('height',board.scrollHeight);svg.setAttribute('viewBox','0 0 '+br.width+' '+board.scrollHeight);
+var c=$('#cpu').getBoundingClientRect(),cx=c.left-br.left+c.width/2,cy=c.top-br.top+c.height;var s='',k=0;paths=[];
+var chips=document.querySelectorAll('.ic');chips.forEach(function(ch,i){var r=ch.getBoundingClientRect(),x=r.left-br.left+r.width/2+(i%2?-40:40),y=r.top-br.top+8,sx=cx-60+i*40;var d=route([sx,cy],[x,y],30+i*16);s+='<path d="'+d+'" fill="none" stroke="#c58b4a" stroke-width="3" opacity=".75" data-u="'+ch.dataset.u+'"/>';paths.push(d)});
+// a bus from chips to sections below
+var secs=['#bom','#tp','#rev','#j1'];secs.forEach(function(id,i){var e=$(id).getBoundingClientRect(),y=e.top-br.top+14,x=26+i*7;s+='<path d="M'+x+' '+(cy+20)+'V'+y+'H'+(e.left-br.left-6)+'" fill="none" stroke="#c58b4a" stroke-width="2" opacity=".45"/>';paths.push('M'+x+' '+(cy+20)+'V'+y+'H'+(e.left-br.left-6))});
+// vias
+for(var i=0;i<40;i++){var vx=40+((i*137)%Math.max(100,br.width-80)),vy=200+((i*389)%Math.max(200,board.scrollHeight-260));s+='<circle cx="'+vx+'" cy="'+vy+'" r="4" fill="#1c1230" stroke="#c58b4a" stroke-width="2.5" opacity=".6"/>'}
+s+='<g id="sigs"></g>';svg.innerHTML=s;sig=[];var g=$('#sigs');paths.forEach(function(d,i){var p=document.createElementNS('http://www.w3.org/2000/svg','path');p.setAttribute('d',d);var c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('r',4);c.setAttribute('fill','#7cf7c8');c.style.filter='drop-shadow(0 0 4px #7cf7c8)';g.appendChild(c);sig.push({p:p,c:c,t:Math.random(),v:.002+Math.random()*.002,len:p.getTotalLength()})})}
+function loop(){sig.forEach(function(s){s.t=(s.t+s.v*(s.boost||1))%1;var pt=s.p.getPointAtLength(s.t*s.len);s.c.setAttribute('cx',pt.x);s.c.setAttribute('cy',pt.y)});requestAnimationFrame(loop)}
+draw();addEventListener('resize',draw);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(draw);
+if(!rm)loop();else sig.forEach(function(s){var pt=s.p.getPointAtLength(s.len*.5);s.c.setAttribute('cx',pt.x);s.c.setAttribute('cy',pt.y)});
+document.querySelectorAll('.ic').forEach(function(ch,i){ch.addEventListener('mouseenter',function(){var pth=svg.querySelector('path[data-u="'+ch.dataset.u+'"]');if(pth){pth.setAttribute('stroke','#e2b85c');pth.setAttribute('stroke-width','4');pth.setAttribute('opacity','1')}if(sig[i])sig[i].boost=5});ch.addEventListener('mouseleave',function(){var pth=svg.querySelector('path[data-u="'+ch.dataset.u+'"]');if(pth){pth.setAttribute('stroke','#c58b4a');pth.setAttribute('stroke-width','3');pth.setAttribute('opacity','.75')}if(sig[i])sig[i].boost=1})});
+// dip switches
+var sws=document.querySelectorAll('.sw'),leds=document.querySelectorAll('.leds b');
+sws.forEach(function(b,i){b.addEventListener('click',function(){b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')!='true');var n=0;sws.forEach(function(x,j){var on=x.getAttribute('aria-pressed')=='true';leds[j].classList.toggle('on',on);if(on)n++});$('#pw').textContent=n==3?'Power: 3 of 3 · line is live':'Power: '+n+' of 3';$('#mail').classList.toggle('on',n==3)})});
+})();
+</script>
+</body>
+</html>

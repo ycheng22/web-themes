@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ezra Lin · Chat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Recursive:wght,MONO@400..700,1&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f5f7;--panel:#ffffff;--ink:#0f1720;--mut:#5f6b78;--line:#dfe4ea;--teal:#0f766e;--teal2:#ccfbf1;--me:#0f1720;--s:"Instrument Sans",system-ui,sans-serif;--r:"Recursive",ui-monospace,monospace}
+*{box-sizing:border-box}html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--ink);font:400 16.5px/1.6 var(--s);display:grid;grid-template-columns:270px minmax(0,1fr);min-height:100vh}
+a{color:var(--teal)}:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.mono{font-family:var(--r);font-variation-settings:"MONO" 1}
+aside{border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:6px;position:sticky;top:0;height:100vh}
+.who{display:flex;gap:10px;align-items:center;padding:4px 6px 16px}
+.av{width:36px;height:36px;border-radius:10px;background:var(--teal);color:#fff;display:grid;place-items:center;font:700 15px var(--s)}
+.who .av{color:#fff;font-size:14px}.who b{display:block;font-weight:700}.who span{font-size:13px;color:var(--mut)}
+.new{font:600 14px var(--s);border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:9px 12px;text-align:left;cursor:pointer;color:var(--ink)}
+.hist{margin-top:14px;font-size:12.5px;color:var(--mut);padding:0 8px}
+.th{font:500 14px var(--s);background:none;border:0;text-align:left;padding:8px 10px;border-radius:8px;cursor:pointer;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.th:hover,.th[aria-current=true]{background:#e6ebef}
+aside .ft{margin-top:auto;font-size:12.5px;color:var(--mut);padding:0 8px}
+.main{display:flex;flex-direction:column;min-width:0;min-height:100vh}
+.top{display:flex;align-items:center;gap:10px;padding:14px 26px;border-bottom:1px solid var(--line);background:rgba(243,245,247,.9);backdrop-filter:blur(6px);position:sticky;top:0;z-index:3}
+.model{font:600 14px var(--s);display:flex;gap:6px;align-items:center;border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:5px 10px}
+.model i{width:8px;height:8px;border-radius:50%;background:#22c55e}
+.top .mono{font-size:12.5px;color:var(--mut);margin-left:auto}
+.log{flex:1;width:100%;max-width:820px;margin:0 auto;padding:30px 26px 10px}
+.intro{padding:40px 0 30px}
+.intro h1{font:700 clamp(38px,5vw,64px)/1.05 var(--s);letter-spacing:-.025em;margin:0 0 14px}
+.intro p{font-size:19px;color:#3b4652;max-width:54ch;margin:0}
+.sugg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:28px 0 10px}
+.sugg button{font:500 15px/1.35 var(--s);text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer;color:var(--ink);transition:border-color .15s}
+.sugg button span{display:block;color:var(--mut);font-size:13.5px;font-weight:400}
+.sugg button:hover{border-color:var(--teal)}
+.msg{display:grid;grid-template-columns:32px minmax(0,1fr);gap:14px;padding:18px 0}
+.msg .av{width:32px;height:32px;font-size:13px;border-radius:9px}
+.msg.u .av{background:#d6dde4;color:var(--ink)}
+.msg.u .tx{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 14px;justify-self:start}
+.tx p{margin:0 0 10px}.tx p:last-child{margin-bottom:0}
+.tx ul{margin:0 0 10px;padding-left:20px}
+.caret{display:inline-block;width:8px;height:1.1em;background:var(--teal);vertical-align:-3px;margin-left:2px;animation:bl .9s steps(1) infinite}@keyframes bl{50%{opacity:0}}
+.tool{border:1px solid var(--line);background:var(--panel);border-radius:12px;margin:8px 0 12px;overflow:hidden}
+.tool summary{list-style:none;cursor:pointer;display:flex;gap:10px;align-items:center;padding:9px 12px;font:500 13px var(--r);font-variation-settings:"MONO" 1;color:var(--mut)}
+.tool summary::-webkit-details-marker{display:none}
+.tool summary b{color:var(--teal);font-weight:600}.tool summary em{margin-left:auto;font-style:normal}
+.tool pre{margin:0;padding:10px 12px;border-top:1px solid var(--line);background:#f8fafb;font:400 12.5px/1.55 var(--r);font-variation-settings:"MONO" 1;white-space:pre-wrap;overflow-wrap:anywhere;color:#334155}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:6px 0 12px}
+.pc{display:block;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px;text-decoration:none;color:var(--ink)}
+.pc:hover{border-color:var(--teal)}
+.pc b{font:700 18px var(--s);display:block}.pc span{display:block;font-size:14px;color:#3b4652}.pc small{display:block;margin-top:6px;font:400 12px var(--r);font-variation-settings:"MONO" 1;color:var(--teal)}
+.cite{font:600 11px var(--r);background:var(--teal2);color:var(--teal);border-radius:4px;padding:0 5px;vertical-align:2px;text-decoration:none}
+.compose{position:sticky;bottom:0;background:linear-gradient(transparent,var(--bg) 30%);padding:18px 26px 18px}
+.box{max-width:820px;margin:0 auto;display:flex;gap:8px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:8px 8px 8px 16px;box-shadow:0 8px 24px -16px rgba(15,23,32,.4)}
+.box input{flex:1;min-width:0;border:0;outline:0;font:400 16px var(--s);background:none;color:var(--ink)}
+.box button{width:38px;height:38px;border-radius:10px;border:0;background:var(--ink);color:#fff;cursor:pointer;font:700 18px var(--s)}
+.box button:disabled{background:#b8c1ca}
+.disc{max-width:820px;margin:8px auto 0;text-align:center;font-size:12.5px;color:var(--mut)}
+@media(max-width:860px){body{grid-template-columns:minmax(0,1fr)}aside{display:none}.log{padding:20px 16px 10px}.top{padding:12px 16px}.compose{padding:12px 16px}.sugg,.cards{grid-template-columns:minmax(0,1fr)}.intro{padding-top:16px}}
+@media(prefers-reduced-motion:reduce){.caret{animation:none}*{transition:none!important}}
+</style>
+</head>
+<body>
+<aside aria-label="Conversations"><div class="who"><span class="av">EL</span><div><b>Ezra Lin</b><span>software and AI engineer</span></div></div>
+<button class="new" id="new">+ New chat</button>
+<div class="hist">Ask about</div>
+<button class="th" data-q="projects">What has Ezra built?</button>
+<button class="th" data-q="writing">What does Ezra write about?</button>
+<button class="th" data-q="about">Who is Ezra, briefly?</button>
+<button class="th" data-q="evals">How does Ezra evaluate models?</button>
+<button class="th" data-q="contact">How do I hire Ezra?</button>
+<div class="ft">Placeholder identity. Answers are scripted, not generated.</div></aside>
+<div class="main">
+<div class="top"><span class="model"><i></i>ezra-lin · v12</span><span class="mono">context: 12 years · temperature: 0.2</span></div>
+<main class="log" id="log" aria-live="polite">
+<section class="intro" id="intro"><h1>Ask me anything about Ezra Lin.</h1><p>I am a small, honest model of Ezra's work: gateways, evaluations, retrieval and agents. Pick a question or type your own.</p>
+<div class="sugg"><button data-q="projects">What has Ezra built?<span>Four production systems</span></button><button data-q="evals">How do you evaluate models?<span>The Sieve approach</span></button><button data-q="writing">What do you write about?<span>Four recent essays</span></button><button data-q="contact">Can we hire you?<span>Availability and contact</span></button></div></section>
+</main>
+<div class="compose"><form class="box" id="f"><input id="q" aria-label="Message" placeholder="Ask about projects, evals, writing or hiring" autocomplete="off"><button aria-label="Send" id="send">↑</button></form><div class="disc">Responses are pre-written by Ezra. They will not hallucinate, which is rather the point.</div></div>
+</div>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)};
+var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;var log=$('#log'),busy=false;
+var A={
+projects:{tool:['search_portfolio','{"query": "projects", "status": "production"}','4 results · 38 ms'],pre:['Ezra has four systems in production. Each solves a boring problem that decides whether an AI feature survives real users.'],cards:[['Relay','LLM gateway with fallbacks, budgets and caching','Go · 40M req/day'],['Sieve','Evaluation harness that gates prompt changes','Python · 212 regressions blocked'],['Atlas','Hybrid vector and keyword search','Rust · 80 ms p95'],['Patchwork','Code-review agent that writes small patches','TypeScript · 61% accepted']],post:['If you only read one write-up, start with Sieve <a class="cite" href="#">2</a>. It changed how the team ships.']},
+evals:{tool:['read_file','{"path": "sieve/README.md"}','1.8 kB'],pre:['Short version: treat evaluations as unit tests, and never let a prompt change merge without them.','<ul><li>Every product surface gets a suite of graded examples, 1,200 across 34 suites today.</li><li>Graders are a mix of exact checks, rubric-scored model judges, and a weekly human sample to keep the judges honest.</li><li>CI blocks a merge when any suite drops more than one point; it has blocked 212 regressions so far <a class="cite" href="#">1</a>.</li></ul>','The essay "Evals are unit tests for vibes" goes deeper.']},
+writing:{tool:['list_posts','{"limit": 4, "order": "newest"}','4 results'],pre:['Ezra writes about the operational side of language models:','<ul><li><a href="#">Evals are unit tests for vibes</a>, Oct 2026</li><li><a href="#">Your fallback model is a feature flag</a>, Sep 2026</li><li><a href="#">Measuring retrieval without a labelled set</a>, Jul 2026</li><li><a href="#">The four ways agents fail in production</a>, May 2026</li></ul>','The agents essay is the most read; the fallback one is the most argued with.']},
+about:{pre:['Ezra Lin is a software and AI engineer in Toronto with twelve years of experience: payments first, then search, and since 2023, language-model systems.','He likes the unglamorous half of AI: routing, caching, evaluation and failure handling. He writes TypeScript, Python, Go and Rust, and he answers on-call pages politely.']},
+contact:{tool:['check_availability','{"from": "2027-01"}','available'],pre:['Yes. Ezra is open to staff engineering roles on AI platform, evaluation or reliability teams from January 2027, in Toronto or remote.','Write to <a href="mailto:hello@ezra.example">hello@ezra.example</a>. He usually replies within two days, and he reads every message, even the ones that start with "quick question".']},
+fallback:{pre:['I only know about Ezra\'s work, so I will not guess. Try asking about projects, evals, writing, or hiring.']}};
+function route(q){q=q.toLowerCase();if(/hire|contact|email|job|role|availab/.test(q))return 'contact';if(/eval|test|quality|grade|sieve/.test(q))return 'evals';if(/write|blog|essay|post|read/.test(q))return 'writing';if(/build|project|made|work|relay|atlas|patch/.test(q))return 'projects';if(/who|about|bio|you/.test(q))return 'about';return 'fallback'}
+var Q={projects:'What has Ezra built?',evals:'How do you evaluate models?',writing:'What do you write about?',contact:'Can we hire you?',about:'Who is Ezra, briefly?'};
+function add(cls,html){var d=document.createElement('div');d.className='msg '+cls;d.innerHTML='<span class="av">'+(cls=='u'?'You':'EL')+'</span><div class="tx">'+html+'</div>';log.appendChild(d);return d.querySelector('.tx')}
+function stream(el,html){return new Promise(function(res){if(rm){el.insertAdjacentHTML('beforeend',html);return res()}
+var tmp=document.createElement('div');tmp.innerHTML=html;var wrap=tmp.firstElementChild&&/^(UL|DIV)$/.test(tmp.firstElementChild.tagName)?null:document.createElement('p');
+if(!wrap){el.insertAdjacentHTML('beforeend',html);return setTimeout(res,220)}
+el.appendChild(wrap);var parts=html.split(/(<[^>]+>[^<]*<\/[^>]+>|\s+)/).filter(Boolean),i=0,c=document.createElement('span');c.className='caret';
+(function tick(){if(i>=parts.length){c.remove();return res()}var p=parts[i++];wrap.insertAdjacentHTML('beforeend',p);wrap.appendChild(c);scroll();setTimeout(tick,p.trim()?26:8)})()})}
+function scroll(){var y=document.documentElement.scrollHeight;window.scrollTo(0,y)}
+function ask(q,key){if(busy)return;busy=true;$('#send').disabled=true;var intro=$('#intro');if(intro)intro.remove();add('u','<p>'+q.replace(/</g,'&lt;')+'</p>');var a=A[key||route(q)],tx=add('a','');scroll();
+var chain=Promise.resolve();if(a.tool)chain=chain.then(function(){tx.insertAdjacentHTML('beforeend','<details class="tool"><summary><b>⚙ '+a.tool[0]+'</b><span>called</span><em>'+a.tool[2]+'</em></summary><pre>'+a.tool[0]+'('+a.tool[1]+')</pre></details>');return new Promise(function(r){setTimeout(r,rm?0:450)})});
+a.pre.forEach(function(h){chain=chain.then(function(){return stream(tx,h)})});
+if(a.cards)chain=chain.then(function(){tx.insertAdjacentHTML('beforeend','<div class="cards">'+a.cards.map(function(c){return '<a class="pc" href="#"><b>'+c[0]+'</b><span>'+c[1]+'</span><small>'+c[2]+'</small></a>'}).join('')+'</div>');scroll()});
+(a.post||[]).forEach(function(h){chain=chain.then(function(){return stream(tx,h)})});
+chain.then(function(){busy=false;$('#send').disabled=false;scroll()})}
+document.addEventListener('click',function(e){var b=e.target.closest('[data-q]');if(b){ask(Q[b.dataset.q],b.dataset.q);document.querySelectorAll('.th').forEach(function(t){t.setAttribute('aria-current',t.dataset.q==b.dataset.q)})}});
+$('#f').addEventListener('submit',function(e){e.preventDefault();var v=$('#q').value.trim();if(!v)return;$('#q').value='';ask(v)});
+$('#new').addEventListener('click',function(){location.reload()});
+})();
+</script>
+</body>
+</html>

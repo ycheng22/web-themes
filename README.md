@@ -5,7 +5,7 @@ Homepage design directions for technologists, bloggers, designers, researchers a
 Open `index.html` for a gallery of every theme. If GitHub Pages is enabled for this repository, the gallery is also the site's home page.
 
 ```
-themes/                    22 themes: designer-engineer, animation-inspired and architecture-inspired
+themes/                    30 themes: designer-engineer, animation-inspired, architecture-inspired and software/AI developer
 existing/                  twelve earlier directions exported from the openloop design system
 existing/tokens.css        shared colour, spacing, radius and font tokens for existing/
 openloop-design-system/    the design system source: tokens.json, component previews, notes
@@ -333,6 +333,74 @@ All eight use the same placeholder practice, Oduya Architects (Nia Oduya), and t
 - **Show homes:** Glass Pavilion.
 - **Show climate thinking:** Brise-soleil or Zellige.
 - **Make a statement:** Fracture or Deco Tower.
+
+## Software and AI developer themes
+
+Eight directions for a software and AI engineer. Each borrows the look and the interaction model of a tool developers use every day, so the page itself shows the person knows the craft.
+
+All eight use the same placeholder engineer, Ezra Lin, and the same projects (Relay, an LLM gateway; Sieve, an eval harness; Atlas, a search engine; Patchwork, a code-review agent). Only the design changes.
+
+### Circuit Board (`themes/circuit-board`) · PCB
+![Circuit Board](assets/thumbs/circuit-board.jpg)
+- **Look:** purple solder mask, copper traces, gold mounting holes and white silkscreen labels. The hero is a QFP chip with Ezra's name on it.
+- **Interaction:** green signals travel along traces from the CPU to each project chip; hovering a chip lights its trace and speeds up its signal. Three DIP switches power up the contact line.
+- **Sections:** projects are ICs (U2 to U5), skills are a bill of materials of SMD parts, writing is a row of test points, and about is a revision block.
+- **Type:** Chakra Petch and Share Tech Mono.
+- **Best for:** embedded, infra and hardware-adjacent engineers.
+
+### TUI (`themes/tui`) · terminal UI
+![TUI](assets/thumbs/tui.jpg)
+- **Look:** a full-screen terminal app in the Gruvbox dark palette, with box-drawn panes, an ASCII logo and an htop-style process list.
+- **Interaction:** `j`/`k` move through projects, `1`–`4` switch views, `:` opens a command line (`help`, `open atlas`, `mail`, and a joke for `:q`). A log tails itself and a CPU graph ticks.
+- **Type:** JetBrains Mono only.
+- **Caveat:** keyboard-first by design; every action also works by click.
+- **Best for:** backend and tooling engineers.
+
+### Attention (`themes/attention`) · transformer internals
+![Attention](assets/thumbs/attention.jpg)
+- **Look:** a light, precise lab page in indigo, magenta and teal.
+- **Interaction:** type any sentence, click a token, and see attention arcs and a full attention matrix. Three "heads" use different toy rules (neighbours, shared letters, look-back). The page says plainly that it is a toy, not a real model.
+- **Sections:** sections are layers; each project block shows the topics it "attends to"; contact is an output distribution with "you" as the next token.
+- **Type:** Sora and Fira Code.
+- **Best for:** ML engineers and researchers.
+
+### Git Graph (`themes/git-graph`) · version control
+![Git Graph](assets/thumbs/git-graph.jpg)
+- **Look:** a warm-white commit log with coloured branch lanes, hashes, refs, tags and real-looking diffs.
+- **Interaction:** branch pills (main, projects, writing, about) highlight one lane and dim the rest. Contact is an uncommitted change; its button "commits" and opens mail.
+- **Type:** Onest and Victor Mono.
+- **Best for:** engineers whose career reads well as a timeline.
+
+### Node Graph (`themes/node-graph`) · visual pipeline editor
+![Node Graph](assets/thumbs/node-graph.jpg)
+- **Look:** a dotted canvas with node cards and bezier wires, like ComfyUI or a workflow builder.
+- **Interaction:** drag nodes by their headers and the wires follow. "Run graph" lights each node in order, animates data along the wires and prints a result in the Evaluate node.
+- **Sections:** project cards each carry a mini graph; writing items are tagged by node type.
+- **Type:** Inter Tight and Space Mono.
+- **Caveat:** on phones the canvas becomes a simple stack of nodes.
+- **Best for:** AI app and agent builders.
+
+### Notebook (`themes/notebook`) · Jupyter
+![Notebook](assets/thumbs/notebook.jpg)
+- **Look:** markdown and code cells with `In [n]:` prompts, syntax colours and a kernel indicator.
+- **Interaction:** "Run all" executes the cells in order. Outputs include a printed bio, a projects dataframe (click a row), a bar chart and a deprecation warning for `hype_level()`. Shift + Enter runs one cell.
+- **Type:** Source Serif 4 and Source Code Pro.
+- **Best for:** data scientists and ML engineers.
+
+### Chat (`themes/chat-model`) · LLM chat interface
+![Chat](assets/thumbs/chat-model.jpg)
+- **Look:** a familiar chat layout in soft grey and teal, with a sidebar of questions.
+- **Interaction:** suggested prompts or free text get streamed, scripted answers with collapsible tool calls, project cards and citations. A simple keyword router picks the answer; nothing is generated.
+- **Type:** Instrument Sans and Recursive (mono axis).
+- **Best for:** AI product engineers.
+
+### Spreadsheet (`themes/spreadsheet`) · Excel or Sheets
+![Spreadsheet](assets/thumbs/spreadsheet.jpg)
+- **Look:** a spreadsheet with row and column headers, a formula bar, sheet tabs and a status bar.
+- **Interaction:** cells hold real formulas (`SUM`, `IF`, ratios). Select a formula to shade the cells it reads; edit a number in the formula bar and dependent totals, shares and bars recalculate. Arrow keys move the selection.
+- **Type:** Libre Franklin and Overpass Mono.
+- **Caveat:** on phones the sheet scrolls sideways, as a real one would.
+- **Best for:** data, analytics and fintech engineers.
 
 ## openloop design system (`existing/`)
 

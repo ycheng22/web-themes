@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ezra Lin · Notebook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Source+Code+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#ffffff;--side:#f5f5f2;--ink:#1d1d1b;--mut:#76766f;--line:#e4e4de;--cell:#f7f7f5;--sel:#2f6fde;--kw:#a626a4;--str:#3a8a3a;--num:#c46a00;--fn:#2f6fde;--com:#8a8a82;--err:#c0392b;--s:"Source Serif 4",Georgia,serif;--c:"Source Code Pro",ui-monospace,monospace}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--side);color:var(--ink);font:400 18px/1.65 var(--s)}
+a{color:var(--sel)}:focus-visible{outline:2px solid var(--sel);outline-offset:2px}
+.c{font-family:var(--c)}
+.menu{position:sticky;top:0;z-index:5;background:var(--side);border-bottom:1px solid var(--line)}
+.menu .in{max-width:1000px;margin:0 auto;padding:8px 20px;display:flex;align-items:center;gap:14px;font:400 13.5px var(--c);color:var(--mut)}
+.menu .fn{color:var(--ink);font-weight:600}
+.menu nav{display:flex;gap:2px}.menu nav a{color:var(--mut);text-decoration:none;padding:3px 8px;border-radius:4px}.menu nav a:hover{background:#e8e8e3;color:var(--ink)}
+.kern{margin-left:auto;display:flex;align-items:center;gap:8px}.kern i{width:11px;height:11px;border-radius:50%;border:2px solid var(--mut);display:block}.kern i.busy{background:var(--mut)}
+.tool{max-width:1000px;margin:0 auto;padding:10px 20px;display:flex;gap:8px;align-items:center}
+.tool button{font:500 13px var(--c);background:#fff;border:1px solid var(--line);border-radius:4px;padding:5px 10px;cursor:pointer;color:var(--ink)}.tool button:hover{border-color:var(--mut)}
+.tool .pri{background:var(--ink);color:#fff;border-color:var(--ink)}
+.page{max-width:1000px;margin:0 auto 60px;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:26px 0 40px}
+.cell{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;padding:6px 26px 6px 0;border-left:4px solid transparent;position:relative}
+.cell.sel{border-left-color:var(--sel)}
+.cell.sel.md{border-left-color:#7cb35a}
+.pr{font:400 13px/1.65 var(--c);color:var(--mut);text-align:right;padding-top:9px;white-space:nowrap}
+.pr.o{color:#c4572a}
+.md .src{padding:4px 0}
+.md h1{font:700 clamp(40px,5.4vw,68px)/1.04 var(--s);letter-spacing:-.015em;margin:8px 0 14px}
+.md h2{font:600 34px/1.15 var(--s);margin:22px 0 4px}
+.md p{margin:0 0 10px;max-width:62ch}
+.code{background:var(--cell);border:1px solid var(--line);border-radius:3px;padding:9px 12px;font:400 14.5px/1.65 var(--c);white-space:pre-wrap;overflow-wrap:anywhere;margin:0}
+.k{color:var(--kw)}.s{color:var(--str)}.n{color:var(--num)}.f{color:var(--fn)}.cm{color:var(--com);font-style:italic}
+.out{padding:8px 0 4px;min-height:10px;font:400 14.5px/1.6 var(--c)}
+.out.wait{color:var(--mut)}
+.out pre{margin:0;white-space:pre-wrap}
+.out table{border-collapse:collapse;font:400 14px var(--c);width:100%;max-width:640px}
+.out th,.out td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--line)}.out th{font-weight:600;border-bottom-color:var(--ink)}.out tr:nth-child(even) td{background:#fafaf8}.out td:last-child,.out th:last-child{text-align:right}
+.out tbody tr{cursor:pointer}.out tbody tr:hover td{background:#eef3fd}
+.chart{max-width:640px}
+.chart svg{display:block;width:100%;height:auto}
+.posts a{display:flex;gap:14px;align-items:baseline;padding:4px 0;text-decoration:none;color:var(--ink)}.posts a:hover span:last-child{text-decoration:underline;color:var(--sel)}.posts .c{font-size:13px;color:var(--mut);white-space:nowrap}
+.warn{background:#fff6e5;border-left:3px solid #e0a020;padding:6px 10px;color:#7a5200}
+.add{display:flex;gap:8px;justify-content:center;margin:10px 0 0;opacity:.0;transition:opacity .2s}.cell:hover+.add,.add:hover{opacity:1}
+footer{max-width:1000px;margin:0 auto;padding:0 20px 40px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font:400 13px var(--c);color:var(--mut)}
+@media(max-width:760px){.menu nav{display:none}.cell{grid-template-columns:minmax(0,1fr);padding:6px 14px;gap:0}.pr{text-align:left;padding-top:0}.page{border-left:0;border-right:0;border-radius:0}.tool{flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="menu"><div class="in"><span class="fn">ezra_lin.ipynb</span><nav aria-label="Primary"><a href="#c-proj">Projects</a><a href="#c-write">Writing</a><a href="#c-about">About</a><a href="#c-contact">Contact</a></nav><span class="kern" aria-live="polite"><span id="ks">Python 3.12 · idle</span><i id="ki"></i></span></div></div>
+<div class="tool"><button class="pri" id="runall">▶ Run all</button><button id="clear">Clear outputs</button><span class="c" style="font-size:13px;color:var(--mut)">Shift + Enter runs the selected cell</span></div>
+<main class="page" id="nb">
+
+<div class="cell md sel" tabindex="0"><div class="pr"></div><div class="src"><h1>Ezra Lin, an executable portfolio.</h1><p>Software and AI engineer. I build gateways, evaluation harnesses, retrieval and agents, and I prefer evidence to adjectives. So this page is a notebook: the claims are code, and you can run them.</p></div></div>
+
+<div class="cell" tabindex="0" data-run="intro"><div class="pr">In [ ]:</div><div><pre class="code"><span class="k">from</span> ezra <span class="k">import</span> Engineer
+
+me = Engineer.<span class="f">load</span>(<span class="s">"ezra-lin"</span>)
+me.<span class="f">summary</span>()</pre><div class="out"></div></div></div>
+
+<div class="cell md" id="c-proj" tabindex="0"><div class="pr"></div><div class="src"><h2>Projects</h2><p>Four systems, all in production. Click a row to read about it.</p></div></div>
+<div class="cell" tabindex="0" data-run="proj"><div class="pr">In [ ]:</div><div><pre class="code">df = me.<span class="f">projects</span>()
+df[[<span class="s">"name"</span>, <span class="s">"what"</span>, <span class="s">"stack"</span>, <span class="s">"impact"</span>]]</pre><div class="out"></div></div></div>
+
+<div class="cell" tabindex="0" data-run="chart"><div class="pr">In [ ]:</div><div><pre class="code"><span class="cm"># Sieve: regressions caught before merge, per month</span>
+sieve.<span class="f">blocked</span>(since=<span class="s">"2025-03"</span>).<span class="f">plot</span>(kind=<span class="s">"bar"</span>)</pre><div class="out"></div></div></div>
+
+<div class="cell md" id="c-write" tabindex="0"><div class="pr"></div><div class="src"><h2>Writing</h2><p>Essays about running language models in production.</p></div></div>
+<div class="cell" tabindex="0" data-run="posts"><div class="pr">In [ ]:</div><div><pre class="code"><span class="k">for</span> post <span class="k">in</span> me.<span class="f">writing</span>(limit=<span class="n">4</span>):
+    <span class="f">print</span>(post.date, post.title)</pre><div class="out"></div></div></div>
+
+<div class="cell md" id="c-about" tabindex="0"><div class="pr"></div><div class="src"><h2>About</h2><p>I started in payments, where a dropped request is somebody's rent. Then search, then language-model systems. The through-line is reliability: budgets, retries, measurement, and dashboards that tell the truth.</p><p>I am based in Toronto, I work well remotely, and I am open to staff engineering roles from January 2027.</p></div></div>
+<div class="cell" tabindex="0" data-run="assert"><div class="pr">In [ ]:</div><div><pre class="code"><span class="k">assert</span> me.years_experience >= <span class="n">12</span>
+<span class="k">assert</span> <span class="s">"evals"</span> <span class="k">in</span> me.strengths
+<span class="k">assert</span> me.<span class="f">writes_docs</span>()  <span class="cm"># the rare one</span>
+me.<span class="f">hype_level</span>()</pre><div class="out"></div></div></div>
+
+<div class="cell md" id="c-contact" tabindex="0"><div class="pr"></div><div class="src"><h2>Contact</h2><p>Run the last cell to get in touch, or just write to <a href="mailto:hello@ezra.example">hello@ezra.example</a>.</p></div></div>
+<div class="cell" tabindex="0" data-run="contact"><div class="pr">In [ ]:</div><div><pre class="code">me.<span class="f">contact</span>(prefer=<span class="s">"email"</span>)</pre><div class="out"></div></div></div>
+</main>
+<footer><span>Ezra Lin · placeholder identity · no kernel was actually started</span><span>Set in Source Serif 4 and Source Code Pro</span></footer>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)},$$=function(s){return [].slice.call(document.querySelectorAll(s))};
+var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;var count=0,queue=Promise.resolve();
+var P=[['Relay','LLM gateway with fallbacks, budgets, caching','Go, Redis','40M req/day'],['Sieve','Evaluation harness gating every prompt change','Python, DuckDB','212 regressions blocked'],['Atlas','Hybrid vector and keyword search','Rust, pgvector','80 ms p95, 40M docs'],['Patchwork','Code-review agent that writes small patches','TypeScript','61% accepted as-is']];
+var OUT={
+intro:'<pre>Engineer(name="Ezra Lin",\n         role="Software and AI engineer",\n         years=12,\n         focus=["gateways", "evals", "retrieval", "agents"],\n         based="Toronto",\n         status="open to staff roles, Jan 2027")</pre>',
+proj:function(){return '<table><thead><tr><th></th><th>name</th><th>what</th><th>stack</th><th>impact</th></tr></thead><tbody>'+P.map(function(p,i){return '<tr tabindex="0"><td style="color:var(--mut)">'+i+'</td><td><b>'+p[0]+'</b></td><td>'+p[1]+'</td><td>'+p[2]+'</td><td>'+p[3]+'</td></tr>'}).join('')+'</tbody></table><div style="color:var(--mut);font-size:13px;margin-top:6px">4 rows × 4 columns</div>'},
+chart:function(){var v=[3,5,4,9,7,12,10,14,11,18,16,21,19,24,22,17,19],W=640,H=220,bw=(W-60)/v.length,s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Bar chart of regressions blocked per month, rising from 3 to 24">';for(var g=0;g<=4;g++){var y=H-30-g*40;s+='<line x1="40" x2="'+W+'" y1="'+y+'" y2="'+y+'" stroke="#e4e4de"/><text x="34" y="'+(y+4)+'" text-anchor="end" font-size="11" fill="#76766f" font-family="Source Code Pro,monospace">'+g*6+'</text>'}v.forEach(function(x,i){var h=x/24*160;s+='<rect x="'+(44+i*bw)+'" y="'+(H-30-h)+'" width="'+(bw-6)+'" height="'+h+'" fill="#2f6fde" opacity=".85"/>'});s+='<text x="44" y="'+(H-8)+'" font-size="11" fill="#76766f" font-family="Source Code Pro,monospace">2025-03</text><text x="'+W+'" y="'+(H-8)+'" text-anchor="end" font-size="11" fill="#76766f" font-family="Source Code Pro,monospace">2026-07</text></svg>';return '<div class="chart">'+s+'</div>'},
+posts:'<div class="posts"><a href="#"><span class="c">2026-10-14</span><span>Evals are unit tests for vibes</span></a><a href="#"><span class="c">2026-09-02</span><span>Your fallback model is a feature flag</span></a><a href="#"><span class="c">2026-07-19</span><span>Measuring retrieval without a labelled set</span></a><a href="#"><span class="c">2026-05-08</span><span>The four ways agents fail in production</span></a></div>',
+assert:'<div class="warn">UserWarning: hype_level() is deprecated. Ezra prefers numbers.</div><pre>0.08</pre>',
+contact:'<pre>{\'email\': \'<a href="mailto:hello@ezra.example">hello@ezra.example</a>\',\n \'github\': \'<a href="#">github.com/ezra-lin</a>\',\n \'reply_time\': \'about two days\'}</pre>'};
+function kernel(b){$('#ki').classList.toggle('busy',b);$('#ks').textContent='Python 3.12 · '+(b?'busy':'idle')}
+function run(cell){var k=cell.dataset.run;if(!k)return Promise.resolve();var pr=cell.querySelector('.pr'),out=cell.querySelector('.out');
+return new Promise(function(res){pr.textContent='In [*]:';out.className='out wait';out.textContent='';kernel(true);select(cell);setTimeout(function(){count++;pr.textContent='In ['+count+']:';var o=OUT[k];out.className='out';out.innerHTML=typeof o=='function'?o():o;kernel(false);res()},rm?0:420+Math.random()*300)})}
+function enqueue(c){queue=queue.then(function(){return run(c)});return queue}
+function select(c){$$('.cell').forEach(function(x){x.classList.toggle('sel',x==c)})}
+$$('.cell').forEach(function(c){c.addEventListener('click',function(){select(c)});c.addEventListener('keydown',function(e){if(e.key=='Enter'&&e.shiftKey){e.preventDefault();enqueue(c);var n=c.nextElementSibling;if(n){n.focus();select(n)}}})});
+$('#runall').addEventListener('click',function(){$$('.cell[data-run]').forEach(enqueue)});
+$('#clear').addEventListener('click',function(){count=0;$$('.cell[data-run]').forEach(function(c){c.querySelector('.pr').textContent='In [ ]:';c.querySelector('.out').innerHTML=''})});
+// pre-run the intro so the first screen isn't empty
+enqueue($('.cell[data-run=intro]'));
+document.addEventListener('click',function(e){var tr=e.target.closest('tbody tr');if(tr){var i=[].indexOf.call(tr.parentNode.children,tr);alertless(P[i])}});
+function alertless(p){var o=$('.cell[data-run=proj] .out');var d=o.querySelector('.detail');if(!d){d=document.createElement('pre');d.className='detail';d.style.marginTop='10px';o.appendChild(d)}d.textContent='>>> df.loc["'+p[0]+'"]\n'+p[0]+': '+p[1]+'.\nstack: '+p[2]+'   impact: '+p[3]}
+})();
+</script>
+</body>
+</html>

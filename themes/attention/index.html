@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ezra Lin · Attention</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f7fb;--ink:#14163a;--mut:#62658a;--line:#dcdcea;--a:#4f46e5;--b:#e11d74;--c:#0ea5a4;--s:"Sora",system-ui,sans-serif;--m:"Fira Code",ui-monospace,monospace}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--s)}
+a{color:inherit}:focus-visible{outline:2px solid var(--a);outline-offset:3px}
+.w{max-width:1160px;margin:0 auto;padding:0 28px}
+.m{font:400 13px var(--m);color:var(--mut)}
+header{display:flex;align-items:center;gap:20px;padding:22px 0}
+.lg{font:700 18px var(--s);text-decoration:none;display:flex;gap:8px;align-items:center}.lg svg{display:block}
+nav{margin-left:auto;display:flex;gap:22px}nav a{text-decoration:none;font-size:15px;color:var(--mut)}nav a:hover{color:var(--ink)}
+.hero{padding:40px 0 20px}
+h1{font:300 clamp(40px,5.6vw,76px)/1.04 var(--s);letter-spacing:-.02em;margin:0 0 18px;max-width:16ch}
+h1 b{font-weight:700}
+.lede{max-width:56ch;color:#383b63;margin:0 0 34px}
+.lab{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:0 1px 0 var(--line)}
+.lab-top{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.lab input{flex:1;min-width:220px;font:400 16px var(--m);padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.heads{display:flex;gap:6px}.heads button{font:500 13px var(--m);border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;cursor:pointer;color:var(--mut)}.heads button[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.stage{position:relative;overflow-x:auto;scrollbar-width:thin}
+#arcs{display:block}
+.toks{display:flex;gap:6px;flex-wrap:nowrap;padding:4px 2px 2px}
+.tok{font:500 15px var(--m);padding:6px 9px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;white-space:nowrap;transition:background .15s,color .15s}
+.tok[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.lab-b{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:32px;margin-top:16px;align-items:start}
+.hm{display:grid;gap:2px}.hm div{aspect-ratio:1;border-radius:2px}
+.legend{margin:16px 0 0;display:grid;gap:6px}.legend div{display:grid;grid-template-columns:70px 1fr;gap:10px}.legend dt{color:var(--ink)}.legend dd{margin:0}
+.note{font-size:15px;color:#383b63;margin:0}
+/* layers */
+.layers{padding:110px 0 0}
+.lh{display:grid;grid-template-columns:120px minmax(0,1fr);gap:28px;align-items:baseline;margin-bottom:28px}
+.lh h2{font:600 clamp(30px,3.6vw,44px)/1.1 var(--s);margin:0;letter-spacing:-.01em}
+.lh p{margin:6px 0 0;color:var(--mut);max-width:52ch}
+.stack{position:relative;padding-left:148px}
+.stack::before{content:"";position:absolute;left:58px;top:0;bottom:0;width:2px;background:repeating-linear-gradient(var(--line) 0 6px,transparent 6px 12px)}
+.blk{position:relative;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:28px;padding:26px 0;border-top:1px solid var(--line)}
+.blk .tag{position:absolute;left:-148px;top:28px;width:118px;font:500 12px var(--m);color:var(--mut);text-align:center;background:var(--bg);padding:4px 0}
+.blk .tag i{display:block;width:16px;height:16px;border-radius:4px;margin:0 auto 6px;background:var(--k,var(--a))}
+.blk h3{margin:0 0 6px;font:600 26px var(--s)}.blk p{margin:0;color:#383b63}
+.wts{display:flex;flex-wrap:wrap;gap:4px;align-content:start}
+.wts span{font:400 13px var(--m);padding:3px 7px;border-radius:4px;background:color-mix(in srgb,var(--k,var(--a)) calc(var(--w)*100%),#fff);color:var(--ink)}
+.wts span.hi{color:#fff}
+.blk a.go{font:500 14px var(--m);color:var(--a);display:inline-block;margin-top:10px}
+.posts{display:grid;gap:0}
+.posts a{display:grid;grid-template-columns:110px minmax(0,1fr) 140px;gap:20px;align-items:center;padding:18px 0;border-top:1px solid var(--line);text-decoration:none}
+.posts a:hover h4{color:var(--a)}
+.posts h4{margin:0;font:600 21px/1.3 var(--s);transition:color .15s}
+.bar{height:6px;border-radius:3px;background:var(--line);overflow:hidden}.bar i{display:block;height:100%;background:var(--a)}
+.ab{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}
+.ab p{margin:0 0 14px;max-width:52ch}
+.soft{font:400 14px var(--m);display:grid;gap:6px}
+.soft div{display:grid;grid-template-columns:110px minmax(0,1fr) 48px;gap:10px;align-items:center}
+.out{margin:110px 0 0;padding:44px;border-radius:16px;background:var(--ink);color:#fff;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:30px;align-items:center}
+.out h2{margin:0;font:300 clamp(34px,4.4vw,58px)/1.05 var(--s)}.out h2 b{font-weight:700}
+.dist{font:400 15px var(--m);display:grid;gap:6px}.dist a{display:grid;grid-template-columns:minmax(0,1fr) 56px;gap:10px;align-items:center;text-decoration:none;color:#fff;padding:6px 10px;border-radius:6px;background:linear-gradient(90deg,rgba(255,255,255,.18) var(--p),transparent var(--p))}.dist a:hover{outline:1px solid rgba(255,255,255,.5)}.dist span:last-child{text-align:right;color:#b9bbe0}
+footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:34px 0 40px}
+@media(max-width:860px){nav{display:none}.lab-b,.ab,.out{grid-template-columns:minmax(0,1fr)}.stack{padding-left:0}.stack::before{display:none}.blk{grid-template-columns:minmax(0,1fr);padding-top:54px}.blk .tag{left:0;top:18px;width:auto;text-align:left;display:flex;gap:8px;align-items:center}.blk .tag i{margin:0}.lh{grid-template-columns:minmax(0,1fr);gap:4px}.posts a{grid-template-columns:minmax(0,1fr)}.out{padding:26px}.w{padding:0 16px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="w">
+<header><a class="lg" href="#"><svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><path d="M3 20Q13 0 23 20" fill="none" stroke="#4f46e5" stroke-width="2.4"/><path d="M8 20Q13 10 18 20" fill="none" stroke="#e11d74" stroke-width="2.4"/><circle cx="3" cy="21" r="2.6"/><circle cx="8" cy="21" r="2.6"/><circle cx="18" cy="21" r="2.6"/><circle cx="23" cy="21" r="2.6"/></svg>Ezra Lin</a><nav aria-label="Primary"><a href="#l1">Projects</a><a href="#l2">Writing</a><a href="#l3">About</a><a href="#out">Contact</a></nav></header>
+
+<section class="hero"><h1>Ezra Lin pays <b>attention</b> to what models actually do.</h1><p class="lede">Software and AI engineer. I build gateways, evaluations, retrieval and agents, and I spend a lot of time looking inside the models that power them. Type a sentence below and click any token to see where it looks.</p>
+<div class="lab"><div class="lab-top"><label class="m" for="inp">Input</label><input id="inp" value="Ezra builds reliable systems around large language models" maxlength="80" aria-describedby="hint"><div class="heads" role="group" aria-label="Attention head"><button aria-pressed="true" data-h="0">head 0</button><button aria-pressed="false" data-h="1">head 3</button><button aria-pressed="false" data-h="2">head 7</button></div></div>
+<div class="stage"><svg id="arcs" height="150" aria-hidden="true"></svg><div class="toks" id="toks"></div></div>
+<div class="lab-b"><div><p class="note" id="hint">A toy model, not a real one: weights are computed from word overlap, position and a little character similarity, with a different bias per head. Click a token to make it the query.</p><dl class="legend m"><div><dt>head 0</dt><dd>looks at its neighbours</dd></div><div><dt>head 3</dt><dd>looks for words that share letters, and the first token</dd></div><div><dt>head 7</dt><dd>looks back, two or so tokens, and favours long words</dd></div></dl></div><div><div class="m" style="margin-bottom:6px">attention matrix · query rows × key columns</div><div class="hm" id="hm" aria-hidden="true"></div></div></div></div>
+</section>
+
+<section class="layers" id="l1"><div class="lh"><span class="m">layer 1</span><div><h2>Projects</h2><p>Each block shows the tokens this project pays most attention to.</p></div></div>
+<div class="stack" id="stack"></div></section>
+
+<section class="layers" id="l2"><div class="lh"><span class="m">layer 2</span><div><h2>Writing</h2><p>The bar is how much of the last year's reading went to each essay.</p></div></div>
+<div class="posts"><a href="#"><span class="m">Oct 2026</span><h4>Evals are unit tests for vibes</h4><span class="bar"><i style="width:92%"></i></span></a><a href="#"><span class="m">Sep 2026</span><h4>Your fallback model is a feature flag</h4><span class="bar"><i style="width:58%"></i></span></a><a href="#"><span class="m">Jul 2026</span><h4>Measuring retrieval without a labelled set</h4><span class="bar"><i style="width:74%"></i></span></a><a href="#"><span class="m">May 2026</span><h4>The four ways agents fail in production</h4><span class="bar"><i style="width:100%"></i></span></a></div></section>
+
+<section class="layers" id="l3"><div class="lh"><span class="m">layer 3</span><div><h2>About</h2><p>Residual stream: everything I learned before still flows through.</p></div></div>
+<div class="ab"><div><p>Twelve years in software: payments, then search, now language-model systems. I like the part of AI that decides whether a demo survives real users: latency, cost, quality measurement and failure handling.</p><p>Based in Toronto, remote friendly. Open to staff engineering roles from January 2027.</p></div>
+<div class="soft m" aria-label="Where my weeks go"><div><span>building</span><span class="bar"><i style="width:46%"></i></span><span>46%</span></div><div><span>evaluating</span><span class="bar"><i style="width:24%;background:var(--b)"></i></span><span>24%</span></div><div><span>reading</span><span class="bar"><i style="width:16%;background:var(--c)"></i></span><span>16%</span></div><div><span>writing</span><span class="bar"><i style="width:9%"></i></span><span>9%</span></div><div><span>meetings</span><span class="bar"><i style="width:5%;background:var(--mut)"></i></span><span>5%</span></div></div></div></section>
+
+<section class="out" id="out"><h2>Next token: <b>you.</b></h2><div><div class="m" style="color:#b9bbe0;margin-bottom:8px">output distribution, top 4</div><div class="dist"><a href="mailto:hello@ezra.example" style="--p:62%"><span>hello@ezra.example</span><span>0.62</span></a><a href="#" style="--p:21%"><span>github/ezra-lin</span><span>0.21</span></a><a href="#" style="--p:11%"><span>cal.com/ezra</span><span>0.11</span></a><a href="#" style="--p:6%"><span>rss feed</span><span>0.06</span></a></div></div></section>
+<footer class="m"><span>Ezra Lin · placeholder identity · toy attention, no model was harmed</span><span>Set in Sora and Fira Code</span></footer>
+</div>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)};
+var COLS=['#4f46e5','#e11d74','#0ea5a4'];var head=0,q=0,toks=[];
+function tokenize(s){return (s.match(/[A-Za-z0-9']+|[^\sA-Za-z0-9]/g)||['…']).slice(0,14)}
+function sim(a,b){a=a.toLowerCase();b=b.toLowerCase();if(a==b)return 1;var s=0;for(var i=0;i<a.length;i++)if(b.indexOf(a[i])>=0)s++;return s/Math.max(a.length,b.length)}
+function weights(i){var n=toks.length,w=[];for(var j=0;j<n;j++){var d=Math.abs(i-j),v;
+if(head==0)v=Math.exp(-d*.9)+(j==i?.6:0);else if(head==1)v=Math.pow(sim(toks[i],toks[j]),2)*2+(j==0?.8:0)+.05;else v=(j<i?1:.15)*(1+toks[j].length/6)*Math.exp(-Math.abs(d-2)*.5);
+w.push(v)}var t=w.reduce(function(a,b){return a+b},0);return w.map(function(v){return v/t})}
+function render(){var el=$('#toks');el.innerHTML=toks.map(function(t,i){return '<button class="tok" aria-pressed="'+(i==q)+'" data-i="'+i+'">'+t.replace(/</g,'&lt;')+'</button>'}).join('');requestAnimationFrame(arcs);heat()}
+function arcs(){var svg=$('#arcs'),bs=document.querySelectorAll('.tok'),st=$('.toks').getBoundingClientRect();if(!bs.length)return;var W=$('.toks').scrollWidth;svg.setAttribute('width',W);var w=weights(q),c=COLS[head],qb=bs[q].getBoundingClientRect(),qx=qb.left-st.left+qb.width/2,s='';
+w.forEach(function(v,j){if(j==q)return;var b=bs[j].getBoundingClientRect(),x=b.left-st.left+b.width/2,h=Math.min(140,24+Math.abs(x-qx)*.45);s+='<path d="M'+qx+' 148 C'+qx+' '+(148-h)+' '+x+' '+(148-h)+' '+x+' 148" fill="none" stroke="'+c+'" stroke-linecap="round" stroke-width="'+(1+v*22).toFixed(1)+'" opacity="'+Math.min(1,.12+v*3).toFixed(2)+'"/>'});
+s+='<circle cx="'+qx+'" cy="146" r="5" fill="'+c+'"/>';svg.innerHTML=s;
+bs.forEach(function(b,j){if(j==q)return;var v=w[j];b.style.background='color-mix(in srgb,'+c+' '+Math.round(Math.min(1,v*3)*70)+'%,#fff)';b.style.color=v>.22?'#fff':''})}
+function heat(){var n=toks.length,hm=$('#hm'),c=COLS[head],s='';hm.style.gridTemplateColumns='repeat('+n+',1fr)';for(var i=0;i<n;i++){var w=weights(i);for(var j=0;j<n;j++){s+='<div style="background:color-mix(in srgb,'+c+' '+Math.round(Math.min(1,w[j]*2.6)*100)+'%,'+(i==q?'#e9e9f4':'#fff')+')"></div>'}}hm.innerHTML=s}
+function set(){toks=tokenize($('#inp').value);if(q>=toks.length)q=toks.length-1;render()}
+$('#inp').addEventListener('input',set);
+$('#toks').addEventListener('click',function(e){var b=e.target.closest('.tok');if(b){q=+b.dataset.i;render()}});
+document.querySelectorAll('.heads button').forEach(function(b){b.addEventListener('click',function(){head=+b.dataset.h;document.querySelectorAll('.heads button').forEach(function(x){x.setAttribute('aria-pressed',x==b)});render()})});
+addEventListener('resize',arcs);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(arcs);
+toks=tokenize($('#inp').value);q=1;render();
+// project blocks
+var P=[['Relay','An LLM gateway that routes across providers with fallbacks, budgets and a semantic cache. 40M requests a day.','#4f46e5',[['routing',.9],['fallbacks',.75],['budgets',.6],['cache',.5],['Go',.35],['Redis',.25],['traces',.2]]],
+['Sieve','An evaluation harness. Every prompt change runs against 1,200 graded examples before merge.','#e11d74',[['evals',1],['regressions',.8],['graders',.55],['Python',.4],['DuckDB',.3],['CI',.25]]],
+['Atlas','Hybrid vector and keyword search over 40 million documents with an 80 ms p95.','#0ea5a4',[['recall',.9],['latency',.8],['Rust',.6],['pgvector',.5],['BM25',.4],['shards',.25]]],
+['Patchwork','A code-review agent that proposes small, tested patches instead of long comments.','#14163a',[['agents',.85],['tests',.8],['diffs',.6],['TypeScript',.45],['tools',.4],['humans',.3]]]];
+$('#stack').innerHTML=P.map(function(p,i){return '<article class="blk" style="--k:'+p[2]+'"><span class="tag"><i></i>block '+(i+1)+' · head '+[0,3,7,5][i]+'</span><div><h3>'+p[0]+'</h3><p>'+p[1]+'</p><a class="go" href="#">read the write-up</a></div><div class="wts" aria-label="Key topics">'+p[3].map(function(t){return '<span class="'+(t[1]>.55?'hi':'')+'" style="--w:'+t[1]+'">'+t[0]+'</span>'}).join('')+'</div></article>'}).join('');
+})();
+</script>
+</body>
+</html>

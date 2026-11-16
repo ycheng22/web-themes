@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ezra Lin · Git Graph</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700;800&family=Victor+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfaf7;--ink:#1b1f24;--mut:#6b7280;--line:#e7e4dc;--main:#2563eb;--feat:#16a34a;--exp:#c026d3;--fix:#ea580c;--add:#dcfce7;--addk:#166534;--del:#fee2e2;--delk:#991b1b;--o:"Onest",system-ui,sans-serif;--v:"Victor Mono",ui-monospace,monospace}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--o)}
+a{color:inherit}:focus-visible{outline:2px solid var(--main);outline-offset:3px}
+.v{font-family:var(--v)}
+.top{position:sticky;top:0;z-index:5;background:rgba(251,250,247,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.top .in{max-width:1180px;margin:0 auto;padding:12px 28px;display:flex;align-items:center;gap:18px}
+.repo{font:700 17px var(--o);text-decoration:none}.repo span{color:var(--mut);font-weight:400}
+.br{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
+.br button{font:400 13px var(--v);border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 10px 4px 8px;cursor:pointer;display:flex;align-items:center;gap:6px;color:var(--ink)}
+.br button i{width:9px;height:9px;border-radius:50%;background:var(--c)}
+.br button[aria-pressed=true]{border-color:var(--c);box-shadow:inset 0 0 0 1px var(--c)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.hero{padding:70px 0 30px;display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:40px;align-items:end}
+.hero h1{font:800 clamp(44px,6.4vw,92px)/.98 var(--o);letter-spacing:-.035em;margin:0 0 20px}
+.hero p{margin:0;max-width:52ch;font-size:19px;color:#374151}
+.term{font:400 14px/1.7 var(--v);background:#1b1f24;color:#e5e7eb;border-radius:10px;padding:16px 18px}
+.term .p{color:#86efac}.term .h{color:#fbbf24}.term .c{color:#9ca3af}
+.log{position:relative;margin-top:40px}
+#lanes{position:absolute;left:0;top:0;pointer-events:none}
+.cm{position:relative;display:grid;grid-template-columns:150px minmax(0,1fr);gap:24px;padding:26px 0 26px;border-top:1px solid var(--line);transition:opacity .25s}
+.cm.dim{opacity:.28}
+.cm .meta{padding-left:0;font:400 13px/1.5 var(--v);color:var(--mut);text-align:right;padding-right:0}
+.cm .meta b{display:block;color:var(--ink);font-weight:600}
+.body{padding-left:var(--x,96px)}
+.subj{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin-bottom:6px}
+.subj h2,.subj h3{margin:0;font:700 clamp(22px,2.4vw,30px)/1.2 var(--o);letter-spacing:-.01em}
+.subj h2{font-size:clamp(30px,3.6vw,46px);font-weight:800}
+.ref{font:600 12px var(--v);padding:1px 8px;border-radius:4px;color:#fff;background:var(--c,var(--main))}
+.ref.tag{background:#fff;color:var(--ink);border:1px solid var(--ink)}
+.body>p{margin:0 0 12px;max-width:62ch;color:#374151}
+.diff{font:400 13.5px/1.6 var(--v);border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff;max-width:720px}
+.diff .fh{background:#f3f2ee;padding:6px 12px;color:var(--mut);display:flex;justify-content:space-between;gap:10px}
+.diff .fh b{color:var(--addk)}.diff .fh s{color:var(--delk);text-decoration:none}
+.diff div.l{padding:0 12px;white-space:pre-wrap;overflow-wrap:anywhere}
+.l.a{background:var(--add);color:var(--addk)}.l.d{background:var(--del);color:var(--delk)}
+.posts a{display:flex;justify-content:space-between;gap:16px;text-decoration:none;padding:7px 0;border-bottom:1px dashed var(--line);max-width:720px}.posts a:hover span:first-child{text-decoration:underline}.posts .v{color:var(--mut);font-size:13px;white-space:nowrap}
+.stat{display:flex;gap:2px;align-items:center;font:400 13px var(--v);color:var(--mut);margin-top:10px}.stat i{width:9px;height:9px;background:var(--addk);display:block}.stat i.d{background:var(--delk)}.stat i.n{background:var(--line)}.stat span{margin-left:8px}
+.mail{display:inline-block;margin-top:6px;font:700 clamp(22px,3vw,34px) var(--o);color:var(--main);text-decoration:none;overflow-wrap:anywhere}
+.btn{font:600 14px var(--v);background:var(--ink);color:#fff;border:0;border-radius:6px;padding:9px 14px;cursor:pointer;margin-top:10px}
+.btn:disabled{background:var(--feat)}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:26px 0 40px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font:400 13px var(--v);color:var(--mut)}
+@media(max-width:860px){.top .in{padding:10px 16px;flex-wrap:wrap}.br{margin-left:0}.wrap{padding:0 16px}.hero{grid-template-columns:minmax(0,1fr);padding-top:40px}.cm{grid-template-columns:minmax(0,1fr);gap:6px}.cm .meta{text-align:left;padding-left:var(--x,64px)}.body{padding-left:var(--x,64px)}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="top"><div class="in"><a class="repo v" href="#">ezra-lin/<span>portfolio</span></a>
+<div class="br" role="group" aria-label="Highlight a branch"><button aria-pressed="false" data-b="main" style="--c:var(--main)"><i></i>main</button><button aria-pressed="false" data-b="feat" style="--c:var(--feat)"><i></i>projects</button><button aria-pressed="false" data-b="exp" style="--c:var(--exp)"><i></i>writing</button><button aria-pressed="false" data-b="fix" style="--c:var(--fix)"><i></i>about</button></div></div></div>
+<div class="wrap">
+<section class="hero"><div><h1>Ezra Lin, one commit at a time.</h1><p>Software and AI engineer. This page is my history, newest first: what I shipped, what I wrote, and what I changed my mind about. Pick a branch at the top to follow one thread.</p></div>
+<div class="term" aria-label="Terminal"><div><span class="p">~/ezra</span> $ git log --oneline -4</div><div><span class="h">a91f3c2</span> feat: open to staff roles</div><div><span class="h">7d02be1</span> feat(patchwork): ship v0.4</div><div><span class="h">c3e8a90</span> docs: evals are unit tests</div><div><span class="h">5b1d7f4</span> perf(atlas): p95 to 80 ms</div><div class="c"># 1,912 more commits since 2014</div></div></section>
+
+<div class="log" id="log">
+<svg id="lanes" aria-hidden="true"></svg>
+
+<article class="cm" data-b="main" data-lane="0" id="head"><div class="meta"><b>a91f3c2</b>Nov 2026</div><div class="body"><div class="subj"><span class="ref">HEAD → main</span><h2>Open to staff engineering roles</h2></div><p>After three years leading AI platform work, I am looking for a team that treats evaluation and reliability as product features. Starting January 2027, Toronto or remote.</p>
+<div class="diff"><div class="fh"><span>status.md</span><span><b>+2</b> <s>−1</s></span></div><div class="l d">- status: heads down, not looking</div><div class="l a">+ status: open to staff roles from Jan 2027</div><div class="l a">+ focus: AI platform, evals, reliability</div></div></div></article>
+
+<article class="cm" data-b="feat" data-lane="1"><div class="meta"><b>7d02be1</b>Oct 2026</div><div class="body"><div class="subj"><span class="ref" style="--c:var(--feat)">projects</span><span class="ref tag">v0.4</span><h3>Patchwork: a review agent that writes patches</h3></div><p>Instead of leaving twelve comments, Patchwork proposes one small patch with a test. 61% of its patches are accepted without edits across nine repositories.</p><div class="stat" aria-label="Lines changed"><i></i><i></i><i></i><i></i><i></i><i class="d"></i><i class="n"></i><span>TypeScript · LangGraph · +4,210 −1,180</span></div></div></article>
+
+<article class="cm" data-b="exp" data-lane="2"><div class="meta"><b>c3e8a90</b>Oct 2026</div><div class="body"><div class="subj"><span class="ref" style="--c:var(--exp)">writing</span><h3>Recent essays</h3></div><div class="posts"><a href="#"><span>Evals are unit tests for vibes</span><span class="v">Oct 14 · 9 min</span></a><a href="#"><span>Your fallback model is a feature flag</span><span class="v">Sep 02 · 6 min</span></a><a href="#"><span>Measuring retrieval without a labelled set</span><span class="v">Jul 19 · 12 min</span></a></div></div></article>
+
+<article class="cm" data-b="feat" data-lane="1"><div class="meta"><b>5b1d7f4</b>Aug 2026</div><div class="body"><div class="subj"><span class="ref" style="--c:var(--feat)">projects</span><h3>Atlas: hybrid search at 80 ms p95</h3></div><p>Vector and keyword search over 40 million documents. Moving re-ranking onto the shard and caching query embeddings took p95 from 210 ms to 80 ms.</p>
+<div class="diff"><div class="fh"><span>atlas/bench.txt</span><span><b>+1</b> <s>−1</s></span></div><div class="l d">- p95_ms: 210   recall@10: 0.88</div><div class="l a">+ p95_ms:  80   recall@10: 0.91</div></div></div></article>
+
+<article class="cm" data-b="fix" data-lane="3"><div class="meta"><b>e02c6d1</b>Jun 2026</div><div class="body"><div class="subj"><span class="ref" style="--c:var(--fix)">about</span><h3>fix: stop calling every model call "AI"</h3></div><p>I started in payments, where a dropped request is somebody's rent. That habit stuck. Most of my work is the reliable, measurable half of AI systems: routing, caching, evaluation, and failure handling. Toronto based; TypeScript, Python, Go and Rust.</p></div></article>
+
+<article class="cm" data-b="feat" data-lane="1"><div class="meta"><b>4f7a2b8</b>Mar 2025</div><div class="body"><div class="subj"><span class="ref" style="--c:var(--feat)">projects</span><h3>Sieve: no prompt change merges without evals</h3></div><p>An evaluation harness wired into CI. 1,200 graded examples across 34 suites; it has blocked 212 regressions so far.</p><div class="stat"><i></i><i></i><i></i><i></i><i class="d"></i><i class="d"></i><i class="n"></i><span>Python · DuckDB · +9,870 −3,402</span></div></div></article>
+
+<article class="cm" data-b="main" data-lane="0"><div class="meta"><b>91c0e4a</b>Jan 2025</div><div class="body"><div class="subj"><span class="ref">main</span><h3>Merge branch "projects": Relay goes to production</h3></div><p>An LLM gateway routing 40M requests a day across four providers, with fallbacks, per-team budgets and a semantic cache. 38 ms of added latency at p95.</p></div></article>
+
+<article class="cm" data-b="main" data-lane="0" id="contact"><div class="meta"><b>uncommitted</b>now</div><div class="body"><div class="subj"><span class="ref" style="--c:#6b7280">staged</span><h3>Your message goes here</h3></div><p>Want to work together? Commit a hello.</p><a class="mail" href="mailto:hello@ezra.example">hello@ezra.example</a><br><button class="btn" id="cbtn">git commit -m "hello, Ezra"</button></div></article>
+
+<article class="cm" data-b="main" data-lane="0"><div class="meta"><b>0000001</b>Sep 2014</div><div class="body"><div class="subj"><span class="ref tag">root</span><h3>Initial commit: hello, world</h3></div><p>First job, first production bug, first on-call page at 3 a.m.</p></div></article>
+</div>
+<footer><span>Ezra Lin · placeholder identity · history may be rewritten</span><span>Set in Onest and Victor Mono</span></footer>
+</div>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)};
+var C={main:'#2563eb',feat:'#16a34a',exp:'#c026d3',fix:'#ea580c'};var keys=['main','feat','exp','fix'];
+var log=$('#log'),svg=$('#lanes'),cms=[].slice.call(document.querySelectorAll('.cm')),hi=null;
+function lx(l){var mob=innerWidth<=860;return (mob?14:168)+l*(mob?14:20)}
+function draw(){var r=log.getBoundingClientRect(),W=r.width,H=log.scrollHeight;svg.setAttribute('width',W);svg.setAttribute('height',H);
+var mob=innerWidth<=860;var pts=cms.map(function(c){var b=c.getBoundingClientRect(),y=b.top-r.top+(mob?38:44),lane=+c.dataset.lane;return {x:lx(lane),y:y,b:c.dataset.b,lane:lane}});
+cms.forEach(function(c){c.style.setProperty('--x',(lx(3)-(mob?0:168)+(mob?28:36))+'px')});
+var s='',top=pts[0].y,bot=pts[pts.length-1].y;
+// main lane full height
+function op(b){return hi&&hi!=b?.15:1}
+s+='<line x1="'+lx(0)+'" y1="'+top+'" x2="'+lx(0)+'" y2="'+bot+'" stroke="'+C.main+'" stroke-width="3" opacity="'+op('main')+'"/>';
+// other lanes: span from first to last commit of branch, with fork/merge curves to main
+keys.slice(1).forEach(function(k,ki){var p=pts.filter(function(q){return q.b==k});if(!p.length)return;var x=p[0].x,y0=p[0].y-34,y1=p[p.length-1].y+34,x0=lx(0);
+s+='<path d="M'+x0+' '+(y0-26)+' C'+x0+' '+y0+' '+x+' '+(y0-20)+' '+x+' '+y0+' V'+y1+' C'+x+' '+(y1+20)+' '+x0+' '+y1+' '+x0+' '+(y1+26)+'" fill="none" stroke="'+C[k]+'" stroke-width="3" opacity="'+op(k)+'"/>'});
+pts.forEach(function(p,i){var c=C[p.b];s+='<circle cx="'+p.x+'" cy="'+p.y+'" r="'+(i==0?8:6)+'" fill="'+(i==0?c:'#fbfaf7')+'" stroke="'+c+'" stroke-width="3" opacity="'+op(p.b)+'"/>'});
+svg.innerHTML=s}
+draw();addEventListener('resize',draw);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(draw);
+document.querySelectorAll('.br button').forEach(function(b){b.addEventListener('click',function(){var on=b.getAttribute('aria-pressed')!='true';document.querySelectorAll('.br button').forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed',on);hi=on?b.dataset.b:null;cms.forEach(function(c){c.classList.toggle('dim',!!hi&&c.dataset.b!=hi)});draw();if(hi){var f=cms.find(function(c){return c.dataset.b==hi});if(f)f.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'})}})});
+$('#cbtn').addEventListener('click',function(){this.textContent='[main 3f9e1aa] hello, Ezra · opening your mail app';this.disabled=true;location.href='mailto:hello@ezra.example?subject=hello%2C%20Ezra'});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ezra Lin · TUI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#282828;--bg1:#3c3836;--bg2:#504945;--fg:#ebdbb2;--fg4:#a89984;--red:#fb4934;--green:#b8bb26;--yel:#fabd2f;--blue:#83a598;--pur:#d3869b;--aqua:#8ec07c;--org:#fe8019}
+*{box-sizing:border-box}html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--fg);font:400 15px/1.55 "JetBrains Mono",ui-monospace,monospace;display:flex;flex-direction:column;min-height:100vh}
+a{color:var(--blue)}:focus-visible{outline:2px solid var(--yel);outline-offset:1px}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
+.bar{display:flex;align-items:stretch;background:var(--bg1);white-space:nowrap;overflow-x:auto;scrollbar-width:none}
+.bar .md{background:var(--yel);color:var(--bg);font-weight:800;padding:2px 12px}
+.tab{padding:2px 14px;color:var(--fg4)}.tab b{color:var(--org);font-weight:400}.tab[aria-selected=true]{background:var(--bg2);color:var(--fg)}
+.bar .rt{margin-left:auto;padding:2px 12px;color:var(--fg4)}
+main{flex:1;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);gap:10px;padding:10px}
+.pane{position:relative;border:1px solid var(--bg2);padding:18px 18px 14px;min-width:0}
+.pane.on{border-color:var(--yel)}
+.pane>.t{position:absolute;top:-11px;left:12px;background:var(--bg);padding:0 6px;color:var(--fg4)}.pane.on>.t{color:var(--yel)}
+.pane>.k{position:absolute;top:-11px;right:12px;background:var(--bg);padding:0 6px;color:var(--fg4);font-size:13px}
+.hero{grid-column:1/-1;display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:center}
+.logo{color:var(--org);font-weight:700;font-size:clamp(5px,1.05vw,13px);line-height:1.1;margin:0;white-space:pre}
+.hi h1{font:800 clamp(28px,3.6vw,46px)/1.1 inherit;margin:0 0 10px;color:var(--fg)}
+.hi p{margin:0 0 6px;max-width:60ch;color:#d5c4a1}
+.prompt{color:var(--green)}.prompt i{font-style:normal;color:var(--blue)}
+.cur{display:inline-block;width:.6em;height:1.1em;background:var(--fg);vertical-align:-2px;animation:b 1s steps(1) infinite}@keyframes b{50%{opacity:0}}
+.meters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px 26px;margin-top:12px;font-size:14px}
+.mt{display:flex;gap:8px;white-space:nowrap;overflow:hidden}.mt span:first-child{color:var(--aqua);width:6ch}.mt .g{color:var(--green)}.mt .y{color:var(--yel)}.mt .r{color:var(--red)}.mt .n{color:var(--fg4)}
+/* list */
+.ls{margin:0;padding:0;list-style:none}
+.hd,.row{display:grid;grid-template-columns:5ch minmax(0,12ch) 8ch 7ch minmax(0,1fr);gap:12px;padding:3px 8px;white-space:nowrap}
+.hd{background:var(--aqua);color:var(--bg);font-weight:700;margin-bottom:4px}
+.row{width:100%;text-align:left;overflow:hidden}.row span{overflow:hidden;text-overflow:ellipsis}
+.row[aria-selected=true]{background:var(--bg2)}.row[aria-selected=true] span:nth-child(2){color:var(--yel)}
+.row .s-r{color:var(--green)}.row .s-b{color:var(--yel)}.row .s-a{color:var(--fg4)}
+.sum{margin-top:18px;color:var(--fg4);font-size:14px}.cpu{margin:12px 0 0;color:var(--aqua);line-height:1;font:inherit;letter-spacing:0;overflow:hidden}
+.dt h2{margin:0 0 6px;font-size:22px;color:var(--yel)}.dt p{margin:0 0 12px;color:#d5c4a1}
+.dt dl{display:grid;grid-template-columns:11ch 1fr;gap:2px 10px;margin:0 0 12px}.dt dt{color:var(--fg4)}.dt dd{margin:0}
+.spark{color:var(--aqua);letter-spacing:1px}
+.log{margin:0;padding:0;list-style:none;font-size:14px}.log li{display:flex;gap:10px;padding:1px 0}.log time{color:var(--fg4)}.log .lv{width:5ch}.lv.i{color:var(--blue)}.lv.w{color:var(--yel)}.lv.o{color:var(--green)}
+.view[hidden]{display:none}
+.full{grid-column:1/-1}
+.posts a{display:grid;grid-template-columns:11ch minmax(0,1fr) 7ch;gap:14px;padding:6px 8px;color:var(--fg);text-decoration:none;border-bottom:1px dashed var(--bg2)}.posts a:hover,.posts a:focus-visible{background:var(--bg2)}.posts time{color:var(--fg4)}.posts .rt{color:var(--pur);text-align:right}
+.ab{columns:2 36ch;column-gap:40px}.ab p{margin:0 0 12px;break-inside:avoid}
+.kv{color:var(--org)}
+.ct{display:grid;gap:10px;max-width:640px}.ct label{color:var(--fg4)}.ct input,.ct textarea{width:100%;background:var(--bg1);border:1px solid var(--bg2);color:var(--fg);font:inherit;padding:8px}.ct textarea{min-height:90px}
+.ct .go{justify-self:start;background:var(--green);color:var(--bg);padding:4px 14px;font-weight:700}
+.out{color:var(--green);min-height:1.5em}
+.foot{display:flex;flex-wrap:wrap;background:var(--bg1);font-size:13px}.foot span{padding:2px 10px}.foot b{background:var(--fg4);color:var(--bg);padding:0 6px;font-weight:700;margin-right:6px}
+.cmd{background:var(--bg);border-top:1px solid var(--bg2);display:flex;gap:6px;padding:4px 10px}.cmd input{flex:1;min-width:0;background:none;border:0;color:var(--fg);font:inherit;outline:0}
+.msg{color:var(--fg4);padding:0 10px 4px;font-size:13px;min-height:1.5em;background:var(--bg)}
+@media(max-width:860px){main{grid-template-columns:minmax(0,1fr)}.hero{grid-template-columns:minmax(0,1fr)}.logo{font-size:7.4px}.hd,.row{grid-template-columns:4ch minmax(0,1fr) 8ch}.hd span:nth-child(n+4),.row span:nth-child(n+4){display:none}.meters{grid-template-columns:minmax(0,1fr)}.posts a{grid-template-columns:minmax(0,1fr)}.posts .rt{text-align:left}.foot span:nth-child(n+4){display:none}}
+@media(prefers-reduced-motion:reduce){.cur{animation:none}}
+</style>
+</head>
+<body>
+<nav class="bar" role="tablist" aria-label="Views">
+<span class="md">NORMAL</span>
+<button class="tab" role="tab" aria-selected="true" data-v="home"><b>1</b> home</button>
+<button class="tab" role="tab" aria-selected="false" data-v="writing"><b>2</b> writing</button>
+<button class="tab" role="tab" aria-selected="false" data-v="about"><b>3</b> about</button>
+<button class="tab" role="tab" aria-selected="false" data-v="contact"><b>4</b> contact</button>
+<span class="rt">ezra@lin ~ <span id="clk">12:00</span></span>
+</nav>
+
+<main id="home" class="view">
+<section class="pane hero"><span class="t">┤ ezra-lin ├</span><span class="k">v12.4.0</span>
+<pre class="logo" aria-hidden="true">
+███████╗███████╗██████╗  █████╗
+██╔════╝╚══███╔╝██╔══██╗██╔══██╗
+█████╗    ███╔╝ ██████╔╝███████║
+██╔══╝   ███╔╝  ██╔══██╗██╔══██║
+███████╗███████╗██║  ██║██║  ██║
+╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝</pre>
+<div class="hi"><h1>Ezra Lin builds the plumbing under AI products.</h1><p>Software and AI engineer. Twelve years shipping backends; the last three on gateways, evals, retrieval and agents.</p><p class="prompt"><i>~/ezra</i> $ press <span class="kv">j</span>/<span class="kv">k</span> to browse projects, <span class="kv">1–4</span> for views, <span class="kv">:</span> for commands<span class="cur"></span></p>
+<div class="meters" aria-label="Activity this year"><div class="mt"><span>ship</span><span class="g">||||||||||||||||</span><span class="n">||||</span><span>82%</span></div><div class="mt"><span>evals</span><span class="g">||||||||||||||</span><span class="y">||||</span><span class="n">||</span><span>1.2k</span></div><div class="mt"><span>oncall</span><span class="g">||||</span><span class="n">||||||||||||||||</span><span>quiet</span></div><div class="mt"><span>coffee</span><span class="y">||||||||||</span><span class="r">||||||||</span><span class="n">||</span><span>high</span></div></div></div>
+</section>
+
+<section class="pane on" id="lp"><span class="t">┤ projects ├</span><span class="k">j/k ↑/↓</span>
+<div class="hd" aria-hidden="true"><span>PID</span><span>NAME</span><span>STATE</span><span>STARS</span><span>COMMAND</span></div>
+<ul class="ls" id="ls" role="listbox" aria-label="Projects" tabindex="0"></ul><div class="sum"><div>Tasks: <span class="kv">4</span> total, <span style="color:var(--green)">2</span> running, <span style="color:var(--yel)">1</span> busy, 1 alpha</div><div>Load average: <span id="la">0.82 0.74 0.61</span> · Uptime: 12 years, 2 months</div><pre class="cpu" id="cpu" aria-hidden="true"></pre></div>
+</section>
+<section class="pane dt" id="dt" aria-live="polite"><span class="t">┤ detail ├</span><span class="k">enter</span></section>
+<section class="pane full"><span class="t">┤ journalctl -f ├</span><ul class="log" id="log"></ul></section>
+</main>
+
+<main id="writing" class="view" hidden><section class="pane full on"><span class="t">┤ ~/writing ├</span><span class="k">4 files</span><div class="posts"><a href="#"><time>2026-10-14</time><span>Evals are unit tests for vibes</span><span class="rt">9 min</span></a><a href="#"><time>2026-09-02</time><span>Your fallback model is a feature flag</span><span class="rt">6 min</span></a><a href="#"><time>2026-07-19</time><span>Measuring retrieval without a labelled set</span><span class="rt">12 min</span></a><a href="#"><time>2026-05-08</time><span>The four ways agents fail in production</span><span class="rt">8 min</span></a></div></section></main>
+
+<main id="about" class="view" hidden><section class="pane full on"><span class="t">┤ cat about.md ├</span><div class="ab"><p><span class="kv">#</span> I started in payments, where a dropped request is somebody's rent. That habit stuck: I like retries, budgets, and dashboards that tell the truth.</p><p>Since 2023 I have worked on language-model systems. Most of my work is the boring half: routing between providers, caching, measuring quality, and making agents fail loudly instead of quietly.</p><p><span class="kv">now:</span> building an evaluation harness for coding agents. <span class="kv">based:</span> Toronto, remote friendly. <span class="kv">open to:</span> staff roles from January.</p><p><span class="kv">tools:</span> TypeScript, Python, Go, Rust, Postgres, Kubernetes, OpenTelemetry. <span class="kv">editor:</span> neovim, obviously.</p></div></section></main>
+
+<main id="contact" class="view" hidden><section class="pane full on"><span class="t">┤ mail ezra ├</span><form class="ct" id="ct"><label for="f1">from:</label><input id="f1" placeholder="you@company.com" required><label for="f2">body:</label><textarea id="f2" placeholder="Hi Ezra, we are hiring for…"></textarea><button class="go">send ↵</button><div class="out" id="out" aria-live="polite"></div><p>or plain old email: <a href="mailto:hello@ezra.example">hello@ezra.example</a></p></form></section></main>
+
+<div class="msg" id="msg" aria-live="polite"></div>
+<label class="cmd"><span style="color:var(--yel)">:</span><input id="cmd" aria-label="Command line, try help" placeholder="help"></label>
+<footer class="foot"><span><b>?</b>help</span><span><b>j/k</b>move</span><span><b>1-4</b>views</span><span><b>:</b>command</span><span>placeholder identity · set in JetBrains Mono · gruvbox</span></footer>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)};
+var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var P=[{pid:1042,n:'relay',st:'running',s:'2.1k',c:'relay serve --providers=4',d:'LLM gateway. Routes requests across model providers with fallbacks, per-team budgets and a semantic cache.',m:[['lang','Go, Redis'],['p95','38 ms overhead'],['traffic','40M req/day'],['since','2024']],sp:'▂▃▃▅▆▅▇▆▇█▇█'},
+{pid:1187,n:'sieve',st:'running',s:'860',c:'sieve run --suite=prod',d:'Evaluation harness. Every prompt change runs against 1,200 graded examples before it can merge.',m:[['lang','Python, DuckDB'],['suites','34'],['blocked','212 regressions'],['since','2025']],sp:'▁▂▂▃▄▄▅▅▆▆▇▇'},
+{pid:1311,n:'atlas',st:'busy',s:'1.4k',c:'atlas index --shards=16',d:'Hybrid vector and keyword search over 40 million documents with an 80 ms p95.',m:[['lang','Rust, pgvector'],['docs','40M'],['recall@10','0.91'],['since','2024']],sp:'▅▅▆▇▇▆▆▇█▇▆▇'},
+{pid:1420,n:'patchwork',st:'alpha',s:'310',c:'patchwork review --pr=#',d:'Code-review agent that proposes small, tested patches instead of long comments.',m:[['lang','TypeScript'],['accepted','61% of patches'],['repos','9'],['since','2026']],sp:'▁▁▂▁▃▂▄▃▅▄▆▅'}];
+var ls=$('#ls'),sel=0,cls={running:'s-r',busy:'s-b',alpha:'s-a'};
+ls.innerHTML=P.map(function(p,i){return '<li><button class="row" role="option" aria-selected="'+(i==0)+'" data-i="'+i+'"><span>'+p.pid+'</span><span>'+p.n+'</span><span class="'+cls[p.st]+'">'+p.st+'</span><span>★'+p.s+'</span><span>'+p.c+'</span></button></li>'}).join('');
+function show(i){sel=(i+P.length)%P.length;ls.querySelectorAll('.row').forEach(function(r,j){r.setAttribute('aria-selected',j==sel)});var p=P[sel];
+$('#dt').innerHTML='<span class="t">┤ detail: '+p.n+' ├</span><span class="k">enter</span><h2>'+p.n+'</h2><p>'+p.d+'</p><dl>'+p.m.map(function(m){return '<dt>'+m[0]+'</dt><dd>'+m[1]+'</dd>'}).join('')+'</dl><div>commits/wk <span class="spark">'+p.sp+'</span></div><p style="margin-top:12px"><a href="#">open repo</a> · <a href="#">read case study</a></p>'}
+show(0);
+ls.addEventListener('click',function(e){var b=e.target.closest('.row');if(b)show(+b.dataset.i)});
+var views=['home','writing','about','contact'];
+function view(v){views.forEach(function(x){$('#'+x).hidden=x!=v});document.querySelectorAll('.tab').forEach(function(t){t.setAttribute('aria-selected',t.dataset.v==v)});say(':'+v)}
+document.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click',function(){view(t.dataset.v)})});
+function say(s){$('#msg').textContent=s}
+addEventListener('keydown',function(e){var tg=e.target.tagName;if(tg=='INPUT'||tg=='TEXTAREA'){if(e.key=='Escape')e.target.blur();return}
+if(e.key=='j'||e.key=='ArrowDown'&&document.activeElement==ls){show(sel+1);e.preventDefault()}
+else if(e.key=='k'||e.key=='ArrowUp'&&document.activeElement==ls){show(sel-1);e.preventDefault()}
+else if(/^[1-4]$/.test(e.key))view(views[+e.key-1]);
+else if(e.key==':'){e.preventDefault();$('#cmd').focus()}
+else if(e.key=='?')say('j/k move · 1-4 switch view · : then help, open <name>, mail, theme')});
+$('#cmd').addEventListener('keydown',function(e){if(e.key!='Enter')return;var v=this.value.trim().replace(/^:/,''),a=v.split(/\s+/);this.value='';this.blur();
+if(a[0]=='help')say('commands: open relay|sieve|atlas|patchwork · writing · about · mail · q');
+else if(a[0]=='open'){var i=P.findIndex(function(p){return p.n==a[1]});if(i<0)say('E492: no project named "'+(a[1]||'')+'"');else{view('home');show(i)}}
+else if(views.indexOf(a[0])>=0)view(a[0]);else if(a[0]=='mail')view('contact');
+else if(a[0]=='q'||a[0]=='wq')say('E37: nice try. This page has no unsaved changes, and nowhere to quit to.');
+else say('E492: not an editor command: '+v)});
+$('#ct').addEventListener('submit',function(e){e.preventDefault();$('#out').textContent='[ok] message queued for '+$('#f1').value+'. Ezra usually replies within two days.'});
+var L=[['i','relay','routed 1,204 req · fallback 0.3%'],['o','sieve','suite prod: 1,198/1,200 passing'],['i','atlas','compaction finished on shard 7'],['w','relay','provider-b p95 above 900 ms, shifting 20%'],['o','patchwork','patch accepted in billing-api#882'],['i','sieve','new suite: tool-use-v3 (140 cases)'],['o','atlas','recall@10 0.912 on nightly eval']],li=0,log=$('#log');
+function tick(){var d=new Date(),t=d.toTimeString().slice(0,8),l=L[li++%L.length];var el=document.createElement('li');el.innerHTML='<time>'+t+'</time><span class="lv '+l[0]+'">'+{i:'INFO',w:'WARN',o:'OK'}[l[0]]+'</span><span style="color:var(--pur)">'+l[1]+'</span><span>'+l[2]+'</span>';log.appendChild(el);while(log.children.length>4)log.removeChild(log.firstChild);$('#clk').textContent=t.slice(0,5)}
+var H=[];for(var i=0;i<60;i++)H.push(.3+.3*Math.sin(i/5)+Math.random()*.3);var BL=" ▁▂▃▄▅▆▇█";function cpu(){H.shift();H.push(Math.max(.05,Math.min(1,H[H.length-1]+(Math.random()-.5)*.3)));var rows=["","",""];H.forEach(function(v){for(var r=0;r<3;r++){var f=Math.max(0,Math.min(1,v*3-(2-r)));rows[r]+=BL[Math.round(f*8)]}});$("#cpu").textContent=rows.join("\n")+"\ncpu, last 60 ticks";var a=H.slice(-3).map(function(v){return (v*1.4).toFixed(2)});$("#la").textContent=a.join(" ")}cpu();
+for(var i=0;i<4;i++)tick();if(!rm){setInterval(tick,2600);setInterval(cpu,700)}
+})();
+</script>
+</body>
+</html>

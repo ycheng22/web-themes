@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ezra Lin · Node Graph</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef0f3;--dot:#c9ced6;--ink:#111827;--mut:#5b6472;--card:#fff;--edge:#d6dae1;--in:#0891b2;--llm:#7c3aed;--tool:#d97706;--out:#059669;--t:"Inter Tight",system-ui,sans-serif;--m:"Space Mono",ui-monospace,monospace}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.55 var(--t);background-image:radial-gradient(var(--dot) 1.2px,transparent 1.4px);background-size:22px 22px}
+a{color:inherit}:focus-visible{outline:2px solid var(--llm);outline-offset:3px}
+.m{font:400 12.5px var(--m);color:var(--mut)}
+.tb{position:sticky;top:12px;z-index:20;margin:12px auto 0;max-width:1220px;padding:0 16px}
+.tb .in{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--edge);border-radius:12px;padding:8px 10px 8px 14px;box-shadow:0 6px 20px -12px rgba(17,24,39,.35)}
+.tb b{font:800 17px var(--t)}
+.tb nav{display:flex;gap:4px;margin-left:auto}.tb nav a{font:500 14px var(--t);text-decoration:none;padding:6px 10px;border-radius:8px;color:var(--mut)}.tb nav a:hover{background:var(--bg);color:var(--ink)}
+.run{font:700 13px var(--m);background:var(--ink);color:#fff;border:0;border-radius:8px;padding:8px 12px;cursor:pointer;display:flex;gap:8px;align-items:center}.run i{width:0;height:0;border-left:8px solid #8ef0c6;border-top:5px solid transparent;border-bottom:5px solid transparent}
+.run[aria-busy=true] i{border:0;width:9px;height:9px;background:#fbbf24;border-radius:2px}
+.canvas{position:relative;max-width:1220px;margin:0 auto;height:640px}
+#wires{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.node{position:absolute;width:250px;background:var(--card);border:1px solid var(--edge);border-radius:12px;box-shadow:0 10px 24px -16px rgba(17,24,39,.45);touch-action:none;user-select:none}
+.node.dragging{box-shadow:0 18px 34px -14px rgba(17,24,39,.5);z-index:10}
+.node header{display:flex;align-items:center;gap:8px;padding:9px 12px;border-bottom:1px solid var(--edge);cursor:grab;border-radius:12px 12px 0 0}
+.node header::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--k)}
+.node header span{font:600 14px var(--t)}.node header em{margin-left:auto;font:400 11px var(--m);color:var(--mut);font-style:normal}
+.node .bd{padding:10px 12px 12px;font-size:14px;color:#374151}
+.node.active{border-color:var(--k);box-shadow:0 0 0 3px color-mix(in srgb,var(--k) 25%,transparent),0 10px 24px -16px rgba(17,24,39,.45)}
+.port{position:absolute;top:44px;width:12px;height:12px;border-radius:50%;background:#fff;border:2.5px solid var(--k)}.port.i{left:-7px}.port.o{right:-7px}
+.hero-n{width:min(420px,37%)}.hero-n h1{font:800 clamp(34px,3.6vw,48px)/1.02 var(--t);letter-spacing:-.025em;margin:2px 0 10px;color:var(--ink)}
+.field{display:flex;justify-content:space-between;gap:8px;font:400 12.5px var(--m);padding:3px 0;border-top:1px dashed var(--edge)}.field b{font-weight:700;color:var(--ink);text-align:right}
+.res{font:400 13px/1.5 var(--m);background:#f6f7f9;border-radius:8px;padding:8px 10px;min-height:64px;white-space:pre-wrap;color:var(--ink)}
+.hint{position:absolute;left:16px;bottom:10px}
+.sec{max-width:1220px;margin:0 auto;padding:90px 16px 0}
+.sec>h2{font:800 clamp(32px,4vw,52px)/1 var(--t);letter-spacing:-.02em;margin:0 0 6px}
+.sec>p{margin:0 0 26px;color:var(--mut);max-width:60ch}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.pj{background:var(--card);border:1px solid var(--edge);border-radius:12px;overflow:hidden;text-decoration:none;display:block}
+.pj .mini{height:120px;border-bottom:1px solid var(--edge);background:var(--bg);background-image:radial-gradient(var(--dot) 1px,transparent 1.2px);background-size:14px 14px}
+.pj .mini svg{display:block;width:100%;height:100%}
+.pj .tx{padding:14px 16px 16px}.pj h3{margin:0 0 4px;font:700 22px var(--t)}.pj p{margin:0 0 8px;color:#374151;font-size:15px}
+.pj:hover{border-color:var(--ink)}
+.wr a{display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:16px;align-items:center;background:var(--card);border:1px solid var(--edge);border-radius:10px;padding:14px 16px;margin-bottom:8px;text-decoration:none}.wr a:hover{border-color:var(--ink)}.wr h4{margin:0;font:600 19px var(--t)}
+.pill{font:400 11.5px var(--m);border-radius:999px;padding:2px 8px;background:color-mix(in srgb,var(--k) 14%,#fff);color:var(--k)}
+.ab{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:18px}
+.card{background:var(--card);border:1px solid var(--edge);border-radius:12px;padding:20px}
+.card p{margin:0 0 12px;max-width:56ch}
+.cta{margin-top:18px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;background:var(--ink);color:#fff;border-radius:14px;padding:28px}
+.cta h2{margin:0;font:800 clamp(28px,3.4vw,44px)/1.05 var(--t)}
+.cta a{font:700 15px var(--m);color:var(--ink);background:#8ef0c6;padding:12px 16px;border-radius:10px;text-decoration:none}
+footer{max-width:1220px;margin:0 auto;padding:30px 16px 40px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+@media(max-width:900px){.tb nav{display:none}.run{margin-left:auto}.canvas{height:auto;padding:16px;display:flex;flex-direction:column;gap:26px}.node,.hero-n{position:relative;left:auto!important;top:auto!important;width:auto}.node header{cursor:default}.port{display:none}.hint{display:none}.grid,.ab{grid-template-columns:minmax(0,1fr)}.wr a{grid-template-columns:minmax(0,1fr)}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="tb"><div class="in"><b>ezra.flow</b><span class="m">portfolio.graph · saved</span><nav aria-label="Primary"><a href="#pj">Projects</a><a href="#wr">Writing</a><a href="#ab">About</a><a href="#ct">Contact</a></nav><button class="run" id="run"><i></i>Run graph</button></div></div>
+
+<div class="canvas" id="cv">
+<svg id="wires" aria-hidden="true"></svg>
+<section class="node hero-n" id="n0" style="--k:var(--in);left:16px;top:40px"><header><span>Input · person</span><em>node 1</em></header><div class="bd"><h1>Ezra Lin wires models into products that hold up.</h1><p style="margin:0 0 10px">Software and AI engineer in Toronto. Twelve years of backends; the last three on gateways, evals, retrieval and agents. Drag the nodes, then run the graph.</p><div class="field"><span>role</span><b>staff, AI platform</b></div><div class="field"><span>status</span><b>open from Jan 2027</b></div></div><span class="port o"></span></section>
+
+<section class="node" id="n1" style="--k:var(--llm);left:41%;top:30px"><header><span>Retrieve · Atlas</span><em>node 2</em></header><div class="bd">Hybrid search over 40M docs.<div class="field"><span>top_k</span><b>8</b></div><div class="field"><span>p95</span><b>80 ms</b></div></div><span class="port i"></span><span class="port o"></span></section>
+
+<section class="node" id="n2" style="--k:var(--tool);left:41%;top:300px"><header><span>Route · Relay</span><em>node 3</em></header><div class="bd">Picks a provider, with fallbacks.<div class="field"><span>providers</span><b>4</b></div><div class="field"><span>budget</span><b>per team</b></div></div><span class="port i"></span><span class="port o"></span></section>
+
+<section class="node" id="n3" style="--k:var(--llm);left:calc(100% - 276px);top:150px"><header><span>Generate · Patchwork</span><em>node 4</em></header><div class="bd">Agent drafts a small patch.<div class="field"><span>tools</span><b>git, tests</b></div><div class="field"><span>accepted</span><b>61%</b></div></div><span class="port i"></span><span class="port o"></span></section>
+
+<section class="node" id="n4" style="--k:var(--out);left:calc(100% - 276px);top:420px"><header><span>Evaluate · Sieve</span><em>node 5</em></header><div class="bd"><div class="res" id="res" aria-live="polite">waiting for run…</div></div><span class="port i"></span></section>
+<span class="hint m">drag node headers · wires follow</span>
+</div>
+
+<section class="sec" id="pj"><h2>Projects</h2><p>Four tools I built and run in production. Each one is a node in the graph above.</p><div class="grid" id="grid"></div></section>
+<section class="sec" id="wr"><h2>Writing</h2><p>Notes from running these systems.</p><div class="wr">
+<a href="#" style="--k:var(--out)"><span class="m">Oct 2026</span><h4>Evals are unit tests for vibes</h4><span class="pill">evals</span></a>
+<a href="#" style="--k:var(--tool)"><span class="m">Sep 2026</span><h4>Your fallback model is a feature flag</h4><span class="pill">routing</span></a>
+<a href="#" style="--k:var(--llm)"><span class="m">Jul 2026</span><h4>Measuring retrieval without a labelled set</h4><span class="pill">retrieval</span></a>
+<a href="#" style="--k:var(--in)"><span class="m">May 2026</span><h4>The four ways agents fail in production</h4><span class="pill">agents</span></a></div></section>
+<section class="sec" id="ab"><h2>About</h2><p>Inputs that shaped the output.</p><div class="ab"><div class="card"><p>I started in payments, where a dropped request is somebody's rent, then moved to search, then to language-model systems. The through-line is reliability: budgets, retries, and dashboards that tell the truth.</p><p>I write TypeScript, Python, Go and Rust, and I care a lot about the edges between them.</p></div><div class="card"><div class="field"><span>based</span><b>Toronto, remote friendly</b></div><div class="field"><span>building</span><b>evals for coding agents</b></div><div class="field"><span>reading</span><b>papers on tool use</b></div><div class="field"><span>off-hours</span><b>bouldering, film photos</b></div></div></div>
+<div class="cta" id="ct"><h2>Connect a wire to Ezra.</h2><a href="mailto:hello@ezra.example">hello@ezra.example</a></div></section>
+<footer class="m"><span>Ezra Lin · placeholder identity</span><span>Set in Inter Tight and Space Mono</span></footer>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)};
+var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var cv=$('#cv'),svg=$('#wires');var E=[['n0','n1'],['n0','n2'],['n1','n3'],['n2','n3'],['n3','n4'],['n2','n4']];var flow=[];
+function port(id,side){var n=$('#'+id),r=n.getBoundingClientRect(),c=cv.getBoundingClientRect();return [side=='o'?r.right-c.left:r.left-c.left,r.top-c.top+50]}
+function wire(){if(innerWidth<=900){svg.innerHTML='';return}var s='';E.forEach(function(e,i){var a=port(e[0],'o'),b=port(e[1],'i'),dx=Math.max(60,Math.abs(b[0]-a[0])*.5);var d='M'+a[0]+' '+a[1]+' C'+(a[0]+dx)+' '+a[1]+' '+(b[0]-dx)+' '+b[1]+' '+b[0]+' '+b[1];s+='<path id="w'+i+'" d="'+d+'" fill="none" stroke="#9aa3b1" stroke-width="2.2"/><path class="fl" d="'+d+'" fill="none" stroke="'+getComputedStyle($('#'+e[0])).getPropertyValue('--k')+'" stroke-width="2.6" stroke-dasharray="6 14" opacity="0"/>'});svg.innerHTML=s;flow=[].slice.call(svg.querySelectorAll('.fl'))}
+wire();addEventListener('resize',wire);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(wire);
+var off=0;function anim(){off-=1.2;flow.forEach(function(f){f.style.strokeDashoffset=off});requestAnimationFrame(anim)}if(!rm)anim();
+// drag
+document.querySelectorAll('.node header').forEach(function(h){var n=h.parentNode,sx,sy,ox,oy;h.addEventListener('pointerdown',function(e){if(innerWidth<=900)return;sx=e.clientX;sy=e.clientY;ox=n.offsetLeft;oy=n.offsetTop;n.classList.add('dragging');h.setPointerCapture(e.pointerId)});
+h.addEventListener('pointermove',function(e){if(!n.classList.contains('dragging'))return;var x=Math.max(0,Math.min(cv.clientWidth-n.offsetWidth,ox+e.clientX-sx)),y=Math.max(0,Math.min(cv.clientHeight-n.offsetHeight,oy+e.clientY-sy));n.style.left=x+'px';n.style.top=y+'px';wire()});
+h.addEventListener('pointerup',function(){n.classList.remove('dragging')})});
+// run
+var steps=[['n0',[0,1]],['n1',[2]],['n2',[3,5]],['n3',[4]],['n4',[]]];var out=['score    1.00','checks   5/5 passed','verdict  PASS','next     say hello'];
+$('#run').addEventListener('click',function(){var b=this;if(b.getAttribute('aria-busy')=='true')return;b.setAttribute('aria-busy','true');b.lastChild.textContent='Running…';$('#res').textContent='';document.querySelectorAll('.node').forEach(function(n){n.classList.remove('active')});flow.forEach(function(f){f.setAttribute('opacity','0')});
+var i=0;(function step(){if(i>0){steps[i-1][1].forEach(function(k){if(flow[k])flow[k].setAttribute('opacity','0.25')})}if(i>=steps.length){b.setAttribute('aria-busy','false');b.lastChild.textContent='Run again';var j=0;(function line(){if(j<out.length){$('#res').textContent+=(j?'\n':'')+out[j++];setTimeout(line,rm?0:380)}})();return}
+$('#'+steps[i][0]).classList.add('active');steps[i][1].forEach(function(k){if(flow[k])flow[k].setAttribute('opacity','1')});i++;setTimeout(step,rm?50:650)})()});
+// project cards with mini graphs
+var P=[['Relay','LLM gateway routing 40M requests a day across four providers, with fallbacks, budgets and caching.','var(--tool)','Go · Redis · OpenTelemetry',3],['Sieve','Evaluation harness: 1,200 graded examples gate every prompt change in CI.','var(--out)','Python · DuckDB',4],['Atlas','Hybrid vector and keyword search over 40M documents at 80 ms p95.','var(--llm)','Rust · pgvector',2],['Patchwork','Code-review agent that proposes small, tested patches; 61% accepted as-is.','var(--in)','TypeScript · LangGraph',5]];
+$('#grid').innerHTML=P.map(function(p,pi){var n=p[4],s='',xs=[];for(var i=0;i<n;i++){var x=30+i*(440/(n-1||1)),y=60+((i*37+pi*13)%3-1)*26;xs.push([x,y]);s+='<rect x="'+(x-22)+'" y="'+(y-12)+'" width="44" height="24" rx="6" fill="#fff" stroke="'+(i==n-1?p[2]:'#c3c9d2')+'" stroke-width="2"/>'}var w='';for(var i=1;i<n;i++){var a=xs[i-1],b=xs[i];w+='<path d="M'+(a[0]+22)+' '+a[1]+' C'+(a[0]+60)+' '+a[1]+' '+(b[0]-60)+' '+b[1]+' '+(b[0]-22)+' '+b[1]+'" fill="none" stroke="#9aa3b1" stroke-width="2"/>'}
+return '<a class="pj" href="#"><div class="mini"><svg viewBox="0 0 500 120" preserveAspectRatio="xMidYMid meet" aria-hidden="true">'+w+s+'</svg></div><div class="tx"><h3>'+p[0]+'</h3><p>'+p[1]+'</p><span class="m">'+p[3]+'</span></div></a>'}).join('');
+})();
+</script>
+</body>
+</html>
