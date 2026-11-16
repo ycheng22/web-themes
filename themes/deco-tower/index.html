@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Oduya Architects · Deco Tower</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--blk:#0f0f10;--lac:#17181a;--gold:#c9a24a;--gold2:#e6c97a;--cream:#efe6d0;--teal:#0e4a4a;--mut:#b4ab96;--d:"Poiret One",Georgia,serif;--s:"Jost",system-ui,sans-serif}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--blk);color:var(--cream);font:300 18px/1.6 var(--s);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}:focus-visible{outline:2px solid var(--gold2);outline-offset:4px}
+.w{max-width:1160px;margin:0 auto;padding:0 32px}
+.k{font:500 13px var(--s);color:var(--gold);letter-spacing:.14em}
+.hd{display:flex;align-items:center;gap:24px;padding:24px 0;border-bottom:1px solid rgba(201,162,74,.4)}
+.lg{font:400 30px var(--d);letter-spacing:.06em}.lg b{color:var(--gold);font-weight:400}
+.nv{margin-left:auto;display:flex;gap:28px;font:400 15px var(--s);letter-spacing:.08em}.nv a{position:relative;padding:4px 0}.nv a::after{content:"";position:absolute;left:50%;right:50%;bottom:-2px;height:1px;background:var(--gold);transition:left .3s,right .3s}.nv a:hover::after{left:0;right:0}
+/* hero */
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:20px;align-items:end;min-height:640px;padding-top:30px}
+h1{font:400 clamp(58px,7.6vw,112px)/.95 var(--d);margin:16px 0 22px;letter-spacing:.01em}
+h1 span{color:var(--gold2)}
+.hero p{font-size:20px;max-width:36ch;margin:0 0 30px;color:#d8cfb8}
+.bt{display:inline-block;font:500 15px var(--s);letter-spacing:.14em;padding:14px 26px;border:1px solid var(--gold);margin-right:10px;position:relative;overflow:hidden;transition:color .3s}.bt::before{content:"";position:absolute;inset:0;background:var(--gold);transform:scaleY(0);transform-origin:bottom;transition:transform .35s;z-index:-1}.bt:hover{color:var(--blk)}.bt:hover::before{transform:scaleY(1)}.bt{z-index:0}
+.tower svg{width:100%;height:auto;display:block}
+.tower .g{stroke-dasharray:1600;stroke-dashoffset:1600;animation:dr 2.6s cubic-bezier(.6,0,.2,1) forwards}@keyframes dr{to{stroke-dashoffset:0}}
+.tower .lit{animation:lt 4s steps(1) infinite}@keyframes lt{0%,60%{fill:#e6c97a}61%,100%{fill:#2a2a2c}}
+/* elevator dial */
+.dial{position:fixed;right:18px;bottom:18px;z-index:20;width:136px;text-align:center;background:rgba(15,15,16,.92);border:1px solid #c9a24a;padding:10px 8px 8px}
+.dial svg{width:120px;height:72px;display:block;margin:0 auto}
+.dial .arm{transition:transform .5s cubic-bezier(.4,1.4,.5,1);transform-origin:60px 64px}
+.dial nav{display:none;gap:2px;margin-top:6px}.dial:hover nav,.dial:focus-within nav{display:grid}.dial a{font:400 13px var(--s);letter-spacing:.1em;color:var(--mut);padding:2px 0;transition:color .2s}.dial a.on,.dial a:hover{color:var(--gold2)}
+.dial .fl{font:400 22px var(--d);color:var(--gold2)}
+/* sections */
+.sec{padding-top:130px}
+.sh{text-align:center;margin-bottom:46px}.sh h2{font:400 clamp(44px,5.6vw,76px)/1 var(--d);margin:10px 0 0}.sh svg{width:220px;height:24px;margin-top:14px}
+.fr{position:relative;padding:3px;background:var(--gold);clip-path:polygon(24px 0,calc(100% - 24px) 0,100% 24px,100% calc(100% - 24px),calc(100% - 24px) 100%,24px 100%,0 calc(100% - 24px),0 24px)}
+.fr>.in{background:var(--lac);clip-path:inherit;height:100%}
+.pj{display:grid;grid-template-columns:repeat(2,1fr);gap:34px}
+.pj a{display:block}.pj .in{padding:0 0 26px;position:relative;overflow:hidden}
+.pj .in::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(230,201,122,.18) 50%,transparent 60%);transform:translateX(-100%);transition:transform .9s}.pj a:hover .in::after{transform:translateX(100%)}
+.pj svg{width:100%;height:auto;display:block}
+.pj h3{font:400 38px/1.05 var(--d);margin:16px 30px 8px}.pj p{margin:0 30px 12px;color:#d8cfb8}.pj .k{margin:0 30px;display:block}
+/* directory */
+.dir{background:#141414;border:12px solid #2a2722;box-shadow:inset 0 0 0 2px var(--gold),inset 0 0 40px rgba(0,0,0,.8);padding:30px 40px;font:500 20px/1 "Jost",sans-serif;background-image:repeating-linear-gradient(0deg,#141414 0 14px,#0d0d0d 14px 16px)}
+.dir .r{display:grid;grid-template-columns:1fr auto;gap:16px;padding:12px 0;color:#efe6d0;letter-spacing:.12em;text-transform:none;border-bottom:1px dotted rgba(239,230,208,.25)}.dir .r:last-child{border:0}.dir .r span:last-child{color:var(--gold2);font-family:var(--d);font-size:24px}
+.dir h3{font:400 30px var(--d);color:var(--gold2);text-align:center;margin:0 0 14px;letter-spacing:.1em}
+.jr{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}.jr a{display:block;border-top:1px solid var(--gold);padding-top:16px}.jr h4{font:400 28px/1.1 var(--d);margin:8px 0 6px;transition:color .2s}.jr a:hover h4{color:var(--gold2)}.jr p{margin:0;color:var(--mut);font-size:16px}
+.st{display:grid;grid-template-columns:1.2fr 1fr;gap:44px;align-items:start}.st p{margin:0 0 14px;color:#d8cfb8;max-width:46ch}
+.st dl{margin:0;display:grid;grid-template-columns:110px 1fr;gap:12px 16px;padding:28px}.st dt{color:var(--gold);font-size:14px;letter-spacing:.1em}.st dd{margin:0}
+.lob{margin-top:130px;text-align:center}.lob .in{padding:70px 30px}.lob h2{font:400 clamp(44px,6vw,84px)/1 var(--d);margin:12px 0 24px}.lob a.m{font:400 clamp(26px,3.4vw,40px) var(--d);color:var(--gold2);border-bottom:1px solid var(--gold)}
+.ft{display:flex;justify-content:space-between;padding:30px 0 44px;gap:10px;flex-wrap:wrap;color:var(--mut);font-size:14px}
+@media(max-width:900px){.dial{display:none}}
+@media(max-width:900px){.w{padding:0 16px}.nv{display:none}.hero,.st{grid-template-columns:1fr;min-height:0}.pj,.jr{grid-template-columns:1fr}.dir{padding:20px;font-size:16px}.dir .r{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.tower .g{stroke-dashoffset:0}}
+</style>
+</head>
+<body>
+<div class="dial" aria-label="Floor indicator"><svg viewBox="0 0 120 72" aria-hidden="true"><path d="M8 64A52 52 0 0 1 112 64" fill="none" stroke="#c9a24a" stroke-width="2"/><g id="tk"></g><g class="arm" id="arm"><path d="M60 64L60 18" stroke="#e6c97a" stroke-width="3"/><circle cx="60" cy="64" r="6" fill="#c9a24a"/></g></svg><div class="fl" id="fl">L</div><nav id="dn" aria-label="Floors"></nav></div>
+<div class="w">
+<header class="hd"><a class="lg" href="#">Oduya <b>Architects</b></a><nav class="nv" aria-label="Primary"><a href="#work">Work</a><a href="#directory">Services</a><a href="#journal">Journal</a><a href="#studio">Studio</a><a href="#lobby">Contact</a></nav></header>
+
+<section class="hero" id="lobbyTop" data-f="L"><div style="padding-bottom:60px"><span class="k">Architecture with ornament · since 2014</span><h1>Height, <span>with</span> ornament.</h1><p>Nia Oduya and studio design towers, theatres and homes that are generous in their detail: brass, terrazzo, crafted light.</p><a class="bt" href="#work">Take the lift</a><a class="bt" href="#lobby">Visit the lobby</a></div>
+<div class="tower"><svg id="tw" viewBox="0 0 400 640" role="img" aria-label="Art deco tower elevation drawn in gold lines, with a sunburst crown"></svg></div></section>
+
+<section class="sec" id="work" data-f="1"><div class="sh"><span class="k">Floor one</span><h2>Selected work</h2><svg viewBox="0 0 220 24" aria-hidden="true"><path d="M0 12H80M140 12H220" stroke="#c9a24a"/><path d="M110 2L122 12L110 22L98 12Z" fill="none" stroke="#c9a24a"/><path d="M86 12h6M128 12h6" stroke="#c9a24a"/></svg></div><div class="pj" id="pj"></div></section>
+
+<section class="sec" id="directory" data-f="2"><div class="sh"><span class="k">Floor two</span><h2>Building directory</h2></div><div class="dir"><h3>Services by floor</h3><div id="dr"></div></div></section>
+
+<section class="sec" id="journal" data-f="3"><div class="sh"><span class="k">Floor three</span><h2>Journal</h2></div><div class="jr" id="jr"></div></section>
+
+<section class="sec" id="studio" data-f="4"><div class="sh"><span class="k">Floor four</span><h2>The studio</h2></div><div class="st"><div><p>Oduya Architects is a studio of eleven in Lagos and Lisbon. We believe ornament is not decoration but care made visible: a handrail you want to touch, a ceiling you look up at.</p><p>We work with craftspeople from the first sketch: metalworkers, terrazzo makers and glass artists.</p></div><div class="fr"><div class="in"><dl><dt>Now</dt><dd>Restoring a 1934 cinema as a concert hall</dd><dt>Drawing</dt><dd>A 22-storey residential tower in brick</dd><dt>Award</dt><dd>Civic Building of the Year, 2025</dd><dt>Hiring</dt><dd>Architectural assistant</dd></dl></div></div></div></section>
+
+<section class="lob" id="lobby" data-f="5"><div class="fr"><div class="in"><span class="k">Ground floor · the lobby</span><h2>Shall we build something tall?</h2><a class="m" href="mailto:studio@oduya.example">studio@oduya.example</a></div></div></section>
+<footer class="ft"><span>Oduya Architects · placeholder identity</span><span>Set in Poiret One and Jost</span></footer>
+</div>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)};
+// tower elevation
+var s='<g fill="none" stroke="#c9a24a" stroke-width="2">';
+s+='<path class="g" d="M90 640V300H110V250H130V200H150V150H170V110H230V150H250V200H270V250H290V300H310V640"/>';
+for(var i=0;i<14;i++){var x=120+i*12;s+='<path class="g" d="M'+x+' 640V'+(x<150||x>250?300:200)+'" stroke-width="1" style="animation-delay:'+(.4+i*.05)+'s"/>'}
+s+='<path class="g" d="M200 110V20M170 110L200 40L230 110" style="animation-delay:.8s"/>';
+for(i=0;i<9;i++){var a=Math.PI+i/8*Math.PI;s+='<path class="g" d="M200 110L'+(200+Math.cos(a)*56).toFixed(1)+' '+(110+Math.sin(a)*56).toFixed(1)+'" stroke-width="1.2" style="animation-delay:'+(1+i*.06)+'s"/>'}
+s+='<path class="g" d="M60 640H340M70 630H330" style="animation-delay:1.2s"/></g>';
+var r=0;for(var y=320;y<620;y+=26)for(var x=96;x<300;x+=26){if((x<110||x>286)&&y<330)continue;r++;s+='<rect x="'+x+'" y="'+y+'" width="8" height="14" fill="#2a2a2c"'+(r%5==0||r%7==0?' class="lit" style="animation-delay:'+(r%9)*.4+'s"':'')+'/>'}
+s+='<path d="M180 640V590A20 20 0 0 1 220 590V640Z" fill="#c9a24a"/>';
+$('#tw').innerHTML=s;
+// projects
+function hd(i){var c=['#0e4a4a','#2a2722','#3b1f2b','#1d2b45'][i],s='<svg viewBox="0 0 400 200" aria-hidden="true"><rect width="400" height="200" fill="'+c+'"/>';for(var k=0;k<17;k++){var a=Math.PI+k/16*Math.PI;s+='<path d="M200 200L'+(200+Math.cos(a)*300).toFixed(0)+' '+(200+Math.sin(a)*300).toFixed(0)+'" stroke="#c9a24a" stroke-width="'+(k%2?1:2.5)+'" opacity=".7"/>'}
+s+='<circle cx="200" cy="200" r="70" fill="'+c+'" stroke="#e6c97a" stroke-width="3"/><circle cx="200" cy="200" r="52" fill="none" stroke="#c9a24a"/>';return s+'</svg>'}
+var P=[['Tidewater Library','A riverside library with a brass-ribbed reading room and terrazzo floors.','Civic · 2025'],['Lumière Cinema','A 1934 cinema restored and reborn as a 900-seat concert hall.','Restoration · 2026'],['Cork House','A family home with fluted oak screens and a sunburst stair.','Residential · 2024'],['Meridian Tower','Twenty-two storeys of brick with setbacks every five floors.','Residential · On site']];
+$('#pj').innerHTML=P.map(function(p,i){return '<a class="fr" href="#"><div class="in">'+hd(i)+'<h3>'+p[0]+'</h3><p>'+p[1]+'</p><span class="k">'+p[2]+'</span></div></a>'}).join('');
+var D=[['Architecture','5'],['Interiors and fit-out','4'],['Restoration of historic buildings','3'],['Lighting and metalwork design','2'],['Feasibility and planning','1']];
+$('#dr').innerHTML=D.map(function(d){return '<div class="r"><span>'+d[0]+'</span><span>Floor '+d[1]+'</span></div>'}).join('');
+var J=[['Ornament is care made visible','Why we draw every handrail at full scale.','Oct 2026'],['Terrazzo, a field guide','Aggregates, binders and the people who still pour it.','Aug 2026'],['The setback as a gift','Zoning rules that made the skyline beautiful.','Jun 2026']];
+$('#jr').innerHTML=J.map(function(j){return '<a href="#"><span class="k">'+j[2]+'</span><h4>'+j[0]+'</h4><p>'+j[1]+'</p></a>'}).join('');
+// elevator dial
+var F=[['L','lobbyTop'],['1','work'],['2','directory'],['3','journal'],['4','studio'],['5','lobby']],tk='';
+F.forEach(function(f,i){var a=Math.PI+(i/(F.length-1))*Math.PI,x=60+Math.cos(a)*44,y=64+Math.sin(a)*44;tk+='<text x="'+x.toFixed(1)+'" y="'+(y+4).toFixed(1)+'" text-anchor="middle" font-family="Jost,sans-serif" font-size="10" fill="#b4ab96">'+f[0]+'</text>'});$('#tk').innerHTML=tk;
+$('#dn').innerHTML=F.map(function(f){return '<a href="#'+f[1]+'" data-f="'+f[0]+'">'+(f[0]=='L'?'Lobby':'Floor '+f[0])+'</a>'}).join('');
+function upd(){var cur=0;F.forEach(function(f,i){var el=document.getElementById(f[1]);if(el&&el.getBoundingClientRect().top<innerHeight*.5)cur=i});$('#arm').style.transform='rotate('+(-90+cur/(F.length-1)*180)+'deg)';$('#fl').textContent=F[cur][0];document.querySelectorAll('#dn a').forEach(function(a,i){a.classList.toggle('on',i==cur)})}
+addEventListener('scroll',upd,{passive:true});upd();
+})();
+</script>
+</body>
+</html>

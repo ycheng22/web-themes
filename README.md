@@ -1,11 +1,11 @@
 # Web themes
 
-Homepage design directions for technologists, bloggers, designers and researchers. Every theme is one self-contained HTML page with its own layout, typography and interaction. There is no build step.
+Homepage design directions for technologists, bloggers, designers, researchers and architects. Every theme is one self-contained HTML page with its own layout, typography and interaction. There is no build step.
 
 Open `index.html` for a gallery of every theme. If GitHub Pages is enabled for this repository, the gallery is also the site's home page.
 
 ```
-themes/                    fourteen themes: six designer-engineer portfolios and eight animation-inspired themes
+themes/                    22 themes: designer-engineer, animation-inspired and architecture-inspired
 existing/                  twelve earlier directions exported from the openloop design system
 existing/tokens.css        shared colour, spacing, radius and font tokens for existing/
 openloop-design-system/    the design system source: tokens.json, component previews, notes
@@ -241,6 +241,98 @@ Every mascot, character and illustration is original and drawn in code. Nothing 
 - **Bloggers:** Manga Panels for punchy essays, Old Reel for history and storytelling.
 - **Designers:** Clay Studio for tactile, playful work, Pop-up Book for illustration-led product design.
 - **Researchers:** Powers of Ten when the work spans scales, Chalk Lecture when teaching is part of the identity.
+
+## Architecture-inspired themes
+
+Eight directions for an architect-designer. Each borrows the materials, geometry and spatial ideas of one building tradition.
+
+All eight use the same placeholder practice, Oduya Architects (Nia Oduya), and the same projects (Tidewater Library, Cork House, Quay Market Hall, Vale Chapel). That keeps the comparison fair: only the design changes. All drawings are original and generated in code.
+
+### Béton (`themes/beton`) · Brutalism
+![Béton](assets/thumbs/beton.jpg)
+- **Look:** board-marked concrete texture and a cantilevered massing.
+- **Interaction:** a "Sun" slider sets the time of day. The blocks' shadows swing and lengthen, and the page warms toward evening.
+- **Sections:** projects sit in deep concrete coffers with plan drawings and material facts. Three numbered rules sit on pillars, and contact is a dark "pour" band.
+- **Palette:** concrete greys with one signal red.
+- **Type:** Big Shoulders Display and Karla.
+- **Best for:** civic and material-led practices.
+
+### Deco Tower (`themes/deco-tower`) · Art Deco
+![Deco Tower](assets/thumbs/deco-tower.jpg)
+- **Look:** a gold-line tower elevation draws itself, with windows lighting up at random.
+- **Interaction:** a brass elevator dial follows your scroll position floor by floor and opens into a floor list.
+- **Sections:** projects are stepped-corner frames with sunburst headers and a gold shimmer on hover. Services are a lobby directory board, and contact is "the lobby".
+- **Palette:** black lacquer, gold, cream and jewel tones.
+- **Type:** Poiret One and Jost.
+- **Best for:** hospitality, restoration and towers.
+
+### Shoji (`themes/shoji`) · Japanese minimalism
+![Shoji](assets/thumbs/shoji.jpg)
+- **Look:** four paper screens with kumiko lattice slide open on load to reveal a raked gravel garden. You can drag each screen.
+- **Sections:**
+  - Projects are laid out as a tatami-mat floor plan.
+  - Section names run vertically.
+  - Principles are ma, light and timber.
+  - About carries a hanko seal.
+  - Contact is a noren curtain that parts on hover.
+- **Palette:** washi, timber, sumi ink, moss and seal red.
+- **Type:** Shippori Mincho and M PLUS 1.
+- **Best for:** residential, landscape and craft-focused studios.
+
+### Rose Window (`themes/rose-window`) · Gothic
+![Rose Window](assets/thumbs/rose-window.jpg)
+- **Look:** a stained-glass rose window whose petals are links that glow and name their destination.
+- **Sections:** projects are four lancet windows of procedurally leaded glass. Coloured light pools drift as you scroll, and the journal is a "book of hours" with illuminated initials.
+- **Palette:** nave stone with ruby, cobalt, gold, emerald and violet glass.
+- **Type:** Cormorant Garamond and Alegreya Sans, with a blackletter wordmark.
+- **Best for:** sacred buildings, conservation and lighting-led practices.
+
+### Glass Pavilion (`themes/glass-pavilion`) · Mid-century modern
+![Glass Pavilion](assets/thumbs/glass-pavilion.jpg)
+- **Look:** a butterfly-roof glass house elevation.
+- **Interaction:**
+  - A floor plan is the main navigation: hover or tab to a room to preview its section, then click to go there.
+  - The living room holds the work, the studio the process, the library the journal, the kitchen the about section, and the entry the contact.
+  - The doorbell rings (two chimes) and reveals the email.
+- **Palette:** walnut, olive, burnt orange, mustard and teal.
+- **Type:** League Spartan and Lora.
+- **Best for:** residential architects.
+
+### Zellige (`themes/zellige`) · Islamic geometry
+![Zellige](assets/thumbs/zellige.jpg)
+- **Look:** a generative star-tile pattern inside a horseshoe (keyhole) arch.
+- **Interaction:** switch the symmetry (6, 8, 10 or 12-fold) and the glaze palette.
+- **Sections:** projects sit in a quartered courtyard garden around a fountain, the journal is an arcade of arches, and contact is a great patterned arch.
+- **Palette:** plaster, deep blue, turquoise, emerald, terracotta and saffron.
+- **Type:** Amiri and Mulish.
+- **Best for:** courtyard, school and climate-responsive design.
+
+### Brise-soleil (`themes/brise-soleil`) · Tropical modernism
+![Brise-soleil](assets/thumbs/brise-soleil.jpg)
+- **Look:** a facade of timber louvres that close and reopen on load, then turn with the pointer or scroll to reveal a jungle garden behind.
+- **Sections:**
+  - Louvre shadows fall across the content.
+  - A vine grows down the page as you scroll.
+  - Each project is shown through its breeze-block screen.
+  - A passive-cooling strip has drifting wind marks.
+- **Palette:** concrete, tropical greens, timber and sun yellow.
+- **Type:** Syne and DM Sans.
+- **Best for:** hot-climate and sustainable practices.
+
+### Fracture (`themes/fracture`) · Deconstructivism
+![Fracture](assets/thumbs/fracture.jpg)
+- **Look:** shattered planes assemble, then break apart and drift with the pointer. An "Assemble" toggle puts them back together.
+- **Sections:** the headline words come unstuck and "lines of force" cross the page. Project cards are tilted and clipped and straighten on hover. Contact is a sliced headline that rejoins on hover.
+- **Palette:** white, black, steel grey and safety yellow.
+- **Type:** Familjen Grotesk and Chivo Mono.
+- **Best for:** experimental and competition-led practices.
+
+### Picking one
+- **Show material and permanence:** Béton.
+- **Show craft and calm:** Shoji.
+- **Show homes:** Glass Pavilion.
+- **Show climate thinking:** Brise-soleil or Zellige.
+- **Make a statement:** Fracture or Deco Tower.
 
 ## openloop design system (`existing/`)
 

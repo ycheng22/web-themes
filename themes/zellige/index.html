@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Oduya Architects · Zellige</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Mulish:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--pl:#f3f1ec;--ink:#1b1a1a;--mut:#55524c;--blue:#12355b;--turq:#1f8a8a;--em:#2f6b3e;--terra:#b5532c;--saf:#e2a33a;--d:"Amiri",Georgia,serif;--s:"Mulish",system-ui,sans-serif}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--pl);color:var(--ink);font:400 17.5px/1.65 var(--s);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}:focus-visible{outline:3px solid var(--turq);outline-offset:3px}
+.w{max-width:1200px;margin:0 auto;padding:0 32px}
+.k{font:700 13px var(--s);color:var(--mut);letter-spacing:.05em}
+.band{height:18px;background:var(--blue)}.band svg{display:block;width:100%;height:18px}
+.hd{display:flex;align-items:center;gap:22px;padding:22px 0}
+.lg{font:700 26px var(--d);display:flex;align-items:center;gap:10px}.lg svg{width:30px;height:30px}
+.nv{margin-left:auto;display:flex;gap:24px;font:700 15px var(--s)}.nv a:hover{color:var(--turq)}
+/* hero */
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:10px 0}
+h1{font:700 clamp(46px,5.8vw,84px)/1.05 var(--d);margin:12px 0 18px}
+h1 span{color:var(--turq)}
+.hero p{font-size:19px;max-width:36ch;margin:0 0 24px}
+.bt{display:inline-block;font:700 15px var(--s);padding:13px 22px;border-radius:999px 999px 6px 6px;background:var(--blue);color:#fff;margin-right:8px;transition:background .2s}.bt:hover{background:var(--turq)}.bt.l{background:transparent;box-shadow:inset 0 0 0 2px var(--blue);color:var(--blue)}
+.arch{position:relative;aspect-ratio:4/5;-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'><path d='M60 500V310A180 180 0 1 1 340 310V500Z'/></svg>") center/100% 100% no-repeat;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'><path d='M60 500V310A180 180 0 1 1 340 310V500Z'/></svg>") center/100% 100% no-repeat}
+.arch svg{width:100%;height:100%;display:block}
+.archw{position:relative}.archw::before{content:"";position:absolute;inset:-12px -12px 0;border:0;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 424 512' preserveAspectRatio='none'><path d='M66 512V318A192 192 0 1 1 358 318V512' fill='none' stroke='%2312355b' stroke-width='6'/></svg>") center/100% 100% no-repeat;pointer-events:none}
+.ctl{display:flex;gap:18px;align-items:center;margin-top:16px;flex-wrap:wrap}.ctl label{font:700 13px var(--s);color:var(--mut);display:flex;gap:8px;align-items:center}
+.seg{display:inline-flex;border:2px solid var(--blue);border-radius:999px;overflow:hidden}.seg button{font:700 14px var(--s);border:0;background:none;padding:6px 12px;cursor:pointer;color:var(--blue)}.seg button[aria-pressed=true]{background:var(--blue);color:#fff}
+.sw{width:26px;height:26px;border-radius:50%;border:2px solid var(--ink);cursor:pointer;padding:0}.sw[aria-pressed=true]{outline:3px solid var(--saf);outline-offset:2px}
+/* courtyard */
+.sec{padding-top:120px}
+.sh{text-align:center;margin-bottom:36px}.sh h2{font:700 clamp(40px,5vw,64px)/1.05 var(--d);margin:6px 0 0}.sh p{margin:8px auto 0;max-width:46ch;color:var(--mut)}
+.court{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:0;position:relative;border:10px solid var(--blue);background:var(--blue)}
+.q{position:relative;display:block;padding:30px 34px 32px;background:var(--pl);min-height:260px;transition:background .35s,color .35s}
+.q:nth-child(1){margin:0 9px 9px 0}.q:nth-child(2){margin:0 0 9px 9px}.q:nth-child(3){margin:9px 9px 0 0}.q:nth-child(4){margin:9px 0 0 9px}
+.q:hover{background:var(--c);color:#fff}.q:hover .k{color:#eaf3f3}
+.q h3{font:700 36px/1.1 var(--d);margin:6px 0 8px}.q p{margin:0;max-width:40ch}
+.q .tile{position:absolute;right:24px;top:24px;width:70px;height:70px}
+.fount{position:absolute;left:50%;top:50%;width:120px;height:120px;transform:translate(-50%,-50%);z-index:2;pointer-events:none}
+/* arcade */
+.arc{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.ar{display:block;background:var(--c);color:#fff;padding:120px 20px 22px;border-radius:999px 999px 0 0;position:relative;min-height:340px;transition:transform .3s}.ar:hover{transform:translateY(-8px)}
+.ar::before{content:"";position:absolute;left:14px;right:14px;top:14px;height:96px;border-radius:999px 999px 0 0;background-image:radial-gradient(circle at 50% 100%,rgba(255,255,255,.35) 0 18%,transparent 19%),repeating-conic-gradient(from 0deg at 50% 100%,rgba(255,255,255,.18) 0 6deg,transparent 6deg 12deg)}
+.ar h4{font:700 26px/1.15 var(--d);margin:6px 0}.ar .k{color:rgba(255,255,255,.85)}
+.st{display:grid;grid-template-columns:1.2fr 1fr;gap:44px;align-items:start}.st p{margin:0 0 14px;max-width:46ch}
+.st dl{margin:0;display:grid;grid-template-columns:100px 1fr;gap:10px 16px;border-top:4px double var(--blue);padding-top:16px}.st dt{font:700 13px var(--s);color:var(--mut);padding-top:3px}.st dd{margin:0}
+.door{margin-top:120px;text-align:center;background:var(--blue);color:#fff;padding:70px 20px 60px;border-radius:600px 600px 0 0;position:relative;overflow:hidden}
+.door h2{font:700 clamp(40px,5.4vw,72px)/1.05 var(--d);margin:10px 0 16px;position:relative}.door a{font:700 22px var(--s);border-bottom:2px solid var(--saf);position:relative}
+.door svg{position:absolute;inset:0;width:100%;height:100%;opacity:.07}
+.ft{display:flex;justify-content:space-between;padding:22px 0 40px;gap:10px;flex-wrap:wrap}
+@media(max-width:900px){.w{padding:0 16px}.nv{display:none}.hero,.st{grid-template-columns:1fr}.court{grid-template-columns:1fr}.q{margin:0 0 9px!important}.fount{display:none}.arc{grid-template-columns:1fr 1fr}.ar{padding-top:100px;min-height:280px}.door{border-radius:200px 200px 0 0}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="band" aria-hidden="true"><svg id="band" preserveAspectRatio="none"></svg></div>
+<div class="w">
+<header class="hd"><a class="lg" href="#"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M15 1l4 8 9-1-5 7 5 7-9-1-4 8-4-8-9 1 5-7-5-7 9 1Z" fill="#1f8a8a"/><circle cx="15" cy="15" r="4" fill="#e2a33a"/></svg>Oduya Architects</a><nav class="nv" aria-label="Primary"><a href="#court">Work</a><a href="#arcade">Journal</a><a href="#studio">Studio</a><a href="#door">Contact</a></nav></header>
+
+<section class="hero"><div><span class="k">Courtyard houses, schools and gardens</span><h1>Order, <span>repeated</span> until it sings.</h1><p>Nia Oduya and studio design buildings around courtyards, shade and water, with geometry made by craftspeople by hand.</p><a class="bt" href="#court">Enter the courtyard</a><a class="bt l" href="#door">Knock</a>
+<div class="ctl"><label>Symmetry<span class="seg" id="seg" role="group" aria-label="Star symmetry"><button aria-pressed="false" data-n="6">6</button><button aria-pressed="true" data-n="8">8</button><button aria-pressed="false" data-n="10">10</button><button aria-pressed="false" data-n="12">12</button></span></label><label>Glaze<span id="pal" style="display:flex;gap:6px"></span></label></div></div>
+<div class="archw"><div class="arch"><svg id="tile" viewBox="0 0 400 500" role="img" aria-label="Generated zellige star pattern inside a horseshoe arch"></svg></div></div></section>
+
+<section class="sec" id="court"><div class="sh"><span class="k">The courtyard</span><h2>Four gardens, four buildings</h2><p>Projects arranged like a quartered garden around a fountain.</p></div>
+<div class="court" id="ct"></div></section>
+
+<section class="sec" id="arcade"><div class="sh"><span class="k">The arcade</span><h2>Journal</h2></div><div class="arc" id="arc"></div></section>
+
+<section class="sec" id="studio"><div class="sh"><span class="k">The studio</span><h2>About</h2></div><div class="st"><div><p>Oduya Architects is eleven people in Lagos and Lisbon, working with tile cutters in Fez and plasterers in Marrakesh. Nia Oduya founded the studio in 2014 after years designing schools for hot climates.</p><p>We design for shade first: courtyards, deep arcades and water that cools the air before the building needs to.</p></div><dl><dt>Now</dt><dd>A girls' school around three courtyards</dd><dt>On site</dt><dd>Quay Market Hall</dd><dt>Award</dt><dd>Civic Building of the Year, 2025</dd><dt>Hiring</dt><dd>Architectural assistant</dd></dl></div></section>
+</div>
+<section class="door" id="door"><svg id="dpat" aria-hidden="true" preserveAspectRatio="xMidYMid slice"></svg><span class="k" style="color:#cfe0ea;position:relative">The door is open</span><h2>Let us design some shade together.</h2><a href="mailto:studio@oduya.example">studio@oduya.example</a></section>
+<div class="w"><footer class="ft k"><span>Oduya Architects · placeholder identity</span><span>Set in Amiri and Mulish</span></footer></div>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)};
+function f(n){return n.toFixed(1)}
+var PAL=[['#12355b','#1f8a8a','#e2a33a','#f3f1ec','#2f6b3e'],['#2f6b3e','#b5532c','#e2a33a','#f3f1ec','#12355b'],['#1b1a1a','#1f8a8a','#f3f1ec','#e2a33a','#b5532c']],pi=0,N=8;
+function star(cx,cy,R,n,k,rot){var p=[];for(var i=0;i<n*2;i++){var a=rot+i*Math.PI/n,r=i%2?R*Math.cos(Math.PI*k/n)/Math.cos(Math.PI*(k-1)/n):R;p.push([cx+Math.cos(a)*r,cy+Math.sin(a)*r])}return p}
+function poly(p){return p.map(function(q){return f(q[0])+','+f(q[1])}).join(' ')}
+function pattern(w,h,n,c,cell){var s='<rect width="'+w+'" height="'+h+'" fill="'+c[3]+'"/>',hex=(n%6==0),dx=cell,dy=hex?cell*Math.sqrt(3)/2:cell,R=cell*.5,rot=-Math.PI/2;
+for(var row=-1;row*dy<h+cell;row++)for(var col=-1;col*dx<w+cell;col++){var cx=col*dx+(hex&&row%2?dx/2:0),cy=row*dy;
+// outer star (tile field)
+s+='<polygon points="'+poly(star(cx,cy,R*1.02,n,Math.max(2,Math.floor(n/3)),rot))+'" fill="'+c[0]+'" stroke="'+c[4]+'" stroke-width="2"/>';
+s+='<polygon points="'+poly(star(cx,cy,R*.62,n,2,rot+Math.PI/n))+'" fill="'+c[1]+'" stroke="'+c[3]+'" stroke-width="2"/>';
+s+='<polygon points="'+poly(star(cx,cy,R*.26,n,2,rot))+'" fill="'+c[2]+'"/>';
+// small fillers between
+if(!hex)s+='<polygon points="'+poly(star(cx+dx/2,cy+dy/2,R*.3,4,1,Math.PI/4))+'" fill="'+c[2]+'" stroke="'+c[0]+'" stroke-width="2"/>'}
+return s}
+function draw(){$('#tile').innerHTML=pattern(400,500,N,PAL[pi],N>=10?120:100);$('#dpat').innerHTML=pattern(1400,600,N,['#ffffff','#ffffff','#ffffff','transparent','#ffffff'],120);
+var b='';for(var x=0;x<2000;x+=36){var c=PAL[pi];b+='<polygon points="'+poly(star(x+18,9,10,8,3,-Math.PI/2))+'" fill="'+c[2]+'"/>'}$('#band').setAttribute('viewBox','0 0 1600 18');$('#band').innerHTML=b}
+$('#pal').innerHTML=PAL.map(function(p,i){return '<button class="sw" aria-pressed="'+(i==0)+'" data-i="'+i+'" aria-label="Glaze '+(i+1)+'" style="background:conic-gradient('+p[0]+' 0 33%,'+p[1]+' 0 66%,'+p[2]+' 0)"></button>'}).join('');
+document.querySelectorAll('#seg button').forEach(function(b){b.onclick=function(){N=+b.dataset.n;document.querySelectorAll('#seg button').forEach(function(x){x.setAttribute('aria-pressed',x==b)});draw()}});
+document.querySelectorAll('#pal button').forEach(function(b){b.onclick=function(){pi=+b.dataset.i;document.querySelectorAll('#pal button').forEach(function(x){x.setAttribute('aria-pressed',x==b)});draw()}});
+draw();
+// courtyard
+var Q=[['Tidewater Library','A riverside library around a shaded reading court with a still pool.','Civic · 2025','#12355b'],['Courtyard School','A girls\' school of three courtyards, cooled by water and deep arcades.','Education · on site','#1f8a8a'],['Cork House','A family home turned inward to a garden of citrus and tile.','Residential · 2024','#2f6b3e'],['Quay Market Hall','A market whose roof filters sun like a pierced screen.','Civic · on site','#b5532c']];
+$('#ct').innerHTML=Q.map(function(q,i){return '<a class="q" href="#" style="--c:'+q[3]+'"><svg class="tile" viewBox="-50 -50 100 100" aria-hidden="true"><polygon points="'+poly(star(0,0,46,8,3,-Math.PI/2))+'" fill="'+q[3]+'"/><polygon points="'+poly(star(0,0,24,8,2,-Math.PI/2+Math.PI/8))+'" fill="#e2a33a"/></svg><span class="k">'+q[2]+'</span><h3>'+q[0]+'</h3><p>'+q[1]+'</p></a>'}).join('')+'<svg class="fount" viewBox="-60 -60 120 120" aria-hidden="true"><circle r="58" fill="#12355b"/><polygon points="'+poly(star(0,0,52,8,3,-Math.PI/2))+'" fill="#1f8a8a"/><circle r="22" fill="#cfe9ec"/><circle r="10" fill="#f3f1ec"/></svg>';
+var A=[['Shade before air conditioning','Oct 2026','#12355b'],['How zellige is cut by hand','Aug 2026','#1f8a8a'],['The courtyard as a climate machine','Jun 2026','#2f6b3e'],['Geometry you can feel underfoot','Apr 2026','#b5532c']];
+$('#arc').innerHTML=A.map(function(a){return '<a class="ar" href="#" style="--c:'+a[2]+'"><span class="k">'+a[1]+'</span><h4>'+a[0]+'</h4></a>'}).join('');
+})();
+</script>
+</body>
+</html>

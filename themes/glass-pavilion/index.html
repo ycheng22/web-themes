@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Oduya Architects · Glass Pavilion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f2ee;--ink:#262421;--mut:#5b5852;--wal:#6b4226;--olive:#7a7f3a;--ora:#d9622b;--mus:#e0b13a;--teal:#2d6e6a;--glass:#cfe3e2;--d:"League Spartan",system-ui,sans-serif;--s:"Lora",Georgia,serif}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:400 18px/1.65 var(--s);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}:focus-visible{outline:3px solid var(--ora);outline-offset:3px}
+.w{max-width:1200px;margin:0 auto;padding:0 32px}
+.k{font:600 13px var(--d);color:var(--mut);letter-spacing:.06em}
+.hd{display:flex;align-items:center;gap:22px;padding:24px 0}
+.lg{font:800 22px var(--d);letter-spacing:-.01em;display:flex;align-items:center;gap:10px}.lg i{display:block;width:30px;height:16px;background:linear-gradient(90deg,var(--ora) 0 33%,var(--mus) 33% 66%,var(--teal) 66%);border-radius:2px}
+.nv{margin-left:auto;display:flex;gap:24px;font:600 15px var(--d)}.nv a:hover{color:var(--ora)}
+/* hero */
+.hero{display:grid;grid-template-columns:1fr 1.2fr;gap:36px;align-items:center;padding:10px 0 0}
+h1{font:800 clamp(52px,6.6vw,96px)/.92 var(--d);letter-spacing:-.035em;margin:14px 0 20px}
+h1 span{color:var(--ora)}
+.hero p{font-size:20px;max-width:34ch;margin:0 0 24px}
+.bt{display:inline-block;font:700 16px var(--d);padding:14px 22px;background:var(--ink);color:var(--bg);margin-right:8px;transition:background .2s}.bt:hover{background:var(--ora)}.bt.l{background:transparent;box-shadow:inset 0 0 0 2px var(--ink);color:var(--ink)}.bt.l:hover{background:var(--mus)}
+.elev svg{width:100%;height:auto;display:block}
+.elev .refl{animation:rf 6s ease-in-out infinite}@keyframes rf{0%,100%{transform:translateX(0)}50%{transform:translateX(30px)}}
+/* plan nav */
+.plan{margin-top:60px;display:grid;grid-template-columns:1.4fr 1fr;gap:34px;align-items:center}
+.plan svg{width:100%;height:auto;display:block}
+.room{cursor:pointer}.room rect{transition:fill .25s}.room:hover rect.fl,.room:focus-visible rect.fl,.room.on rect.fl{fill:var(--c)}
+.room text{font:700 15px var(--d);fill:var(--ink);pointer-events:none}
+.pv{border-top:3px solid var(--ink);padding-top:16px}.pv h3{font:800 36px/1 var(--d);margin:6px 0 10px;letter-spacing:-.02em}.pv p{margin:0 0 14px}
+/* sections */
+.sec{padding-top:120px}
+.sh{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:baseline;border-bottom:3px solid var(--ink);padding-bottom:10px;margin-bottom:30px}.sh h2{margin:0;font:800 clamp(40px,5vw,64px)/1 var(--d);letter-spacing:-.03em}.sh .k{justify-self:end}
+.pj{display:grid;grid-template-columns:repeat(2,1fr);gap:34px}
+.pc{display:block;position:relative}
+.pc .im{height:280px;position:relative;overflow:hidden;background:var(--c)}
+.pc .im svg{position:absolute;inset:0;width:100%;height:100%;transition:transform .6s}.pc:hover .im svg{transform:scale(1.04)}
+.pc .grain{height:14px;background:repeating-linear-gradient(90deg,#6b4226 0 3px,#7d5032 3px 7px,#5f3a21 7px 9px)}
+.pc h3{font:800 32px/1 var(--d);margin:16px 0 6px;letter-spacing:-.02em}.pc p{margin:0 0 6px}
+.proc{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:3px solid var(--ink)}
+.ps{padding:24px 22px;border-left:3px solid var(--ink);background:var(--bg)}.ps:first-child{border-left:0}.ps:nth-child(2){background:var(--mus)}.ps:nth-child(4){background:var(--teal);color:#fff}.ps:nth-child(4) .k{color:#d6ece9}
+.ps h3{font:800 26px var(--d);margin:6px 0 8px}.ps p{margin:0;font-size:16px}
+.jr a{display:grid;grid-template-columns:130px 1fr 100px;gap:18px;padding:18px 0;border-bottom:1px solid #cfccc4;align-items:baseline;transition:padding .25s}.jr a:hover{padding-left:12px}.jr a:hover h4{color:var(--ora)}
+.jr h4{margin:0;font:700 24px/1.2 var(--d);letter-spacing:-.01em}.jr .r{text-align:right}
+.ab{display:grid;grid-template-columns:1.2fr 1fr;gap:44px}.ab p{margin:0 0 14px;max-width:46ch}
+.ab dl{margin:0;background:var(--olive);color:#fff;padding:26px;display:grid;grid-template-columns:100px 1fr;gap:10px 14px}.ab dt{font:600 13px var(--d);color:#e3e5c8;padding-top:4px}.ab dd{margin:0}
+.door{margin-top:120px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center;background:var(--ink);color:var(--bg);padding:56px 48px}
+.door h2{margin:0;font:800 clamp(40px,5.4vw,72px)/.95 var(--d);letter-spacing:-.03em}
+.bell{position:relative;width:110px;height:110px;border-radius:50%;border:0;background:var(--mus);cursor:pointer;font:700 15px var(--d);color:var(--ink)}
+.bell::after{content:"";position:absolute;inset:-8px;border-radius:50%;border:3px solid var(--mus);opacity:0}
+.bell.ring::after{animation:ring 1s ease-out 2}@keyframes ring{0%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.8)}}
+.reveal{margin-top:16px;font:700 24px var(--d);color:var(--mus);opacity:0;transform:translateY(8px);transition:opacity .4s,transform .4s;overflow-wrap:anywhere}.reveal.on{opacity:1;transform:none}
+.ft{display:flex;justify-content:space-between;padding:26px 0 40px;gap:10px;flex-wrap:wrap}
+@media(max-width:900px){.w{padding:0 16px}.nv{display:none}.hero,.plan,.pj,.ab,.door{grid-template-columns:1fr}.proc{grid-template-columns:1fr 1fr}.ps:nth-child(3){border-left:0}.ps{border-top:3px solid var(--ink)}.jr a{grid-template-columns:1fr}.jr .r{text-align:left}.door{padding:36px 20px}.sh{grid-template-columns:1fr}.sh .k{justify-self:start}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="w">
+<header class="hd"><a class="lg" href="#"><i></i>Oduya Architects</a><nav class="nv" aria-label="Primary"><a href="#living">Work</a><a href="#studio">Process</a><a href="#library">Journal</a><a href="#kitchen">About</a><a href="#entry">Contact</a></nav></header>
+
+<section class="hero"><div><span class="k">Modern houses and pavilions</span><h1>Live <span>inside</span> the landscape.</h1><p>Nia Oduya and studio design glass houses, pavilions and timber homes where the garden is the main room.</p><a class="bt" href="#plan">Tour the house</a><a class="bt l" href="#entry">Ring the bell</a></div>
+<div class="elev"><svg id="ev" viewBox="0 0 640 380" role="img" aria-label="Elevation of a mid-century glass pavilion with a butterfly roof under trees"></svg></div></section>
+
+<section class="plan" id="plan" aria-label="Floor plan navigation"><svg id="pl" viewBox="0 0 640 380" role="group" aria-label="Floor plan. Each room is a section of the site."></svg><div class="pv" id="pv" aria-live="polite"></div></section>
+
+<section class="sec" id="living"><div class="sh"><h2>The living room</h2><span class="k">Selected work</span></div><div class="pj" id="pj"></div></section>
+<section class="sec" id="studio"><div class="sh"><h2>The studio</h2><span class="k">How a house is made</span></div><div class="proc"><div class="ps"><span class="k">Step 1</span><h3>Walk the site</h3><p>We spend a day on the land at every hour before drawing a line.</p></div><div class="ps"><span class="k">Step 2</span><h3>Find the view</h3><p>Every house is organised around one view and one tree.</p></div><div class="ps"><span class="k">Step 3</span><h3>Build the frame</h3><p>Slim steel or timber frames, so walls can be mostly glass.</p></div><div class="ps"><span class="k">Step 4</span><h3>Furnish lightly</h3><p>Built-in joinery, few objects, everything within reach.</p></div></div></section>
+<section class="sec" id="library"><div class="sh"><h2>The library</h2><span class="k">Journal</span></div><div class="jr" id="jr"></div></section>
+<section class="sec" id="kitchen"><div class="sh"><h2>The kitchen table</h2><span class="k">About and now</span></div><div class="ab"><div><p>Oduya Architects is eleven people in Lagos and Lisbon. Nia Oduya founded the studio in 2014 after restoring a 1958 glass house and falling for the way it let the weather in.</p><p>We design a few houses a year, and every one of them has a room where the family actually eats together.</p></div><dl><dt>Now</dt><dd>A timber pavilion for a sculpture garden</dd><dt>On site</dt><dd>Cork House, final fittings</dd><dt>Award</dt><dd>House of the Year shortlist, 2025</dd></dl></div></section>
+
+<section class="door" id="entry"><div><span class="k" style="color:#bdb9b0">The front door</span><h2>Thinking about a house?</h2></div><div><button class="bell" id="bell" aria-label="Ring the bell to show our email">Ring</button><div class="reveal" id="rv" aria-live="polite"><a href="mailto:studio@oduya.example">studio@oduya.example</a></div></div></section>
+<footer class="ft k"><span>Oduya Architects · placeholder identity</span><span>Set in League Spartan and Lora</span></footer>
+</div>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)};
+// elevation
+var s='<rect width="640" height="380" fill="#f2f2ee"/><rect y="320" width="640" height="60" fill="#c9cfa9"/>';
+s+='<circle cx="80" cy="150" r="70" fill="#7a7f3a"/><circle cx="130" cy="120" r="56" fill="#8c9246"/><rect x="96" y="190" width="10" height="130" fill="#6b4226"/>';
+s+='<circle cx="560" cy="130" r="80" fill="#2d6e6a" opacity=".85"/><rect x="556" y="180" width="10" height="140" fill="#6b4226"/>';
+s+='<path d="M150 170L320 200L520 160L520 176L320 216L150 186Z" fill="#262421"/>';
+s+='<rect x="170" y="200" width="330" height="120" fill="#cfe3e2"/><g class="refl"><path d="M190 200L230 320H250L210 200ZM300 200L340 320H352L312 200ZM420 200L460 320H476L436 200Z" fill="#fff" opacity=".5"/></g>';
+for(var x=170;x<=500;x+=55)s+='<rect x="'+(x-2)+'" y="196" width="4" height="124" fill="#262421"/>';
+s+='<rect x="280" y="236" width="80" height="84" fill="#6b4226"/><rect x="270" y="320" width="100" height="8" fill="#9a958b"/>';
+s+='<rect x="390" y="270" width="48" height="10" fill="#d9622b"/><rect x="394" y="280" width="4" height="22" fill="#262421"/><rect x="430" y="280" width="4" height="22" fill="#262421"/><path d="M386 270C386 252 400 246 412 248" stroke="#d9622b" stroke-width="8" fill="none"/>';
+s+='<circle cx="200" cy="262" r="16" fill="#e0b13a"/><rect x="198" y="278" width="4" height="40" fill="#262421"/>';
+s+='<rect x="140" y="320" width="400" height="6" fill="#262421"/>';
+$('#ev').innerHTML=s;
+// plan
+var R=[['living','Living room','Selected work','Four houses and pavilions, each organised around a single view.',20,20,300,200,'#d9622b'],['studio','Studio','Process','How a house is made, in four steps.',320,20,180,140,'#e0b13a'],['library','Library','Journal','Writing on glass, timber and how families use rooms.',500,20,120,200,'#2d6e6a'],['kitchen','Kitchen','About','The studio, the people, what is on the table now.',320,160,180,200,'#7a7f3a'],['entry','Entry','Contact','Ring the bell to start a conversation.',20,220,300,140,'#c9a27a']];
+var p='<rect x="10" y="10" width="620" height="360" fill="none" stroke="#262421" stroke-width="8"/>';
+R.forEach(function(r){p+='<a class="room" href="#'+r[0]+'" data-id="'+r[0]+'" style="--c:'+r[8]+'"><rect class="fl" x="'+r[4]+'" y="'+r[5]+'" width="'+r[6]+'" height="'+r[7]+'" fill="#f2f2ee" stroke="#262421" stroke-width="4"/><text x="'+(r[4]+14)+'" y="'+(r[5]+26)+'">'+r[1]+'</text><text x="'+(r[4]+14)+'" y="'+(r[5]+46)+'" style="font-weight:400;font-size:13px">'+r[2]+'</text></a>'});
+// furniture
+p+='<rect x="60" y="130" width="120" height="40" rx="6" fill="none" stroke="#262421" stroke-width="2"/><circle cx="230" cy="150" r="22" fill="none" stroke="#262421" stroke-width="2"/><rect x="360" y="230" width="100" height="56" rx="28" fill="none" stroke="#262421" stroke-width="2"/>';
+for(var i=0;i<4;i++)p+='<circle cx="'+(372+i*25)+'" cy="'+(i%2?296:220)+'" r="8" fill="none" stroke="#262421" stroke-width="2"/>';
+for(i=0;i<6;i++)p+='<rect x="512" y="'+(70+i*22)+'" width="96" height="14" fill="none" stroke="#262421" stroke-width="2"/>';
+p+='<rect x="350" y="70" width="120" height="50" fill="none" stroke="#262421" stroke-width="2"/><path d="M170 360A50 50 0 0 1 220 310V360" fill="none" stroke="#262421" stroke-width="2"/>';
+for(i=0;i<9;i++)p+='<path d="M'+(508+i*13)+' 228V356" stroke="#c9a27a" stroke-width="6"/>';p+='<text x="516" y="300" style="font:600 13px League Spartan,sans-serif" fill="#262421">Terrace</text>';
+p+='<path d="M10 10H630" stroke="#cfe3e2" stroke-width="6"/><path d="M10 370H320" stroke="#cfe3e2" stroke-width="6"/>';
+$('#pl').innerHTML=p;
+function prev(id){var r=R.filter(function(x){return x[0]==id})[0];$('#pv').innerHTML='<span class="k">Room</span><h3>'+r[1]+'</h3><p><b>'+r[2]+'.</b> '+r[3]+'</p><a class="bt" href="#'+r[0]+'">Go to the '+r[1].toLowerCase()+'</a>';document.querySelectorAll('.room').forEach(function(x){x.classList.toggle('on',x.dataset.id==id)})}
+document.querySelectorAll('.room').forEach(function(r){r.addEventListener('mouseenter',function(){prev(r.dataset.id)});r.addEventListener('focus',function(){prev(r.dataset.id)})});prev('living');
+// projects
+function art(i){return ['<svg viewBox="0 0 400 280" preserveAspectRatio="xMidYMid slice"><rect width="400" height="280" fill="#cfe3e2"/><path d="M0 220H400V280H0Z" fill="#9aa064"/><path d="M60 120L200 140L340 110V126L200 156L60 136Z" fill="#262421"/><rect x="80" y="140" width="240" height="80" fill="#f2f2ee" opacity=".7"/><path d="M90 140V220M150 140V220M210 140V220M270 140V220" stroke="#262421" stroke-width="3"/></svg>','<svg viewBox="0 0 400 280" preserveAspectRatio="xMidYMid slice"><rect width="400" height="280" fill="#e0b13a"/><circle cx="300" cy="90" r="50" fill="#d9622b"/><rect x="60" y="150" width="220" height="90" fill="#6b4226"/><rect x="40" y="140" width="260" height="12" fill="#262421"/><rect x="90" y="170" width="60" height="70" fill="#cfe3e2"/></svg>','<svg viewBox="0 0 400 280" preserveAspectRatio="xMidYMid slice"><rect width="400" height="280" fill="#2d6e6a"/><path d="M40 200L200 60L360 200Z" fill="#f2f2ee"/><path d="M40 200L200 60L360 200" fill="none" stroke="#262421" stroke-width="10"/><rect x="40" y="200" width="320" height="60" fill="#6b4226"/></svg>','<svg viewBox="0 0 400 280" preserveAspectRatio="xMidYMid slice"><rect width="400" height="280" fill="#7a7f3a"/><path d="M0 230C100 200 300 260 400 220V280H0Z" fill="#5e6230"/><rect x="120" y="110" width="180" height="90" fill="#cfe3e2"/><rect x="100" y="98" width="220" height="14" fill="#262421"/><circle cx="90" cy="150" r="40" fill="#8c9246"/></svg>'][i]}
+var P=[['Lakeside Pavilion','A glass room on a jetty, held by eight slim steel columns.','Pavilion · 2025','#cfe3e2'],['Cork House','A family home of cork and timber around a courtyard.','House · 2024','#e0b13a'],['A-Frame Retreat','A timber A-frame for writers, sleeping four.','Retreat · 2023','#2d6e6a'],['Garden House','A low glass house that disappears into its meadow.','House · on site','#7a7f3a']];
+$('#pj').innerHTML=P.map(function(p,i){return '<a class="pc" href="#" style="--c:'+p[3]+'"><div class="im">'+art(i)+'</div><div class="grain"></div><h3>'+p[0]+'</h3><p>'+p[1]+'</p><span class="k">'+p[2]+'</span></a>'}).join('');
+var J=[['Oct 2026','The garden is the main room','7 min'],['Aug 2026','Why a glass wall needs a deep roof','6 min'],['Jun 2026','Built-in furniture as architecture','8 min'],['Apr 2026','Restoring a 1958 glass house','11 min']];
+$('#jr').innerHTML=J.map(function(j){return '<a href="#"><span class="k">'+j[0]+'</span><h4>'+j[1]+'</h4><span class="k r">'+j[2]+'</span></a>'}).join('');
+$('#bell').addEventListener('click',function(){var b=this;b.classList.remove('ring');void b.offsetWidth;b.classList.add('ring');$('#rv').classList.add('on');try{var ac=new (window.AudioContext||window.webkitAudioContext)();[659,523].forEach(function(f,i){var o=ac.createOscillator(),g=ac.createGain();o.frequency.value=f;o.type='sine';g.gain.setValueAtTime(.0001,ac.currentTime+i*.35);g.gain.exponentialRampToValueAtTime(.2,ac.currentTime+i*.35+.02);g.gain.exponentialRampToValueAtTime(.0001,ac.currentTime+i*.35+.6);o.connect(g).connect(ac.destination);o.start(ac.currentTime+i*.35);o.stop(ac.currentTime+i*.35+.65)})}catch(e){}});
+})();
+</script>
+</body>
+</html>

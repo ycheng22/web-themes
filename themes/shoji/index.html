@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Oduya Architects · Shoji</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=M+PLUS+1:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f1eee7;--washi:#f8f6f0;--wood:#5a4632;--wood2:#7b6247;--sumi:#1e1d1b;--mut:#5d5850;--moss:#6f7d4f;--tat:#c9c49a;--seal:#b8432f;--d:"Shippori Mincho",Georgia,serif;--s:"M PLUS 1",system-ui,sans-serif}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--paper);color:var(--sumi);font:300 17px/1.8 var(--s);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}:focus-visible{outline:2px solid var(--seal);outline-offset:4px}
+.w{max-width:1180px;margin:0 auto;padding:0 32px}
+.k{font:400 13px var(--s);color:var(--mut);letter-spacing:.08em}
+.hd{display:flex;align-items:center;gap:24px;padding:28px 0}
+.lg{font:600 22px var(--d);display:flex;align-items:center;gap:12px}.lg i{width:28px;height:28px;border-radius:4px;background:var(--seal);display:grid;place-items:center;color:var(--washi);font:700 13px var(--d);font-style:normal}
+.nv{margin-left:auto;display:flex;gap:30px;font:400 15px var(--s)}.nv a{padding:4px 0;border-bottom:1px solid transparent;transition:border-color .3s}.nv a:hover{border-color:var(--sumi)}
+/* shoji hero */
+.stage{position:relative;height:600px;overflow:hidden;border:10px solid var(--wood);border-left-width:14px;border-right-width:14px;background:var(--washi)}
+.garden{position:absolute;inset:0}.garden svg{width:100%;height:100%;display:block}
+.hl{position:absolute;left:7%;top:12%;max-width:520px;z-index:1}
+h1{font:600 clamp(44px,5.6vw,80px)/1.15 var(--d);margin:0 0 18px;letter-spacing:.02em}
+.hl p{font-size:18px;max-width:34ch;margin:0}
+.panels{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);z-index:3;pointer-events:none}
+.pn{position:relative;pointer-events:auto;cursor:grab;touch-action:none;background-color:rgba(248,246,240,.9);background-image:linear-gradient(90deg,var(--wood2) 3px,transparent 3px),linear-gradient(var(--wood2) 3px,transparent 3px);background-size:calc(100%/3) 25%;box-shadow:inset 0 0 0 6px var(--wood),2px 0 10px rgba(0,0,0,.12);transition:transform 1.4s cubic-bezier(.65,0,.2,1);will-change:transform}
+.pn::after{content:"";position:absolute;right:16px;top:50%;width:10px;height:40px;margin-top:-20px;border-radius:10px;border:2px solid var(--wood);background:rgba(0,0,0,.04)}
+.pn:active{cursor:grabbing}
+.open .pn:nth-child(1){transform:translateX(-92%)}.open .pn:nth-child(2){transform:translateX(-184%)}.open .pn:nth-child(3){transform:translateX(184%)}.open .pn:nth-child(4){transform:translateX(92%)}
+.ctl{display:flex;justify-content:space-between;align-items:center;margin-top:14px}.sl{font:400 14px var(--s);background:none;border:1px solid var(--sumi);padding:8px 16px;cursor:pointer;color:var(--sumi);transition:background .3s,color .3s}.sl:hover{background:var(--sumi);color:var(--washi)}
+/* sections with vertical labels */
+.sec{display:grid;grid-template-columns:70px 1fr;gap:30px;padding-top:140px}
+.vt{writing-mode:vertical-rl;font:600 30px var(--d);letter-spacing:.2em;border-left:1px solid var(--sumi);padding-left:14px;align-self:start;position:sticky;top:30px}
+.vt span{display:block;font:300 13px var(--s);letter-spacing:.1em;color:var(--mut);margin-top:16px}
+.intro{font:400 22px/1.7 var(--d);max-width:36ch;margin:0 0 40px}
+/* tatami plan */
+.tat{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,170px);gap:0;border:8px solid var(--wood);background:var(--wood)}
+.mat{position:relative;background:var(--tat);background-image:repeating-linear-gradient(90deg,rgba(0,0,0,.05) 0 1px,transparent 1px 5px);border:3px solid #2b3a2a;outline:1px solid var(--wood);padding:18px 20px;display:flex;flex-direction:column;justify-content:flex-end;transition:background-color .4s,color .4s;overflow:hidden}
+.mat:hover{background-color:var(--sumi);color:var(--washi)}.mat:hover .k{color:#c8c2b4}
+.mat h3{margin:0 0 4px;font:600 26px/1.2 var(--d)}.mat p{margin:0;font-size:14.5px;line-height:1.6;max-height:0;opacity:0;transition:max-height .5s,opacity .4s}.mat:hover p{max-height:120px;opacity:1}
+.m1{grid-column:1/3;grid-row:1}.m2{grid-column:3;grid-row:1/3}.m3{grid-column:4;grid-row:1/3}.m4{grid-column:1;grid-row:2/4}.m5{grid-column:2/4;grid-row:3}.m6{grid-column:2;grid-row:2}.m7{grid-column:4;grid-row:3}
+.m6{background:var(--moss);color:var(--washi)}.m6 .k{color:#e4e2d5}
+/* principles */
+.pr{display:grid;grid-template-columns:repeat(3,1fr);gap:50px}.pr h3{font:600 30px var(--d);margin:0 0 8px}.pr p{margin:0;color:var(--mut)}.pr .kj{font:400 72px/1 var(--d);color:var(--seal);display:block;margin-bottom:10px}
+/* journal */
+.jr a{display:grid;grid-template-columns:130px 1fr;gap:20px;padding:22px 0;border-bottom:1px solid #d3cdc0;align-items:baseline}
+.jr h4{margin:0;font:600 24px/1.4 var(--d);display:inline;background-image:linear-gradient(var(--sumi),var(--sumi));background-size:0 3px;background-repeat:no-repeat;background-position:0 92%;transition:background-size .6s cubic-bezier(.6,0,.2,1)}.jr a:hover h4{background-size:100% 3px}
+.ab{display:grid;grid-template-columns:1.3fr 1fr;gap:50px;align-items:start}.ab p{margin:0 0 16px;max-width:44ch}
+.seal{width:120px;height:120px;border:4px solid var(--seal);color:var(--seal);display:grid;place-items:center;font:700 22px/1.1 var(--d);text-align:center;transform:rotate(-6deg);border-radius:8px;margin-bottom:24px;opacity:.9}
+.ab dl{margin:0;display:grid;grid-template-columns:100px 1fr;gap:10px 16px}.ab dt{color:var(--mut);font-size:14px}.ab dd{margin:0}
+/* noren */
+.noren{margin-top:140px;position:relative;height:400px;background:var(--sumi);color:var(--washi);display:flex;align-items:flex-end;justify-content:center;padding-bottom:44px;text-align:center;overflow:hidden}
+.noren .msg h2{font:600 clamp(32px,4.4vw,56px)/1.2 var(--d);margin:0 0 14px}.noren .msg a{font:400 22px var(--s);border-bottom:1px solid var(--washi)}
+.cloth{position:absolute;left:0;right:0;top:0;height:42%;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;pointer-events:none}
+.cloth span{background:#2f4a6b;transform-origin:top center;transition:transform .7s cubic-bezier(.3,1.3,.5,1);display:grid;place-items:center;color:var(--washi);font:600 30px var(--d)}
+.noren:hover .cloth span:nth-child(-n+2),.noren:focus-within .cloth span:nth-child(-n+2){transform:translateX(-40%) rotate(8deg) scaleY(.9)}
+.noren:hover .cloth span:nth-child(n+3),.noren:focus-within .cloth span:nth-child(n+3){transform:translateX(40%) rotate(-8deg) scaleY(.9)}
+.ft{display:flex;justify-content:space-between;padding:30px 0 44px;gap:10px;flex-wrap:wrap}
+@media(max-width:900px){.w{padding:0 16px}.nv{display:none}.stage{height:520px}.hl{left:6%;right:6%;top:8%}.sec{grid-template-columns:1fr;gap:16px;padding-top:90px}.vt{writing-mode:horizontal-tb;position:static;border-left:0;border-bottom:1px solid var(--sumi);padding:0 0 10px;letter-spacing:.06em}.vt span{display:inline;margin:0 0 0 12px}.tat{grid-template-columns:1fr;grid-template-rows:none;grid-auto-rows:auto}.mat{min-height:140px}.hl{background:rgba(248,246,240,.85);padding:14px}.tat .mat{grid-column:auto!important;grid-row:auto!important}.mat p{max-height:none;opacity:1}.pr,.ab{grid-template-columns:1fr}.jr a{grid-template-columns:1fr;gap:4px}.noren{height:440px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="w">
+<header class="hd"><a class="lg" href="#"><i>O</i>Oduya Architects</a><nav class="nv" aria-label="Primary"><a href="#work">Work</a><a href="#ideas">Principles</a><a href="#journal">Journal</a><a href="#about">Studio</a><a href="#contact">Contact</a></nav></header>
+
+<section aria-label="Introduction"><div class="stage" id="stage"><div class="garden"><svg viewBox="0 0 1100 580" preserveAspectRatio="xMidYMid slice" aria-hidden="true" id="gd"></svg></div>
+<div class="hl"><span class="k">Architecture of quiet rooms</span><h1>Space is the material we work with most.</h1><p>Nia Oduya and studio design houses, libraries and gardens around light, timber and the pause between things.</p></div>
+<div class="panels" id="panels"><div class="pn" aria-hidden="true"></div><div class="pn" aria-hidden="true"></div><div class="pn" aria-hidden="true"></div><div class="pn" aria-hidden="true"></div></div></div>
+<div class="ctl"><span class="k">Drag a screen, or</span><button class="sl" id="sl" aria-pressed="true">Close the screens</button></div></section>
+
+<section class="sec" id="work"><h2 class="vt">Work<span>a six-mat room</span></h2><div><p class="intro">Our projects laid out like a tatami room: each mat is one building, sized by how long we lived with it.</p><div class="tat" id="tat"></div></div></section>
+
+<section class="sec" id="ideas"><h2 class="vt">Principles<span>three</span></h2><div class="pr"><div><span class="kj" aria-hidden="true">間</span><h3>Ma, the interval</h3><p>The empty space between things is designed as carefully as the things.</p></div><div><span class="kj" aria-hidden="true">光</span><h3>Light, filtered</h3><p>Paper, screens and deep eaves soften light before it reaches a room.</p></div><div><span class="kj" aria-hidden="true">木</span><h3>Timber, joined</h3><p>We prefer joinery to fixings, so a building can be repaired rather than replaced.</p></div></div></section>
+
+<section class="sec" id="journal"><h2 class="vt">Journal<span>notes</span></h2><div class="jr" id="jr"></div></section>
+
+<section class="sec" id="about"><h2 class="vt">Studio<span>about and now</span></h2><div class="ab"><div><p>Oduya Architects is eleven people working between Lagos and Lisbon, with a long collaboration with joiners in Kyoto. Nia Oduya founded the studio in 2014 after years designing libraries and schools.</p><p>We take few projects and stay with each from first sketch to first winter.</p></div><div><div class="seal" aria-hidden="true">Oduya<br>建築</div><dl><dt>Now</dt><dd>A tea pavilion for a botanical garden</dd><dt>On site</dt><dd>Cork House, final joinery</dd><dt>Award</dt><dd>Civic Building of the Year, 2025</dd></dl></div></div></section>
+
+<section class="noren" id="contact" tabindex="0" aria-label="Contact"><div class="msg"><span class="k" style="color:#c8c2b4">Come in</span><h2>Step through, and let us talk.</h2><a href="mailto:studio@oduya.example">studio@oduya.example</a></div><div class="cloth" aria-hidden="true"><span>間</span><span>光</span><span>木</span><span>石</span></div></section>
+<footer class="ft k"><span>Oduya Architects · placeholder identity</span><span>Set in Shippori Mincho and M PLUS 1</span></footer>
+</div>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)};
+var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+// garden: raked gravel lines around stones, moss, maple branch
+var s='<rect width="1100" height="580" fill="#ece8de"/>',stones=[[780,330,70,40],[900,420,46,28],[660,450,36,22]];
+for(var y=0;y<580;y+=12){var d='M0 '+y;for(var x=0;x<=1100;x+=20){var dy=0;stones.forEach(function(st){var dist=Math.hypot((x-st[0])/1.4,(y-st[1]));if(dist<st[2]*3.2){var push=(st[2]*3.2-dist)*.4;dy+=(y<st[1]?-1:1)*push}});d+=' L'+x+' '+(y+dy).toFixed(1)}s+='<path d="'+d+'" fill="none" stroke="#cfc8b8" stroke-width="2"/>'}
+stones.forEach(function(st){for(var r=1;r<=3;r++)s+='<ellipse cx="'+st[0]+'" cy="'+st[1]+'" rx="'+(st[2]*1.4+r*14)+'" ry="'+(st[3]+r*10)+'" fill="none" stroke="#cfc8b8" stroke-width="2"/>';s+='<ellipse cx="'+st[0]+'" cy="'+(st[1]+6)+'" rx="'+(st[2]+6)+'" ry="'+(st[3]*.7)+'" fill="#6f7d4f"/><ellipse cx="'+st[0]+'" cy="'+(st[1]-4)+'" rx="'+st[2]+'" ry="'+st[3]+'" fill="#5f5b55"/><ellipse cx="'+(st[0]-st[2]*.3)+'" cy="'+(st[1]-st[3]*.4)+'" rx="'+st[2]*.4+'" ry="'+st[3]*.3+'" fill="#7a766f"/>'});
+s+='<path d="M1100 40C980 60 900 90 830 150M920 92C900 60 880 50 860 48M980 70C990 100 1000 120 1030 130" stroke="#3b2f25" stroke-width="7" fill="none" stroke-linecap="round"/>';
+var leaves=[[860,48],[1030,130],[830,150],[950,80],[900,120],[1000,60],[870,170]];leaves.forEach(function(l,i){s+='<g transform="translate('+l[0]+','+l[1]+') rotate('+(i*40)+')"><path d="M0 0l8-16 4 10 12-6-6 12 14 4-14 6 6 12-12-6-4 10Z" fill="'+(i%2?'#b8432f':'#c9632f')+'"/></g>'});
+$('#gd').innerHTML=s;
+// panels open on load, draggable
+var st=$('#stage'),btn=$('#sl'),pans=document.querySelectorAll('.pn');
+function setOpen(o){pans.forEach(function(p){p.style.transform=''});st.classList.toggle('open',o);btn.textContent=o?'Close the screens':'Open the screens';btn.setAttribute('aria-pressed',o)}
+setTimeout(function(){setOpen(true)},rm?0:500);btn.addEventListener('click',function(){setOpen(!st.classList.contains('open'))});
+pans.forEach(function(p){var sx,base,dr=false;p.addEventListener('pointerdown',function(e){dr=true;sx=e.clientX;var m=new DOMMatrix(getComputedStyle(p).transform);base=m.m41;p.style.transition='none';p.setPointerCapture(e.pointerId)});
+p.addEventListener('pointermove',function(e){if(dr)p.style.transform='translateX('+(base+e.clientX-sx)+'px)'});p.addEventListener('pointerup',function(){dr=false;p.style.transition=''})});
+// tatami
+var T=[['Tidewater Library','Civic · 2025','A riverside library with a deep timber eave and a reading room that faces the tide.'],['Cork House','Residential · 2024','A family house of cork and cedar around a single courtyard.'],['Tea Pavilion','Garden · 2026','Four mats, one window, a view of a single maple.'],['Quay Market Hall','Civic · on site','A market under a folded roof, open on three sides.'],['Vale Chapel','Sacred · 2023','A stone chapel with one shaft of light.'],['Garden','Landscape','Every project starts in the garden.'],['Joinery Lab','Research','Testing timber joints with craftspeople in Kyoto.']];
+$('#tat').innerHTML=T.map(function(t,i){return '<a class="mat m'+(i+1)+'" href="#"><span class="k">'+t[1]+'</span><h3>'+t[0]+'</h3><p>'+t[2]+'</p></a>'}).join('');
+var J=[['Oct 2026','Designing the pause between rooms'],['Aug 2026','Paper, light and the north window'],['Jun 2026','Joinery that can be undone'],['Apr 2026','What a garden teaches a floor plan']];
+$('#jr').innerHTML=J.map(function(j){return '<a href="#"><span class="k">'+j[0]+'</span><div><h4>'+j[1]+'</h4></div></a>'}).join('');
+})();
+</script>
+</body>
+</html>

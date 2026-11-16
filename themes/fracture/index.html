@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Oduya Architects · Fracture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;700&family=Chivo+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f5f2;--ink:#111;--steel:#8a8f96;--mut:#4b4e52;--yel:#ffd400;--d:"Familjen Grotesk",system-ui,sans-serif;--m:"Chivo Mono",ui-monospace,monospace}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.55 var(--d);-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{color:inherit;text-decoration:none}:focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 6px var(--yel)}
+.w{max-width:1240px;margin:0 auto;padding:0 32px;position:relative}
+.k{font:400 12.5px var(--m);color:var(--mut)}
+.lines{position:absolute;inset:0;pointer-events:none;z-index:0}.lines svg{width:100%;height:100%}
+.hd{display:flex;align-items:center;gap:24px;padding:22px 0;position:relative;z-index:3}
+.lg{font:700 22px var(--d);letter-spacing:-.02em;display:flex;align-items:center;gap:10px}.lg svg{width:30px;height:30px}
+.nv{margin-left:auto;display:flex;gap:4px}.nv a{font:500 15px var(--d);padding:6px 12px;transition:transform .2s,background .2s}.nv a:nth-child(odd){transform:rotate(-3deg)}.nv a:nth-child(even){transform:rotate(2deg)}.nv a:hover{background:var(--yel);transform:none}
+/* hero */
+.hero{position:relative;height:680px;z-index:2}
+.shards{position:absolute;inset:0;overflow:hidden}.shards svg{width:100%;height:100%;display:block;overflow:visible}
+.shard{transition:transform 1.2s cubic-bezier(.2,.8,.2,1);transform-box:fill-box;transform-origin:center}
+.ht{position:absolute;left:0;bottom:60px;z-index:3;max-width:760px}
+h1{font:700 clamp(64px,9.6vw,150px)/.86 var(--d);letter-spacing:-.055em;margin:0 0 20px}
+h1 span{display:inline-block;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.fx h1 span:nth-child(1){transform:translate(-6px,-10px) rotate(-4deg)}.fx h1 span:nth-child(2){transform:translate(30px,6px) rotate(3deg)}.fx h1 span:nth-child(3){transform:translate(-14px,10px) rotate(-2deg) skewX(-8deg)}.fx h1 span:nth-child(4){transform:translate(40px,-6px) rotate(5deg)}
+h1 .y{background:var(--yel);padding:0 .08em}
+.ht p{font-size:19px;max-width:36ch;margin:0 0 20px;background:var(--bg);display:inline-block;padding:4px 6px}
+.ctl{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.bt{font:700 16px var(--d);padding:12px 20px;background:var(--ink);color:var(--bg);display:inline-block;clip-path:polygon(0 0,100% 6%,96% 100%,3% 92%);transition:background .2s,color .2s;border:0;cursor:pointer}.bt:hover{background:var(--yel);color:var(--ink)}.bt.o{background:var(--yel);color:var(--ink)}.bt.o:hover{background:var(--ink);color:var(--bg)}
+/* sections */
+.sec{padding-top:130px;position:relative;z-index:2}
+.sh{position:relative;margin-bottom:40px}.sh h2{margin:0;font:700 clamp(54px,7vw,110px)/.85 var(--d);letter-spacing:-.05em;display:inline-block;transform:rotate(-3deg) skewX(-6deg);transform-origin:left bottom}
+.sh .k{display:block;margin-bottom:10px}.sh::after{content:"";position:absolute;left:-2%;right:0;bottom:-10px;height:2px;background:var(--ink);transform:rotate(-1.6deg)}
+.pj{display:grid;grid-template-columns:repeat(12,1fr);gap:20px;align-items:start}
+.pc{display:block;position:relative;background:var(--c,#fff);transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s;box-shadow:10px 10px 0 var(--ink)}
+.pc:hover{transform:none!important;box-shadow:4px 4px 0 var(--ink)}
+.pc svg{width:100%;height:auto;display:block;border-bottom:2px solid var(--ink)}
+.pc .tx{padding:16px 18px 18px;border:2px solid var(--ink);border-top:0}.pc h3{margin:0 0 6px;font:700 30px/1 var(--d);letter-spacing:-.03em}.pc p{margin:0 0 8px;font-size:15.5px}
+.pc svg{border:2px solid var(--ink)}
+.p1{grid-column:1/span 6;transform:rotate(-3deg) translateY(10px);clip-path:polygon(0 0,100% 3%,100% 100%,2% 97%)}
+.p2{grid-column:7/span 5;transform:rotate(4deg) translateY(70px)}
+.p3{grid-column:2/span 5;transform:rotate(2deg) translateY(-10px)}
+.p4{grid-column:7/span 6;transform:rotate(-5deg) translate(-20px,40px);clip-path:polygon(3% 0,100% 0,97% 100%,0 96%)}
+.mf{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.mf div{border-top:6px solid var(--ink);padding-top:16px;transform:skewY(var(--sk))}.mf b{font:700 30px/1 var(--d);letter-spacing:-.03em;display:block;margin-bottom:8px}.mf p{margin:0;color:var(--mut)}
+.jr a{display:grid;grid-template-columns:120px 1fr 90px;gap:20px;padding:18px 0;border-bottom:2px solid var(--ink);align-items:baseline;transition:padding .3s,background .3s}
+.jr a:nth-child(1){margin-left:0}.jr a:nth-child(2){margin-left:8%}.jr a:nth-child(3){margin-left:3%}.jr a:nth-child(4){margin-left:12%}
+.jr a:hover{background:var(--yel);padding-left:14px}.jr h4{margin:0;font:700 28px/1.05 var(--d);letter-spacing:-.025em}.jr .r{text-align:right}
+.st{display:grid;grid-template-columns:1.2fr 1fr;gap:44px}.st p{margin:0 0 14px;max-width:46ch;font-size:19px}
+.st dl{margin:0;display:grid;grid-template-columns:100px 1fr;gap:10px 16px;background:var(--ink);color:var(--bg);padding:26px;transform:rotate(1.5deg)}.st dt{font:400 12.5px var(--m);color:#a5a9ad;padding-top:4px}.st dd{margin:0}
+/* split contact */
+.split{margin-top:130px;position:relative;z-index:2;padding:40px 0 30px;cursor:default;overflow:hidden}
+.sp{position:relative;font:700 clamp(64px,11vw,176px)/.88 var(--d);letter-spacing:-.06em;height:2.2em;max-width:5.6em}
+.sp span{position:absolute;inset:0;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.sp .a{clip-path:polygon(0 0,100% 0,100% 38%,0 62%)}.sp .b{clip-path:polygon(0 62%,100% 38%,100% 100%,0 100%);color:var(--ink)}
+.split:not(:hover):not(:focus-within) .sp .a{transform:translate(-18px,-14px)}.split:not(:hover):not(:focus-within) .sp .b{transform:translate(22px,12px)}
+.split .m{font:700 26px var(--d);background:var(--yel);padding:6px 12px;display:inline-block;transform:rotate(-2deg);margin-top:14px;overflow-wrap:anywhere}
+.ft{display:flex;justify-content:space-between;padding:30px 0 40px;gap:10px;flex-wrap:wrap;position:relative;z-index:2}
+@media(max-width:900px){.w{padding:0 16px}.nv{display:none}.hero{height:600px}.shards{opacity:.35}.pj{grid-template-columns:1fr;gap:40px}.pj .pc{grid-column:1/-1!important;transform:rotate(-1.5deg)!important}.mf,.st{grid-template-columns:1fr}.jr a{grid-template-columns:1fr;margin-left:0!important}.jr .r{text-align:left}.sp{height:2.4em}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="w">
+<div class="lines" aria-hidden="true"><svg id="lines" preserveAspectRatio="none"></svg></div>
+<header class="hd"><a class="lg" href="#"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M2 26L14 3L19 14Z" fill="#111"/><path d="M16 17L28 22L10 28Z" fill="#ffd400" stroke="#111" stroke-width="1.5"/></svg>Oduya Architects</a><nav class="nv" aria-label="Primary"><a href="#work">Work</a><a href="#manifesto">Manifesto</a><a href="#journal">Journal</a><a href="#studio">Studio</a><a href="#contact">Contact</a></nav></header>
+
+<section class="hero fx" id="hero"><div class="shards"><svg id="sh" viewBox="0 0 1200 680" role="img" aria-label="Shattered planes that assemble and break apart"></svg></div>
+<div class="ht"><span class="k">Architecture against the grid</span><h1 aria-label="Order, broken on purpose."><span>Order,</span> <span>broken</span> <span>on</span> <span class="y">purpose.</span></h1><br><p>Nia Oduya and studio design buildings from colliding planes: angled walls, cut roofs, rooms that pull light from unexpected places.</p>
+<div class="ctl"><button class="bt o" id="tog" aria-pressed="true">Assemble</button><a class="bt" href="#work">See the work</a></div></div></section>
+
+<section class="sec" id="work"><div class="sh"><span class="k">01 to 04 · selected work</span><h2>Collisions</h2></div><div class="pj" id="pj"></div></section>
+
+<section class="sec" id="manifesto" style="padding-top:170px"><div class="sh"><span class="k">How we think</span><h2>Manifesto</h2></div><div class="mf"><div style="--sk:-2deg"><b>The grid is a starting point</b><p>We draw the orthogonal plan first, then break it where the site, the sun or the program asks.</p></div><div style="--sk:1.5deg"><b>Every angle earns its place</b><p>A tilted wall must bring light, frame a view or move people. Otherwise it goes back to straight.</p></div><div style="--sk:-1deg"><b>Built, not rendered</b><p>Every fracture is detailed so it can be built by a normal contractor, on budget.</p></div></div></section>
+
+<section class="sec" id="journal"><div class="sh"><span class="k">Writing</span><h2>Journal</h2></div><div class="jr" id="jr"></div></section>
+
+<section class="sec" id="studio"><div class="sh"><span class="k">About and now</span><h2>Studio</h2></div><div class="st"><div><p>Oduya Architects is eleven people in Lagos and Lisbon. Nia Oduya founded the studio in 2014 after years of building very straight schools and wanting, once, to bend a wall.</p><p>We still build many straight walls. We just argue about each one.</p></div><dl><dt>Now</dt><dd>A gallery with a roof cut by three skylights</dd><dt>On site</dt><dd>Quay Market Hall</dd><dt>Award</dt><dd>Civic Building of the Year, 2025</dd><dt>Hiring</dt><dd>Computational designer</dd></dl></div></section>
+
+<section class="split" id="contact" tabindex="0" aria-label="Contact"><span class="k">Contact · hover to put it back together</span><div class="sp" aria-hidden="true"><span class="a">Break<br>ground.</span><span class="b">Break<br>ground.</span></div><a class="m" href="mailto:studio@oduya.example">studio@oduya.example</a></section>
+<footer class="ft k"><span>Oduya Architects · placeholder identity</span><span>Set in Familjen Grotesk and Chivo Mono</span></footer>
+</div>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)};
+function R(s){return function(){s|=0;s=s+0x6D2B79F5|0;var t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+// background lines of force
+function lines(){var el=$('#lines'),h=document.body.scrollHeight,w=1240;el.setAttribute('viewBox','0 0 '+w+' '+h);var r=R(9),s='';for(var i=0;i<9;i++){var y=r()*h,a=(r()-.5)*.5;s+='<path d="M-100 '+y.toFixed(0)+'L'+(w+100)+' '+(y+Math.tan(a)*w).toFixed(0)+'" stroke="'+(i%4==0?'#ffd400':'#111')+'" stroke-width="'+(i%4==0?6:1)+'" opacity="'+(i%4==0?.8:.18)+'"/>'}el.innerHTML=s}
+// shards
+var r=R(3),S=[],cols=['#111','#8a8f96','#ffd400','#d9dadc','#111','#f5f5f2'];
+var base=[[620,40,1150,90,1060,360,700,300],[700,300,1060,360,980,620,640,560],[1060,360,1180,320,1160,640,980,620],[520,180,700,300,640,560,470,470],[860,120,1000,140,940,260,830,240],[760,420,900,440,880,520,740,500],[1000,40,1120,20,1150,90,1020,90]];
+var s='';base.forEach(function(p,i){var cx=(p[0]+p[2]+p[4]+p[6])/4,cy=(p[1]+p[3]+p[5]+p[7])/4,dx=(cx-820)*.35+(r()-.5)*80,dy=(cy-330)*.35+(r()-.5)*80,rot=(r()-.5)*30;S.push({dx:dx,dy:dy,rot:rot,depth:.3+r()*1.2});
+s+='<polygon class="shard" data-i="'+i+'" points="'+p.join(' ')+'" fill="'+cols[i%cols.length]+'" stroke="#111" stroke-width="3"/>'});
+// cut lines across the assembled block
+s+='<path d="M560 80L1180 600M640 560L1150 60" stroke="#f5f5f2" stroke-width="3" opacity=".6"/>';
+$('#sh').innerHTML=s;var shards=document.querySelectorAll('.shard'),broken=false,mx=0,my=0;
+function place(){shards.forEach(function(el,i){var o=S[i],k=broken?1:0;el.style.transform='translate('+(o.dx*k+mx*o.depth*14).toFixed(1)+'px,'+(o.dy*k+my*o.depth*14).toFixed(1)+'px) rotate('+(o.rot*k).toFixed(1)+'deg)'})}
+var hero=$('#hero'),tog=$('#tog');
+function set(b){broken=b;hero.classList.toggle('fx',b);tog.textContent=b?'Assemble':'Fracture';tog.setAttribute('aria-pressed',b);place()}
+tog.addEventListener('click',function(){set(!broken)});
+if(!rm)hero.addEventListener('pointermove',function(e){var b=hero.getBoundingClientRect();mx=(e.clientX-b.left)/b.width-.5;my=(e.clientY-b.top)/b.height-.5;place()});
+set(false);setTimeout(function(){set(true)},rm?0:700);
+// projects
+function art(i){var r=R(i*7+2),s='<svg viewBox="0 0 400 260" aria-hidden="true"><rect width="400" height="260" fill="'+['#d9dadc','#ffd400','#f5f5f2','#8a8f96'][i]+'"/>';for(var k=0;k<5;k++){var x=40+r()*260,y=30+r()*150,w=60+r()*140,h=40+r()*90,a=(r()-.5)*40;s+='<rect x="'+x.toFixed(0)+'" y="'+y.toFixed(0)+'" width="'+w.toFixed(0)+'" height="'+h.toFixed(0)+'" transform="rotate('+a.toFixed(0)+' '+(x+w/2).toFixed(0)+' '+(y+h/2).toFixed(0)+')" fill="'+(k==2?'#111':'none')+'" stroke="#111" stroke-width="'+(k==2?0:3)+'"/>'}s+='<path d="M0 '+(200+r()*40)+'L400 '+(120+r()*60)+'" stroke="#111" stroke-width="5"/>';return s+'</svg>'}
+var P=[['Tidewater Library','A riverside library whose reading room tilts out over the water.','Civic · 2025'],['Fold Gallery','A gallery roof cut by three skylights at three angles.','Culture · 2026'],['Cork House','A family home where one wall leans to catch the winter sun.','Residential · 2024'],['Quay Market Hall','A market under a roof of four colliding planes.','Civic · on site']];
+$('#pj').innerHTML=P.map(function(p,i){return '<a class="pc p'+(i+1)+'" href="#">'+art(i)+'<div class="tx"><span class="k">0'+(i+1)+' · '+p[2]+'</span><h3>'+p[0]+'</h3><p>'+p[1]+'</p></div></a>'}).join('');
+var J=[['Oct 2026','Against the right angle, mostly','7 min'],['Aug 2026','Detailing a tilted wall on a budget','9 min'],['Jun 2026','Daylight from the wrong direction','6 min'],['Apr 2026','When the grid wins','5 min']];
+$('#jr').innerHTML=J.map(function(j){return '<a href="#"><span class="k">'+j[0]+'</span><h4>'+j[1]+'</h4><span class="k r">'+j[2]+'</span></a>'}).join('');
+lines();addEventListener('resize',lines);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Oduya Architects · Brise-soleil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+:root{--con:#ecebe4;--ink:#16241c;--mut:#4b5a51;--green:#1f5c3d;--leaf:#4c9a5b;--wood:#a8744a;--sky:#9fd0e0;--sun:#f2c14e;--d:"Syne",system-ui,sans-serif;--s:"DM Sans",system-ui,sans-serif;--ang:70deg}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--con);color:var(--ink);font:400 17.5px/1.6 var(--s);-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{color:inherit;text-decoration:none}:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.w{max-width:1220px;margin:0 auto;padding:0 32px}
+.k{font:700 13px var(--s);color:var(--mut);letter-spacing:.05em}
+.hd{display:flex;align-items:center;gap:24px;padding:22px 32px;max-width:1284px;margin:0 auto}
+.lg{font:800 22px var(--d);letter-spacing:-.01em;display:flex;gap:10px;align-items:center}.lg i{width:24px;height:24px;background:repeating-linear-gradient(90deg,var(--wood) 0 4px,transparent 4px 7px);display:block}
+.nv{margin-left:auto;display:flex;gap:24px;font:500 15px var(--s)}.nv a:hover{color:var(--green)}
+/* facade hero */
+.facade{position:relative;height:640px;overflow:hidden;background:var(--green)}
+.behind{position:absolute;inset:0}.behind svg{width:100%;height:100%;display:block}
+.fins{position:absolute;inset:0;display:flex;perspective:1200px;z-index:2;pointer-events:none}
+.fin{flex:1;background:linear-gradient(90deg,#8c5f3b,#b9845a 40%,#a8744a 60%,#7f5434);transform:rotateY(var(--ang));transform-origin:50% 50%;margin:0 1px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.1);transition:transform .15s linear}
+.ht{position:absolute;left:max(32px,calc(50% - 578px));bottom:56px;z-index:3;max-width:640px;color:#fff}
+.ht h1{font:800 clamp(52px,7.4vw,108px)/.92 var(--d);margin:0 0 18px;letter-spacing:-.03em;text-shadow:0 2px 20px rgba(0,0,0,.35)}
+.ht p{font-size:19px;max-width:38ch;margin:0 0 22px;background:rgba(22,36,28,.62);padding:10px 14px}
+.bt{display:inline-block;font:700 16px var(--s);padding:13px 22px;background:var(--sun);color:var(--ink);margin-right:8px;border-radius:2px;transition:transform .2s}.bt:hover{transform:translateY(-2px)}.bt.l{background:var(--con)}
+.hint{position:absolute;right:max(32px,calc(50% - 578px));bottom:24px;z-index:3;color:#fff;font:500 14px var(--s);background:rgba(22,36,28,.62);padding:6px 10px}
+/* shade stripes over content */
+.shade{position:relative}.shade::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(var(--sa,105deg),rgba(22,36,28,.035) 0 26px,transparent 26px 70px);mix-blend-mode:multiply}
+/* vine */
+.vine{position:absolute;left:0;top:0;width:90px;height:100%;pointer-events:none}
+.vine path{stroke-dasharray:3000;stroke-dashoffset:var(--vd,3000)}
+/* sections */
+.sec{padding-top:110px;position:relative}
+.sh{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:30px}.sh h2{margin:0;font:800 clamp(40px,5.2vw,70px)/.95 var(--d);letter-spacing:-.03em}.sh p{margin:0;max-width:40ch;color:var(--mut)}
+.pj{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.pc{display:block;background:#fff}
+.cob{height:220px;background-color:var(--c);-webkit-mask:var(--m);mask:var(--m);transition:background-color .3s}
+.pcw{position:relative;background:var(--ink)}.pc:hover .cob{background-color:var(--sun)}
+.m1{--m:radial-gradient(circle,transparent 0 16px,#000 17px) 0 0/48px 48px}
+.m2{--m:conic-gradient(from 45deg,#000 0 25%,transparent 0 50%,#000 0 75%,transparent 0) 0 0/40px 40px}
+.m3{--m:linear-gradient(45deg,transparent 0 30%,#000 30% 70%,transparent 70%) 0 0/36px 36px}
+.m4{--m:repeating-linear-gradient(90deg,#000 0 14px,transparent 14px 24px)}
+.pc .tx{padding:20px 22px 22px}.pc h3{margin:0 0 6px;font:800 28px/1 var(--d)}.pc p{margin:0 0 8px;font-size:16px}
+.cl{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--green);color:#fff}
+.cl div{padding:26px 22px;border-left:1px solid rgba(255,255,255,.2)}.cl div:first-child{border-left:0}
+.cl b{display:block;font:800 52px/1 var(--d);color:var(--sun)}.cl span{font-size:15px}
+.wind{display:block;height:20px;margin-top:10px;overflow:hidden;position:relative}.wind i{position:absolute;top:8px;height:2px;width:40px;background:rgba(255,255,255,.7);border-radius:2px;animation:wd 2.4s linear infinite}@keyframes wd{from{left:-40px}to{left:100%}}
+.jr{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.jr a{display:block;border-top:4px solid var(--green);padding-top:14px}.jr h4{margin:6px 0;font:700 24px/1.15 var(--d)}.jr a:hover h4{color:var(--green)}.jr p{margin:0;color:var(--mut);font-size:15.5px}
+.st{display:grid;grid-template-columns:1.2fr 1fr;gap:44px}.st p{margin:0 0 14px;max-width:46ch}.st dl{margin:0;display:grid;grid-template-columns:100px 1fr;gap:10px 16px;background:#fff;padding:24px;border-left:8px solid var(--wood)}.st dt{font:700 13px var(--s);color:var(--mut);padding-top:3px}.st dd{margin:0}
+.ct{margin-top:110px;position:relative;background:var(--ink);color:#fff;overflow:hidden}
+.ct .in{position:relative;z-index:2;padding:70px 32px;max-width:1220px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr;gap:30px;align-items:end}
+.ct h2{margin:0;font:800 clamp(42px,6vw,84px)/.95 var(--d);letter-spacing:-.03em}.ct a.m{font:700 22px var(--s);color:var(--sun);border-bottom:2px solid var(--sun);overflow-wrap:anywhere}
+.ct .louv{position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(168,116,74,.35) 0 18px,transparent 18px 44px);transform:skewX(-12deg) scaleX(1.2)}
+.ft{display:flex;justify-content:space-between;padding:22px 0 40px;gap:10px;flex-wrap:wrap}
+@media(max-width:900px){.w{padding:0 16px}.hd{padding:18px 16px}.nv{display:none}.facade{height:560px}.ht{left:16px;right:16px;bottom:60px}.hint{left:16px;right:auto}.pj,.st,.ct .in,.jr{grid-template-columns:1fr}.cl{grid-template-columns:1fr 1fr}.cl div:nth-child(3){border-left:0}.sh{flex-direction:column;align-items:flex-start}.vine{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.vine path{stroke-dashoffset:0}}
+</style>
+</head>
+<body>
+<header class="hd"><a class="lg" href="#"><i></i>Oduya Architects</a><nav class="nv" aria-label="Primary"><a href="#work">Work</a><a href="#climate">Climate</a><a href="#journal">Journal</a><a href="#studio">Studio</a><a href="#contact">Contact</a></nav></header>
+
+<section class="facade" id="facade" aria-label="Introduction"><div class="behind"><svg id="jungle" viewBox="0 0 1400 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg></div>
+<div class="fins" id="fins" aria-hidden="true"></div>
+<div class="ht"><span class="k" style="color:#e3efe7">Tropical modern architecture · Lagos</span><h1>Architecture that breathes.</h1><p>Nia Oduya and studio design shaded, cross-ventilated buildings for hot climates, where the facade is a living filter of sun and air.</p><a class="bt" href="#work">See the work</a><a class="bt l" href="#contact">Talk to us</a></div>
+<span class="hint" id="hint">Move the pointer or scroll to turn the louvres</span></section>
+
+<div class="shade" id="shade">
+<div class="w" style="position:relative">
+<svg class="vine" id="vine" viewBox="0 0 90 3000" preserveAspectRatio="none" aria-hidden="true"></svg>
+<section class="sec" id="work" style="padding-left:70px"><div class="sh"><h2>Shaded buildings</h2><p>Each project is shown through its breeze-block screen: the pattern that lets the air in.</p></div><div class="pj" id="pj"></div></section>
+<section class="sec" id="climate" style="padding-left:70px"><div class="sh"><h2>Passive by design</h2><p>Measured across our last six buildings.</p></div><div class="cl"><div><b>4.5°</b><span>cooler inside than out on the hottest days</span><span class="wind" aria-hidden="true"><i></i><i style="animation-delay:.8s"></i><i style="animation-delay:1.6s"></i></span></div><div><b>0</b><span>air-conditioned rooms in four of six buildings</span></div><div><b>62%</b><span>of the facade is shaded at noon by fins and eaves</span></div><div><b>11</b><span>air changes an hour from cross-ventilation</span><span class="wind" aria-hidden="true"><i style="animation-delay:.3s"></i><i style="animation-delay:1.2s"></i></span></div></div></section>
+<section class="sec" id="journal" style="padding-left:70px"><div class="sh"><h2>Journal</h2><p>Notes on heat, shade and green walls.</p></div><div class="jr" id="jr"></div></section>
+<section class="sec" id="studio" style="padding-left:70px"><div class="sh"><h2>Studio</h2><p>About and now</p></div><div class="st"><div><p>Oduya Architects is eleven people in Lagos and Lisbon. We learned from the tropical modernists who built for heat before air conditioning existed, and we still draw every sun path by hand.</p><p>Founded in 2014 by Nia Oduya after a decade of designing schools and clinics in West Africa.</p></div><dl><dt>Now</dt><dd>A hospital wing with a planted facade</dd><dt>On site</dt><dd>Quay Market Hall</dd><dt>Award</dt><dd>Civic Building of the Year, 2025</dd><dt>Hiring</dt><dd>Environmental designer</dd></dl></div></section>
+</div></div>
+<section class="ct" id="contact"><div class="louv" aria-hidden="true"></div><div class="in"><h2>Let's design some shade.</h2><div><p class="k" style="color:#b8c7bd">New commissions</p><a class="m" href="mailto:studio@oduya.example">studio@oduya.example</a></div></div></section>
+<div class="w"><footer class="ft k"><span>Oduya Architects · placeholder identity</span><span>Set in Syne and DM Sans</span></footer></div>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)};
+function R(s){return function(){s|=0;s=s+0x6D2B79F5|0;var t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+// jungle behind the louvres
+var r=R(4),s='<rect width="1400" height="640" fill="#9fd0e0"/><circle cx="1150" cy="140" r="70" fill="#f2c14e"/>';
+function leaf(x,y,sz,a,col){return '<g transform="translate('+x+','+y+') rotate('+a+') scale('+sz+')"><path d="M0 0C30-40 90-50 120 0C90 50 30 40 0 0Z" fill="'+col+'"/><path d="M0 0L118 0" stroke="rgba(0,0,0,.2)" stroke-width="2"/></g>'}
+function mon(x,y,sz,a,col){var p='<g transform="translate('+x+','+y+') rotate('+a+') scale('+sz+')"><path d="M0 0C-60-20-90-90-50-140C-10-170 60-160 80-110C100-60 60-10 0 0Z" fill="'+col+'"/>';for(var i=0;i<4;i++)p+='<path d="M'+(-10+i*18)+' '+(-30-i*25)+'L'+(-70+i*8)+' '+(-60-i*22)+'" stroke="#9fd0e0" stroke-width="7"/>';return p+'</g>'}
+var cols=['#1f5c3d','#2e7a4d','#4c9a5b','#3f8a50','#16472f'];
+for(var i=0;i<60;i++)s+=leaf(r()*1400,200+r()*460,.6+r()*1.4,r()*360,cols[i%5]);
+for(i=0;i<14;i++)s+=mon(r()*1400,300+r()*360,.7+r()*.9,r()*80-40,cols[(i+2)%5]);
+s+='<rect x="0" y="560" width="1400" height="80" fill="#16472f"/>';
+$('#jungle').innerHTML=s;
+// fins
+var n=innerWidth<900?12:24,fins='';for(i=0;i<n;i++)fins+='<span class="fin"></span>';$('#fins').innerHTML=fins;
+var fac=$('#facade'),ang=72,target=72;
+function setAng(a){ang=a;fac.style.setProperty('--ang',a.toFixed(1)+'deg');document.documentElement.style.setProperty('--ang',a.toFixed(1)+'deg');$('#shade').style.setProperty('--sa',(90+a*.6).toFixed(0)+'deg')}
+function fromScroll(){var p=Math.min(1,scrollY/500);return 72-p*62}
+if(!rm){fac.addEventListener('pointermove',function(e){var b=fac.getBoundingClientRect();setAng(10+(e.clientX-b.left)/b.width*80)});addEventListener('scroll',function(){if(scrollY<700)setAng(fromScroll())},{passive:true})}
+setAng(72);
+// load: louvres close then open
+if(!rm){setAng(5);setTimeout(function(){setAng(72)},600)}
+// vine grows with scroll
+var v='<path d="M45 0C10 200 80 400 45 600S10 1000 45 1200S80 1600 45 1800S10 2200 45 2400S80 2800 45 3000" fill="none" stroke="#1f5c3d" stroke-width="4"/>';for(i=0;i<40;i++){var y=40+i*74,x=45+Math.sin(y/200*Math.PI)*28;v+='<path class="lf" d="M'+x+' '+y+'c'+(i%2?18:-18)+' -8 '+(i%2?32:-32)+' 4 '+(i%2?36:-36)+' 18c'+(i%2?-16:16)+' 6 '+(i%2?-30:30)+' 0 '+(i%2?-36:36)+' -18Z" fill="#4c9a5b" opacity="0" style="transition:opacity .4s"/>'}
+$('#vine').innerHTML=v;var path=$('#vine path'),lfs=document.querySelectorAll('#vine .lf');
+function grow(){var sh=$('#shade').getBoundingClientRect(),p=Math.min(1,Math.max(0,(innerHeight*.8-sh.top)/sh.height));path.style.strokeDashoffset=(3000*(1-p)).toFixed(0);lfs.forEach(function(l,i){l.setAttribute('opacity',i/lfs.length<p?1:0)})}
+if(!rm){addEventListener('scroll',grow,{passive:true});grow()}else{lfs.forEach(function(l){l.setAttribute('opacity',1)})}
+// projects
+var P=[['Tidewater Library','A riverside library behind a screen of circular concrete blocks.','Civic · 2025','#1f5c3d','m1'],['Mangrove Clinic','A clinic on stilts with a diamond-block skin and a planted roof.','Health · 2026','#a8744a','m2'],['Cork House','A family house shaded by deep eaves and pivoting timber fins.','Residential · 2024','#4c9a5b','m3'],['Quay Market Hall','A market under a perforated roof, cooled by the sea breeze.','Civic · on site','#16241c','m4']];
+$('#pj').innerHTML=P.map(function(p){return '<a class="pc" href="#"><div class="pcw"><div class="cob '+p[4]+'" style="--c:'+p[3]+'"></div></div><div class="tx"><span class="k">'+p[2]+'</span><h3>'+p[0]+'</h3><p>'+p[1]+'</p></div></a>'}).join('');
+var J=[['The facade as a filter','Why we design screens, not walls.','Oct 2026'],['Breeze blocks, a short history','From 1930s Recife to our Lagos library.','Aug 2026'],['Planting a building','How green walls survive a dry season.','Jun 2026']];
+$('#jr').innerHTML=J.map(function(j){return '<a href="#"><span class="k">'+j[2]+'</span><h4>'+j[0]+'</h4><p>'+j[1]+'</p></a>'}).join('');
+})();
+</script>
+</body>
+</html>
