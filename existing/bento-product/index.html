@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en" data-theme="bento">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bento Product</title>
+<link rel="stylesheet" href="../tokens.css">
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}html,body{margin:0}
+.p{--d:var(--font-bento-display,"Bricolage Grotesque",system-ui,sans-serif);--s:var(--font-bento-sans,"Figtree",system-ui,sans-serif);background:var(--bg);color:var(--ink);font:400 16px/1.5 var(--s);padding:20px 0 40px}
+.p a{color:inherit;text-decoration:none}
+.p :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.w{max-width:1120px;margin:0 auto;padding:0 20px}
+.nav{display:flex;justify-content:space-between;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 8px 8px 22px;margin-bottom:16px}
+.mark{display:flex;gap:8px;align-items:center;font:700 19px/1 var(--d)}.mark svg{width:20px;height:20px;color:var(--accent)}
+.nl{display:flex;gap:6px;font-size:14px;font-weight:500}.nl a{padding:8px 14px;border-radius:999px;transition:background .2s}.nl a:hover{background:var(--bg)}
+.nl a.c{background:var(--ink);color:var(--bg)}.nl a.c:hover{background:var(--accent);color:var(--on-accent)}
+.g{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.t{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:28px;position:relative;overflow:hidden;transition:transform .3s cubic-bezier(.2,.7,.1,1)}
+a.t:hover,.t.h:hover{transform:translateY(-4px)}
+.s4{grid-column:span 4}.s5{grid-column:span 5}.s6{grid-column:span 6}.s7{grid-column:span 7}.s8{grid-column:span 8}.s12{grid-column:span 12}.r2{grid-row:span 2}
+.p a.blue{color:var(--on-accent)}.p a.dark{color:var(--on-inverse)}.p a.yel{color:var(--ink)}
+.blue{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.yel{background:var(--accent-2);color:var(--ink);border-color:var(--accent-2)}
+.dark{background:var(--inverse);color:var(--on-inverse);border-color:var(--inverse)}
+h1{font:700 clamp(44px,6.4vw,72px)/.98 var(--d);letter-spacing:-.03em;margin:0 0 20px}
+h2{font:700 clamp(28px,3.4vw,38px)/1.05 var(--d);letter-spacing:-.02em;margin:72px 0 20px}
+h3{font:600 26px/1.1 var(--d);letter-spacing:-.01em;margin:0 0 8px}
+.t p{margin:0}.mut{color:var(--ink-muted)}.blue .mut,.dark .mut{color:inherit;opacity:.82}
+.hero{min-height:420px;display:flex;flex-direction:column;justify-content:space-between}
+.hero p{max-width:40ch;font-size:18px}
+.pill{display:inline-flex;gap:8px;align-items:center;font-weight:600;font-size:14px;background:var(--ink);color:var(--bg)!important;padding:12px 20px;border-radius:999px;margin-top:20px;transition:background .2s}
+.pill:hover{background:var(--accent);color:var(--on-accent)!important}
+.roles{list-style:none;margin:0;padding:0;font:600 30px/1.15 var(--d);letter-spacing:-.02em;display:grid;gap:4px}
+.roles li{opacity:.78;transition:opacity .3s}.roles li:hover,.roles li.on{opacity:1}
+.live{display:flex;gap:10px;align-items:center;font-weight:600}.live i{width:10px;height:10px;border-radius:50%;background:var(--accent-2);animation:pl 2s infinite}
+@keyframes pl{50%{box-shadow:0 0 0 7px transparent;opacity:.5}}
+.spark{display:flex;align-items:flex-end;gap:5px;height:64px;margin-top:18px}.spark i{flex:1;background:var(--accent);border-radius:6px;min-height:8px;transition:height .4s,background .2s}.spark i:hover{background:var(--accent-2)}
+.art{height:150px;border-radius:18px;margin:-8px -8px 20px;background:var(--bg);display:grid;place-items:center}
+.art svg{width:100%;height:100%}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}.chips span{font-size:13px;font-weight:500;padding:4px 11px;border-radius:999px;border:1px solid currentColor;opacity:.85}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:22px}
+.tabs button{font:600 14px var(--s);background:transparent;color:inherit;border:1px solid var(--line);border-radius:999px;padding:8px 16px;cursor:pointer;transition:background .2s}
+.tabs button[aria-selected=true]{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.big{display:flex;flex-wrap:wrap;gap:10px}.big span{font:600 22px/1 var(--d);padding:14px 20px;border-radius:18px;background:var(--bg);animation:in .4s both}
+@keyframes in{from{opacity:0;transform:translateY(6px)}}
+.nt{display:flex;flex-direction:column;justify-content:space-between;min-height:220px}
+.nt time{font-size:14px}
+.mail{font:700 clamp(30px,4.6vw,52px)/1 var(--d);letter-spacing:-.025em;display:block;margin:12px 0 24px;overflow-wrap:anywhere}
+.soc{display:flex;gap:8px;flex-wrap:wrap}.soc a{border:1.5px solid var(--ink);padding:8px 16px;border-radius:999px;font-weight:600;font-size:14px;transition:background .2s,color .2s}.soc a:hover{background:var(--ink);color:var(--accent-2)}
+.foot{display:flex;justify-content:space-between;color:var(--ink-muted);font-size:14px;padding:28px 6px 0}
+@media(max-width:860px){.g>*{grid-column:span 12!important;grid-row:auto!important}.hero{min-height:0;gap:40px}.nl a:not(.c){display:none}}
+@media(prefers-reduced-motion:reduce){.t,.spark i,.big span,.live i{transition:none;animation:none}}
+</style>
+<div class="p" data-theme="bento"><div class="w">
+<nav class="nav"><a class="mark" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20.5 8.5A9 9 0 1 0 21 12"/></svg>openloop</a><div class="nl"><a href="#w">Projects</a><a href="#e">Experiments</a><a href="#k">Stack</a><a href="#n">Notes</a><a class="c" href="#c">Say hello</a></div></nav>
+
+<div class="g">
+<div class="t s8 r2 hero"><div><h1>Full-stack engineer for products that think.</h1><p class="mut">I design and ship web platforms and the AI behind them: agents, retrieval and LLM features that hold up in production.</p></div><div><a class="pill" href="#w">See what I have built</a></div></div>
+<div class="t s4 blue"><ul class="roles"><li class="on">Full-stack</li><li>Applied AI</li><li>Agents</li><li>Cloud-native</li></ul></div>
+<div class="t s4"><div class="live"><i></i>Currently</div><p class="mut" style="margin-top:10px">Building an evaluation harness for tool-using agents.</p><div class="spark" aria-hidden="true"><i style="height:30%"></i><i style="height:48%"></i><i style="height:40%"></i><i style="height:66%"></i><i style="height:58%"></i><i style="height:84%"></i><i style="height:100%"></i></div></div>
+</div>
+
+<h2 id="w">Selected projects</h2>
+<div class="g">
+<a class="t s7" href="#"><div class="art"><svg viewBox="0 0 400 150" aria-hidden="true"><g stroke="var(--line)" stroke-width="2"><path d="M40 112H360M40 76H360M40 40H360"/></g><g fill="var(--accent)"><rect x="70" y="60" width="44" height="52" rx="10"/><rect x="140" y="38" width="44" height="74" rx="10"/><rect x="210" y="74" width="44" height="38" rx="10"/></g><rect x="280" y="24" width="44" height="88" rx="10" fill="var(--accent-2)"/></svg></div><h3>Ledgerline</h3><p class="mut">Event-sourced billing for multi-tenant products. Every balance replays from its history.</p><div class="chips mut"><span>Next.js</span><span>Postgres</span><span>AWS</span></div></a>
+<a class="t s5 dark" href="#"><div class="art" style="background:rgba(255,255,255,.07)"><svg viewBox="0 0 300 150" aria-hidden="true"><g fill="none" stroke="var(--accent-2)" stroke-width="3" stroke-linecap="round"><path d="M40 75H110C140 75 140 36 170 36H260M110 75C140 75 140 114 170 114H260"/></g><g fill="var(--inverse)" stroke="var(--on-inverse)" stroke-width="3"><circle cx="110" cy="75" r="9"/><circle cx="260" cy="36" r="9"/><circle cx="260" cy="114" r="9"/></g></svg></div><h3>Harbor</h3><p class="mut">Durable agent runtime with approvals and resumable tool calls.</p><div class="chips mut"><span>TypeScript</span><span>Kubernetes</span></div></a>
+<a class="t s5 yel" href="#"><div class="art" style="background:rgba(20,32,27,.08)"><svg viewBox="0 0 300 150" aria-hidden="true"><g fill="var(--ink)"><circle cx="60" cy="90" r="6"/><circle cx="105" cy="50" r="6"/><circle cx="150" cy="104" r="6"/><circle cx="195" cy="62" r="6"/><circle cx="240" cy="96" r="6"/></g><circle cx="150" cy="75" r="46" fill="none" stroke="var(--ink)" stroke-width="3"/></svg></div><h3>Tessera</h3><p>Hybrid retrieval over engineering docs, gated by an evaluation set.</p><div class="chips"><span>Python</span><span>pgvector</span></div></a>
+<a class="t s7" href="#"><div class="art"><svg viewBox="0 0 400 150" aria-hidden="true"><g fill="var(--accent)"><rect x="40" y="90" width="26" height="40" rx="8"/><rect x="80" y="60" width="26" height="70" rx="8"/><rect x="120" y="100" width="26" height="30" rx="8"/><rect x="160" y="30" width="26" height="100" rx="8"/><rect x="200" y="70" width="26" height="60" rx="8"/></g><path d="M250 100H360M250 70H330M250 40H350" stroke="var(--line)" stroke-width="8" stroke-linecap="round"/></svg></div><h3>Plainsight</h3><p class="mut">Tracing and cost accounting for LLM apps. A failed run reads on one screen.</p><div class="chips mut"><span>Go</span><span>ClickHouse</span><span>React</span></div></a>
+</div>
+
+<h2 id="e">AI experiments</h2>
+<div class="g">
+<div class="t s4 h"><h3>Chunk size and recall</h3><p class="mut">Small chunks win on precise questions, lose on context.</p><div class="spark" aria-hidden="true"><i style="height:35%"></i><i style="height:60%"></i><i style="height:92%"></i><i style="height:84%"></i><i style="height:64%"></i></div></div>
+<div class="t s4 h"><h3>How agents fail</h3><p class="mut">300 failed runs sorted. Mostly bad tool arguments, not bad reasoning.</p><div class="spark" aria-hidden="true"><i style="height:100%"></i><i style="height:72%"></i><i style="height:48%"></i><i style="height:26%"></i><i style="height:14%"></i></div></div>
+<div class="t s4 h"><h3>Small-model routing</h3><p class="mut">Cheap model first, escalate on low confidence. Quality held.</p><div class="spark" aria-hidden="true"><i style="height:90%"></i><i style="height:70%"></i><i style="height:52%"></i><i style="height:40%"></i><i style="height:34%"></i></div></div>
+</div>
+
+<h2 id="k">Technical expertise</h2>
+<div class="g"><div class="t s8"><div class="tabs" role="tablist" id="tabs"></div><div class="big" id="chips" role="tabpanel"></div></div>
+<div class="t s4 blue"><h3>How I work</h3><p>Measure first. Ship the smallest version that can be evaluated. Keep the infrastructure boring.</p></div></div>
+
+<h2 id="n">Engineering notes</h2>
+<div class="g">
+<a class="t s4 nt" href="#"><time class="mut">Oct 2026 · 9 min</time><h3>What an agent should remember, and what it should forget</h3></a>
+<a class="t s4 nt" href="#"><time class="mut">Sep 2026 · 7 min</time><h3>Write the evaluation before the prompt</h3></a>
+<a class="t s4 nt" href="#"><time class="mut">Jul 2026 · 11 min</time><h3>Chunking is a product decision</h3></a>
+</div>
+
+<h2>About and now</h2>
+<div class="g"><div class="t s7"><h3>About</h3><p class="mut" style="max-width:48ch">I like systems where the interesting part is also the dependable part. I came to AI work from product engineering, so I care about what happens after the demo.</p></div>
+<div class="t s5 dark"><h3>Now</h3><p class="mut">Writing a series on retrieval quality. Reading about long-context evaluation. Climbing on weekends.</p></div></div>
+
+<div class="g" id="c" style="margin-top:72px"><div class="t s12 yel" style="padding:44px 32px"><p>Working on something that needs to think and ship?</p><a class="mail" href="mailto:hello@example.com">hello@example.com</a><div class="soc"><a href="#">GitHub</a><a href="#">LinkedIn</a><a href="#">RSS</a><a href="#">Mastodon</a></div></div></div>
+<div class="foot"><span>openloop, 2026</span><span>Set in Bricolage Grotesque and Figtree</span></div>
+</div></div>
+<script>
+(function(){
+var S={"Interface":["TypeScript","React","Next.js","Accessibility"],"Services":["Node","Python","Go","Postgres","Queues"],"Intelligence":["LLM apps","Agents","RAG","Evals","Tool use"],"Platform":["AWS","Kubernetes","Terraform","CI/CD","Tracing"]};
+var tabs=document.getElementById('tabs'),chips=document.getElementById('chips');
+function show(k){Array.prototype.forEach.call(tabs.children,function(b){b.setAttribute('aria-selected',b.textContent===k)});chips.innerHTML=S[k].map(function(x,i){return '<span style="animation-delay:'+i*50+'ms">'+x+'</span>'}).join('')}
+Object.keys(S).forEach(function(k){var b=document.createElement('button');b.textContent=k;b.setAttribute('role','tab');b.onclick=function(){show(k)};tabs.appendChild(b)});show('Intelligence');
+var li=document.querySelectorAll('.roles li'),i=0;if(!matchMedia('(prefers-reduced-motion:reduce)').matches)setInterval(function(){li[i].classList.remove('on');i=(i+1)%li.length;li[i].classList.add('on')},2200);
+})();
+</script>
+
+</body>
+</html>

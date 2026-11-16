@@ -1,0 +1,279 @@
+<!-- @dsCard group="Homepage concepts" height=4000 subtitle="E · Vectorlab Handbook: technical publication with sidebar, search and diagrams" page -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}html,body{margin:0}
+.p{--sans:var(--font-vl-sans,"Geist",system-ui,sans-serif);--mono:var(--font-vl-mono,"Geist Mono",ui-monospace,monospace);--g2:color-mix(in srgb,var(--accent-2) 62%,#000);--o2:color-mix(in srgb,var(--accent-3) 58%,#000);background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;position:relative}
+.p a{color:inherit;text-decoration:none}
+.p :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+.mono,.p code,.p kbd{font-family:var(--mono);font-size:12.5px;line-height:18px}
+.soft{color:var(--ink-soft)}
+.dot,.sq{display:inline-block;flex:none;background:var(--accent)}.dot{width:8px;height:8px;border-radius:50%}.sq{width:10px;height:10px;border-radius:2px}
+.c-b{background:var(--accent)}.c-g{background:var(--accent-2)}.c-o{background:var(--accent-3)}
+/* header */
+.hd{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.hi{max-width:1360px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:28px}
+.lg{display:flex;align-items:center;gap:9px;font-weight:600;font-size:17px;letter-spacing:-.02em}.lg svg{width:22px;height:22px}
+.mn{display:flex;gap:2px;font-size:14px;margin-right:auto}.mn a{padding:6px 11px;border-radius:6px;color:var(--ink-soft);transition:background .15s,color .15s}.mn a:hover{background:var(--line);color:var(--ink)}
+.sr{display:flex;align-items:center;gap:10px;width:260px;height:34px;padding:0 8px 0 11px;background:var(--surface);border:1px solid var(--line);border-radius:7px;color:var(--ink-soft);font:400 14px var(--sans);cursor:pointer;transition:border-color .15s}
+.sr:hover{border-color:var(--ink-muted)}.sr svg{width:15px;height:15px}.sr span{flex:1;text-align:left}
+kbd{border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 5px;font-size:11px;background:var(--bg);color:var(--ink-soft)}
+.bg{display:none;background:none;border:0;padding:6px;color:var(--ink);cursor:pointer}.bg svg{width:22px;height:22px}
+/* shell */
+.sh{max-width:1360px;margin:0 auto;display:grid;grid-template-columns:240px minmax(0,1fr) 196px}
+.sb{position:sticky;top:57px;align-self:start;max-height:calc(100vh - 57px);overflow:auto;padding:24px 16px 32px 24px;border-right:1px solid var(--line);font-size:14px}
+.sb h4{margin:22px 0 8px;font:500 12.5px var(--mono);color:var(--ink-soft)}.sb h4:first-child{margin-top:0}
+.sb ul{list-style:none;margin:0;padding:0}
+.sb li a{display:block;padding:5px 10px;margin-left:-10px;border-left:2px solid transparent;color:var(--ink-soft);transition:color .15s,border-color .15s,background .15s}
+.sb li a:hover{color:var(--ink);background:color-mix(in srgb,var(--line) 55%,transparent)}
+.sb li a.on,.rail a.on{color:var(--ink);border-left-color:var(--accent);font-weight:500}
+.sb details{margin:0}.sb summary{display:flex;align-items:center;gap:9px;padding:5px 0;cursor:pointer;list-style:none;color:var(--ink);font-weight:500}.sb summary::-webkit-details-marker{display:none}
+.sb summary svg{margin-left:auto;width:12px;height:12px;color:var(--ink-muted);transition:transform .2s}.sb details[open]>summary svg{transform:rotate(90deg)}
+.sb details ul{margin:2px 0 8px 4px;border-left:1px solid var(--line);padding-left:14px}
+.sb details li a{margin-left:0;padding-left:0;border:0}
+.upd{margin-top:28px;padding-top:16px;border-top:1px solid var(--line);color:var(--ink-soft)}
+.mainc{padding:0 48px;min-width:0}
+.rail{position:sticky;top:57px;align-self:start;padding:28px 0 0 24px;font-size:13px}
+.rail h4{margin:0 0 10px;font:500 12.5px var(--mono);color:var(--ink-soft)}
+.rail a{display:block;padding:4px 0 4px 12px;border-left:2px solid var(--line);color:var(--ink-soft);transition:color .15s,border-color .15s}.rail a:hover{color:var(--ink)}
+/* hero */
+.hero{padding:56px 0 8px}
+.crumb{color:var(--ink-soft);margin-bottom:20px}.crumb b{color:var(--ink);font-weight:500}
+h1{font:600 clamp(36px,4.4vw,56px)/1.04 var(--sans);letter-spacing:-.035em;margin:0 0 20px;max-width:15ch}
+.lead{font-size:18px;line-height:1.55;color:var(--ink-soft);max-width:50ch;margin:0 0 28px}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px}
+.b1,.b2{font:500 14px var(--sans);padding:9px 16px;border-radius:7px;transition:background .15s,border-color .15s,transform .15s}
+.b1{background:var(--accent);color:var(--on-accent)!important}.b1:hover{background:color-mix(in srgb,var(--accent) 86%,#000)}
+.b2{border:1px solid var(--line);background:var(--surface)}.b2:hover{border-color:var(--ink-muted)}
+.term{background:var(--inverse);color:var(--on-inverse);border-radius:8px;overflow:hidden;border:1px solid var(--inverse)}
+.tb{display:flex;align-items:center;gap:7px;padding:10px 14px;border-bottom:1px solid rgba(250,250,248,.12);color:rgba(250,250,248,.7)}
+.tb .dot{width:9px;height:9px}.tb span{margin-left:8px}
+.tc{padding:16px 18px 18px;min-height:210px;overflow-x:auto}
+.tc .l{display:block;opacity:0;white-space:pre;line-height:24px}.tc .l.on{opacity:1}
+.tc .d{color:rgba(250,250,248,.62)}.tc .ok{color:#7be0b6}.tc .bl{color:#9db3ff}.tc .or{color:#ffb98a}
+.cur{display:inline-block;width:7px;height:14px;background:var(--on-inverse);vertical-align:-2px;animation:bl 1.1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+/* sections */
+.s{padding-top:72px;scroll-margin-top:70px}
+.sh2{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:6px}
+h2{font:600 26px/1.2 var(--sans);letter-spacing:-.02em;margin:0}
+.path{color:var(--ink-soft)}
+.sd{color:var(--ink-soft);max-width:60ch;margin:0 0 24px}
+/* explore */
+.tg{display:grid;grid-template-columns:1fr 1fr;gap:0 24px;align-items:start;border-top:1px solid var(--line)}
+.tp{border-bottom:1px solid var(--line)}
+.tp summary{display:grid;grid-template-columns:10px 1fr auto 14px;gap:14px;align-items:start;padding:16px 4px;cursor:pointer;list-style:none;transition:background .15s}
+.tp summary::-webkit-details-marker{display:none}.tp summary:hover{background:color-mix(in srgb,var(--line) 40%,transparent)}
+.tp summary .sq{margin-top:7px}.tp b{display:block;font-weight:600;letter-spacing:-.01em}.tp summary span{display:block;font-size:14px;color:var(--ink-soft);line-height:1.45}
+.tp em{font:400 12px var(--mono);color:var(--ink-soft);font-style:normal;margin-top:4px}
+.tp svg{width:12px;height:12px;margin-top:6px;color:var(--ink-muted);transition:transform .2s}.tp[open] svg{transform:rotate(90deg)}
+.tp ul{list-style:none;margin:0 0 14px 28px;padding:0;font-size:14px}.tp li a{display:flex;justify-content:space-between;padding:6px 0;color:var(--ink-soft);border-top:1px solid var(--line)}.tp li:first-child a{border-top:0}.tp li a:hover{color:var(--accent)}
+/* projects */
+.pj{border:1px solid var(--line);background:var(--surface);border-radius:8px;margin-bottom:20px;overflow:hidden;transition:border-color .2s}.pj:hover{border-color:var(--ink-muted)}
+.ph{display:flex;justify-content:space-between;align-items:center;padding:10px 18px;border-bottom:1px solid var(--line);color:var(--ink-soft);background:var(--bg)}
+.pb{padding:22px 22px 8px}.pb h3{font:600 21px/1.25 var(--sans);letter-spacing:-.02em;margin:0 0 8px}.pb p{margin:0 0 16px;color:var(--ink-soft);max-width:66ch}
+.dg{display:block;width:100%;height:auto;margin:6px 0 4px}
+.dg text{font-family:var(--sans)}.dg .t{font-size:12.5px;font-weight:600;fill:var(--ink)}.dg .u{font:400 10.5px var(--mono);fill:var(--ink-soft)}.dg .e{font:400 10px var(--mono);fill:var(--ink-soft)}
+.dg rect.n{fill:var(--bg);stroke:var(--ink-muted);stroke-width:1}.dg path.ed{fill:none;stroke:var(--ink-muted);stroke-width:1}.dg path.ds{stroke-dasharray:4 3}
+.pf{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 22px 18px}
+.tags{display:flex;gap:6px;flex-wrap:wrap}.tags span{border:1px solid var(--line);border-radius:4px;padding:1px 8px;color:var(--ink-soft);background:var(--bg)}
+.rd{font-size:14px;font-weight:500;color:var(--accent)!important;background:linear-gradient(var(--accent),var(--accent)) 0 100%/0 1px no-repeat;transition:background-size .25s}.pj:hover .rd{background-size:100% 1px}
+.code{border-top:1px solid var(--line);background:var(--bg)}
+.ct{display:flex;justify-content:space-between;align-items:center;padding:8px 18px;border-bottom:1px solid var(--line);color:var(--ink-soft)}
+.cp{font:500 11.5px var(--mono);border:1px solid var(--line);background:var(--surface);color:var(--ink-soft);border-radius:4px;padding:1px 8px;cursor:pointer}.cp:hover{color:var(--ink);border-color:var(--ink-muted)}
+.code pre{margin:0;padding:14px 18px;overflow-x:auto;font:400 12.5px/1.75 var(--mono);color:var(--ink)}
+.k{color:var(--accent)}.st{color:var(--g2)}.cm{color:var(--ink-muted);font-style:italic}.fn{color:var(--o2)}
+/* experiments */
+.fl{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.ch{font:500 13px var(--sans);padding:5px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink-soft);cursor:pointer;transition:all .15s}
+.ch:hover{border-color:var(--ink-muted);color:var(--ink)}.ch[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.ex{display:grid;grid-template-columns:104px 1fr 92px;gap:20px;padding:20px 0;border-top:1px solid var(--line);transition:background .15s}
+.ex:last-child{border-bottom:1px solid var(--line)}
+.ex .m{display:grid;gap:2px;align-content:start;color:var(--ink-soft)}.ex .m b{font-weight:500;color:var(--ink)}
+.ex h3{font:600 16.5px/1.35 var(--sans);letter-spacing:-.01em;margin:0 0 6px}
+.ex .kv{display:grid;grid-template-columns:48px 1fr;gap:0 10px;color:var(--ink-soft);margin-bottom:8px}.ex .kv span:nth-child(odd){color:var(--ink-muted)}
+.ex p{margin:0;font-size:15px;color:var(--ink)}
+.ex .stt{display:flex;gap:7px;align-items:center;font-size:13px;font-weight:500;align-self:start;margin-top:3px}
+.ex[hidden],.nt[hidden]{display:none}
+/* notes */
+.sf{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:0 12px;height:42px;margin-bottom:6px;transition:border-color .15s}
+.sf:focus-within{border-color:var(--accent)}.sf svg{width:16px;height:16px;color:var(--ink-muted)}
+.sf input{flex:1;border:0;background:none;font:400 15px var(--sans);color:var(--ink);outline:0;height:100%}.sf input::placeholder{color:var(--ink-soft)}
+.cnt{color:var(--ink-soft);margin:0 0 8px}
+.nt{display:grid;grid-template-columns:96px 1fr 60px;gap:20px;padding:18px 0;border-top:1px solid var(--line);align-items:baseline}
+.nt:last-child{border-bottom:1px solid var(--line)}
+.nt .ct2{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-soft);margin-bottom:3px}
+.nt h3{font:600 18px/1.35 var(--sans);letter-spacing:-.015em;margin:0 0 3px;transition:color .15s}.nt:hover h3{color:var(--accent)}
+.nt p{margin:0;font-size:14.5px;color:var(--ink-soft);max-width:60ch}.nt .rt{text-align:right;color:var(--ink-soft)}.nt time{color:var(--ink-soft)}
+.empty{padding:24px 0;color:var(--ink-soft)}
+/* stack */
+.tbl{width:100%;border-collapse:collapse;font-size:14.5px}
+.tbl th{font:500 12.5px var(--mono);color:var(--ink-soft);text-align:left;padding:8px 14px 8px 0;border-bottom:1px solid var(--ink)}
+.tbl td{padding:14px 14px 14px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl td:first-child{font-weight:600;white-space:nowrap}.tbl td:nth-child(2){font:400 12.5px/1.8 var(--mono)}.tbl td:last-child{color:var(--ink-soft)}
+.tbl tr{transition:background .15s}.tbl tbody tr:hover{background:color-mix(in srgb,var(--line) 40%,transparent)}
+.lgd{display:flex;gap:20px;flex-wrap:wrap;margin-top:14px;color:var(--ink-soft)}.lgd span{display:flex;gap:7px;align-items:center}
+.dp{display:inline-flex;gap:3px;vertical-align:middle;margin-right:8px}.dp i{width:14px;height:4px;border-radius:2px;background:var(--line)}.dp i.on{background:var(--accent)}
+/* about */
+.ab{display:grid;grid-template-columns:1.3fr 1fr;gap:40px}
+.ab p{margin:0 0 14px;max-width:56ch}
+.ab ul{list-style:none;margin:0;padding:0}.ab li{padding:12px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:10px 1fr;gap:12px;font-size:15px}
+.ab li:last-child{border-bottom:1px solid var(--line)}.ab li .sq{margin-top:7px}
+.ab li b{display:block;font-weight:600}.ab li span.soft{font-size:14px}
+.meta{display:flex;gap:18px;flex-wrap:wrap;color:var(--ink-soft);margin-top:18px}
+/* footer */
+.ft{border-top:1px solid var(--line);margin-top:88px}
+.fi{max-width:1360px;margin:0 auto;padding:40px 24px 28px;display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:32px;font-size:14px}
+.fi h4{margin:0 0 12px;font:500 12.5px var(--mono);color:var(--ink-soft)}.fi ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}.fi li a{color:var(--ink-soft);transition:color .15s}.fi li a:hover{color:var(--accent)}
+.fi p{margin:10px 0 0;color:var(--ink-soft);max-width:34ch}
+.fb{max-width:1360px;margin:0 auto;padding:16px 24px 36px;display:flex;justify-content:space-between;color:var(--ink-soft);border-top:1px solid var(--line)}
+/* palette */
+.ov{position:fixed;inset:0;z-index:50;background:rgba(32,33,36,.38);display:none;align-items:flex-start;justify-content:center;padding-top:14vh}.ov.on{display:flex}
+.pl{width:min(560px,92vw);background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:0 18px 50px rgba(32,33,36,.22);overflow:hidden}
+.pl input{width:100%;border:0;border-bottom:1px solid var(--line);padding:16px 18px;font:400 16px var(--sans);color:var(--ink);background:var(--surface);outline:0}
+.pl ul{list-style:none;margin:0;padding:6px;max-height:320px;overflow:auto}
+.pl li a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:6px;font-size:14.5px}.pl li a:hover,.pl li a.on{background:var(--bg)}.pl li small{margin-left:auto;color:var(--ink-soft);font:400 12px var(--mono)}
+.sc{display:none}
+@media(max-width:1180px){.sh{grid-template-columns:232px minmax(0,1fr)}.rail{display:none}.mainc{padding:0 36px}}
+@media(max-width:860px){.sh{grid-template-columns:1fr}.hi{gap:12px}.mn{display:none}.lg{margin-right:auto}.bg{display:block;order:-1}.sr{width:auto;padding:0 10px}.sr span,.sr kbd{display:none}
+.sb{position:fixed;left:0;top:57px;bottom:0;width:272px;max-height:none;background:var(--bg);z-index:30;transform:translateX(-102%);transition:transform .25s}.sb.open{transform:none;box-shadow:8px 0 30px rgba(32,33,36,.12)}
+.sc.on{display:block;position:fixed;inset:57px 0 0;background:rgba(32,33,36,.3);z-index:25}
+.mainc{padding:0 20px}.tg,.ab{grid-template-columns:1fr}.ex{grid-template-columns:1fr;gap:8px}.ex .m{grid-template-columns:auto auto;justify-content:start;gap:14px}.nt{grid-template-columns:1fr;gap:4px}.nt .rt{text-align:left}.fi{grid-template-columns:1fr 1fr}.tbl td:first-child{white-space:normal}.tbl th:last-child,.tbl td:last-child{display:none}.fb{flex-direction:column;gap:6px}.s{padding-top:56px}}
+@media(prefers-reduced-motion:reduce){.cur{animation:none}*{transition:none!important}}
+</style>
+<div class="p" data-theme="vectorlab">
+<header class="hd"><div class="hi">
+<button class="bg" id="bg" aria-label="Open navigation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
+<a class="lg" href="#top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="3"/><path d="M7 17 17 7M10 7h7v7"/></svg>Vectorlab</a>
+<nav class="mn" aria-label="Primary"><a href="#research">Research</a><a href="#work">Engineering</a><a href="#research">Experiments</a><a href="#notes">Notes</a><a href="#about">About</a></nav>
+<button class="sr" id="so" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search the handbook</span><kbd>Ctrl K</kbd></button>
+</div></header>
+<div class="sc" id="sc"></div>
+<div class="sh">
+<aside class="sb" id="sb" aria-label="Sections and topics"><h4>On this site</h4><ul id="ov"></ul><h4>Topics</h4><div id="tp"></div><div class="upd mono">Last updated 2026-11-02<br>42 notes, 18 experiments</div></aside>
+<main class="mainc" id="top">
+<section class="hero"><div class="crumb mono">Vectorlab / <b>Overview</b></div>
+<h1>Engineering intelligence, one system at a time.</h1>
+<p class="lead">Notes, experiments, and engineering explorations across AI systems and modern software.</p>
+<div class="btns"><a class="b1" href="#explore">Start exploring</a><a class="b2" href="#notes">Read the latest notes</a></div>
+<div class="term" aria-label="Terminal listing current research topics"><div class="tb mono"><i class="dot c-b"></i><i class="dot c-g"></i><i class="dot c-o"></i><span>vectorlab: research</span></div><div class="tc mono" id="tc"><span class="l"><span class="ok">$</span> vectorlab topics --active</span><span class="l"><span class="bl">research/agents</span>      durable tool execution, approval gates   <span class="d">running</span></span><span class="l"><span class="bl">research/retrieval</span>   chunk size vs recall, 400 questions      <span class="d">running</span></span><span class="l"><span class="bl">research/evals</span>       regression sets for tool-using agents    <span class="d">running</span></span><span class="l"><span class="ok">research/routing</span>     small-model cascades                     <span class="d">complete</span></span><span class="l"><span class="ok">$</span> vectorlab latest</span><span class="l"><span class="d">2026-10-28</span>  note  <span class="or">Designing agent memory that can forget</span></span><span class="l"><span class="ok">$</span> <i class="cur"></i></span></div></div></section>
+
+<section class="s" id="explore"><div class="sh2"><h2>Start exploring</h2><span class="path mono">/topics</span></div><p class="sd">Six areas of work. Open a topic to see the threads inside it.</p><div class="tg" id="tg"></div></section>
+
+<section class="s" id="work"><div class="sh2"><h2>Featured technical work</h2><span class="path mono">/engineering</span></div><p class="sd">Systems built and run in production, written up as design documents.</p>
+<article class="pj"><div class="ph mono"><span>engineering / agents / harbor</span><span>Updated 2026-10-02</span></div><div class="pb"><h3>Harbor: a durable runtime for tool-using agents</h3><p>Every tool call is an event in an append-only log. A crashed run replays the log and resumes at the exact step, and approval gates pause a run without holding a worker.</p><svg class="dg" id="d1" viewBox="0 0 720 200" role="img" aria-label="Harbor architecture: client API, orchestrator, tool workers and approval gate, event log"></svg></div>
+<div class="code"><div class="ct mono"><span>harbor/runtime/step.ts</span><button class="cp" data-copy="d1c">Copy</button></div><pre><code id="d1c"><span class="cm">// Append the request first, so a crash never loses a call.</span>
+<span class="k">export async function</span> <span class="fn">runStep</span>(ctx: RunContext, step: Step) {
+  <span class="k">const</span> call = <span class="k">await</span> ctx.log.<span class="fn">append</span>({ type: <span class="st">"tool.requested"</span>, step });
+  <span class="k">if</span> (step.requiresApproval) <span class="k">await</span> ctx.<span class="fn">waitForApproval</span>(call.id);
+  <span class="k">const</span> result = <span class="k">await</span> ctx.tools.<span class="fn">invoke</span>(step.tool, step.args, { key: call.id });
+  <span class="k">return</span> ctx.log.<span class="fn">append</span>({ type: <span class="st">"tool.completed"</span>, callId: call.id, result });
+}</code></pre></div>
+<div class="pf"><div class="tags mono"><span>TypeScript</span><span>Temporal</span><span>Postgres</span><span>Kubernetes</span></div><a class="rd" href="#">Read the design document</a></div></article>
+
+<article class="pj"><div class="ph mono"><span>engineering / ai / tessera</span><span>Updated 2026-08-19</span></div><div class="pb"><h3>Tessera: retrieval gated by evaluation</h3><p>Hybrid search over engineering documentation. A fixed question set runs on every change to chunking, embeddings or reranking, and a regression blocks the release.</p><svg class="dg" id="d2" viewBox="0 0 720 220" role="img" aria-label="Tessera pipeline: ingest, chunk, embed, index on top; query, retrieve, rerank, generate below; evaluation set checks the output"></svg></div>
+<div class="pf"><div class="tags mono"><span>Python</span><span>FastAPI</span><span>pgvector</span><span>bge-reranker</span></div><a class="rd" href="#">Read the design document</a></div></article>
+
+<article class="pj"><div class="ph mono"><span>engineering / llm-systems / plainsight</span><span>Updated 2026-06-30</span></div><div class="pb"><h3>Plainsight: routing and tracing for LLM applications</h3><p>A gateway that sends each request to the cheapest model that can answer, caches repeats, and writes one trace per run so a failure reads on a single screen.</p><svg class="dg" id="d3" viewBox="0 0 720 200" role="img" aria-label="Plainsight gateway: applications call a router with cache, which routes to three model tiers and writes traces to ClickHouse"></svg></div>
+<div class="pf"><div class="tags mono"><span>Go</span><span>ClickHouse</span><span>OpenTelemetry</span><span>React</span></div><a class="rd" href="#">Read the design document</a></div></article></section>
+
+<section class="s" id="research"><div class="sh2"><h2>Research and experiments</h2><span class="path mono">/experiments</span></div><p class="sd">Each entry states the question, the models and tools used, and what was found.</p>
+<div class="fl" id="fl" role="group" aria-label="Filter by status"></div><div id="exl"></div></section>
+
+<section class="s" id="notes"><div class="sh2"><h2>Engineering notes</h2><span class="path mono">/notes</span></div><p class="sd">Longer write-ups. Search by title, topic or category.</p>
+<label class="sf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="ni" type="search" placeholder="Filter notes, for example retrieval or agents" aria-label="Filter notes"></label><p class="cnt mono" id="nc"></p><div id="nl"></div></section>
+
+<section class="s" id="stack"><div class="sh2"><h2>Technical stack</h2><span class="path mono">/reference</span></div><p class="sd">What I reach for, grouped by layer, with how deeply each is used.</p>
+<table class="tbl"><thead><tr><th>Layer</th><th>Technologies</th><th>Depth</th><th>Used for</th></tr></thead><tbody>
+<tr><td>Languages</td><td>TypeScript, Python, Go, SQL</td><td><span class="dp" aria-label="Daily use"><i class="on"></i><i class="on"></i><i class="on"></i></span>Daily</td><td>Services, data pipelines, tooling</td></tr>
+<tr><td>Frontend</td><td>React, Next.js, Vite, Playwright</td><td><span class="dp" aria-label="Daily use"><i class="on"></i><i class="on"></i><i class="on"></i></span>Daily</td><td>Product surfaces, streaming interfaces</td></tr>
+<tr><td>Backend</td><td>Node.js, FastAPI, Temporal, Postgres, Redis</td><td><span class="dp" aria-label="Daily use"><i class="on"></i><i class="on"></i><i class="on"></i></span>Daily</td><td>APIs, durable workflows, queues</td></tr>
+<tr><td>AI systems</td><td>Claude API, OpenAI API, vLLM, pgvector, custom eval harnesses</td><td><span class="dp" aria-label="Production"><i class="on"></i><i class="on"></i><i></i></span>Production</td><td>Agents, retrieval, evaluation</td></tr>
+<tr><td>Cloud</td><td>AWS (ECS, Lambda, S3), Kubernetes, Terraform, GitHub Actions</td><td><span class="dp" aria-label="Production"><i class="on"></i><i class="on"></i><i></i></span>Production</td><td>Deployment, cost control</td></tr>
+<tr><td>Observability</td><td>OpenTelemetry, ClickHouse, Grafana</td><td><span class="dp" aria-label="Evaluating"><i class="on"></i><i></i><i></i></span>Evaluating</td><td>Traces, cost accounting</td></tr></tbody></table>
+<div class="lgd mono"><span><span class="dp"><i class="on"></i><i class="on"></i><i class="on"></i></span>Used daily</span><span><span class="dp"><i class="on"></i><i class="on"></i><i></i></span>Run in production</span><span><span class="dp"><i class="on"></i><i></i><i></i></span>Still evaluating</span></div></section>
+
+<section class="s" id="about"><div class="sh2"><h2>About the studio</h2><span class="path mono">/about</span></div><p class="sd">An independent engineering research studio.</p>
+<div class="ab"><div><p>Vectorlab builds small systems, measures them, and writes down what happened. The work sits between product engineering and applied research: agents, retrieval and the infrastructure that keeps them dependable.</p><p>Findings are published with their methods and their failures, so they can be checked and reused.</p><div class="meta mono"><span>Independent</span><span>Remote</span><span>Open to select engagements</span></div></div>
+<ul><li><i class="sq c-b"></i><div><b>Measure before optimizing</b><span class="soft">An evaluation comes before the first prompt.</span></div></li><li><i class="sq c-g"></i><div><b>Prefer boring infrastructure</b><span class="soft">Novelty is spent on the model, not the platform.</span></div></li><li><i class="sq c-o"></i><div><b>Publish the failures</b><span class="soft">A shelved experiment still teaches.</span></div></li></ul></div></section>
+</main>
+<aside class="rail" aria-label="On this page"><h4>On this page</h4><div id="rl"></div></aside>
+</div>
+<footer class="ft"><div class="fi"><div><a class="lg" href="#top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="3"/><path d="M7 17 17 7M10 7h7v7"/></svg>Vectorlab</a><p>Engineering intelligence, one system at a time.</p></div>
+<div><h4>Explore</h4><ul><li><a href="#research">Research</a></li><li><a href="#work">Engineering</a></li><li><a href="#research">Experiments</a></li><li><a href="#notes">Notes</a></li></ul></div>
+<div><h4>Studio</h4><ul><li><a href="#about">About</a></li><li><a href="#stack">Technical stack</a></li><li><a href="#">Colophon</a></li><li><a href="#">RSS feed</a></li></ul></div>
+<div><h4>Elsewhere</h4><ul><li><a href="#">GitHub</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">Bluesky</a></li><li><a href="mailto:hello@example.com">hello@example.com</a></li></ul></div></div>
+<div class="fb mono"><span>2026 Vectorlab</span><span>Set in Geist and Geist Mono</span></div></footer>
+
+<div class="ov" id="pov" role="dialog" aria-modal="true" aria-label="Search"><div class="pl"><input id="pi" placeholder="Search notes, topics and experiments" aria-label="Search"><ul id="pr"></ul></div></div>
+</div>
+<script>
+(function(){
+var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var CV='<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m4 2 4 4-4 4"/></svg>';
+var T=[{n:"AI Engineering",c:"b",d:"Evaluation, retrieval and the practice of shipping models.",k:14,s:["Evaluation harnesses","Retrieval quality","Prompt versioning"]},
+{n:"LLM Systems",c:"b",d:"Inference, routing, caching and cost control.",k:11,s:["Model routing","Caching and batching","Structured outputs"]},
+{n:"AI Agents",c:"b",d:"Runtimes, memory and the failure modes of tool use.",k:9,s:["Durable execution","Agent memory","Approval gates"]},
+{n:"Full-Stack Engineering",c:"g",d:"TypeScript services and interfaces that stay fast.",k:12,s:["Streaming interfaces","API design","Postgres patterns"]},
+{n:"Cloud Architecture",c:"g",d:"Kubernetes, AWS and boring infrastructure.",k:8,s:["Deployment pipelines","Cost accounting","Observability"]},
+{n:"Developer Tools",c:"o",d:"CLIs, replay tools and the glue between systems.",k:6,s:["Replay CLIs","Local eval runners","Code generation"]}];
+var SEC=[["explore","Start exploring"],["work","Featured work"],["research","Experiments"],["notes","Notes"],["stack","Technical stack"],["about","About"]];
+var X=[{id:"EXP-024",s:"running",d:"2026-10-30",t:"Agent memory with explicit forgetting",m:"Claude Sonnet, Qwen2.5-14B",k:"Python, Postgres, pgvector",f:"Pruning by recency alone cut task success by 9%. Pruning by reuse score held it within 1%."},
+{id:"EXP-021",s:"running",d:"2026-10-12",t:"Recall against chunk size in hybrid retrieval",m:"bge-large-en, bge-reranker",k:"Python, FastAPI, pgvector",f:"Hybrid search at 384 tokens lifted recall@5 from 0.66 to 0.76. Gains disappear beyond 512 tokens."},
+{id:"EXP-019",s:"complete",d:"2026-09-18",t:"Cascade routing with confidence gates",m:"Qwen2.5-7B, Claude Sonnet",k:"TypeScript, ClickHouse",f:"61% of requests stayed on the small model. Quality matched frontier-only within noise on 800 held-out tasks; cost fell 48%."},
+{id:"EXP-017",s:"complete",d:"2026-08-02",t:"A failure taxonomy for tool-using agents",m:"Claude Sonnet, GPT-4.1",k:"Go, ClickHouse",f:"Of 312 failed runs, 54% were malformed tool arguments, 23% stale context and 9% genuine planning errors."},
+{id:"EXP-012",s:"shelved",d:"2026-05-14",t:"Prompt regression detection with embeddings",m:"bge-large-en",k:"Python, DuckDB",f:"Embedding distance did not track human judgment (rho 0.31). Replaced by task-level evaluation sets."}];
+var C={b:"c-b",g:"c-g",o:"c-o"},SC={running:"c-b",complete:"c-g",shelved:"c-o"};
+var N=[{d:"2026-10-28",c:"AI Agents",k:"b",t:"Designing agent memory that can forget",x:"Why recency is a poor pruning rule, and the reuse score that replaced it.",r:9},
+{d:"2026-10-09",c:"LLM Systems",k:"b",t:"Write the evaluation before the prompt",x:"A workflow where the question set exists first and prompts are changes against it.",r:7},
+{d:"2026-09-22",c:"Cloud Architecture",k:"g",t:"Boring infrastructure for fast-moving models",x:"Keeping the platform stable while the model layer changes monthly.",r:6},
+{d:"2026-08-14",c:"AI Engineering",k:"b",t:"Chunking is a product decision",x:"Chunk boundaries encode what a user is allowed to ask. Notes from 400 questions.",r:11},
+{d:"2026-07-03",c:"Full-Stack Engineering",k:"g",t:"Streaming interfaces without breaking the back button",x:"Server-sent events, optimistic state and the history stack in a Next.js app.",r:8},
+{d:"2026-06-11",c:"Developer Tools",k:"o",t:"A replay CLI for agent runs",x:"Reproduce a failed run locally from its event log in one command.",r:5}];
+// sidebar, rail, topics
+$('#ov').innerHTML=SEC.map(function(s){return '<li><a href="#'+s[0]+'" data-s="'+s[0]+'">'+s[1]+'</a></li>'}).join('');
+$('#rl').innerHTML=SEC.map(function(s){return '<a href="#'+s[0]+'" data-s="'+s[0]+'">'+s[1]+'</a>'}).join('');
+$('#tp').innerHTML=T.map(function(t,i){return '<details'+(i==2?' open':'')+'><summary><i class="sq '+C[t.c]+'"></i>'+t.n+CV+'</summary><ul>'+t.s.map(function(x){return '<li><a href="#notes">'+x+'</a></li>'}).join('')+'</ul></details>'}).join('');
+$('#tg').innerHTML=T.map(function(t,i){return '<details class="tp"'+(i==0?' open':'')+'><summary><i class="sq '+C[t.c]+'"></i><div><b>'+t.n+'</b><span>'+t.d+'</span></div><em>'+t.k+' notes</em>'+CV+'</summary><ul>'+t.s.map(function(x,j){return '<li><a href="#notes">'+x+'<span class="mono soft">'+(3+((i*3+j*2)%5))+'</span></a></li>'}).join('')+'</ul></details>'}).join('');
+// experiments
+var fl=$('#fl'),cur='all';
+function exr(){$('#exl').innerHTML=X.map(function(e){return '<article class="ex" data-s="'+e.s+'"><div class="m mono"><b>'+e.id+'</b><time>'+e.d+'</time></div><div><h3>'+e.t+'</h3><div class="kv mono"><span>model</span><span>'+e.m+'</span><span>stack</span><span>'+e.k+'</span></div><p>'+e.f+'</p></div><div class="stt"><i class="dot '+SC[e.s]+'"></i>'+e.s.charAt(0).toUpperCase()+e.s.slice(1)+'</div></article>'}).join('')}
+exr();
+['all','running','complete','shelved'].forEach(function(k){var b=document.createElement('button');b.className='ch';b.dataset.k=k;var n=k=='all'?X.length:X.filter(function(e){return e.s==k}).length;b.textContent=(k=='all'?'All':k.charAt(0).toUpperCase()+k.slice(1))+' '+n;b.setAttribute('aria-pressed',k==cur);b.onclick=function(){cur=k;$$('.ch',fl).forEach(function(c){c.setAttribute('aria-pressed',c.dataset.k==cur)});$$('.ex').forEach(function(e){e.hidden=!(cur=='all'||e.dataset.s==cur)})};fl.appendChild(b)});
+// notes
+function nr(q){q=(q||'').toLowerCase();var L=N.filter(function(n){return (n.t+' '+n.c+' '+n.x).toLowerCase().indexOf(q)>-1});$('#nc').textContent=L.length+' of '+N.length+' notes';$('#nl').innerHTML=L.length?L.map(function(n){return '<a class="nt" href="#"><time class="mono">'+n.d+'</time><div><div class="ct2"><i class="dot '+C[n.k]+'"></i>'+n.c+'</div><h3>'+n.t+'</h3><p>'+n.x+'</p></div><span class="rt mono">'+n.r+' min</span></a>'}).join(''):'<p class="empty">No notes match that search. Try a topic such as agents or retrieval.</p>'}
+nr();$('#ni').addEventListener('input',function(e){nr(e.target.value)});
+// diagrams
+function dia(id,nodes,edges,def){var s='<defs><marker id="'+id+'a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 8 4 0 8z" fill="var(--ink-muted)"/></marker></defs>';
+edges.forEach(function(e){s+='<path class="ed'+(e.dash?' ds':'')+'" d="'+e.p+'" marker-end="url(#'+id+'a)"/>'+(e.l?'<text class="e" x="'+e.lx+'" y="'+e.ly+'" text-anchor="middle">'+e.l+'</text>':'')});
+nodes.forEach(function(n){s+='<rect class="n" x="'+n[0]+'" y="'+n[1]+'" width="'+n[2]+'" height="'+n[3]+'" rx="4"/><rect x="'+(n[0]+12)+'" y="'+(n[1]+13)+'" width="8" height="8" rx="2" fill="var(--'+({b:'accent',g:'accent-2',o:'accent-3'}[n[6]])+')"/><text class="t" x="'+(n[0]+28)+'" y="'+(n[1]+21)+'">'+n[4]+'</text><text class="u" x="'+(n[0]+12)+'" y="'+(n[1]+n[3]-10)+'">'+n[5]+'</text>'});
+$(def).innerHTML=s}
+dia('g1',[[8,76,112,52,'Client API','REST, SSE','b'],[170,76,128,52,'Orchestrator','plans, schedules','b'],[350,26,140,52,'Tool workers','sandboxed','g'],[350,126,140,52,'Approval gate','human in loop','o'],[550,76,152,52,'Event log','Postgres, append-only','g']],
+[{p:'M120 102H170'},{p:'M298 102H324V52H350'},{p:'M298 102H324V152H350'},{p:'M490 52H520V102H550'},{p:'M490 152H520V102H550'},{p:'M626 128V176H234V128',dash:1,l:'replay on restart',lx:430,ly:192}],'#d1');
+dia('g2',[[8,16,150,52,'Sources','docs, wikis, issues','b'],[190,16,150,52,'Chunker','384 tokens, overlap','b'],[372,16,150,52,'Embedder','bge-large-en','b'],[554,16,158,52,'Index','pgvector + BM25','g'],[8,148,150,52,'Query','user question','o'],[190,148,150,52,'Retriever','hybrid, top 40','g'],[372,148,150,52,'Reranker','top 5','g'],[554,148,158,52,'Generator','cited answer','b']],
+[{p:'M158 42H190'},{p:'M340 42H372'},{p:'M522 42H554'},{p:'M633 68V108H265V148'},{p:'M158 174H190'},{p:'M340 174H372'},{p:'M522 174H554'}],'#d2');
+dia('g3',[[8,76,112,52,'Applications','SDK, HTTP','b'],[170,76,150,52,'Router + cache','confidence gates','g'],[392,12,140,52,'Small model','Qwen2.5-7B','b'],[392,76,140,52,'Frontier model','Claude Sonnet','b'],[392,140,140,52,'Self-hosted','vLLM','o'],[584,76,128,52,'Trace store','ClickHouse','g']],
+[{p:'M120 102H170'},{p:'M320 102H346V38H392'},{p:'M320 102H392'},{p:'M320 102H346V166H392'},{p:'M532 38H558V102H584'},{p:'M532 102H584'},{p:'M532 166H558V102H584'}],'#d3');
+// copy
+$$('.cp').forEach(function(b){b.onclick=function(){var t=document.getElementById(b.dataset.copy).textContent;try{navigator.clipboard.writeText(t)}catch(e){}b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1400)}});
+// scrollspy
+var links=$$('[data-s]').filter(function(a){return a.tagName=='A'});
+function setOn(id){links.forEach(function(a){a.classList.toggle('on',a.dataset.s==id)})}
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)setOn(e.target.id)})},{rootMargin:'-20% 0px -65% 0px'});SEC.forEach(function(s){var el=document.getElementById(s[0]);if(el)io.observe(el)})}
+links.forEach(function(a){a.addEventListener('click',function(){setOn(a.dataset.s);closeNav()})});setOn('explore');
+// mobile nav
+var sb=$('#sb'),sc=$('#sc');function closeNav(){sb.classList.remove('open');sc.classList.remove('on')}
+$('#bg').onclick=function(){sb.classList.toggle('open');sc.classList.toggle('on')};sc.onclick=closeNav;
+// palette
+var pov=$('#pov'),pi=$('#pi'),pr=$('#pr');
+var P=N.map(function(n){return {t:n.t,k:n.k,s:'Note'}}).concat(T.map(function(t){return {t:t.n,k:t.c,s:'Topic'}}),X.map(function(e){return {t:e.t,k:e.s=='running'?'b':e.s=='complete'?'g':'o',s:e.id}}));
+function pr_(q){q=q.toLowerCase();var L=P.filter(function(x){return x.t.toLowerCase().indexOf(q)>-1}).slice(0,7);pr.innerHTML=L.length?L.map(function(x,i){return '<li><a href="#" class="'+(i?'':'on')+'"><i class="sq '+C[x.k]+'"></i>'+x.t+'<small>'+x.s+'</small></a></li>'}).join(''):'<li><a href="#">No results</a></li>'}
+function op(){pov.classList.add('on');pi.value='';pr_('');pi.focus()}function cl(){pov.classList.remove('on')}
+$('#so').onclick=op;pov.onclick=function(e){if(e.target===pov)cl()};pi.oninput=function(){pr_(pi.value)};
+pr.onclick=function(e){e.preventDefault();cl()};
+document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()=='k'){e.preventDefault();op()}if(e.key=='Escape'){cl();closeNav()}});
+// terminal
+var ls=$$('#tc .l'),red=matchMedia('(prefers-reduced-motion:reduce)').matches;
+ls.forEach(function(l,i){if(red)l.classList.add('on');else setTimeout(function(){l.classList.add('on')},350+i*420)});
+})();
+</script>

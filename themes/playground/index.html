@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Juno Arai · Playground</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f5f0;--ink:#111;--mut:#4a4a46;--red:#e23d28;--blue:#2346c9;--yel:#f4b81c;--d:"Unbounded",system-ui,sans-serif;--s:"Manrope",system-ui,sans-serif}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.55 var(--s);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.w{max-width:1240px;margin:0 auto;padding:0 32px}
+.k{font:600 13px var(--s);color:var(--mut)}
+/* header */
+.hd{display:flex;align-items:center;gap:24px;padding:22px 0}
+.lg{display:flex;align-items:center;gap:10px;font:800 18px var(--d)}.lg svg{width:34px;height:34px}
+.nv{margin-left:auto;display:flex;gap:4px}.nv a{font:700 15px var(--s);padding:8px 14px;border-radius:99px;transition:background .2s,color .2s}.nv a:hover{background:var(--ink);color:var(--bg)}
+/* hero */
+.hero{display:grid;grid-template-columns:5fr 7fr;gap:32px;align-items:stretch;padding:12px 0 0}
+.hl{display:flex;flex-direction:column;justify-content:space-between;padding:24px 0 8px}
+h1{font:800 clamp(46px,6.2vw,84px)/.98 var(--d);letter-spacing:-.04em;margin:0 0 22px}
+h1 .c{display:inline-block;width:.7em;height:.7em;border-radius:50%;background:var(--red);vertical-align:.02em}h1 .s{display:inline-block;width:.62em;height:.62em;background:var(--blue);vertical-align:.04em}h1 .t{display:inline-block;width:0;height:0;border-left:.36em solid transparent;border-right:.36em solid transparent;border-bottom:.62em solid var(--yel);vertical-align:.04em}
+.hl p{font-size:19px;max-width:36ch;margin:0 0 26px}
+.bt{display:inline-block;font:700 16px var(--s);padding:14px 22px;border-radius:99px;background:var(--ink);color:var(--bg);margin-right:8px;transition:background .2s,transform .2s}.bt:hover{background:var(--red);transform:rotate(-2deg)}.bt.o{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2.5px var(--ink)}.bt.o:hover{background:var(--yel);color:var(--ink)}
+.box{position:relative;border:3px solid var(--ink);border-radius:28px;overflow:hidden;background:#fff;height:600px}
+.box canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}.box canvas:active{cursor:grabbing}
+.box .hint{position:absolute;left:18px;top:14px;font:700 13px var(--s);background:var(--bg);padding:4px 10px;border-radius:99px;border:2px solid var(--ink)}
+.box .rst{position:absolute;right:14px;top:12px;font:700 13px var(--s);background:var(--ink);color:var(--bg);border:0;padding:7px 12px;border-radius:99px;cursor:pointer}.box .rst:hover{background:var(--blue)}
+/* sections */
+.sec{padding:110px 0 0}
+.sh{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:end;margin-bottom:36px}
+.sh h2{margin:0;font:800 clamp(38px,5vw,68px)/.95 var(--d);letter-spacing:-.04em}.sh p{margin:0;max-width:44ch;font-size:18px;justify-self:end}
+/* work */
+.wk{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+.pj{display:block;position:relative}.pj .cmp{height:340px;position:relative;overflow:hidden;border-radius:28px}
+.pj .cmp i{position:absolute;display:block;transition:transform .6s cubic-bezier(.3,1.5,.5,1)}
+.pj .tx{padding:20px 4px 0}.pj h3{margin:0 0 6px;font:800 30px/1 var(--d);letter-spacing:-.03em}.pj p{margin:0 0 10px;max-width:44ch}
+.tg{display:flex;gap:6px;flex-wrap:wrap}.tg span{font:700 12.5px var(--s);border:2px solid var(--ink);border-radius:99px;padding:2px 10px}
+.p1{grid-column:1/span 7}.p2{grid-column:8/span 5}.p3{grid-column:1/span 5}.p4{grid-column:6/span 7}
+.c-red{background:var(--red)}.c-blue{background:var(--blue)}.c-yel{background:var(--yel)}.c-ink{background:var(--ink)}.c-bg{background:var(--bg)}
+/* process */
+.pr{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:3px solid var(--ink)}
+.st{padding:26px 22px 8px 0;position:relative}.st+.st{padding-left:22px;border-left:3px solid var(--ink)}
+.st .n{font:800 15px var(--d);display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.st .sh2{width:52px;height:52px;display:block;transition:transform .5s cubic-bezier(.3,1.6,.5,1)}.st:hover .sh2{transform:rotate(90deg) scale(1.1)}
+.st h3{margin:0 0 6px;font:800 24px var(--d);letter-spacing:-.02em}.st p{margin:0;color:var(--mut)}
+/* writing */
+.wr a{display:grid;grid-template-columns:56px 1fr 140px;gap:20px;align-items:center;padding:20px 0;border-bottom:3px solid var(--ink);transition:padding .25s}.wr a:first-child{border-top:3px solid var(--ink)}
+.wr a:hover{padding-left:12px}.wr .dot{width:40px;height:40px;transition:transform .4s}.wr a:hover .dot{transform:rotate(180deg)}
+.wr h4{margin:0;font:600 clamp(20px,2.2vw,28px)/1.15 var(--d);letter-spacing:-.02em}.wr .k{text-align:right}
+/* about */
+.ab{display:grid;grid-template-columns:7fr 5fr;gap:48px;align-items:start}
+.ab p{font-size:21px;line-height:1.5;margin:0 0 16px;max-width:42ch}
+.now{border-radius:28px;background:var(--blue);color:#fff;padding:28px}.now h3{margin:0 0 12px;font:800 22px var(--d)}.now li{margin:0 0 10px}.now ul{margin:0;padding-left:20px}
+/* contact */
+.ct{margin-top:110px;background:var(--ink);color:var(--bg);border-radius:40px 40px 0 0;padding:64px 48px 40px;position:relative;overflow:hidden}
+.ct h2{margin:0;font:800 clamp(44px,7vw,104px)/.92 var(--d);letter-spacing:-.045em;max-width:12ch;position:relative;z-index:2}
+.ct .bigc{position:absolute;right:48px;top:50%;width:240px;height:240px;border-radius:50%;background:var(--yel);color:var(--ink);display:grid;place-items:center;text-align:center;font:800 20px/1.1 var(--d);transform:translateY(-50%);transition:transform .4s cubic-bezier(.3,1.6,.5,1),background .2s;z-index:2}.ct .bigc:hover{transform:translateY(-50%) scale(1.08) rotate(-8deg);background:var(--red);color:#fff}
+.ct .meta{display:flex;justify-content:space-between;margin-top:54px;font:600 14px var(--s);color:#cfcfc8;gap:16px;flex-wrap:wrap;position:relative;z-index:2}
+@media(max-width:900px){.w{padding:0 16px}.nv{display:none}.hero,.ab,.sh{grid-template-columns:1fr}.sh p{justify-self:start}.box{height:440px}.wk>*{grid-column:1/-1!important}.pj .cmp{height:240px}.pr{grid-template-columns:1fr 1fr}.st:nth-child(3){border-left:0;padding-left:0}.st{border-top:3px solid var(--ink)}.wr a{grid-template-columns:44px 1fr}.wr .k{grid-column:2;text-align:left}.ct{padding:44px 20px 32px;border-radius:28px 28px 0 0}.ct .bigc{position:relative;right:auto;top:auto;transform:none;width:170px;height:170px;margin-top:28px;font-size:16px}.ct .bigc:hover{transform:scale(1.05)}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="w">
+<header class="hd"><a class="lg" href="#"><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="11" cy="11" r="9" fill="#e23d28"/><rect x="17" y="17" width="15" height="15" fill="#2346c9"/><path d="M2 32L10 18L18 32Z" fill="#f4b81c"/></svg>Juno Arai</a><nav class="nv" aria-label="Primary"><a href="#work">Work</a><a href="#process">Process</a><a href="#writing">Writing</a><a href="#about">About</a><a href="#contact">Contact</a></nav></header>
+
+<section class="hero"><div class="hl"><div><span class="k">Designer and engineer · Lisbon</span><h1 style="margin-top:14px">Good <span class="c"></span> design <span class="s"></span> behaves <span class="t"></span> well.</h1><p>I design interfaces and build them, with the same care for how things look as for how they move, fail and recover.</p><a class="bt" href="#work">See the work</a><a class="bt o" href="#contact">Say hello</a></div><span class="k">Throw the shapes around. Each one is something I do.</span></div>
+<div class="box"><canvas id="pg" aria-label="Interactive shapes, each labelled with a skill, falling under gravity. Drag to throw them."></canvas><span class="hint">Drag and throw</span><button class="rst" id="rst">Drop again</button></div></section>
+
+<section class="sec" id="work"><div class="sh"><h2>Selected work</h2><p>Four projects. Hover a composition to see it move.</p></div><div class="wk" id="wk"></div></section>
+
+<section class="sec" id="process"><div class="sh"><h2>How a project moves</h2><p>The same four steps, whether it is a component or a whole product.</p></div><div class="pr" id="pr"></div></section>
+
+<section class="sec" id="writing"><div class="sh"><h2>Writing</h2><p>Short essays on design, code and the space between.</p></div><div class="wr" id="wr"></div></section>
+
+<section class="sec" id="about"><div class="sh"><h2>About</h2><p></p></div><div class="ab"><div><p>I trained in graphic design and learned to code because the interesting part of an interface is how it behaves. Now I spend most days in a design file and a repository at the same time.</p><p>I like small teams, real users, and work that is pleasant to use on a bad day.</p></div><div class="now"><h3>Now</h3><ul><li>Building a token pipeline from Figma variables to native code</li><li>Teaching a workshop on motion for engineers</li><li>Available for one product team from February</li></ul></div></div></section>
+</div>
+<section class="ct" id="contact"><div class="w" style="padding:0"><h2>Let us build something that plays well.</h2><a class="bigc" href="mailto:hello@juno.example">Write to<br>hello@juno<br>.example</a><div class="meta"><span>Juno Arai · placeholder identity</span><span>Set in Unbounded and Manrope</span></div></div></section>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)};
+var RED='#e23d28',BLUE='#2346c9',YEL='#f4b81c',INK='#111',rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+// ---------- physics ----------
+var cv=$('#pg'),cx=cv.getContext('2d'),W,H,dpr=Math.min(2,window.devicePixelRatio||1),B=[],grab=null,px=0,py=0,lpx=0,lpy=0,running=false;
+var SK=[['Interface design',RED,'c',1.15],['Design systems',BLUE,'s',1.1],['TypeScript',YEL,'t',.9],['React',INK,'c',.8],['WebGPU',RED,'s',.85],['Prototyping',BLUE,'c',1],['Type',YEL,'s',.72],['Motion',RED,'t',.85],['Accessibility',INK,'s',1.05],['SwiftUI',BLUE,'t',.8],['Figma',YEL,'c',.75],['Testing',INK,'c',.78],['CSS',RED,'c',.7]];
+function size(){var r=cv.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0)}
+function seed(){var base=Math.min(W,H)/7.4;B=SK.map(function(s,i){var r=base*s[3]*.62+14;return {x:r+(i*97)%(W-2*r),y:-r-i*70,vx:(Math.random()-.5)*2,vy:0,r:r,col:s[1],sh:s[2],lab:s[0],a:Math.random()*6,av:(Math.random()-.5)*.04}})}
+function step(){var g=.42;B.forEach(function(b){if(b==grab){b.vx=(px-b.x)*.35;b.vy=(py-b.y)*.35}else b.vy+=g;b.x+=b.vx;b.y+=b.vy;b.vx*=.995;b.a+=b.av;b.av*=.99;
+if(b.y+b.r>H){b.y=H-b.r;b.vy*=-.38;b.vx*=.92;b.av=b.vx/b.r}if(b.y-b.r<0&&b==grab){b.y=b.r}if(b.x-b.r<0){b.x=b.r;b.vx*=-.5}if(b.x+b.r>W){b.x=W-b.r;b.vx*=-.5}});
+for(var it=0;it<3;it++)for(var i=0;i<B.length;i++)for(var j=i+1;j<B.length;j++){var a=B[i],c=B[j],dx=c.x-a.x,dy=c.y-a.y,d=Math.sqrt(dx*dx+dy*dy)||.01,o=a.r+c.r-d;if(o>0){var nx=dx/d,ny=dy/d,ma=a==grab?0:1,mc=c==grab?0:1,t=ma+mc||1;a.x-=nx*o*ma/t;a.y-=ny*o*ma/t;c.x+=nx*o*mc/t;c.y+=ny*o*mc/t;var rv=(c.vx-a.vx)*nx+(c.vy-a.vy)*ny;if(rv<0){var imp=-(1.3)*rv/2;if(ma){a.vx-=imp*nx;a.vy-=imp*ny}if(mc){c.vx+=imp*nx;c.vy+=imp*ny}a.av+=(rv*.002);c.av-=(rv*.002)}}}}
+function draw(){cx.clearRect(0,0,W,H);
+// faint grid
+cx.strokeStyle='rgba(17,17,17,.06)';cx.lineWidth=1;for(var x=0;x<W;x+=40){cx.beginPath();cx.moveTo(x,0);cx.lineTo(x,H);cx.stroke()}for(var y=0;y<H;y+=40){cx.beginPath();cx.moveTo(0,y);cx.lineTo(W,y);cx.stroke()}
+B.forEach(function(b){cx.save();cx.translate(b.x,b.y);cx.rotate(b.sh=='c'?0:b.a);cx.fillStyle=b.col;cx.beginPath();
+if(b.sh=='c')cx.arc(0,0,b.r,0,7);else if(b.sh=='s'){var s=b.r*1.5;cx.rect(-s/2,-s/2,s,s)}else{var r=b.r*1.18;cx.moveTo(0,-r);cx.lineTo(r*.87,r*.5);cx.lineTo(-r*.87,r*.5);cx.closePath()}
+cx.fill();cx.restore();
+// label
+cx.save();cx.translate(b.x,b.y+(b.sh=='t'?b.r*.18:0));cx.fillStyle=(b.col==YEL)?INK:'#fff';cx.font='700 '+Math.max(11,Math.min(15,b.r/3.6))+'px Manrope, sans-serif';cx.textAlign='center';cx.textBaseline='middle';
+var words=b.lab.split(' ');if(words.length>1&&b.r<70){cx.fillText(words[0],0,-8);cx.fillText(words.slice(1).join(' '),0,9)}else cx.fillText(b.lab,0,0);cx.restore()})}
+function loop(){step();draw();if(running)requestAnimationFrame(loop)}
+function pt(e){var r=cv.getBoundingClientRect();return [e.clientX-r.left,e.clientY-r.top]}
+cv.addEventListener('pointerdown',function(e){var p=pt(e);px=p[0];py=p[1];for(var i=B.length-1;i>=0;i--){var b=B[i];if(Math.hypot(b.x-px,b.y-py)<b.r*1.1){grab=b;cv.setPointerCapture(e.pointerId);break}}});
+cv.addEventListener('pointermove',function(e){var p=pt(e);px=p[0];py=p[1]});
+cv.addEventListener('pointerup',function(){grab=null});
+function start(){size();seed();if(rm){for(var i=0;i<900;i++)step();draw()}else if(!running){running=true;loop()}}
+$('#rst').addEventListener('click',function(){seed();if(rm){for(var i=0;i<900;i++)step();draw()}});
+window.addEventListener('resize',function(){var ow=W;size();B.forEach(function(b){b.x=Math.min(b.x,W-b.r)});if(rm)draw()});
+if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){if(!B.length)start();else if(!running&&!rm){running=true;loop()}}else running=false})}).observe(cv)}else start();
+// ---------- work ----------
+function I(cls,st){return '<i class="'+cls+'" style="'+st+'"></i>'}
+var P=[['p1 c-yel','Tideline','Wayfinding and a design system for a regional transit app, from tokens through to React Native.',['Design system','React Native'],I('c-red','left:8%;top:18%;width:42%;aspect-ratio:1;border-radius:50%;--h:translate(30px,-10px)')+I('c-blue','left:40%;top:46%;width:52%;height:22%;--h:translate(-40px,0)')+I('c-ink','left:66%;top:8%;width:12%;height:84%;--h:translateY(20px)')],
+['p2 c-blue','Loomwork','A node-based shader editor in the browser. Designers wire noise, time and colour without GLSL.',['Tool','WebGPU'],I('c-yel','left:-20%;top:-20%;width:80%;aspect-ratio:1;border-radius:50%;--h:translate(30px,30px)')+I('c-bg','left:52%;top:52%;width:30%;aspect-ratio:1;border-radius:0 0 0 100%;--h:rotate(90deg)')+I('c-red','left:20%;top:70%;width:18%;aspect-ratio:1;border-radius:50%;--h:translateX(120px)')],
+['p3 c-red','Fieldnote','Offline-first notebook for field researchers. Two devices, no signal, no conflicts.',['Product','Swift, CRDT'],I('c-bg','left:14%;top:16%;width:30%;height:68%;border-radius:18px;--h:translateX(30px)')+I('c-bg','left:56%;top:16%;width:30%;height:68%;border-radius:18px;--h:translateX(-30px)')+I('c-ink','left:44%;top:44%;width:12%;aspect-ratio:1;border-radius:50%;--h:scale(1.6)')],
+['p4 c-ink','Murmur','A voice interface for kitchens, prototyped on-device for wet hands and no network.',['Prototype','Web Audio'],I('c-yel','left:8%;top:30%;width:14%;height:40%;border-radius:99px;--h:scaleY(1.5)')+I('c-red','left:26%;top:16%;width:14%;height:68%;border-radius:99px;--h:scaleY(.6)')+I('c-blue','left:44%;top:6%;width:14%;height:88%;border-radius:99px;--h:scaleY(.8)')+I('c-yel','left:62%;top:22%;width:14%;height:56%;border-radius:99px;--h:scaleY(1.3)')+I('c-bg','left:80%;top:38%;width:14%;height:24%;border-radius:99px;--h:scaleY(2)')]];
+$('#wk').innerHTML=P.map(function(p){var c=p[0].split(' ');return '<a class="pj '+c[0]+'" href="#"><div class="cmp '+c[1]+'" aria-hidden="true">'+p[4]+'</div><div class="tx"><h3>'+p[1]+'</h3><p>'+p[2]+'</p><div class="tg">'+p[3].map(function(t){return '<span>'+t+'</span>'}).join('')+'</div></div></a>'}).join('');
+document.querySelectorAll('.pj').forEach(function(a){var is=a.querySelectorAll('.cmp i');a.addEventListener('mouseenter',function(){is.forEach(function(i){i.style.transform=i.style.getPropertyValue('--h')})});a.addEventListener('mouseleave',function(){is.forEach(function(i){i.style.transform=''})})});
+// process
+var S=[['Observe','Watch people use what exists. Write down where they hesitate.','<circle cx="26" cy="26" r="24" fill="'+RED+'"/>'],['Sketch','Paper first, then a rough prototype in the browser, never a perfect mockup.','<rect x="3" y="3" width="46" height="46" fill="'+BLUE+'"/>'],['Build','Ship the smallest version that can be measured, in real code.','<path d="M26 2L50 48H2Z" fill="'+YEL+'"/>'],['Measure','Test with users, read the numbers, then delete what did not help.','<rect x="2" y="22" width="48" height="8" fill="'+INK+'"/>']];
+$('#pr').innerHTML=S.map(function(s,i){return '<div class="st"><div class="n"><svg class="sh2" viewBox="0 0 52 52" aria-hidden="true">'+s[2]+'</svg>Step '+(i+1)+'</div><h3>'+s[0]+'</h3><p>'+s[1]+'</p></div>'}).join('');
+// writing
+var D=[['Tokens are an API, so version them like one','Oct 2026 · 8 min',RED,'c'],['Prototype in the material you will ship','Sep 2026 · 6 min',BLUE,'s'],['Motion that explains, motion that decorates','Aug 2026 · 7 min',YEL,'t'],['A design review checklist for engineers','Jun 2026 · 5 min',INK,'c']];
+function shp(c,s){return s=='c'?'<circle cx="20" cy="20" r="18" fill="'+c+'"/>':s=='s'?'<rect x="3" y="3" width="34" height="34" fill="'+c+'"/>':'<path d="M20 2L38 36H2Z" fill="'+c+'"/>'}
+$('#wr').innerHTML=D.map(function(d){return '<a href="#"><svg class="dot" viewBox="0 0 40 40" aria-hidden="true">'+shp(d[2],d[3])+'</svg><h4>'+d[0]+'</h4><span class="k">'+d[1]+'</span></a>'}).join('');
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Juno Arai · Blueprint</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Sometype+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#143a78;--deep:#0f2d5f;--chalk:#e9f0ff;--mut:#a9bde6;--yel:#ffd447;--red:#ff8a73;--hair:rgba(233,240,255,.22);--sans:"Archivo",system-ui,sans-serif;--mono:"Sometype Mono",ui-monospace,monospace}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--blue);color:var(--chalk);font:400 17px/1.55 var(--sans);font-variation-settings:"wdth" 100;-webkit-font-smoothing:antialiased;
+background-image:linear-gradient(rgba(233,240,255,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(233,240,255,.09) 1px,transparent 1px),linear-gradient(rgba(233,240,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(233,240,255,.04) 1px,transparent 1px);background-size:100px 100px,100px 100px,20px 20px,20px 20px}
+a{color:inherit;text-decoration:none}:focus-visible{outline:2px solid var(--yel);outline-offset:3px}
+.m{font:400 12.5px/1.45 var(--mono);color:var(--mut)}
+.sheet{max-width:1240px;margin:24px auto;border:2px solid var(--chalk);position:relative;padding:0 0 0}
+.sheet::before{content:"";position:absolute;inset:8px;border:1px solid var(--hair);pointer-events:none}
+.ruler{display:grid;grid-template-columns:repeat(8,1fr);border-bottom:1px solid var(--hair);font:400 11px var(--mono);color:var(--mut)}.ruler span{padding:3px 0;text-align:center;border-left:1px solid var(--hair)}.ruler span:first-child{border-left:0}
+.in{padding:0 44px}
+/* header */
+.hd{display:flex;align-items:center;gap:28px;padding:22px 0;border-bottom:1px solid var(--hair)}
+.wm{font:800 22px/1 var(--sans);font-variation-settings:"wdth" 125;letter-spacing:-.01em;display:flex;align-items:center;gap:12px}.wm svg{width:30px;height:30px}
+.nv{margin-left:auto;display:flex;gap:4px}.nv a{font:500 14px var(--mono);padding:7px 12px;border:1px solid transparent;transition:border-color .2s,color .2s}.nv a:hover{border-color:var(--chalk)}.nv a b{color:var(--yel);font-weight:500;margin-right:6px}
+/* hero */
+.hero{display:grid;grid-template-columns:5fr 6fr;gap:36px;align-items:center;padding:56px 0 48px;border-bottom:1px solid var(--hair)}
+h1{font:850 clamp(56px,8.4vw,128px)/.86 var(--sans);font-variation-settings:"wdth" 125;letter-spacing:-.035em;margin:14px 0 24px}
+h1 .o{color:transparent;-webkit-text-stroke:1.5px var(--chalk)}
+.lead{font-size:20px;line-height:1.5;max-width:34ch;margin:0 0 26px}
+.bt{display:inline-flex;gap:10px;align-items:center;font:500 15px var(--mono);padding:12px 18px;border:1.5px solid var(--chalk);margin-right:8px;transition:background .2s,color .2s}.bt:hover{background:var(--chalk);color:var(--blue)}.bt.y{background:var(--yel);border-color:var(--yel);color:var(--deep)}.bt.y:hover{background:var(--chalk);border-color:var(--chalk)}
+.fig{position:relative}.fig svg{width:100%;height:auto;display:block;overflow:visible}
+.fig .draw{stroke-dasharray:var(--l);stroke-dashoffset:var(--l);animation:dr 1.6s cubic-bezier(.6,0,.2,1) forwards}
+@keyframes dr{to{stroke-dashoffset:0}}
+.callout{opacity:0;animation:ap .4s forwards}@keyframes ap{to{opacity:1}}
+/* sections */
+.sec{padding:64px 0 0}
+.sh{display:grid;grid-template-columns:150px 1fr auto;gap:24px;align-items:baseline;border-bottom:1.5px solid var(--chalk);padding-bottom:12px;margin-bottom:28px}
+.sh h2{font:800 clamp(32px,4vw,52px)/1 var(--sans);font-variation-settings:"wdth" 118;letter-spacing:-.025em;margin:0}.sh .m:first-child{color:var(--yel)}
+/* sheets */
+.sheets{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid var(--chalk)}
+.sw{display:grid;grid-template-rows:auto 1fr auto;border-right:1px solid var(--chalk);border-bottom:1px solid var(--chalk);transition:background .25s}.sw:nth-child(2n){border-right:0}.sw:nth-last-child(-n+2){border-bottom:0}.sw:hover{background:var(--deep)}
+.sw svg{width:100%;height:auto;display:block;border-bottom:1px solid var(--hair)}
+.sw .bd{padding:20px 22px 18px}.sw h3{font:800 32px/1 var(--sans);font-variation-settings:"wdth" 112;letter-spacing:-.02em;margin:0 0 8px}.sw p{margin:0;max-width:44ch}
+.tb{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--hair)}.tb div{padding:8px 12px;border-left:1px solid var(--hair);font:400 12px/1.35 var(--mono);color:var(--mut)}.tb div:first-child{border-left:0}.tb b{display:block;color:var(--chalk);font-weight:500}
+.sw:hover .ln{stroke:var(--yel)}
+/* parts list */
+.bom{width:100%;border-collapse:collapse;font-size:16px}.bom th{font:500 12.5px var(--mono);color:var(--mut);text-align:left;padding:8px 12px;border-bottom:1px solid var(--chalk)}
+.bom td{padding:14px 12px;border-bottom:1px solid var(--hair);vertical-align:baseline}.bom tr:hover td{background:rgba(255,212,71,.1)}.bom td:first-child{font:500 14px var(--mono);color:var(--yel);width:70px}.bom td.p{font:700 20px var(--sans);font-variation-settings:"wdth" 110;width:260px}.bom td.q{font:400 13px var(--mono);color:var(--mut);text-align:right;white-space:nowrap}
+.mtr{display:inline-block;width:110px;height:8px;border:1px solid var(--chalk);vertical-align:middle;margin-right:8px;position:relative}.mtr i{position:absolute;inset:1px auto 1px 1px;background:var(--chalk)}
+/* revision log */
+.rv a{display:grid;grid-template-columns:70px 130px 1fr 90px;gap:20px;padding:16px 0;border-bottom:1px solid var(--hair);align-items:baseline;transition:padding .2s}.rv a:hover{padding-left:10px}.rv a:hover h4{color:var(--yel)}
+.rv h4{margin:0;font:700 22px/1.2 var(--sans);font-variation-settings:"wdth" 105;letter-spacing:-.01em;transition:color .2s}.rv .r{text-align:right}.rv .tri{display:inline-grid;place-items:center;width:30px;height:26px;color:var(--yel);font:500 13px var(--mono);position:relative}.rv .tri svg{position:absolute;inset:0}
+/* notes */
+.gn{display:grid;grid-template-columns:1.1fr 1fr;gap:48px}
+.gn ol{margin:0;padding:0;list-style:none;counter-reset:n}.gn li{counter-increment:n;display:grid;grid-template-columns:36px 1fr;gap:10px;padding:10px 0;border-bottom:1px dashed var(--hair)}.gn li::before{content:counter(n)".";font:500 14px var(--mono);color:var(--yel)}
+.red{font:400 15px/1.4 var(--mono);color:var(--red);border:1.5px solid var(--red);padding:12px 14px;transform:rotate(-1.2deg);display:inline-block;margin-top:18px;max-width:36ch}
+/* title block */
+.tblock{margin-top:72px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;border-top:2px solid var(--chalk)}
+.tblock>div{padding:16px 18px;border-left:1px solid var(--chalk)}.tblock>div:first-child{border-left:0}
+.tblock h2{font:850 clamp(36px,5vw,64px)/.92 var(--sans);font-variation-settings:"wdth" 125;letter-spacing:-.03em;margin:8px 0 14px}
+.tblock .v{font:500 18px var(--mono);display:block;margin-top:6px}
+.mail{font:500 20px var(--mono);border-bottom:2px solid var(--yel);padding-bottom:2px;transition:color .2s}.mail:hover{color:var(--yel)}
+#xy{font-variant-numeric:tabular-nums}
+@media(max-width:900px){.sheet{margin:0;border-width:0}.sheet::before{display:none}.ruler{display:none}.in{padding:0 20px}.nv{display:none}.hero,.gn{grid-template-columns:1fr;gap:28px;padding-top:36px}.sheets{grid-template-columns:1fr}.sw{border-right:0!important;border-bottom:1px solid var(--chalk)!important}.sw:last-child{border-bottom:0!important}.sh{grid-template-columns:1fr;gap:4px}.bom td.p{width:auto;font-size:18px}.bom .hide{display:none}.mtr{display:none}.bom td{padding:12px 6px}.rv a{grid-template-columns:1fr auto}.rv a .m:nth-child(2){display:none}.rv a>span:first-child{grid-column:1/-1}.tblock{grid-template-columns:1fr 1fr}.tblock>div:first-child{grid-column:1/-1;border-bottom:1px solid var(--chalk)}.tblock>div:nth-child(2){border-left:0}.tblock>div:last-child{grid-column:1/-1;border-left:0;border-top:1px solid var(--chalk)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.fig .draw{stroke-dashoffset:0}.callout{opacity:1}}
+</style>
+</head>
+<body>
+<div class="sheet">
+<div class="ruler" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div>
+<div class="in">
+<header class="hd"><a class="wm" href="#"><svg viewBox="0 0 30 30" fill="none" stroke="#e9f0ff" stroke-width="1.6" aria-hidden="true"><circle cx="15" cy="15" r="11"/><path d="M15 1v28M1 15h28" stroke-dasharray="2 2"/><circle cx="15" cy="15" r="3" fill="#ffd447" stroke="none"/></svg>Juno Arai</a>
+<nav class="nv" aria-label="Sheet index"><a href="#work"><b>A</b>Work</a><a href="#parts"><b>B</b>Parts</a><a href="#log"><b>C</b>Writing</a><a href="#notes"><b>D</b>About</a><a href="#contact"><b>E</b>Contact</a></nav></header>
+
+<section class="hero"><div><span class="m">Designer and engineer · Lisbon and remote</span><h1>Drawn, <span class="o">then</span> built.</h1><p class="lead">I design interfaces and write the code that ships them, so nothing gets lost between the drawing and the build.</p><a class="bt y" href="#work">Open the drawings</a><a class="bt" href="#contact">Start a project</a></div>
+<figure class="fig" style="margin:0"><svg id="ex" viewBox="0 0 600 480" role="img" aria-label="Exploded isometric drawing of four layers: tokens, components, screens and code, with dimension lines and callouts"></svg></figure></section>
+
+<section class="sec" id="work"><div class="sh"><span class="m">Sheet A</span><h2>Selected work</h2><span class="m">4 drawings · scale 1:1</span></div><div class="sheets" id="sheets"></div></section>
+
+<section class="sec" id="parts"><div class="sh"><span class="m">Sheet B</span><h2>Parts list</h2><span class="m">What goes into a project</span></div>
+<table class="bom"><thead><tr><th>Item</th><th>Part</th><th class="hide">Specification</th><th style="text-align:right">Depth</th></tr></thead><tbody id="bom"></tbody></table></section>
+
+<section class="sec" id="log"><div class="sh"><span class="m">Sheet C</span><h2>Revision log</h2><span class="m">Writing, newest first</span></div><div class="rv" id="rv"></div></section>
+
+<section class="sec" id="notes"><div class="sh"><span class="m">Sheet D</span><h2>General notes</h2><span class="m">About and now</span></div>
+<div class="gn"><div><p style="margin:0 0 14px;font-size:19px;max-width:46ch">I came to engineering through type and to design through debugging. The two habits meet in one rule: if it can be measured, measure it before you argue about it.</p><span class="red">Note: every drawing on this page is also a working prototype. Ask for the link.</span></div>
+<ol><li><span><b>Now building</b> a token pipeline from Figma variables to native code.</span></li><li><span><b>Now reading</b> about motion as explanation, not decoration.</span></li><li><span><b>Available</b> for one product team from February.</span></li><li><span><b>Prefers</b> small teams, real users and a shared repository.</span></li></ol></div></section>
+
+<footer class="tblock" id="contact"><div><span class="m">Title</span><h2>Have something to build?</h2><a class="mail" href="mailto:hello@juno.example">hello@juno.example</a></div>
+<div><span class="m">Drawn and built by</span><span class="v">J. Arai</span></div><div><span class="m">Cursor</span><span class="v" id="xy">X 0000 Y 0000</span></div><div><span class="m">Sheet</span><span class="v">5 of 5 · Rev. F</span></div></footer>
+</div></div>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)};
+var C='#e9f0ff',Y='#ffd447',RD='#ff8a73',MU='#a9bde6',MO='font-family="Sometype Mono,monospace"';
+function tx(x,y,t,sz,anc,fill){return '<text x="'+x+'" y="'+y+'" '+MO+' font-size="'+sz+'" text-anchor="'+(anc||'start')+'" fill="'+(fill||MU)+'">'+t+'</text>'}
+// isometric layer: centre cx,cy, half width w, half depth d
+function iso(cx,cy,w,d){return [[cx,cy-d],[cx+w,cy],[cx,cy+d],[cx-w,cy]]}
+function poly(p){return p.map(function(q){return q.join(',')}).join(' ')}
+function path(p){return 'M'+p.map(function(q){return q.join(' ')}).join('L')+'Z'}
+var L=[['Code',400],['Screens',295],['Components',190],['Tokens',85]],s='',k=0,delay=0;
+function draw(d,w,col,extra){var len=1400;s+='<path class="draw" style="--l:'+len+';animation-delay:'+delay+'s" d="'+d+'" fill="none" stroke="'+(col||C)+'" stroke-width="'+(w||1.5)+'" '+(extra||'')+'/>';delay+=.12}
+L.forEach(function(l,i){var cy=l[1],p=iso(290,cy,180,72),t=iso(290,cy+12,180,72);
+s+='<polygon points="'+poly(p)+'" fill="#143a78"/>';
+draw('M'+p[3].join(' ')+'L'+t[3].join(' ')+'L'+t[2].join(' ')+'L'+t[1].join(' ')+'L'+p[1].join(' '),1.2,MU);
+draw(path(p),1.6);
+// content per layer
+if(i==3){for(var a=0;a<5;a++){var cx=210+a*40,cyy=cy-40+a*20;s+='<polygon class="callout" style="animation-delay:'+(1.6+a*.05)+'s" points="'+poly(iso(cx,cyy,20,10))+'" fill="'+(a==2?Y:'none')+'" stroke="'+C+'" stroke-width="1.2"/>'}}
+if(i==2){s+='<polygon class="callout" style="animation-delay:1.7s" points="'+poly(iso(240,cy-5,56,24))+'" fill="none" stroke="'+C+'" stroke-width="1.2"/><polygon class="callout" style="animation-delay:1.75s" points="'+poly(iso(345,cy-10,36,16))+'" fill="none" stroke="'+C+'" stroke-width="1.2"/><polygon class="callout" style="animation-delay:1.8s" points="'+poly(iso(330,cy+28,26,11))+'" fill="'+Y+'" stroke="none"/>'}
+if(i==1){for(a=0;a<3;a++){var sx=200+a*80,sy=cy-30+a*20;s+='<polygon class="callout" style="animation-delay:'+(1.8+a*.05)+'s" points="'+poly([[sx,sy-14],[sx+40,sy+6],[sx+10,sy+21],[sx-30,sy+1]])+'" fill="'+(a==1?Y:'none')+'" stroke="'+C+'" stroke-width="1.2"/>'}}
+if(i==0){for(a=0;a<6;a++){var x1=180+a*14,y1=cy-24+a*9;s+='<path class="callout" style="animation-delay:'+(1.9+a*.04)+'s" d="M'+x1+' '+y1+'l'+(90-a*8)+' '+(45-a*4)+'" stroke="'+(a==3?Y:C)+'" stroke-width="2" stroke-linecap="round"/>'}}
+// leader + callout
+var lx=p[3][0],ly=p[3][1];s+='<path class="draw" style="--l:200;animation-delay:'+(1.2+i*.1)+'s" d="M'+(lx+30)+' '+(ly+5)+'L'+(lx-40)+' '+(ly-30)+'H10" fill="none" stroke="'+Y+'" stroke-width="1.2"/>';
+s+='<g class="callout" style="animation-delay:'+(1.5+i*.1)+'s"><circle cx="'+(lx+30)+'" cy="'+(ly+5)+'" r="3" fill="'+Y+'"/>'+tx(10,ly-38,l[0],13,'start',C)+'</g>'});
+// vertical dimension
+s+='<g class="callout" style="animation-delay:2.2s"><path d="M520 '+(85-72)+'V'+(400+84)+'M512 '+(85-72)+'h16M512 '+(400+84)+'h16" stroke="'+RD+'" stroke-width="1.2"/>'+'<text transform="translate(540,250) rotate(90)" '+MO+' font-size="12" fill="'+RD+'" text-anchor="middle">one source of truth, 4 layers</text></g>';
+// connector dashes
+s+='<path class="draw" style="--l:400;animation-delay:.6s" d="M290 '+(85+84)+'V'+(400-72)+'" stroke="'+C+'" stroke-dasharray="4 5" stroke-width="1"/>';
+$('#ex').innerHTML=s;
+// sheet drawings
+function art(i){var s='<rect width="560" height="260" fill="none"/>';for(var g=0;g<=28;g++)s+='<path d="M'+(g*20)+' 0V260" stroke="rgba(233,240,255,.05)"/>';for(g=0;g<=13;g++)s+='<path d="M0 '+(g*20)+'H560" stroke="rgba(233,240,255,.05)"/>';
+if(i==0){var lines=[['M40 200C140 200 140 80 260 80S420 160 520 60',Y],['M40 120H200C260 120 280 200 360 200H520',C],['M120 40V230',C]];lines.forEach(function(l){s+='<path class="ln" d="'+l[0]+'" fill="none" stroke="'+l[1]+'" stroke-width="6" stroke-linecap="round"/>'});[[200,120],[260,80],[360,200],[120,120],[120,200]].forEach(function(p){s+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="9" fill="#143a78" stroke="'+C+'" stroke-width="3"/>'});s+=tx(40,248,'Line 4 · 14 stops · Ø 18 dp',12)}
+if(i==1){var N=[[70,70,'noise'],[70,180,'time'],[250,120,'warp'],[420,70,'color'],[420,190,'output']];[[0,2],[1,2],[2,3],[2,4]].forEach(function(e){var a=N[e[0]],b=N[e[1]];s+='<path class="ln" d="M'+(a[0]+70)+' '+a[1]+'C'+(a[0]+130)+' '+a[1]+' '+(b[0]-60)+' '+b[1]+' '+(b[0]-2)+' '+b[1]+'" fill="none" stroke="'+C+'" stroke-width="2"/>'});N.forEach(function(n,k){s+='<rect x="'+(n[0]-2)+'" y="'+(n[1]-20)+'" width="74" height="40" fill="#143a78" stroke="'+(k==2?Y:C)+'" stroke-width="2"/>'+tx(n[0]+35,n[1]+5,n[2],13,'middle',C)})}
+if(i==2){s+='<rect x="80" y="30" width="110" height="200" rx="16" fill="none" stroke="'+C+'" stroke-width="2.5"/><rect x="370" y="30" width="110" height="200" rx="16" fill="none" stroke="'+C+'" stroke-width="2.5"/>';for(var r=0;r<5;r++){s+='<path d="M98 '+(66+r*28)+'h'+(70-r*8)+'M388 '+(66+r*28)+'h'+(70-(4-r)*8)+'" stroke="'+(r==2?Y:MU)+'" stroke-width="6" stroke-linecap="round"/>'}s+='<path class="ln" d="M210 110H350M340 100l10 10-10 10M350 150H210M220 140l-10 10 10 10" fill="none" stroke="'+Y+'" stroke-width="2.5"/>'+tx(280,96,'merge',12,'middle',C)+tx(280,176,'merge',12,'middle',C)}
+if(i==3){var d='M30 130';for(var x=0;x<=500;x+=4){var a=Math.sin(x/9)*Math.exp(-Math.pow((x-250)/120,2))*90;d+='L'+(30+x)+' '+(130+a).toFixed(1)}s+='<path class="ln" d="'+d+'" fill="none" stroke="'+C+'" stroke-width="2"/><path d="M30 130H530" stroke="'+MU+'" stroke-dasharray="3 4"/><path d="M180 30V230M320 30V230" stroke="'+Y+'" stroke-width="1.5"/>'+tx(250,26,'wake word window, 1.4 s',12,'middle',Y)}
+return s}
+var W=[['Tideline','Wayfinding and design system for a regional transit app, built from tokens through to React Native.','Design system','Figma, React Native','140 parts','Rev. D'],['Loomwork','A node-based shader editor that runs in the browser. Designers wire noise, time and colour without writing GLSL.','Tool','WebGPU, TypeScript','38 nodes','Rev. B'],['Fieldnote','Offline-first notebook for field researchers. Two devices, no signal, no conflicts.','Product','Swift, CRDT sync','0 lost edits','Rev. C'],['Murmur','A voice interface for kitchens, prototyped on-device so it works with wet hands and no network.','Prototype','Web Audio, on-device model','1.4 s window','Rev. A']];
+$('#sheets').innerHTML=W.map(function(w,i){return '<a class="sw" href="#"><svg viewBox="0 0 560 260" role="img" aria-label="Drawing for '+w[0]+'">'+art(i)+'</svg><div class="bd"><span class="m">A'+(i+1)+' · '+w[2]+'</span><h3>'+w[0]+'</h3><p>'+w[1]+'</p></div><div class="tb"><div>Material<b>'+w[3]+'</b></div><div>Measure<b>'+w[4]+'</b></div><div>Scale<b>1:1</b></div><div>Revision<b>'+w[5]+'</b></div></div></a>'}).join('');
+var B=[['Interface design','Flows, layout, type and the details between states',.95],['Design systems','Tokens, components and the documentation people actually read',.9],['Frontend engineering','TypeScript, React, accessibility and performance budgets',.85],['Creative coding','WebGPU, canvas and motion that explains something',.75],['Prototyping','Throwaway code that answers one question quickly',.9],['Native','SwiftUI and React Native when the web is not enough',.55]];
+$('#bom').innerHTML=B.map(function(b,i){return '<tr><td>B'+(i+1)+'</td><td class="p">'+b[0]+'</td><td class="hide">'+b[1]+'</td><td class="q"><span class="mtr"><i style="width:'+(b[2]*100-2)+'%"></i></span>'+Math.round(b[2]*10)+'/10</td></tr>'}).join('');
+var V=[['F','2026-10-28','Tokens are an API, so version them like one','8 min'],['E','2026-09-14','Prototype in the material you will ship','6 min'],['D','2026-08-02','Motion that explains, motion that decorates','7 min'],['C','2026-06-19','A design review checklist for engineers','5 min']];
+$('#rv').innerHTML=V.map(function(v){return '<a href="#"><span class="tri"><svg viewBox="0 0 30 26" aria-hidden="true"><path d="M15 2L28 24H2Z" fill="none" stroke="#ffd447" stroke-width="1.5"/></svg><span style="position:relative;top:3px">'+v[0]+'</span></span><span class="m">'+v[1]+'</span><h4>'+v[2]+'</h4><span class="m r">'+v[3]+'</span></a>'}).join('');
+document.addEventListener('pointermove',function(e){$('#xy').textContent='X '+String(e.pageX).padStart(4,'0')+' Y '+String(e.pageY).padStart(4,'0')});
+})();
+</script>
+</body>
+</html>

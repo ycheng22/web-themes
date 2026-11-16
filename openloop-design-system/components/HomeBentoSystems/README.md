@@ -1,0 +1,3 @@
+Full homepage for direction C2, Bento Systems: a more technical, interactive take on Bento Product for visitors who want to see how the engineer works.
+
+Use theme `bento`. Same seven sections as C, with live tiles: a typing terminal, a latency histogram with hover readout, a deploy-cadence heat grid, a scenario-driven agent trace player and a stack matrix. Tiles use `radius-lg` and a 1px `line` border; coloured tiles are `accent`, `accent-2` and `inverse` only, and never touch. Text on `accent-2` is `ink`. Do: back every live tile with real data and keep motion to the terminal, ticker and trace player; all of it stops under reduced motion. Don't: add shadows, gradients or more accent colours.

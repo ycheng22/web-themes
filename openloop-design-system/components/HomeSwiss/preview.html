@@ -1,0 +1,155 @@
+<!-- @dsCard group="Exploration 2: F+G concepts" height=4000 subtitle="A · Swiss Scientific Journal: ivory, ultramarine and vermilion, modular grid" page -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}html,body{margin:0}
+.p{--bg:#f3efe3;--ink:#151515;--mut:#5c5849;--rule:#151515;--hair:#cfc8b4;--ub:#2338e0;--vm:#e5481f;--sans:var(--font-editorial-sans,"Hanken Grotesk",system-ui,sans-serif);--mono:var(--font-jr-mono,"DM Mono",ui-monospace,monospace);background:var(--bg);color:var(--ink);font:400 17px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
+.p a{color:inherit;text-decoration:none}.p :focus-visible{outline:2px solid var(--ub);outline-offset:3px}
+.m{font:400 12px/1.35 var(--mono);color:var(--mut)}.m b{font-weight:500;color:var(--ink)}
+.w{max-width:1280px;margin:0 auto;padding:0 40px}
+.g{display:grid;grid-template-columns:repeat(12,1fr);gap:0 24px}
+/* header */
+.top{border-top:8px solid var(--ink)}
+.hd{display:grid;grid-template-columns:repeat(12,1fr);gap:0 24px;padding:16px 0 14px;align-items:end;border-bottom:1px solid var(--rule)}
+.lg{grid-column:1/span 3;font:800 26px/1 var(--sans);letter-spacing:-.04em;display:flex;align-items:center;gap:10px}.lg i{width:20px;height:20px;background:var(--ub);border-radius:50%;position:relative;display:block}.lg i::after{content:"";position:absolute;right:-6px;bottom:-6px;width:10px;height:10px;background:var(--vm)}
+.hd nav{grid-column:4/span 6;display:flex;gap:30px;font-weight:600;font-size:15px}
+.hd nav a{padding-bottom:2px;border-bottom:2px solid transparent;transition:border-color .2s}.hd nav a:hover,.hd nav a.on{border-color:var(--vm)}
+.hd .m{grid-column:10/span 3;text-align:right}
+/* hero */
+.hero{padding:36px 0 0;align-items:start}
+h1{grid-column:1/span 8;font:800 clamp(54px,8.6vw,128px)/.88 var(--sans);letter-spacing:-.055em;margin:0}
+h1 span{display:block;overflow:hidden;padding-bottom:.16em;margin-bottom:-.16em}h1 span i{display:block;font-style:normal;transform:translateY(100%);animation:up .8s cubic-bezier(.2,.7,.1,1) forwards}h1 span:nth-child(2) i{animation-delay:.1s}h1 span:nth-child(3) i{animation-delay:.2s}
+@keyframes up{to{transform:none}}
+.comp{grid-column:9/span 4;grid-row:1/span 2}.comp svg{display:block;width:100%;height:auto}
+.hs{grid-column:1/span 5;margin-top:36px;font-size:21px;line-height:1.4;font-weight:500;max-width:30ch;letter-spacing:-.01em}
+.hm{grid-column:7/span 2;margin-top:42px;display:grid;gap:10px;align-content:start}
+.hl{margin-top:48px;border-top:1px solid var(--rule);display:grid;grid-template-columns:repeat(12,1fr);gap:0 24px;padding:10px 0}
+/* sections */
+.sec{padding-top:88px}
+.sh{display:grid;grid-template-columns:repeat(12,1fr);gap:0 24px;border-top:8px solid var(--ink);padding-top:10px;margin-bottom:28px}
+.sh h2{grid-column:1/span 3;font:800 15px/1.2 var(--sans);margin:0;letter-spacing:-.005em}.sh .m{grid-column:4/span 6}.sh a{grid-column:10/span 3;text-align:right;font:500 14px var(--sans);text-decoration:underline;text-underline-offset:4px}
+/* featured */
+.ft{display:grid;grid-template-columns:repeat(12,1fr);gap:0 24px;align-items:start}
+.fm{grid-column:1/span 3;display:grid;gap:0;border-top:1px solid var(--rule)}.fm div{padding:8px 0;border-bottom:1px solid var(--hair)}.fm .m{display:block}.fm b{display:block;font:500 15px var(--sans)}
+.fb{grid-column:4/span 5}
+.fb h3{font:800 clamp(38px,4.8vw,62px)/.96 var(--sans);letter-spacing:-.045em;margin:0 0 24px}
+.fb p{font-size:19px;line-height:1.5;margin:0 0 26px;max-width:46ch}
+.rd{display:inline-block;font:700 15px var(--sans);background:var(--ink);color:var(--bg)!important;padding:12px 18px;transition:background .2s}.rd:hover{background:var(--ub)}
+.fd{grid-column:9/span 4}.fd svg{display:block;width:100%;height:auto}.cap{margin-top:8px}
+/* topics */
+.tp{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.tc{padding:18px 20px 22px;border-left:1px solid var(--hair);transition:background .25s,color .25s;display:block;min-height:300px;position:relative}.tc:first-child{border-left:0;padding-left:0}
+.tc:hover{background:var(--ink);color:var(--bg)}.tc:hover .m{color:var(--hair)}
+.tc svg{width:52px;height:52px;display:block;margin-bottom:56px}
+.tc .n{font:800 56px/.9 var(--sans);letter-spacing:-.05em;margin-bottom:10px}
+.tc h3{font:700 19px/1.15 var(--sans);margin:0 0 8px;letter-spacing:-.015em}.tc p{margin:0;font-size:14.5px;opacity:.82}
+/* experiments */
+.ex{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--rule)}
+.xc{padding:24px 28px 28px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:start;transition:background .25s}
+.xc:nth-child(2n){padding-left:28px;padding-right:0;border-left:1px solid var(--rule)}
+.xc:hover{background:#ebe5d4}
+.xc svg{width:200px;height:200px;display:block;background:var(--bg);border:1px solid var(--ink)}
+.xc h3{font:800 28px/1 var(--sans);letter-spacing:-.04em;margin:0 0 8px}.xc p{margin:0 0 12px;font-size:15.5px}
+.tg{display:flex;flex-wrap:wrap;gap:4px}.tg span{border:1px solid var(--ink);padding:1px 7px;font:400 11.5px var(--mono)}
+/* notes */
+.nt{display:grid;grid-template-columns:repeat(12,1fr);gap:0 24px;padding:14px 0;border-top:1px solid var(--hair);align-items:baseline;transition:background .15s,color .15s,padding .2s}
+.nt:first-of-type{border-top:1px solid var(--rule)}.nt:last-of-type{border-bottom:1px solid var(--rule)}
+.nt:hover{background:var(--ink);color:var(--bg);padding-left:12px;padding-right:12px}.nt:hover .m{color:var(--hair)}
+.nt .d{grid-column:1/span 2}.nt h3{grid-column:3/span 6;font:600 22px/1.2 var(--sans);letter-spacing:-.025em;margin:0}.nt .c{grid-column:9/span 3}.nt .r{grid-column:12;text-align:right}
+/* archive */
+.af{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;align-items:center}
+.ch{font:500 13px var(--sans);border:1px solid var(--ink);background:none;color:var(--ink);padding:5px 13px;cursor:pointer;transition:all .15s}.ch:hover{background:var(--hair)}.ch[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.si{margin-left:auto;display:flex;align-items:center;border-bottom:2px solid var(--ink);width:280px}.si input{flex:1;border:0;background:none;font:400 15px var(--sans);padding:6px 0;outline:0;color:var(--ink)}
+.yr{display:grid;grid-template-columns:repeat(12,1fr);gap:0 24px;padding:6px 0;border-top:1px solid var(--rule);margin-top:18px}.yr b{grid-column:1/span 2;font:800 30px/1 var(--sans);letter-spacing:-.04em;color:var(--vm)}
+.ar{display:grid;grid-template-columns:repeat(12,1fr);gap:0 24px;padding:9px 0;border-top:1px solid var(--hair);align-items:baseline}.ar:hover{background:#ebe5d4}.ar[hidden]{display:none}
+.ar .d{grid-column:1/span 2}.ar h4{grid-column:3/span 6;margin:0;font:500 17px/1.3 var(--sans)}.ar .c{grid-column:9/span 3;display:flex;gap:7px;align-items:center}.ar .r{grid-column:12;text-align:right}
+.sq{display:inline-block;width:9px;height:9px;flex:none}
+.pg{display:flex;gap:2px;margin-top:20px;align-items:center}.pg a{font:500 13px var(--mono);padding:5px 11px;border:1px solid var(--hair)}.pg a.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}.pg a:hover{border-color:var(--ink)}
+/* about */
+.ab{padding:88px 0 0}
+.ab .g{border-top:8px solid var(--ink);padding-top:14px;align-items:start}
+.ab h2{grid-column:1/span 7;font:800 clamp(40px,6vw,86px)/.92 var(--sans);letter-spacing:-.05em;margin:0}
+.ab .t{grid-column:9/span 4;font-size:17.5px;padding-top:8px}.ab .t p{margin:0 0 14px}
+.foot{margin-top:88px;border-top:1px solid var(--rule);padding:18px 0 36px}
+.foot .g{font-size:14.5px}.foot ul{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:4px}.foot a:hover{color:var(--vm)}
+.f1{grid-column:1/span 4;font:800 40px/1 var(--sans);letter-spacing:-.05em}.f2{grid-column:5/span 2}.f3{grid-column:7/span 2}.f4{grid-column:9/span 2}.f5{grid-column:11/span 2}
+@media(max-width:900px){.w{padding:0 20px}.hd nav{display:none}.lg{grid-column:1/span 8}.hd .m{grid-column:9/span 4}h1,.comp,.hs,.hm,.fm,.fb,.fd,.nt h3,.ab h2,.ab .t{grid-column:1/-1}.comp{grid-row:auto;margin-top:28px}.fm{margin-bottom:24px}.fd{margin-top:28px}.tp{grid-template-columns:1fr 1fr}.tc{min-height:0}.tc:nth-child(odd){padding-left:0;border-left:0}.ex{grid-template-columns:1fr}.xc{grid-template-columns:1fr}.xc:nth-child(2n){padding-left:0;border-left:0}.nt .d,.nt .c,.ar .d,.ar .c{grid-column:1/-1}.nt .r,.ar .r{grid-column:1/-1;text-align:left}.nt h3{margin:4px 0}.ar h4{grid-column:1/-1}.ab .t{margin-top:20px}.si{margin-left:0;width:100%}.sh h2,.sh .m,.sh a{grid-column:1/-1;text-align:left}.f1,.f2,.f3,.f4,.f5{grid-column:span 6;margin-bottom:20px}.f1{grid-column:1/-1}}
+@media(prefers-reduced-motion:reduce){h1 span i{animation:none;transform:none}*{transition:none!important}}
+</style>
+<div class="p"><div class="w">
+<div class="top"></div>
+<header class="hd"><a class="lg" href="#"><i></i>Vectorlab</a><nav aria-label="Primary"><a class="on" href="#research">Research</a><a href="#experiments">Experiments</a><a href="#engineering">Engineering</a><a href="#notes">Field Notes</a><a href="#about">About</a></nav><div class="m"><b>No. 11</b>, November 2026</div></header>
+
+<section class="hero g"><h1><span><i>Exploring</i></span><span><i>the systems</i></span><span><i>behind intelligence.</i></span></h1>
+<div class="comp"><svg id="c0" viewBox="0 0 400 500" role="img" aria-label="Geometric composition: ultramarine disc, vermilion quarter circle and a field of small vectors"></svg></div>
+<p class="hs">Research, experiments, and engineering notes on artificial intelligence and computational systems.</p>
+<div class="hm m"><span><b>Independent</b><br>research studio</span><span><b>Monthly</b><br>issues since 2024</span></div>
+<div class="hl m" style="grid-column:1/-1"><span style="grid-column:1/span 3"><b>In this issue</b></span><span style="grid-column:4/span 3">Reliable agentic systems</span><span style="grid-column:7/span 3">Retrieval gated by evaluation</span><span style="grid-column:10/span 3;text-align:right">14 articles, 9 experiments</span></div></section>
+
+<section class="sec" id="research"><div class="sh"><h2>Featured research</h2><span class="m">Agent systems, 22 minute read</span><a href="#archive">All research</a></div>
+<div class="ft"><div class="fm"><div><span class="m">Category</span><b>AI Agents and Systems</b></div><div><span class="m">Published</span><b>28 October 2026</b></div><div><span class="m">Reading time</span><b>22 minutes</b></div><div><span class="m">Method</span><b>312 failed runs, 4 contracts</b></div></div>
+<div class="fb"><h3>Beyond the Prompt: Building Reliable Agentic Systems</h3><p>Most agent failures are not failures of reasoning. We traced 312 failed runs and found that 54% broke at the boundary between a model and a tool. This article describes the runtime, the evaluation harness and the four contracts that made agents dependable enough to leave unattended.</p><a class="rd" href="#">Read article</a></div>
+<figure class="fd" style="margin:0"><svg id="c1" viewBox="0 0 400 480" role="img" aria-label="State loop of plan, act, observe and verify with failure share by stage"></svg><figcaption class="cap m"><b>Figure 1</b> The agent loop with a contract at each boundary. Bars show the share of 312 failures by stage.</figcaption></figure></div></section>
+
+<section class="sec" id="topics"><div class="sh"><h2>Explore topics</h2><span class="m">Five areas, 412 items</span><a href="#archive">Browse all</a></div><div class="tp" id="tp"></div></section>
+
+<section class="sec" id="experiments"><div class="sh"><h2>Experiments and projects</h2><span class="m">Selected, newest first</span><a href="#">All experiments</a></div><div class="ex" id="ex"></div></section>
+
+<section class="sec" id="engineering"><div class="sh"><h2>Engineering notes</h2><span class="m">Practical articles and architecture notes</span><a href="#notes">All notes</a></div><div id="nl"></div></section>
+
+<section class="sec" id="archive"><div class="sh"><h2>Research archive</h2><span class="m" id="ac"></span><a href="#">Download index</a></div>
+<div class="af" id="af"><label class="si"><input id="ai" type="search" placeholder="Search 412 items" aria-label="Search the archive"></label></div><div id="al"></div>
+<div class="pg"><a class="on" href="#">1</a><a href="#">2</a><a href="#">3</a><span class="m" style="padding:0 8px">...</span><a href="#">42</a></div></section>
+
+<section class="ab" id="about"><div class="g"><h2>An independent studio for slow, careful work on fast technology.</h2><div class="t"><p>Vectorlab is a research and engineering studio working outside any lab or company. We run small experiments, build the systems they need, and publish the method beside the result.</p><p>The journal is the product. Everything we make is written down.</p><a class="rd" href="#">About the studio</a></div></div></section>
+<footer class="foot"><div class="g"><div class="f1">Vectorlab</div><div class="f2"><b>Journal</b><ul><li><a href="#">Research</a></li><li><a href="#">Experiments</a></li><li><a href="#">Engineering</a></li><li><a href="#">Field Notes</a></li></ul></div><div class="f3"><b>Studio</b><ul><li><a href="#">About</a></li><li><a href="#">Submit a note</a></li><li><a href="#">Colophon</a></li></ul></div><div class="f4"><b>Follow</b><ul><li><a href="#">RSS</a></li><li><a href="#">GitHub</a></li><li><a href="#">Bluesky</a></li></ul></div><div class="f5 m">Set in Hanken Grotesk and DM Mono. Text and figures CC BY 4.0.</div></div></footer>
+</div></div>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)},$$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
+function R(s){return function(){s|=0;s=s+0x6D2B79F5|0;var t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function f(n){return Math.round(n*10)/10}
+var U='#2338e0',V='#e5481f',K='#151515',B='#f3efe3',MO='font-family="DM Mono,monospace"';
+function tx(x,y,t,sz,anc,fill){return '<text x="'+x+'" y="'+y+'" '+MO+' font-size="'+sz+'" text-anchor="'+(anc||'start')+'" fill="'+(fill||K)+'">'+t+'</text>'}
+// hero composition
+(function(){var s='<rect width="400" height="500" fill="'+B+'"/>',r=R(3);
+s+='<circle cx="200" cy="170" r="150" fill="'+U+'"/><path d="M200 320H350A150 150 0 0 1 200 470Z" fill="'+V+'"/><rect x="50" y="320" width="150" height="150" fill="'+K+'"/>';
+// vector field inside the black square
+for(var i=0;i<6;i++)for(var j=0;j<6;j++){var cx=62+i*25.5,cy=332+j*25.5,a=Math.atan2(j-2.5,i-2.5)+Math.PI/2+Math.sin(i*.9)*.5;s+='<path d="M'+f(cx-8*Math.cos(a))+' '+f(cy-8*Math.sin(a))+'L'+f(cx+8*Math.cos(a))+' '+f(cy+8*Math.sin(a))+'" stroke="'+B+'" stroke-width="1.6" stroke-linecap="square"/><circle cx="'+f(cx+8*Math.cos(a))+'" cy="'+f(cy+8*Math.sin(a))+'" r="2" fill="'+B+'"/>'}
+// concentric arcs on disc
+for(i=1;i<6;i++)s+='<circle cx="200" cy="170" r="'+i*24+'" fill="none" stroke="'+B+'" stroke-opacity=".55"/>';
+s+='<path d="M50 170H350M200 20V320" stroke="'+B+'" stroke-opacity=".55"/><circle cx="200" cy="170" r="7" fill="'+V+'"/>';
+s+=tx(50,490,'Fig. 0 / state space',12)+tx(350,490,'n = 36',12,'end');$('#c0').innerHTML=s})();
+// figure 1 loop
+(function(){var s='<rect width="400" height="480" fill="none"/>',nd=[['Plan',40,40],['Act',230,40],['Observe',230,200],['Verify',40,200]];
+nd.forEach(function(n,i){s+='<rect x="'+n[1]+'" y="'+n[2]+'" width="130" height="70" fill="'+(i==1?V:B)+'" stroke="'+K+'" stroke-width="2"/>'+tx(n[1]+14,n[2]+30,n[0],17,0)+tx(n[1]+14,n[2]+54,['contract 1','contract 2','contract 3','contract 4'][i],11)});
+s+='<path d="M170 75H230M295 110V200M230 235H170M105 200V110" stroke="'+K+'" stroke-width="2" fill="none"/><path d="M226 71l6 4-6 4zM291 196l4 6 4-6zM174 231l-6 4 6 4zM101 114l4-6 4 6z" fill="'+K+'"/>';
+var D=[['Malformed arguments',54,V],['Stale context',23,U],['Planning',9,K],['Timeouts',8,K],['Other',6,'#9b957f']];
+s+=tx(0,322,'Failures by stage, n = 312',11);D.forEach(function(d,i){var y=336+i*28;s+=tx(0,y+13,d[0],11)+'<rect x="150" y="'+y+'" width="'+d[1]*4+'" height="18" fill="'+d[2]+'"/>'+tx(150+d[1]*4+8,y+13,d[1]+'%',11)});
+$('#c1').innerHTML=s})();
+// topics
+var T=[['circle','Artificial Intelligence','Capability, evaluation and the limits of benchmarks.',96],['sq','Machine Learning','Training, optimisation and generalisation.',71],['tri','LLM Systems','Retrieval, routing and prompts at scale.',108],['cross','Software Architecture','Durable systems that include models.',84],['arc','Computational Research','Numerics, simulation and the geometry of learning.',53]];
+var GL={circle:'<circle cx="26" cy="26" r="24" fill="'+U+'"/>',sq:'<rect x="2" y="2" width="48" height="48" fill="'+K+'"/><circle cx="26" cy="26" r="12" fill="'+B+'"/>',tri:'<path d="M2 50 26 2l24 48z" fill="'+V+'"/>',cross:'<path d="M20 2h12v18h18v12H32v18H20V32H2V20h18z" fill="'+U+'"/>',arc:'<path d="M2 50A48 48 0 0 1 50 2v48z" fill="'+V+'"/>'};
+$('#tp').innerHTML=T.map(function(t){return '<a class="tc" href="#"><svg viewBox="0 0 52 52" aria-hidden="true">'+GL[t[0]]+'</svg><div class="n">'+t[3]+'</div><h3>'+t[1]+'</h3><p>'+t[2]+'</p></a>'}).join('');
+// experiments
+var X=[['Harbor','A durable runtime for tool-using agents. Every call is an event; a crashed run resumes where it stopped.',['TypeScript','Temporal','Postgres'],'log'],['Tessera','Retrieval gated by an evaluation set. A regression blocks the release.',['Python','pgvector','Reranking'],'dots'],['Plainsight','Tracing and cost accounting for LLM applications, readable on one screen.',['Go','ClickHouse','OpenTelemetry'],'bars'],['Lattice','Sparse attention kernels tuned for commodity GPUs.',['CUDA','PyTorch','Triton'],'grid']];
+function art(k,i){var r=R(i*7+2),s='<rect width="200" height="200" fill="'+B+'"/>';
+if(k=='log'){for(var y=0;y<8;y++){s+='<path d="M10 '+(24+y*22)+'H190" stroke="'+K+'" stroke-opacity=".25"/>';for(var x=0;x<9;x++)if(r()>.35)s+='<rect x="'+(14+x*20)+'" y="'+(16+y*22)+'" width="14" height="14" fill="'+(r()>.8?V:K)+'"/>'}}
+if(k=='dots'){for(var j=0;j<90;j++){var a=r()*6.28,d=Math.sqrt(r())*84;s+='<circle cx="'+f(100+d*Math.cos(a))+'" cy="'+f(100+d*Math.sin(a))+'" r="'+(2+r()*3).toFixed(1)+'" fill="'+(d<30?V:U)+'"/>'}s+='<circle cx="100" cy="100" r="84" fill="none" stroke="'+K+'"/>'}
+if(k=='bars'){for(var b=0;b<14;b++){var h=20+r()*130;s+='<rect x="'+(12+b*13)+'" y="'+(180-h)+'" width="9" height="'+f(h)+'" fill="'+(b==9?V:U)+'"/>'}s+='<path d="M10 180H190" stroke="'+K+'" stroke-width="2"/>'}
+if(k=='grid'){for(var p=0;p<12;p++)for(var q=0;q<12;q++){var on=Math.abs(p-q)<2||r()>.9;s+='<rect x="'+(14+p*14)+'" y="'+(14+q*14)+'" width="12" height="12" fill="'+(on?(p==q?V:U):'none')+'" stroke="'+K+'" stroke-opacity=".2"/>'}}
+return s}
+$('#ex').innerHTML=X.map(function(x,i){return '<a class="xc" href="#"><svg viewBox="0 0 200 200" role="img" aria-label="'+x[0]+' visual preview">'+art(x[3],i)+'</svg><div><h3>'+x[0]+'</h3><p>'+x[1]+'</p><div class="tg">'+x[2].map(function(t){return '<span>'+t+'</span>'}).join('')+'</div></div></a>'}).join('');
+// notes
+var N=[['2026-10-28','Designing agent memory that can forget','AI Agents',9],['2026-10-21','Idempotency keys for tool calls','Software Architecture',6],['2026-10-09','Write the evaluation before the prompt','LLM Systems',7],['2026-09-27','A replay CLI for agent runs','Developer Tools',5],['2026-09-14','Cost accounting per trace','Software Architecture',8],['2026-08-30','Streaming interfaces without breaking the back button','Software Engineering',8]];
+$('#nl').innerHTML=N.map(function(n){return '<a class="nt" href="#"><span class="d m">'+n[0]+'</span><h3>'+n[1]+'</h3><span class="c m">'+n[2]+'</span><span class="r m">'+n[3]+' min</span></a>'}).join('');
+// archive
+var A=[[2026,'10-30','Experiment','Agent memory pruned by reuse score',9,V],[2026,'10-12','Article','Chunk size is a question about the reader',12,U],[2026,'09-18','Experiment','Cascade routing with confidence gates',10,V],[2026,'08-14','Article','A failure taxonomy for tool-using agents',14,U],[2026,'07-19','Essay','What a loss landscape cannot tell you',16,K],[2026,'06-27','Article','Sparse attention on commodity GPUs',13,U],[2025,'12-03','Dataset','312 failed agent runs, annotated',4,'#9b957f'],[2025,'09-21','Essay','Evaluations as the specification',15,K],[2025,'06-08','Experiment','Judge models prefer longer answers',8,V]];
+var ty='All',q='';
+['All','Article','Experiment','Essay','Dataset'].forEach(function(k){var b=document.createElement('button');b.className='ch';b.textContent=k;b.setAttribute('aria-pressed',k=='All');b.onclick=function(){ty=k;$$('#af .ch').forEach(function(x){x.setAttribute('aria-pressed',x.textContent==k)});ar()};$('#af').insertBefore(b,$('#af .si'))});
+function ar(){var L=A.filter(function(a){return(ty=='All'||a[2]==ty)&&(a[3]+a[2]).toLowerCase().indexOf(q)>-1}),h='',yr='';
+L.forEach(function(a){if(a[0]!=yr){yr=a[0];h+='<div class="yr"><b>'+yr+'</b></div>'}h+='<a class="ar" href="#"><span class="d m">'+yr+'-'+a[1]+'</span><h4>'+a[3]+'</h4><span class="c m"><i class="sq" style="background:'+a[5]+'"></i>'+a[2]+'</span><span class="r m">'+a[4]+' min</span></a>'});
+$('#al').innerHTML=h||'<p class="m" style="padding:24px 0">No items match. Clear a filter to see all 412.</p>';$('#ac').textContent=L.length+' of 412 items shown (first page)'}
+$('#ai').addEventListener('input',function(e){q=e.target.value.toLowerCase();ar()});ar();
+})();
+</script>

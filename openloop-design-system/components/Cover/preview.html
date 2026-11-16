@@ -1,0 +1,29 @@
+<!-- @dsCard height=288 -->
+<style>
+html,body{margin:0}
+.c{position:relative;width:960px;height:288px;background:var(--bg);overflow:hidden;font-family:var(--font-editorial-display,"Instrument Serif",serif)}
+.c svg{position:absolute;inset:0}
+.a{fill:var(--accent)}.i{fill:var(--inverse)}.b{fill:var(--accent-2)}.l{fill:var(--line)}
+.r{rx:var(--radius-sm)}
+.h{stroke:var(--bg);stroke-width:1.5}
+.t{position:absolute;left:32px;bottom:28px;width:420px}
+.n{font-size:96px;line-height:.92;color:var(--ink);letter-spacing:-.02em}
+.s{font:500 14px/20px var(--font-editorial-sans,system-ui,sans-serif);color:var(--ink-muted);margin-top:10px}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Hanken+Grotesk:wght@500&display=swap" rel="stylesheet">
+<div class="c" data-theme="editorial">
+<!-- derivation
+blocks: accent 200x288 slab, inverse 224x160 bleeding right, accent-2 112x112, line 96x112.
+arrangement: one tall slab with satellites stepping down to the right edge.
+pattern: editorial, "hairlines" row: two ground-coloured rules cut across the blocks.
+scales: radius-sm on all blocks; sides are multiples of space-2 (16px). -->
+<svg width="960" height="288" viewBox="0 0 960 288" aria-hidden="true">
+<rect class="a r" x="520" y="0" width="200" height="288"/>
+<rect class="i r" x="736" y="0" width="224" height="160"/>
+<rect class="b r" x="736" y="176" width="112" height="112"/>
+<rect class="l r" x="864" y="176" width="96" height="112"/>
+<line class="h" x1="520" x2="960" y1="72" y2="72"/>
+<line class="h" x1="520" x2="960" y2="224" y1="224"/>
+</svg>
+<div class="t"><div class="n">openloop</div><div class="s">Full-stack and applied AI engineering, written down.</div></div>
+</div>

@@ -1,0 +1,113 @@
+<!-- @dsCard group="Homepage concepts" height=3750 subtitle="A · Editorial Minimal: warm white, serif statement, index-style lists" page -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}html,body{margin:0}
+.p{--serif:var(--font-editorial-display,"Instrument Serif",Georgia,serif);--sans:var(--font-editorial-sans,"Hanken Grotesk",system-ui,sans-serif);background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+.p a{color:inherit;text-decoration:none}
+.p :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.w{max-width:1120px;margin:0 auto;padding:0 40px}
+nav.top{display:flex;justify-content:space-between;align-items:center;padding:28px 0;font-size:15px}
+.mark{display:flex;align-items:center;gap:10px;font:400 26px/1 var(--serif)}
+.mark svg{width:22px;height:22px}
+.links{display:flex;gap:28px;color:var(--ink-muted)}
+.links a{padding:4px 0;background:linear-gradient(var(--ink),var(--ink)) 0 100%/0 1px no-repeat;transition:background-size .3s,color .3s}
+.links a:hover{color:var(--ink);background-size:100% 1px}
+.hero{display:grid;grid-template-columns:1fr 240px;gap:64px;padding:72px 0 64px;border-bottom:1px solid var(--line)}
+h1{font:400 clamp(52px,8.4vw,92px)/.98 var(--serif);letter-spacing:-.02em;margin:0;max-width:11ch}
+h1 span{display:block;overflow:hidden}
+h1 span i{display:block;font-style:normal;transform:translateY(105%);animation:up .9s cubic-bezier(.2,.7,.1,1) forwards}
+h1 span:nth-child(2) i{animation-delay:.12s}h1 span:nth-child(3) i{animation-delay:.24s}
+@keyframes up{to{transform:none}}
+.lede{max-width:46ch;color:var(--ink-muted);margin:36px 0 0;opacity:0;animation:fade .8s .7s forwards}
+@keyframes fade{to{opacity:1}}
+.cta{display:flex;gap:24px;margin-top:32px;align-items:center;opacity:0;animation:fade .8s .85s forwards}
+.btn{background:var(--accent);color:var(--on-accent)!important;padding:12px 22px;border-radius:var(--radius-sm);font-weight:500;transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.ul{border-bottom:1px solid var(--ink)}
+.margin{align-self:end;font-size:14px;line-height:1.55;color:var(--ink-muted);display:grid;gap:22px;border-left:1px solid var(--line);padding-left:24px}
+.margin b{display:block;color:var(--ink);font-weight:600}
+.sec{display:grid;grid-template-columns:200px 1fr;gap:48px;padding:64px 0;border-bottom:1px solid var(--line)}
+.sec>h2{font:400 34px/1.1 var(--serif);margin:0;position:sticky;top:24px;align-self:start}
+.row{display:grid;grid-template-columns:1.1fr 1.4fr 110px;gap:32px;padding:30px 0;border-top:1px solid var(--line);align-items:baseline;transition:padding-left .35s,background .35s}
+.row:first-child{border-top:0;padding-top:0}
+.row:hover{padding-left:14px}
+.row h3{font:400 36px/1.08 var(--serif);margin:0}
+.row p{margin:0;color:var(--ink-muted);max-width:52ch}
+.row small{display:block;margin-top:8px;font-size:14px;color:var(--ink)}
+.row .yr{text-align:right;font-size:14px;color:var(--ink-muted)}
+.plates{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.plate svg{width:100%;height:130px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);display:block}
+.plate h3{font:400 24px/1.15 var(--serif);margin:16px 0 6px}
+.plate p{margin:0;font-size:15px;color:var(--ink-muted)}
+.plate cite{display:block;font-style:normal;font-size:13px;color:var(--ink-muted);margin-top:12px}
+dl.exp{margin:0;display:grid;grid-template-columns:150px 1fr;gap:0}
+dl.exp dt,dl.exp dd{margin:0;padding:18px 0;border-top:1px solid var(--line)}
+dl.exp dt:first-of-type,dl.exp dt:first-of-type+dd{border-top:0;padding-top:0}
+dl.exp dt{font:400 24px/1.2 var(--serif)}
+dl.exp dd{color:var(--ink-muted)}
+.note{display:grid;grid-template-columns:96px 1fr 90px;gap:24px;padding:22px 0;border-top:1px solid var(--line);align-items:baseline}
+.note:first-child{border-top:0;padding-top:0}
+.note time,.note span{font-size:14px;color:var(--ink-muted)}
+.note span{text-align:right}
+.note h3{font:400 28px/1.15 var(--serif);margin:0;transition:color .2s}
+.note:hover h3{color:var(--accent)}
+.about{font:400 28px/1.3 var(--serif);max-width:30ch;margin:0 0 36px}
+.now{display:grid;grid-template-columns:1fr 1fr;gap:32px;font-size:16px}
+.now div{border-top:1px solid var(--ink);padding-top:14px}
+.now b{display:block;font-weight:600;margin-bottom:6px}.now span{color:var(--ink-muted)}
+.contact{padding:80px 0 40px;text-align:left}
+.contact a.big{font:400 clamp(40px,7vw,84px)/1 var(--serif);display:inline-block;letter-spacing:-.015em;border-bottom:2px solid var(--accent);padding-bottom:6px}
+.soc{display:flex;gap:28px;margin-top:40px;color:var(--ink-muted);font-size:15px}
+.soc a:hover{color:var(--ink)}
+.foot{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding:24px 0 40px;font-size:14px;color:var(--ink-muted)}
+@media(max-width:760px){.w{padding:0 20px}.hero{grid-template-columns:1fr;padding:56px 0}.margin{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:20px}.sec{grid-template-columns:1fr;gap:28px;padding:64px 0}.sec>h2{position:static}.row{grid-template-columns:1fr;gap:10px}.row .yr{text-align:left}.plates{grid-template-columns:1fr}dl.exp{grid-template-columns:1fr}dl.exp dt{padding-bottom:0}dl.exp dd{border-top:0;padding-top:4px}.note{grid-template-columns:1fr;gap:4px}.note span{text-align:left}.now{grid-template-columns:1fr}.links{gap:16px;font-size:14px}.links a:nth-child(n+4){display:none}}
+@media(prefers-reduced-motion:reduce){h1 span i,.lede,.cta{animation:none;transform:none;opacity:1}.row,.links a,.btn{transition:none}}
+</style>
+<div class="p" data-theme="editorial">
+<div class="w">
+<nav class="top"><a class="mark" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.5 8.5A9 9 0 1 0 21 12"/></svg>openloop</a>
+<div class="links"><a href="#work">Work</a><a href="#lab">Experiments</a><a href="#craft">Expertise</a><a href="#notes">Notes</a><a href="#contact">Contact</a></div></nav>
+
+<header class="hero">
+<div>
+<h1><span><i>Software that</i></span><span><i>reasons, built</i></span><span><i>to last.</i></span></h1>
+<p class="lede">Full-stack engineer working on applied AI: agents, retrieval and the cloud-native systems that keep them reliable once real people depend on them.</p>
+<div class="cta"><a class="btn" href="#work">See selected work</a><a class="ul" href="#notes">Read the notes</a></div>
+</div>
+<aside class="margin"><div><b>Now</b>Building an evaluation harness for tool-using agents.</div><div><b>Works in</b>TypeScript, Python, Go, Postgres, AWS.</div><div><b>Open to</b>Select engagements from January.</div></aside>
+</header>
+
+<section class="sec" id="work"><h2>Selected work</h2><div>
+<a class="row" href="#"><h3>Ledgerline</h3><p>Multi-tenant billing platform with an event-sourced ledger. Reconciliation runs as replayable jobs, so every number can be explained.<small>Next.js, Node, Postgres, AWS</small></p><span class="yr">2026</span></a>
+<a class="row" href="#"><h3>Harbor</h3><p>Agent runtime with durable tool calls, retries and human approval steps. A crashed run resumes where it stopped.<small>TypeScript, Temporal, Kubernetes</small></p><span class="yr">2025</span></a>
+<a class="row" href="#"><h3>Tessera</h3><p>Retrieval over engineering documentation with hybrid search, reranking and an evaluation set that gates every release.<small>Python, pgvector, FastAPI</small></p><span class="yr">2025</span></a>
+<a class="row" href="#"><h3>Plainsight</h3><p>Tracing and cost accounting for LLM applications, built so a support engineer can read a failed run in one screen.<small>Go, ClickHouse, React</small></p><span class="yr">2024</span></a>
+</div></section>
+
+<section class="sec" id="lab"><h2>Experiments</h2><div class="plates">
+<figure class="plate" style="margin:0"><svg viewBox="0 0 300 130" role="img" aria-label="Line chart: recall rises then flattens as chunk size grows"><path d="M20 105 C80 90 110 40 150 36 S240 30 280 34" fill="none" stroke="var(--accent)" stroke-width="2"/><path d="M20 112 C90 100 130 70 170 62 S240 50 280 52" fill="none" stroke="var(--accent-2)" stroke-width="2" stroke-dasharray="4 4"/><line x1="20" y1="118" x2="280" y2="118" stroke="var(--line)"/></svg><h3>Chunk size and recall</h3><p>Smaller chunks win on precise questions and lose on anything that needs context. We measured where the curve bends.</p><cite>Retrieval, 400 questions</cite></figure>
+<figure class="plate" style="margin:0"><svg viewBox="0 0 300 130" role="img" aria-label="Bar chart of agent failure categories"><g fill="var(--accent)"><rect x="30" y="40" width="30" height="78"/><rect x="85" y="62" width="30" height="56"/><rect x="140" y="82" width="30" height="36"/><rect x="195" y="98" width="30" height="20" fill="var(--accent-2)"/><rect x="250" y="106" width="22" height="12" fill="var(--accent-2)"/></g><line x1="20" y1="118" x2="280" y2="118" stroke="var(--line)"/></svg><h3>How agents fail</h3><p>A taxonomy of 300 failed runs. Most were not reasoning errors but bad tool arguments and stale context.</p><cite>Agents, ongoing</cite></figure>
+<figure class="plate" style="margin:0"><svg viewBox="0 0 300 130" role="img" aria-label="Scatter of cost against quality for routed models"><g fill="var(--accent)"><circle cx="50" cy="96" r="4"/><circle cx="90" cy="80" r="4"/><circle cx="140" cy="52" r="4"/><circle cx="215" cy="38" r="4"/></g><circle cx="120" cy="46" r="6" fill="none" stroke="var(--accent-2)" stroke-width="2"/><line x1="20" y1="118" x2="280" y2="118" stroke="var(--line)"/></svg><h3>Routing small models</h3><p>Send easy requests to a cheap model and escalate on low confidence. Quality held, the bill did not.</p><cite>Cost, shipped</cite></figure>
+</div></section>
+
+<section class="sec" id="craft"><h2>Expertise</h2>
+<dl class="exp"><dt>Product engineering</dt><dd>TypeScript, React, Next.js, Node. Interfaces that stay fast and accessible as they grow.</dd>
+<dt>Applied AI</dt><dd>LLM applications, agents, RAG, evaluation. Prompts are versioned, tested and measured.</dd>
+<dt>Platform</dt><dd>AWS, Kubernetes, Terraform, CI/CD, Postgres. Observable by default, boring on purpose.</dd>
+<dt>Languages</dt><dd>TypeScript, Python, Go, SQL.</dd></dl></section>
+
+<section class="sec" id="notes"><h2>Notes</h2><div>
+<a class="note" href="#"><time>Oct 2026</time><h3>What an agent should remember, and what it should forget</h3><span>9 min</span></a>
+<a class="note" href="#"><time>Sep 2026</time><h3>Write the evaluation before the prompt</h3><span>7 min</span></a>
+<a class="note" href="#"><time>Jul 2026</time><h3>Chunking is a product decision</h3><span>11 min</span></a>
+<a class="note" href="#"><time>May 2026</time><h3>Boring infrastructure for fast-moving models</h3><span>6 min</span></a>
+</div></section>
+
+<section class="sec"><h2>About</h2><div><p class="about">I like systems where the interesting part is also the dependable part.</p>
+<div class="now"><div><b>Reading</b><span>Papers on tool use and long-context evaluation.</span></div><div><b>Building</b><span>A small open-source harness for replaying agent runs.</span></div><div><b>Writing</b><span>A series on retrieval quality, one measurement at a time.</span></div><div><b>Away from screens</b><span>Climbing, slow coffee, bad chess.</span></div></div></div></section>
+
+<section class="contact" id="contact"><a class="big" href="mailto:hello@example.com">hello@example.com</a>
+<div class="soc"><a href="#">GitHub</a><a href="#">LinkedIn</a><a href="#">RSS</a><a href="#">Mastodon</a></div></section>
+<footer class="foot"><span>openloop, 2026</span><span>Set in Instrument Serif and Hanken Grotesk</span></footer>
+</div></div>

@@ -1,0 +1,93 @@
+<!-- @dsCard group="Homepage concepts" height=3980 subtitle="D · Intelligent Editorial: essay pacing, one drawn abstract figure" page -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}html,body{margin:0}
+.p{--serif:var(--font-intel-serif,"Newsreader",Georgia,serif);--ui:var(--font-intel-sans,"Public Sans",system-ui,sans-serif);background:var(--bg);color:var(--ink);font:400 20px/1.6 var(--serif)}
+.p a{color:inherit;text-decoration:none}
+.p :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.ui{font:500 14px/20px var(--ui)}
+.w{max-width:1120px;margin:0 auto;padding:0 40px}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:30px 0}
+.mark{display:flex;gap:10px;align-items:center;font:500 22px/1 var(--serif)}.mark svg{width:20px;height:20px;color:var(--accent)}
+.nl{display:flex;gap:28px;color:var(--ink-muted)}.nl a{transition:color .2s}.nl a:hover{color:var(--ink)}
+.hero{display:grid;grid-template-columns:1.15fr 1fr;gap:48px;align-items:center;padding:40px 0 56px}
+h1{font:400 clamp(40px,5.6vw,62px)/1.08 var(--serif);letter-spacing:-.015em;margin:0 0 28px;max-width:16ch}
+.hero p{max-width:34ch;color:var(--ink-muted);margin:0 0 36px}
+.btn{display:inline-block;background:var(--accent);color:var(--on-accent)!important;padding:13px 24px;border-radius:var(--radius-md);font:500 15px var(--ui);transition:background .25s}
+.btn:hover{background:var(--ink)}
+.txt{margin-left:22px;color:var(--ink);border-bottom:1px solid var(--ink-muted);padding-bottom:2px;font:500 15px var(--ui)}
+.fig svg{width:100%;height:auto;display:block}
+.fig path{fill:none;stroke:var(--ink);stroke-width:1.3;stroke-dasharray:var(--l);stroke-dashoffset:var(--l);animation:draw 3.2s cubic-bezier(.4,0,.2,1) forwards}
+.fig path:nth-of-type(2){animation-delay:.3s;stroke:var(--accent)}.fig path:nth-of-type(3){animation-delay:.6s}.fig path:nth-of-type(4){animation-delay:.9s;stroke:var(--ink-muted)}
+.fig circle{fill:var(--accent-2);opacity:0;animation:fade .6s 2.6s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}@keyframes fade{to{opacity:1}}
+.col{max-width:700px;margin:0 auto}
+.sec{padding:0 0 56px}
+.sec>.col>h2,.hd{font:400 34px/1.15 var(--serif);margin:0 0 12px;letter-spacing:-.01em}
+.intro{color:var(--ink-muted);margin:0 0 28px}
+.ent{padding:22px 0;border-top:1px solid var(--line)}
+.ent:last-child{border-bottom:1px solid var(--line)}
+.ent h3{font:400 30px/1.15 var(--serif);margin:0 0 10px;display:flex;align-items:center;gap:14px}
+.ent h3 a{background:linear-gradient(var(--accent),var(--accent)) 0 100%/0 1px no-repeat;transition:background-size .35s}.ent:hover h3 a{background-size:100% 1px}
+.ent p{margin:0 0 14px;max-width:60ch}
+.ent .ui{color:var(--ink-muted)}
+.gl{width:44px;height:44px;flex:none}
+.nb{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1040px;margin:0 auto}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);padding:32px;transition:border-color .3s}
+.card:hover{border-color:var(--accent)}
+.card h3{font:400 26px/1.15 var(--serif);margin:0 0 10px}.card p{margin:0 0 16px;font-size:18px;line-height:1.55}
+.card .ui{color:var(--ink-muted)}
+.st{color:var(--accent)!important}
+.ex{display:grid;grid-template-columns:150px 1fr;gap:16px 32px}
+.ex dt{font:600 14px/32px var(--ui);color:var(--ink)}.ex dd{margin:0}
+.ex dd{padding-bottom:18px;border-bottom:1px solid var(--line)}.ex dd:last-child{border:0}
+.n{display:flex;justify-content:space-between;gap:24px;align-items:baseline;padding:20px 0;border-top:1px solid var(--line)}
+.n:last-child{border-bottom:1px solid var(--line)}
+.n h3{font:400 24px/1.25 var(--serif);margin:0;transition:color .2s}.n:hover h3{color:var(--accent)}
+.n span{white-space:nowrap;color:var(--ink-muted)}
+.abt{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);padding:44px;max-width:900px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:48px}
+.abt h3{font:400 30px/1.15 var(--serif);margin:0 0 14px}.abt p{margin:0 0 14px}
+.nowl{margin:0;padding:0;list-style:none;display:grid;gap:14px}.nowl li{padding-top:14px;border-top:1px solid var(--line);font-size:18px}.nowl li:first-child{border-top:0;padding-top:0}
+.nowl b{display:block;font:600 14px var(--ui);margin-bottom:2px}
+.ct{background:var(--inverse);color:var(--on-inverse);padding:64px 0 32px}
+.ct .col{text-align:left}
+.ct h2{font:400 clamp(32px,4.6vw,46px)/1.12 var(--serif);margin:0 0 28px;letter-spacing:-.01em}
+.ct a.m{font:400 26px var(--serif);border-bottom:1px solid var(--accent-2);padding-bottom:3px}
+.ct .soc{display:flex;gap:26px;margin-top:40px;opacity:.82}.ct .soc a:hover{opacity:1}
+.ct .ft{display:flex;justify-content:space-between;margin-top:56px;opacity:.7}
+@media(max-width:760px){.w{padding:0 20px}.hero{grid-template-columns:1fr;padding:32px 0 72px}.fig{order:-1;max-width:320px}.nb,.abt{grid-template-columns:1fr}.ex{grid-template-columns:1fr;gap:0}.ex dd{margin-bottom:14px}.abt{padding:28px;gap:28px}.nl a:nth-child(n+3){display:none}.n{flex-direction:column;gap:2px}.sec{padding-bottom:80px}}
+@media(prefers-reduced-motion:reduce){.fig path{animation:none;stroke-dashoffset:0}.fig circle{animation:none;opacity:1}}
+</style>
+<div class="p" data-theme="intelligent">
+<div class="w"><nav class="nav"><a class="mark" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.5 8.5A9 9 0 1 0 21 12"/></svg>openloop</a><div class="nl ui"><a href="#w">Projects</a><a href="#e">Experiments</a><a href="#k">Expertise</a><a href="#n">Notes</a><a href="#c">Contact</a></div></nav>
+<header class="hero"><div><h1>Building software that can reason, and the systems that keep it honest.</h1><p>Full-stack and applied AI engineering: agents, retrieval and the cloud infrastructure they depend on.</p><a class="btn" href="#w">Read about the work</a><a class="txt" href="#n">Engineering notes</a></div>
+<div class="fig"><svg viewBox="0 0 440 440" role="img" aria-label="Abstract figure of open, nested loops"><path style="--l:900" d="M220 60a160 160 0 1 1-112 47"/><path style="--l:620" d="M220 110a110 110 0 1 1-78 32"/><path style="--l:420" d="M220 160a60 60 0 1 1-42 17"/><path style="--l:300" d="M60 220H20M420 220H380M220 20V0" /><circle cx="107" cy="107" r="7"/></svg></div></header></div>
+
+<section class="sec" id="w"><div class="col"><h2>Selected projects</h2><p class="intro">Four systems I would still choose to build the same way.</p>
+<article class="ent"><h3><svg class="gl" viewBox="0 0 44 44" fill="none" stroke="var(--ink)" stroke-width="1.3" aria-hidden="true"><path d="M6 36h32M10 36V20M20 36V10M30 36V26"/></svg><a href="#">Ledgerline</a></h3><p>Billing for multi-tenant products, built on an event-sourced ledger. Reconciliation replays from history, so any number can be explained.</p><div class="ui">Next.js, Node, Postgres, AWS</div></article>
+<article class="ent"><h3><svg class="gl" viewBox="0 0 44 44" fill="none" stroke="var(--ink)" stroke-width="1.3" aria-hidden="true"><path d="M6 22h12l8-12h12M18 22l8 12h12"/><circle cx="18" cy="22" r="3" fill="var(--bg)"/></svg><a href="#">Harbor</a></h3><p>An agent runtime with durable tool calls, retries and human approval steps. A crashed run resumes exactly where it stopped.</p><div class="ui">TypeScript, Temporal, Kubernetes</div></article>
+<article class="ent"><h3><svg class="gl" viewBox="0 0 44 44" fill="none" stroke="var(--ink)" stroke-width="1.3" aria-hidden="true"><circle cx="22" cy="22" r="14"/><circle cx="22" cy="22" r="6"/></svg><a href="#">Tessera</a></h3><p>Retrieval over engineering documentation with hybrid search and reranking. A fixed evaluation set decides whether a change ships.</p><div class="ui">Python, pgvector, FastAPI</div></article>
+<article class="ent"><h3><svg class="gl" viewBox="0 0 44 44" fill="none" stroke="var(--ink)" stroke-width="1.3" aria-hidden="true"><path d="M6 30l8-8 8 5 8-14 8 6"/></svg><a href="#">Plainsight</a></h3><p>Tracing and cost accounting for LLM applications, designed so a failed run can be read on a single screen.</p><div class="ui">Go, ClickHouse, React</div></article></div></section>
+
+<section class="sec" id="e"><div class="w"><div class="col" style="margin-bottom:48px"><h2 class="hd">AI experiments and research</h2><p class="intro" style="margin:0">Small studies, each with a question, a method and a result I would defend.</p></div>
+<div class="nb"><div class="card"><h3>Chunk size and recall</h3><p>Smaller chunks win on precise questions and lose when the answer needs surrounding context.</p><div class="ui st">In progress, 400 questions</div></div>
+<div class="card"><h3>How agents fail</h3><p>A taxonomy of 300 failed runs. Most were bad tool arguments and stale context, not poor reasoning.</p><div class="ui st">In progress, 300 runs</div></div>
+<div class="card"><h3>Routing small models</h3><p>Send easy requests to a cheaper model and escalate when confidence is low.</p><div class="ui">Shipped, quality held</div></div>
+<div class="card"><h3>Prompt regression diffs</h3><p>Comparing outputs across prompt versions. Too noisy to trust, so it was shelved.</p><div class="ui">Shelved</div></div></div></div></section>
+
+<section class="sec" id="k"><div class="col"><h2>Technical expertise</h2><p class="intro">What I reach for, grouped by the question each answers.</p>
+<dl class="ex"><dt>How it looks</dt><dd>TypeScript, React, Next.js. Interfaces that stay fast and accessible as they grow.</dd><dt>How it runs</dt><dd>Node, Python, Go and Postgres, with queues and workflows where work must survive failure.</dd><dt>How it thinks</dt><dd>LLM applications, agents, retrieval and evaluation, with prompts versioned and tested like code.</dd><dt>Where it lives</dt><dd>AWS, Kubernetes, Terraform and CI/CD, observable from the first deploy.</dd></dl></div></section>
+
+<section class="sec" id="n"><div class="col"><h2>Engineering notes</h2><p class="intro">Longer pieces on what worked and how it was measured.</p>
+<a class="n" href="#"><h3>What an agent should remember, and what it should forget</h3><span class="ui">Oct 2026</span></a>
+<a class="n" href="#"><h3>Write the evaluation before the prompt</h3><span class="ui">Sep 2026</span></a>
+<a class="n" href="#"><h3>Chunking is a product decision</h3><span class="ui">Jul 2026</span></a>
+<a class="n" href="#"><h3>Boring infrastructure for fast-moving models</h3><span class="ui">May 2026</span></a></div></section>
+
+<section class="sec"><div class="w"><div class="abt"><div><h3>About</h3><p>I like systems where the interesting part is also the dependable part. I came to AI from product engineering, so I care most about what happens after the demo.</p></div>
+<ul class="nowl"><li><b>Now building</b>An evaluation harness for tool-using agents.</li><li><b>Now reading</b>Papers on long-context evaluation.</li><li><b>Now writing</b>A series on retrieval quality.</li></ul></div></div></section>
+
+<footer class="ct" id="c"><div class="col"><h2>If you are building something that has to think and ship, write to me.</h2><a class="m" href="mailto:hello@example.com">hello@example.com</a>
+<div class="soc ui"><a href="#">GitHub</a><a href="#">LinkedIn</a><a href="#">RSS</a><a href="#">Mastodon</a></div><div class="ft ui"><span>openloop, 2026</span><span>Set in Newsreader and Public Sans</span></div></div></footer>
+</div>

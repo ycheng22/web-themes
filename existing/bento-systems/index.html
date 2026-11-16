@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en" data-theme="bento">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bento Systems</title>
+<link rel="stylesheet" href="../tokens.css">
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}html,body{margin:0}
+.p{--d:var(--font-bento-display,"Bricolage Grotesque",system-ui,sans-serif);--s:var(--font-bento-sans,"Figtree",system-ui,sans-serif);--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;background:var(--bg);color:var(--ink);font:400 16px/1.5 var(--s);padding:20px 0 40px}
+.p a{color:inherit;text-decoration:none}.p :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.w{max-width:1120px;margin:0 auto;padding:0 20px}
+.nav{display:flex;justify-content:space-between;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 8px 8px 22px;margin-bottom:16px}
+.mark{display:flex;gap:8px;align-items:center;font:800 19px/1 var(--d);letter-spacing:-.02em}.mark svg{width:22px;height:22px;color:var(--accent)}
+.nl{display:flex;gap:4px;font-size:14px;font-weight:500}.nl a{padding:8px 14px;border-radius:999px;transition:background .2s}.nl a:hover{background:var(--bg)}.nl a.c{background:var(--ink);color:var(--bg)}.nl a.c:hover{background:var(--accent);color:var(--on-accent)}
+.g{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.t{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:26px;position:relative;overflow:hidden;min-width:0}
+a.t{transition:transform .3s cubic-bezier(.2,.7,.1,1)}a.t:hover{transform:translateY(-4px)}
+.s3{grid-column:span 3}.s4{grid-column:span 4}.s5{grid-column:span 5}.s6{grid-column:span 6}.s7{grid-column:span 7}.s8{grid-column:span 8}.s12{grid-column:span 12}.r2{grid-row:span 2}
+.p a.blue{color:var(--on-accent)}.p a.dark{color:var(--on-inverse)}.p a.yel{color:var(--ink)}
+.blue{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}.yel{background:var(--accent-2);color:var(--ink);border-color:var(--accent-2)}.dark{background:var(--inverse);color:var(--on-inverse);border-color:var(--inverse)}
+.t p.lb,.lb{font:600 13px var(--s);color:var(--ink-muted);margin:0 0 14px;display:flex;gap:8px;align-items:center}.blue .lb,.dark .lb{color:inherit;opacity:.85}.yel .lb{color:var(--ink)}
+h1{font:800 clamp(44px,6.2vw,76px)/.94 var(--d);letter-spacing:-.045em;margin:0 0 20px}
+h2{font:800 clamp(28px,3.4vw,40px)/1 var(--d);letter-spacing:-.035em;margin:44px 0 6px}.sub{margin:0 0 20px;color:var(--ink-muted);max-width:56ch}
+h3{font:700 25px/1.1 var(--d);letter-spacing:-.02em;margin:0 0 8px}.t p{margin:0}.t p.lb{margin:0 0 14px}
+.mut{color:var(--ink-muted)}.blue .mut,.dark .mut{color:inherit;opacity:.85}
+/* hero */
+.hero{min-height:400px;display:flex;flex-direction:column;justify-content:space-between}
+.hero p{max-width:42ch;font-size:18px}
+.rot{display:inline-block;position:relative;height:1em;vertical-align:bottom;overflow:hidden;color:var(--accent)}.rot span{display:block;height:1em;line-height:.94;animation:rt 9s infinite cubic-bezier(.7,0,.2,1)}
+@keyframes rt{0%,28%{transform:translateY(0)}33%,61%{transform:translateY(-100%)}66%,94%{transform:translateY(-200%)}100%{transform:translateY(-300%)}}
+.pill{display:inline-flex;gap:8px;align-items:center;font-weight:600;font-size:14px;background:var(--ink);color:var(--bg)!important;padding:12px 20px;border-radius:999px;margin:20px 8px 0 0;transition:background .2s}.pill:hover{background:var(--accent);color:var(--on-accent)!important}.pill.o{background:transparent;border:1px solid var(--ink);color:var(--ink)!important}.pill.o:hover{background:var(--accent-2);border-color:var(--accent-2);color:var(--ink)!important}
+/* terminal */
+.term{font:400 13.5px/1.7 var(--mono);min-height:210px;white-space:pre-wrap}.term .pr{color:var(--accent-2)}.term .ok{color:#8fe3b1}.term .dm{opacity:.62}.cur{display:inline-block;width:8px;height:15px;background:var(--on-inverse);vertical-align:-2px;animation:bl 1s steps(1) infinite}@keyframes bl{50%{opacity:0}}
+.dots{display:flex;gap:6px;margin-bottom:14px}.dots i{width:10px;height:10px;border-radius:50%;background:var(--on-inverse);opacity:.3}
+/* latency */
+.hist{display:flex;align-items:flex-end;gap:4px;height:110px;margin-top:14px}.hist i{flex:1;background:var(--on-accent);opacity:.45;border-radius:5px;min-height:6px;transition:height .5s,opacity .2s}.hist i:hover,.hist i.k{opacity:1}
+.big{font:800 52px/1 var(--d);letter-spacing:-.04em}
+.rd{font:500 13px var(--s);margin-top:10px;min-height:20px}
+/* ticker */
+.tk{overflow:hidden;white-space:nowrap;margin:0 -26px;padding:10px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);font:600 15px var(--d)}.tk div{display:inline-block;animation:mq 30s linear infinite}.tk span{margin:0 18px}.tk b{font-weight:800}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* projects */
+.art{height:150px;border-radius:18px;margin:-8px -8px 20px;background:var(--bg);overflow:hidden}.art svg{width:100%;height:100%;display:block}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}.chips span{font-size:13px;font-weight:500;padding:3px 11px;border-radius:999px;border:1px solid currentColor;opacity:.85}
+.go{position:absolute;right:20px;top:20px;width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;transition:transform .3s,background .2s}a.t:hover .go{transform:rotate(-45deg);background:var(--accent)}a.t:hover .go svg{color:var(--on-accent)}.go svg{width:16px;height:16px}
+/* trace player */
+.tp{display:grid;grid-template-columns:260px 1fr;gap:28px;align-items:start}
+.sc{display:grid;gap:6px;margin-top:16px}.sc button{font:600 14px var(--s);text-align:left;padding:11px 14px;border-radius:14px;border:1px solid var(--line);background:var(--surface);cursor:pointer;color:var(--ink);transition:background .2s,border-color .2s}.sc button:hover{border-color:var(--ink)}.sc button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tr{background:var(--bg);border-radius:18px;padding:18px 18px 12px}.tr svg{width:100%;height:auto;display:block}
+.lg{font:400 13px/1.7 var(--mono);margin-top:12px;min-height:116px;border-top:1px solid var(--line);padding-top:10px}.lg div{opacity:0;animation:fi .3s forwards}.lg .e{color:#a0331a}.lg .g2{color:#1d7a4a}@keyframes fi{to{opacity:1}}
+.rbar{height:8px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:6px}.rbar i{display:block;height:100%;background:var(--accent);width:0;transition:width .7s cubic-bezier(.2,.7,.1,1)}
+/* stack matrix */
+.mx{display:grid;grid-template-columns:110px repeat(4,1fr);gap:6px;align-items:center;font-size:14px}.mx .h{font:600 12.5px var(--s);color:var(--ink-muted);text-align:center}
+.mx .rl{font:700 17px var(--d);letter-spacing:-.01em}
+.mx .c{height:46px;border-radius:12px;background:var(--bg);display:grid;place-items:center;font-weight:500;transition:background .2s,color .2s,transform .2s;cursor:default;text-align:center;padding:0 6px;font-size:13.5px}
+.mx .c.on{background:var(--accent);color:var(--on-accent)}.mx .c.y{background:var(--accent-2);color:var(--ink)}.mx .c:hover{transform:scale(1.04)}.mx .c.e{background:transparent;border:1px dashed var(--line);color:var(--ink-muted)}
+.lgd{display:flex;gap:16px;margin-top:14px;font-size:13px;color:var(--ink-muted)}.lgd i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:6px;vertical-align:-1px}
+/* notes */
+.nt{display:flex;flex-direction:column;justify-content:space-between;min-height:210px}.nt h3{font-size:22px}
+.now{list-style:none;margin:0;padding:0;display:grid;gap:0}.now li{display:flex;gap:14px;padding:12px 0;border-top:1px solid currentColor;border-color:rgba(20,32,27,.25);align-items:baseline}.now li:first-child{border-top:0}.now b{font:600 13px var(--s);min-width:70px}
+.ct{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}.ct h2{margin:0;color:inherit;font-size:clamp(36px,5.4vw,68px);line-height:.94;letter-spacing:-.045em}
+.cp{font:600 15px var(--s);background:var(--on-accent);color:var(--accent);border:0;padding:14px 22px;border-radius:999px;cursor:pointer;transition:transform .2s}.cp:hover{transform:scale(1.04)}
+.ft{display:flex;justify-content:space-between;margin-top:24px;font-size:14px;color:var(--ink-muted);flex-wrap:wrap;gap:10px}
+@media(max-width:860px){.nl a:not(.c){display:none}.g>*{grid-column:1/-1!important;grid-row:auto!important}.tp{grid-template-columns:1fr}.mx{grid-template-columns:72px repeat(4,1fr);font-size:12px}.mx .c{font-size:11.5px;height:40px}.hero{min-height:0;gap:28px}.tk{margin:0 -26px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.lg div{opacity:1}}
+</style>
+<div class="p"><div class="w">
+<nav class="nav" aria-label="Primary"><a class="mark" href="#"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M11 3a8 8 0 1 0 8 8"/><circle cx="19" cy="3" r="2" fill="currentColor" stroke="none"/></svg>openloop</a><div class="nl"><a href="#work">Work</a><a href="#lab">Experiments</a><a href="#stack">Stack</a><a href="#notes">Notes</a><a class="c" href="#contact">Contact</a></div></nav>
+
+<div class="g">
+<div class="t s7 hero"><div><p class="lb">Full-stack and AI engineer · available from January</p><h1>I build the unglamorous half of <span class="rot" aria-label="agents, pipelines, interfaces, platforms"><span>agents.</span><span>pipelines.</span><span>interfaces.</span><span>platforms.</span></span></h1><p>Typed APIs, durable workflows and evaluation suites that keep language-model features honest in production.</p></div><div><a class="pill" href="#work">See the work</a><a class="pill o" href="#lab">Run an experiment</a></div></div>
+<div class="t s5 dark" aria-label="Terminal"><div class="dots"><i></i><i></i><i></i></div><div class="term" id="term"></div></div>
+<div class="t s5 blue"><p class="lb">Live sample · p95 latency of an LLM endpoint</p><div class="big" id="lat">1.2 s</div><div class="hist" id="hist" role="img" aria-label="Latency histogram"></div><div class="rd" id="rd">Hover a bar to read its bucket.</div></div>
+<div class="t s7"><p class="lb">Shipping cadence · last 26 weeks</p><svg id="hm" viewBox="0 0 520 112" role="img" aria-label="Weekly deploy heat grid" style="width:100%;height:auto;display:block"></svg><p class="mut" style="margin-top:12px;font-size:14px">Each column is a week, each row a weekday. Blue marks a production deploy; yellow marks a rollback, of which there were two.</p></div>
+<div class="t s12 yel" style="padding-top:0;padding-bottom:0"><div class="tk" aria-hidden="true"><div id="tk"></div></div></div>
+</div>
+
+<h2 id="work">Selected work</h2><p class="sub">Four systems, each with the metric that mattered.</p>
+<div class="g" id="proj"></div>
+
+<h2 id="lab">Experiments</h2><p class="sub">Pick a scenario and watch a tool-using agent run. Failures are part of the recording.</p>
+<div class="g"><div class="t s12"><div class="tp"><div><p class="lb">Experiment 07 · agent trace player</p><h3>Same task, three outcomes</h3><p class="mut">Each run plans, calls tools and validates. Switch scenario to see where reliability is won or lost.</p><div class="sc" id="sc" role="group" aria-label="Scenarios"></div><p class="lb" style="margin-top:18px">Task success</p><div class="big" id="ts" style="font-size:40px">0%</div><div class="rbar"><i id="tb"></i></div></div>
+<div><div class="tr"><svg id="tsv" viewBox="0 0 640 230" role="img" aria-label="Agent trace timeline"></svg></div><div class="lg" id="lg" aria-live="polite"></div></div></div></div></div>
+
+<h2 id="stack">Stack</h2><p class="sub">What I reach for at each layer, and how deep I go.</p>
+<div class="g"><div class="t s12"><div class="mx" id="mx"></div><div class="lgd"><span><i style="background:var(--accent)"></i>Daily</span><span><i style="background:var(--accent-2)"></i>Regularly</span><span><i style="border:1px dashed var(--ink-muted)"></i>Not my tool</span></div></div></div>
+
+<h2 id="notes">Notes</h2><p class="sub">Short engineering write-ups.</p>
+<div class="g" id="nts"></div>
+
+<h2>About and now</h2>
+<div class="g"><div class="t s6"><p class="lb">About</p><h3>Anonymous by design</h3><p>I am an engineer who prefers the work to speak. Ten years across product backends, data tooling and, lately, language-model systems. I write things down so the next person has less to rediscover.</p></div>
+<div class="t s6 dark"><p class="lb">Now</p><ul class="now"><li><b>Building</b><span>A replay debugger for agent runs</span></li><li><b>Reading</b><span>Papers on evaluation under distribution shift</span></li><li><b>Learning</b><span>Rust, for the hot path of a tracing agent</span></li></ul></div></div>
+
+<h2 id="contact" style="margin-top:72px;height:0;margin-bottom:0;visibility:hidden"></h2>
+<div class="g" style="margin-top:16px"><div class="t s12 blue" style="padding:44px"><div class="ct"><div><p class="lb">Contact</p><h2>Have a hard problem?<br>Send it over.</h2></div><div><button class="cp" id="cp">hello@openloop.example</button><p class="mut" style="margin-top:10px;font-size:14px" id="cps">Replies within two working days.</p></div></div></div></div>
+<div class="ft"><span>openloop · placeholder identity</span><span>Built with the Bento theme</span></div>
+</div></div>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)};
+function R(s){return function(){s|=0;s=s+0x6D2B79F5|0;var t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function f(n){return Math.round(n*10)/10}
+var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+// terminal typing
+var L=[['$ ','pr'],['openloop trace --run 4812','']],OUT=['<span class="dm">plan      </span>   310 ms','<span class="dm">retrieve  </span>   620 ms','<span class="dm">tool:db   </span>   180 ms','<span class="dm">validate  </span>    40 ms  <span class="ok">ok</span>','<span class="dm">answer    </span>   880 ms','<span class="ok">success</span> p95 1.2 s, 4 tool calls'];
+var T=$('#term'),cmd='openloop trace --run 4812';
+function draw(n,out){T.innerHTML='<span class="pr">$</span> '+cmd.slice(0,n)+(out>=0?'':'<span class="cur"></span>')+(out>=0?'\n'+OUT.slice(0,out+1).join('\n')+'\n<span class="pr">$</span> <span class="cur"></span>':'')}
+if(rm){draw(cmd.length,OUT.length-1)}else{var n=0,o=-1;(function step(){if(n<cmd.length){n++;draw(n,-1);setTimeout(step,55)}else if(o<OUT.length-1){o++;draw(n,o);setTimeout(step,420)}else{setTimeout(function(){n=0;o=-1;step()},5000)}})()}
+// histogram
+var r=R(7),H=[],i,lab=['0.2','0.4','0.6','0.8','1.0','1.2','1.4','1.6','1.8','2.0','2.4','2.8','3.2','3.6','4.0','4.4'];
+for(i=0;i<16;i++)H.push(Math.round(8+92*Math.exp(-Math.pow((i-4.5)/3.2,2))+r()*8));
+$('#hist').innerHTML=H.map(function(h,i){return '<i data-i="'+i+'" style="height:'+h+'%"'+(i==5?' class="k"':'')+'></i>'}).join('');
+Array.prototype.forEach.call(document.querySelectorAll('#hist i'),function(b){b.onmouseenter=function(){$('#rd').textContent='Up to '+lab[b.dataset.i]+' s: '+Math.round(H[b.dataset.i]*3.1)+' requests per hour.'}});
+(function(){var q=R(21),s='';for(var w=0;w<26;w++)for(var d=0;d<7;d++){var v=d>4?q()>.82:q()>.35,rb=(w==9&&d==2)||(w==19&&d==3);s+='<rect x="'+(w*20)+'" y="'+(d*16)+'" width="16" height="12" rx="4" fill="'+(rb?'var(--accent-2)':v?'var(--accent)':'var(--line)')+'" '+(v&&!rb?'opacity="'+(.5+q()*.5).toFixed(2)+'"':'')+'/>'}$('#hm').innerHTML=s})();
+// ticker
+var tk=['<b>4812</b> traces replayed','p95 <b>1.2 s</b>','<b>83%</b> success at 30 steps','<b>0</b> duplicate charges','<b>312</b> failures annotated','<b>38%</b> less context'],h='';for(i=0;i<4;i++)tk.forEach(function(x){h+='<span>'+x+'</span>•'});$('#tk').innerHTML=h;
+// projects
+var A='<svg viewBox="0 0 400 150" preserveAspectRatio="xMidYMid meet" aria-hidden="true">';
+function art(k){var q=R(k*5+2),s=A+'<rect width="400" height="150" fill="var(--bg)"/>';
+if(k==0){for(var j=0;j<9;j++){var bh=24+Math.round(q()*80);s+='<rect x="'+(30+j*38)+'" y="'+(130-bh)+'" width="26" height="'+bh+'" rx="6" fill="'+(j==6?'var(--accent-2)':'var(--accent)')+'"/>'}}
+if(k==1){for(var j=0;j<6;j++)s+='<rect x="'+(24+j*10)+'" y="'+(20+j*20)+'" width="'+(150+q()*180)+'" height="12" rx="6" fill="'+(j==3?'var(--accent-2)':'var(--accent)')+'" opacity="'+(j==3?1:.8)+'"/>'}
+if(k==2){var d='M20 130';for(var j=1;j<=30;j++)d+='L'+(20+j*12.2)+' '+f(130-100*(1-Math.exp(-j/8))+q()*3);s+='<path d="'+d+'" stroke="var(--accent)" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="'+(20+14*12.2)+'" cy="'+f(130-100*(1-Math.exp(-14/8)))+'" r="9" fill="var(--accent-2)"/>'}
+if(k==3){for(var p=0;p<20;p++)for(var u=0;u<7;u++){var on=Math.abs(p-u*3)<2.3||q()>.88;s+='<rect x="'+(18+p*18.5)+'" y="'+(10+u*19)+'" width="14" height="14" rx="4" fill="'+(on?(p==u*3?'var(--accent-2)':'var(--accent)'):'var(--line)')+'"/>'}}
+return s+'</svg>'}
+var P=[['s7','Ledgerline','Double-entry ledger API with idempotent writes.','2.1M postings a day, zero duplicates',['TypeScript','Postgres']],['s5','Harbor','Durable runtime for tool-using agents.','Every call is a replayable event',['Temporal','Node']],['s5','Tessera','Retrieval gated by an evaluation set.','recall@5 from 0.71 to 0.85',['Python','pgvector']],['s7','Plainsight','Tracing and cost accounting for LLM apps.','Per-request cost to the cent',['Go','ClickHouse']]];
+$('#proj').innerHTML=P.map(function(p,i){return '<a class="t '+p[0]+'" href="#"><span class="go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span><div class="art">'+art(i)+'</div><h3>'+p[1]+'</h3><p>'+p[2]+'</p><p class="mut" style="margin-top:6px;font-weight:500">'+p[3]+'</p><div class="chips">'+p[4].map(function(c){return '<span>'+c+'</span>'}).join('')+'</div></a>'}).join('');
+// trace player
+var S=[{n:'Happy path',ok:96,steps:[['plan',0,70,0],['retrieve',60,150,0],['tool: db',150,210,0],['validate',215,245,0],['answer',250,330,0]],log:['plan: 3 steps','retrieve: 8 chunks, top score 0.91','tool db.query ok (180 ms)','validate: schema match','answer sent, 880 ms']},{n:'Tool returns junk',ok:41,steps:[['plan',0,70,0],['retrieve',60,150,0],['tool: db',150,210,1],['answer',215,300,1]],log:['plan: 3 steps','retrieve: 8 chunks','tool db.query returned malformed JSON','no validation: model used the value','answer sent, wrong total']},{n:'Contracts enabled',ok:83,steps:[['plan',0,70,0],['retrieve',60,150,0],['tool: db',150,210,1],['validate',215,245,1],['retry',250,320,0],['answer',325,400,0]],log:['plan: 3 steps','retrieve: 8 chunks','tool db.query returned malformed JSON','validate: schema mismatch, reject','retry with error message, ok','answer sent, correct total']}],cs=0,tm=[];
+$('#sc').innerHTML=S.map(function(s,i){return '<button aria-pressed="'+(i==0)+'" data-i="'+i+'">'+s.n+'</button>'}).join('');
+function run(){tm.forEach(clearTimeout);tm=[];var s=S[cs],sv='';
+for(var i=0;i<=5;i++)sv+='<path d="M'+(70+i*100)+' 10V200" stroke="var(--line)"/><text x="'+(70+i*100)+'" y="222" font-size="11" fill="var(--ink-muted)" text-anchor="middle" font-family="Figtree,sans-serif">'+i*100+' ms</text>';
+s.steps.forEach(function(st,k){sv+='<text x="0" y="'+(34+k*30)+'" font-size="12.5" fill="var(--ink)" font-family="Figtree,sans-serif" font-weight="600">'+st[0]+'</text><rect class="bar" x="'+(70+st[1]*1.25)+'" y="'+(22+k*30)+'" height="16" rx="8" width="0" data-w="'+(st[2]-st[1])*1.25+'" fill="'+(st[3]?'var(--ink)':'var(--accent)')+'"/>'});
+$('#tsv').innerHTML=sv;$('#lg').innerHTML='';$('#ts').textContent='0%';$('#tb').style.width='0';
+var bars=document.querySelectorAll('#tsv .bar');
+s.steps.forEach(function(st,k){tm.push(setTimeout(function(){var b=bars[k];b.style.transition='width .5s cubic-bezier(.2,.7,.1,1)';b.setAttribute('width',b.dataset.w);var d=document.createElement('div');d.textContent='> '+s.log[k];if(st[3])d.className='e';$('#lg').appendChild(d)},rm?0:k*520+100))});
+tm.push(setTimeout(function(){var d=document.createElement('div');d.textContent=s.ok>=80?'> success':'> failed: '+(s.ok<50?'wrong answer shipped':'');d.className=s.ok>=80?'g2':'e';if(s.log.length>s.steps.length)d.textContent='> '+s.log[s.log.length-1];$('#lg').appendChild(d);$('#ts').textContent=s.ok+'%';$('#tb').style.width=s.ok+'%'},rm?0:s.steps.length*520+200))}
+Array.prototype.forEach.call(document.querySelectorAll('#sc button'),function(b){b.onclick=function(){cs=+b.dataset.i;Array.prototype.forEach.call(document.querySelectorAll('#sc button'),function(x){x.setAttribute('aria-pressed',x==b)});run()}});run();
+// stack matrix
+var M=[['Interface',['React','1','Next.js','1','TypeScript','1','Tailwind','2']],['Services',['Node','1','Go','2','Postgres','1','Redis','2']],['AI',['Python','1','pgvector','1','Evals','1','Fine-tuning','2']],['Platform',['Docker','1','Terraform','2','ClickHouse','2','Kubernetes','0']]];
+var mx='';
+M.forEach(function(r){mx+='<span class="rl">'+r[0]+'</span>';for(var i=0;i<8;i+=2)mx+='<span class="c '+(r[1][i+1]=='1'?'on':r[1][i+1]=='2'?'y':'e')+'">'+r[1][i]+'</span>'});$('#mx').innerHTML=mx;
+// notes
+var N=[['s4','Idempotency keys for tool calls','A retried call should never charge a card twice.','6 min'],['s4','Write the evaluation before the prompt','Keep a failing test for every prompt you ship.','7 min'],['s4','A replay CLI for agent runs','Deterministic replays in under 200 lines of Go.','5 min']];
+$('#nts').innerHTML=N.map(function(n,i){return '<a class="t nt '+n[0]+(i==1?' yel':'')+'" href="#"><div><p class="lb">'+n[3]+' read</p><h3>'+n[1]+'</h3></div><p class="'+(i==1?'':'mut')+'">'+n[2]+'</p></a>'}).join('');
+// copy
+$('#cp').onclick=function(){var t='hello@openloop.example';try{navigator.clipboard.writeText(t)}catch(e){}$('#cps').textContent='Copied. Replies within two working days.'};
+})();
+</script>
+
+</body>
+</html>

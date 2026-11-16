@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Juno Arai · Riso</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,300..900&family=Azeret+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f1f1ec;--pink:#ff48b0;--blue:#0078bf;--fed:#2e4a85;--ink:#1f2b4d;--d:"Anybody",system-ui,sans-serif;--mono:"Azeret Mono",ui-monospace,monospace}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.55 var(--d);font-variation-settings:"wdth" 92;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.35;mix-blend-mode:multiply;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/><feColorMatrix values='0 0 0 0 .3 0 0 0 0 .3 0 0 0 0 .35 0 0 0 .18 0'/></filter><rect width='180' height='180' filter='url(%23n)'/></svg>")}
+a{color:inherit;text-decoration:none}:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.m{font:400 12px/1.45 var(--mono);color:var(--fed)}
+.w{max-width:1200px;margin:0 auto;padding:0 32px}
+/* header */
+.hd{display:flex;align-items:center;justify-content:space-between;padding:20px 0;gap:20px}
+.wm{font:900 24px/1 var(--d);font-variation-settings:"wdth" 150;color:var(--blue);mix-blend-mode:multiply;position:relative;white-space:nowrap}.wm::after{content:"Juno Arai";position:absolute;left:3px;top:2px;color:var(--pink);z-index:-1}
+.nv{display:flex;gap:6px}.nv a{font:600 15px var(--d);padding:6px 12px;border:2px solid var(--ink);border-radius:99px;transition:background .15s,color .15s,transform .15s}.nv a:nth-child(odd){transform:rotate(-2deg)}.nv a:nth-child(even){transform:rotate(1.5deg)}.nv a:hover{background:var(--pink);border-color:var(--pink);color:var(--ink);transform:rotate(0)}
+/* cover */
+.cover{position:relative;min-height:640px;margin-top:8px;border:3px solid var(--ink);overflow:hidden;background:var(--paper)}
+.cover .issue{position:absolute;left:24px;top:18px;z-index:5}.cover .price{position:absolute;right:24px;top:18px;z-index:5;text-align:right}
+.ht{position:absolute;left:24px;right:24px;bottom:150px;z-index:4}
+.ht h1{margin:0;font:900 clamp(64px,11.5vw,170px)/.82 var(--d);font-variation-settings:"wdth" 120;letter-spacing:-.03em;position:relative}
+.ht h1 .b{color:var(--blue);mix-blend-mode:multiply;position:relative;display:block}
+.ht h1 .p{color:var(--pink);mix-blend-mode:multiply;position:absolute;inset:0;transform:translate(var(--dx,6px),var(--dy,4px));transition:transform .25s}
+.blurb{position:absolute;left:24px;bottom:28px;z-index:5;max-width:44ch;font-size:19px;line-height:1.4;color:var(--ink);background:var(--paper);padding:8px 10px;border:2px solid var(--ink)}
+.cover svg.bg{position:absolute;right:-40px;top:-30px;width:68%;height:auto;z-index:1}
+.stamp{position:absolute;right:30px;bottom:30px;z-index:6;width:132px;height:132px;border-radius:50%;background:var(--pink);mix-blend-mode:multiply;display:grid;place-items:center;text-align:center;font:800 17px/1.05 var(--d);font-variation-settings:"wdth" 70;color:var(--ink);transform:rotate(-12deg);transition:transform .3s}.stamp:hover{transform:rotate(8deg) scale(1.05)}
+/* page heads */
+.pg{padding-top:88px}
+.ph{display:flex;align-items:flex-end;gap:18px;margin-bottom:28px}
+.ph h2{margin:0;font:900 clamp(44px,6.4vw,88px)/.86 var(--d);font-variation-settings:"wdth" 140;letter-spacing:-.03em;color:var(--blue);mix-blend-mode:multiply;position:relative;white-space:nowrap}
+.ph h2::after{white-space:nowrap;content:attr(data-t);position:absolute;left:4px;top:3px;color:var(--pink);mix-blend-mode:multiply;z-index:-1}
+.ph .n{font:800 22px var(--d);border:2.5px solid var(--ink);border-radius:50%;width:48px;height:48px;display:grid;place-items:center;flex:none;transform:rotate(-8deg)}
+.ph .m{margin-left:auto;max-width:28ch;text-align:right}
+/* spreads */
+.spreads{display:grid;grid-template-columns:repeat(2,1fr);gap:40px 36px}
+.sp{display:block;position:relative;transition:transform .3s}.sp:nth-child(1){transform:rotate(-1.4deg)}.sp:nth-child(2){transform:rotate(1.1deg);margin-top:40px}.sp:nth-child(3){transform:rotate(.8deg)}.sp:nth-child(4){transform:rotate(-1deg);margin-top:40px}
+.sp:hover{transform:rotate(0) translateY(-6px)}
+.sp .fr{border:3px solid var(--ink);background:var(--paper);overflow:hidden;position:relative}.sp svg{display:block;width:100%;height:auto}
+.tape{position:absolute;top:-14px;left:50%;width:110px;height:28px;background:rgba(255,72,176,.45);mix-blend-mode:multiply;transform:translateX(-50%) rotate(-4deg);z-index:2}
+.sp h3{font:900 44px/.9 var(--d);font-variation-settings:"wdth" 130;letter-spacing:-.02em;margin:16px 0 8px}.sp p{margin:0 0 10px;max-width:42ch}
+.tags{display:flex;gap:6px;flex-wrap:wrap}.tags span{font:500 12px var(--mono);background:var(--ink);color:var(--paper);padding:2px 8px}
+/* stickers */
+.sheet{border:3px dashed var(--ink);padding:36px 28px;display:flex;flex-wrap:wrap;gap:18px;justify-content:center;background:repeating-linear-gradient(-45deg,transparent 0 14px,rgba(0,120,191,.06) 14px 15px)}
+.stk{font:800 clamp(20px,2.6vw,30px)/1 var(--d);font-variation-settings:"wdth" 110;padding:16px 24px;border-radius:999px;border:3px solid var(--ink);cursor:pointer;transition:transform .35s cubic-bezier(.3,1.6,.5,1),box-shadow .2s;background:var(--paper);color:var(--ink)}
+.stk.pk{background:var(--pink);border-color:var(--pink)}.stk.bl{background:var(--blue);border-color:var(--blue);color:#fff}
+.stk:hover{box-shadow:5px 5px 0 var(--ink)}.stk[aria-pressed=true]{transform:rotate(0) scale(1.08)!important;box-shadow:6px 6px 0 var(--ink)}
+.peel{margin:16px auto 0;text-align:center;min-height:52px;max-width:60ch;font-size:18px}
+/* toc */
+.toc{border-top:3px solid var(--ink)}.toc a{display:grid;grid-template-columns:80px 1fr auto;gap:20px;align-items:baseline;padding:16px 0;border-bottom:2px dotted var(--ink);transition:background .2s,padding .2s}.toc a:hover{background:rgba(255,72,176,.25);padding-left:12px}
+.toc h4{margin:0;font:800 28px/1.1 var(--d);font-variation-settings:"wdth" 105;letter-spacing:-.01em}.toc .pgn{font:900 34px var(--d);color:var(--blue);mix-blend-mode:multiply}
+/* letter */
+.lt{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:start}
+.letter{background:#fff;border:3px solid var(--ink);padding:30px 32px;transform:rotate(-.6deg);font-size:19px;line-height:1.55;position:relative}.letter p{margin:0 0 14px}.letter .sig{font:800 30px var(--d);font-variation-settings:"wdth" 60;color:var(--blue);transform:rotate(-4deg);display:inline-block}
+.now{border:3px solid var(--blue);padding:24px;position:relative}.now h3{margin:0 0 10px;font:900 30px var(--d);font-variation-settings:"wdth" 140;color:var(--blue)}.now ul{list-style:none;margin:0;padding:0}.now li{padding:10px 0;border-top:2px dotted var(--blue)}.now li b{font-weight:700}
+/* tear-off */
+.flyer{margin-top:96px;border:3px solid var(--ink);border-bottom:0;padding:40px 32px 28px;position:relative;background:var(--paper)}
+.flyer h2{margin:0 0 6px;font:900 clamp(48px,7.6vw,110px)/.84 var(--d);font-variation-settings:"wdth" 120;letter-spacing:-.03em;color:var(--blue);mix-blend-mode:multiply}
+.flyer p{margin:12px 0 0;font-size:19px;max-width:48ch}
+.tabs{display:grid;grid-template-columns:repeat(6,1fr);border-left:3px solid var(--ink)}
+.tab{height:170px;border-right:3px solid var(--ink);border-bottom:3px solid var(--ink);border-top:3px dashed var(--ink);display:flex;align-items:center;justify-content:center;transition:transform .5s cubic-bezier(.4,1.4,.6,1),opacity .5s;transform-origin:top center;cursor:pointer;background:var(--paper)}
+.tab span{writing-mode:vertical-rl;transform:rotate(180deg);font:600 14px var(--mono);white-space:nowrap}
+.tab:hover{transform:rotate(6deg)}.tab.torn{transform:translateY(40px) rotate(-14deg);opacity:0;pointer-events:none}
+.ft{display:flex;justify-content:space-between;padding:26px 0 40px;gap:12px;flex-wrap:wrap}
+@media(max-width:860px){.w{padding:0 16px}.nv{display:none}.cover{min-height:560px}.cover svg.bg{width:110%;right:-30%;opacity:.8}.ht{bottom:180px}.stamp,.cover .price{display:none}.spreads,.lt{grid-template-columns:1fr}.sp{margin-top:0!important}.ph .m{display:none}.toc a{grid-template-columns:52px 1fr}.toc a .m{grid-column:2}.tabs{grid-template-columns:repeat(3,1fr)}.tab{height:130px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="w">
+<header class="hd"><a class="wm" href="#">Juno Arai</a><nav class="nv" aria-label="Primary"><a href="#work">Work</a><a href="#skills">Skills</a><a href="#writing">Writing</a><a href="#about">About</a><a href="#contact">Contact</a></nav></header>
+
+<section class="cover" id="cover" aria-label="Cover">
+<span class="m issue">Issue 06 · Autumn 2026 · Lisbon</span><span class="m price">Free, as in<br>please share it</span>
+<svg class="bg" id="hb" viewBox="0 0 700 600" aria-hidden="true"></svg>
+<div class="ht"><h1><span class="b">Designs<br>that compile.</span><span class="p" aria-hidden="true">Designs<br>that compile.</span></h1></div>
+<p class="blurb">A zine about one designer who writes the code. Interfaces, tools and prototypes, printed in two inks and a little out of register.</p>
+<a class="stamp" href="#work">Read the work inside</a>
+</section>
+
+<section class="pg" id="work"><div class="ph"><span class="n">4</span><h2 data-t="Work">Work</h2><span class="m">Four projects, each printed on its own page</span></div><div class="spreads" id="spreads"></div></section>
+
+<section class="pg" id="skills"><div class="ph"><span class="n">9</span><h2 data-t="Sticker sheet">Sticker sheet</h2><span class="m">Peel one to read what it means in practice</span></div><div class="sheet" id="sheet" role="group" aria-label="Skills"></div><p class="peel" id="peel" aria-live="polite">Pick a sticker.</p></section>
+
+<section class="pg" id="writing"><div class="ph"><span class="n">12</span><h2 data-t="Contents">Contents</h2><span class="m">Writing, back issues first</span></div><div class="toc" id="toc"></div></section>
+
+<section class="pg" id="about"><div class="ph"><span class="n">15</span><h2 data-t="Letter">Letter</h2><span class="m">From the person who made this</span></div>
+<div class="lt"><div class="letter"><p>Hello,</p><p>I design interfaces and then I build them. I used to hand files over a wall and watch the details fall off on the other side, so I stopped handing things over.</p><p>Most of my projects start on paper and end in a repository. In between there is a lot of testing with real people and a fair amount of deleting.</p><span class="sig">Juno</span></div>
+<div class="now"><h3>Right now</h3><ul><li><b>Building</b> a token pipeline from Figma variables to native code.</li><li><b>Printing</b> the next issue of this zine on an actual risograph.</li><li><b>Available</b> for one product team from February.</li></ul></div></div></section>
+
+<section class="flyer" id="contact"><span class="m">Notice board · take a tab</span><h2>Need a designer who ships?</h2><p>Tear off a tab. Each one opens a way to reach me.</p></section>
+<div class="tabs" id="tabs"></div>
+<footer class="ft"><span class="m">Printed in fluorescent pink and blue · Set in Anybody and Azeret Mono</span><span class="m">Placeholder identity, 2026</span></footer>
+</div>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)};
+function R(s){return function(){s|=0;s=s+0x6D2B79F5|0;var t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+var PK='#ff48b0',BL='#0078bf',rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+// halftone helper: dots in a grid, radius by field fn(x,y) in 0..1
+function half(w,h,step,fn,col,ang){var s='<g fill="'+col+'" style="mix-blend-mode:multiply" transform="rotate('+(ang||0)+' '+w/2+' '+h/2+')">';for(var y=-h*.2;y<h*1.2;y+=step)for(var x=-w*.2;x<w*1.2;x+=step){var v=fn(x,y);if(v>.04)s+='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+(v*step*.55).toFixed(2)+'"/>'}return s+'</g>'}
+// cover art: big blue disc halftone + pink cursor-ish arrow/hand shape
+var cv=half(700,600,13,function(x,y){var d=Math.hypot(x-400,y-260)/250;return d<1?Math.pow(1-d*d,.7):0},BL,15)+half(700,600,11,function(x,y){var d=Math.hypot(x-230,y-380)/190;return d<1?(1-d)*1.1:0},PK,-20);
+cv+='<g style="mix-blend-mode:multiply"><path d="M470 120L560 330L515 318L545 392L520 403L490 330L452 362Z" fill="'+PK+'" transform="rotate(-8 500 260)"/></g>';
+$('#hb').innerHTML=cv;
+// registration drift with pointer
+var cover=$('#cover'),pl=document.querySelector('.ht .p');
+if(!rm)cover.addEventListener('pointermove',function(e){var r=cover.getBoundingClientRect(),dx=((e.clientX-r.left)/r.width-.5)*18,dy=((e.clientY-r.top)/r.height-.5)*12;pl.style.setProperty('--dx',dx.toFixed(1)+'px');pl.style.setProperty('--dy',dy.toFixed(1)+'px')});
+// spreads
+function art(i){var w=560,h=330,s='<rect width="'+w+'" height="'+h+'" fill="#f1f1ec"/>';
+if(i==0){s+=half(w,h,10,function(x,y){var a=Math.abs(y-(165+Math.sin(x/70)*70))/36;return a<1?1-a:0},BL,0)+half(w,h,10,function(x,y){var a=Math.abs(x-300)/30;return a<1&&y>30&&y<300?1-a:0},PK,0);[[150,165],[300,120],[420,200]].forEach(function(p){s+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="16" fill="#f1f1ec" stroke="#1f2b4d" stroke-width="5"/>'})}
+if(i==1){s+=half(w,h,12,function(x,y){var v=.5+.5*Math.sin(x/38)*Math.cos(y/30);return v*.95},BL,30)+half(w,h,12,function(x,y){var d=Math.hypot(x-380,y-160)/130;return d<1?1-d:0},PK,-15)}
+if(i==2){s+='<rect x="110" y="40" width="140" height="250" rx="20" fill="'+BL+'" style="mix-blend-mode:multiply"/><rect x="310" y="40" width="140" height="250" rx="20" fill="'+PK+'" style="mix-blend-mode:multiply"/><rect x="210" y="90" width="140" height="150" fill="'+PK+'" opacity=".0"/>';s+=half(w,h,9,function(x,y){return x>230&&x<330&&y>110&&y<220?.9:0},'#1f2b4d',0)}
+if(i==3){s+=half(w,h,9,function(x,y){var a=Math.sin(x/14)*Math.exp(-Math.pow((x-280)/140,2))*110;return Math.abs(y-165-a)<14?1-Math.abs(y-165-a)/14:0},BL,0)+half(w,h,14,function(x,y){var d=Math.hypot(x-280,y-165)/150;return d<1?(1-d)*.8:0},PK,45)}
+return s}
+var W=[['Tideline','Wayfinding and a design system for a regional transit app, from tokens through to React Native.',['Design system','React Native'],'p. 4'],['Loomwork','A node-based shader editor in the browser. Designers wire noise, time and colour without writing GLSL.',['Tool','WebGPU'],'p. 6'],['Fieldnote','Offline-first notebook for field researchers. Two devices, no signal, no conflicts when they meet.',['Product','Swift, CRDT'],'p. 7'],['Murmur','A voice interface for kitchens, prototyped on-device so it works with wet hands and no network.',['Prototype','Web Audio'],'p. 8']];
+$('#spreads').innerHTML=W.map(function(w,i){return '<a class="sp" href="#"><span class="tape" aria-hidden="true"></span><div class="fr"><svg viewBox="0 0 560 330" role="img" aria-label="Two-ink halftone print for '+w[0]+'">'+art(i)+'</svg></div><span class="m">'+w[3]+'</span><h3>'+w[0]+'</h3><p>'+w[1]+'</p><div class="tags">'+w[2].map(function(t){return '<span>'+t+'</span>'}).join('')+'</div></a>'}).join('');
+// stickers
+var K=[['Interface design','pk','Flows, layout and type, and every state in between: empty, loading, error, full.'],['TypeScript','','Strict mode, typed APIs and components that are hard to misuse.'],['Design systems','bl','Tokens, components and the documentation people actually read.'],['WebGPU','','Shaders and canvas work for tools and motion that explain something.'],['Prototyping','pk','Throwaway code that answers one question quickly, then gets deleted.'],['Accessibility','bl','Keyboard paths, contrast and screen-reader testing from the first sketch.'],['React','','Components, state and performance budgets that survive a redesign.'],['Type','pk','Choosing, pairing and setting type, including variable axes.'],['SwiftUI','','Native when the web is not enough.']],r=R(5);
+$('#sheet').innerHTML=K.map(function(k,i){return '<button class="stk '+k[1]+'" data-i="'+i+'" aria-pressed="false" style="transform:rotate('+((r()-.5)*14).toFixed(1)+'deg)">'+k[0]+'</button>'}).join('');
+document.querySelectorAll('.stk').forEach(function(b){b.onclick=function(){document.querySelectorAll('.stk').forEach(function(x){x.setAttribute('aria-pressed',x==b)});$('#peel').innerHTML='<b>'+K[b.dataset.i][0]+'.</b> '+K[b.dataset.i][2]}});
+// toc
+var T=[['Tokens are an API, so version them like one','Oct 2026','8 min',3],['Prototype in the material you will ship','Sep 2026','6 min',10],['Motion that explains, motion that decorates','Aug 2026','7 min',14],['A design review checklist for engineers','Jun 2026','5 min',18],['Why I still draw on paper first','May 2026','4 min',21]];
+$('#toc').innerHTML=T.map(function(t){return '<a href="#"><span class="pgn">'+t[3]+'</span><h4>'+t[0]+'</h4><span class="m">'+t[1]+' · '+t[2]+'</span></a>'}).join('');
+// tear-off tabs
+var TB=[['hello@juno.example','mailto:hello@juno.example'],['github / juno-arai','#'],['read.cv / juno','#'],['are.na / juno','#'],['rss feed','#'],['hello@juno.example','mailto:hello@juno.example']];
+$('#tabs').innerHTML=TB.map(function(t){return '<a class="tab" href="'+t[1]+'"><span>'+t[0]+'</span></a>'}).join('');
+document.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click',function(e){if(t.getAttribute('href')=='#')e.preventDefault();t.classList.add('torn')})});
+})();
+</script>
+</body>
+</html>

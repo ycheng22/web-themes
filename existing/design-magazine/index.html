@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en" data-theme="editorial">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Computational Design Magazine</title>
+<link rel="stylesheet" href="../tokens.css">
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}html,body{margin:0}
+.p{--bg:#efeae0;--ink:#1a1816;--mut:#5b564c;--line:#cfc8b8;--pk:#e0457b;--cob:#2b3bd6;--lime:#c9e04a;--bk:#1a1816;--disp:var(--font-bento-display,"Bricolage Grotesque",system-ui,sans-serif);--ser:var(--font-editorial-display,"Instrument Serif",Georgia,serif);--sans:var(--font-bento-sans,"Figtree",system-ui,sans-serif);background:var(--bg);color:var(--ink);font:400 17px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow:hidden}
+.p a{color:inherit;text-decoration:none}.p :focus-visible{outline:3px solid var(--cob);outline-offset:3px}
+.m{font:500 13px/1.4 var(--sans);color:var(--mut);letter-spacing:.01em}
+.hd{display:flex;align-items:center;padding:24px 40px;gap:32px;position:relative;z-index:5;background:var(--bg)}
+.lg{font:800 26px/1 var(--disp);letter-spacing:-.04em;display:flex;align-items:center;gap:8px}.lg i{width:16px;height:16px;background:var(--pk);border-radius:50%;display:block;box-shadow:10px 0 0 -4px var(--cob)}
+.nv{margin-left:auto;display:flex;gap:30px;font:600 15px var(--sans)}.nv a{position:relative;padding:4px 0}.nv a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--pk);transition:width .25s}.nv a:hover::after{width:100%}
+.sb{font:600 14px var(--sans);background:var(--ink);color:var(--bg)!important;padding:9px 18px;border-radius:99px;transition:background .2s}.sb:hover{background:var(--pk)}
+/* hero */
+.hero{position:relative;height:640px}
+.hero canvas,.hero svg.bg{position:absolute;right:0;top:0;width:62%;height:100%}
+.hero .tt{position:absolute;left:40px;bottom:50px;z-index:3;max-width:860px}
+.hero h1{font:800 clamp(64px,8.6vw,132px)/.84 var(--disp);letter-spacing:-.055em;margin:0;font-variation-settings:"opsz" 96}
+.hero h1 em{font:italic 400 1em/.84 var(--ser);letter-spacing:-.03em;color:var(--pk)}
+.hero h1 span{display:block}.hero h1 .i2{margin-left:.9em}
+.hero .sp{position:absolute;right:40px;bottom:50px;z-index:3;width:300px;background:var(--bg);padding:20px 22px;border:2px solid var(--ink)}
+.hero .sp p{margin:0 0 14px;font-size:18px;line-height:1.4}
+.bt{display:inline-block;font:600 15px var(--sans);padding:12px 22px;border-radius:99px;border:2px solid var(--ink);margin-right:6px;transition:background .2s,color .2s}.b1{background:var(--ink);color:var(--bg)!important}.b1:hover{background:var(--cob);border-color:var(--cob)}.b2:hover{background:var(--lime)}
+.tick{position:absolute;left:40px;top:50px;z-index:3;font:500 13px var(--sans);color:var(--mut)}
+/* marquee-ish strip */
+.mq{border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);padding:10px 0;overflow:hidden;white-space:nowrap;font:600 15px var(--sans)}.mq div{display:inline-block;padding-left:40px;animation:mq 50s linear infinite}.mq b{color:var(--pk);margin:0 18px;font-weight:600}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* feature: image-led */
+.fe{position:relative;margin-top:0;display:grid;grid-template-columns:7fr 5fr;min-height:560px;background:var(--bk);color:#f3efe6}
+.fe .im{position:relative;overflow:hidden}.fe .im svg{position:absolute;inset:0;width:100%;height:100%}
+.fe .tx{padding:64px 48px 56px 48px;display:flex;flex-direction:column;justify-content:flex-end}
+.fe .m{color:#b8b1a2}.fe h2{font:800 clamp(40px,4.4vw,64px)/.92 var(--disp);letter-spacing:-.045em;margin:14px 0 22px}.fe h2 em{font:italic 400 1em/.9 var(--ser);color:var(--lime);letter-spacing:-.02em}
+.fe p{font-size:18px;line-height:1.5;color:#e3ddcf;margin:0 0 26px;max-width:40ch}
+.fe .rd{align-self:flex-start;background:var(--lime);color:var(--ink)!important;border-color:var(--lime)}.fe .rd:hover{background:#fff;border-color:#fff}
+.fe .meta{display:flex;gap:24px;margin-bottom:24px;flex-wrap:wrap}.fe .meta span{font:500 13px var(--sans);color:#b8b1a2}.fe .meta b{display:block;color:#f3efe6;font-size:16px;font-weight:600}
+/* sections */
+.sec{padding:88px 40px 0}
+.big{font:800 clamp(44px,6.4vw,96px)/.86 var(--disp);letter-spacing:-.05em;margin:0}.big em{font:italic 400 1em/.86 var(--ser);letter-spacing:-.025em;color:var(--cob)}
+.sh{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:44px}.sh p{margin:0;max-width:32ch;font-size:17px}
+/* topics: giant type list */
+.tl a{display:flex;align-items:baseline;gap:24px;padding:10px 0 6px;border-top:2px solid var(--ink);position:relative;transition:padding .3s,background .3s,color .3s}.tl a:last-child{border-bottom:2px solid var(--ink)}
+.tl h3{font:800 clamp(40px,5.6vw,84px)/.9 var(--disp);letter-spacing:-.05em;margin:0;white-space:nowrap;transition:transform .35s}.tl .n{font:500 14px var(--sans);width:54px;flex:none;color:var(--mut)}.tl .d{margin-left:auto;max-width:30ch;font-size:16px;color:var(--mut);transition:opacity .3s;text-align:right}
+.tl a:hover{background:var(--ink);color:var(--bg);padding-left:20px}.tl a:hover h3{transform:translateX(6px)}.tl a:hover .n,.tl a:hover .d{color:#d9d3c5}
+.tl .th{position:absolute;right:36%;top:50%;width:150px;height:96px;transform:translateY(-50%) scale(.8);opacity:0;transition:opacity .25s,transform .3s;pointer-events:none}.tl a:hover .th{opacity:1;transform:translateY(-50%) scale(1)}
+/* experiments: asymmetric collage */
+.col{display:grid;grid-template-columns:repeat(12,1fr);gap:28px 24px;align-items:start}
+.ex{display:block}.ex svg{width:100%;height:auto;display:block;transition:transform .4s}.ex:hover svg{transform:scale(1.02) rotate(-.6deg)}
+.ex .fr{overflow:hidden}.ex h3{font:800 34px/.95 var(--disp);letter-spacing:-.04em;margin:14px 0 6px}.ex p{margin:0 0 10px;font-size:16px;max-width:36ch}
+.tg{display:flex;gap:6px;flex-wrap:wrap}.tg span{font:500 12.5px var(--sans);border:1.5px solid var(--ink);border-radius:99px;padding:1px 10px}
+.e1{grid-column:1/span 6}.e2{grid-column:8/span 5;margin-top:70px}.e3{grid-column:2/span 4;margin-top:-90px}.e4{grid-column:7/span 6;margin-top:-30px}
+/* notes */
+.nt{display:grid;grid-template-columns:5fr 7fr;gap:56px}
+.nl a{display:grid;grid-template-columns:1fr auto;gap:18px;padding:18px 0;border-top:2px solid var(--ink);align-items:baseline}.nl a:last-child{border-bottom:2px solid var(--ink)}
+.nl h4{font:600 25px/1.1 var(--disp);letter-spacing:-.03em;margin:0 0 4px;transition:color .2s}.nl a:hover h4{color:var(--pk)}.nl p{margin:0;color:var(--mut);font-size:15.5px}
+.ls{position:sticky;top:20px}.ls .fr{background:var(--bk);border-radius:0}.ls svg{width:100%;height:auto;display:block}.ls h3{font:800 38px/.95 var(--disp);letter-spacing:-.045em;margin:16px 0 8px}.ls p{margin:0;max-width:36ch}
+/* archive */
+.fl{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;align-items:center}.fl button{font:600 14px var(--sans);border:2px solid var(--ink);border-radius:99px;background:none;padding:5px 15px;cursor:pointer;color:var(--ink);transition:background .15s}.fl button:hover{background:var(--lime)}.fl button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.fl input{margin-left:auto;font:500 16px var(--sans);border:2px solid var(--ink);border-radius:99px;background:none;padding:7px 16px;width:260px;color:var(--ink);outline:0}.fl input:focus{border-color:var(--cob)}
+.ar a{display:grid;grid-template-columns:100px 1fr 130px 60px;gap:16px;padding:13px 0;border-top:1px solid var(--ink);align-items:baseline;transition:padding .2s,background .2s}.ar a:hover{padding-left:14px;background:var(--lime)}.ar h4{margin:0;font:600 21px/1.2 var(--disp);letter-spacing:-.02em}.ar .r{text-align:right}
+.ab{margin:88px 40px 0;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:end;border-top:2px solid var(--ink);padding-top:44px}
+.ab h2{font:800 clamp(44px,6vw,88px)/.86 var(--disp);letter-spacing:-.05em;margin:0}.ab h2 em{font:italic 400 1em/.86 var(--ser);color:var(--pk);letter-spacing:-.025em}
+.ab p{font-size:19px;margin:0 0 16px;max-width:44ch}
+.ft{margin:96px 40px 0;padding:22px 0 36px;border-top:2px solid var(--ink);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:14.5px}.ft nav{display:flex;gap:8px 24px;flex-wrap:wrap}.ft a:hover{color:var(--pk)}
+@media(max-width:900px){.hd{padding:18px 20px}.nv{display:none}.hd .sb{margin-left:auto}.hero{height:auto;margin-top:0;padding:24px 20px 0}.hero canvas,.hero svg.bg{position:relative;width:100%;height:300px;display:block}.hero .tt{position:relative;left:auto;bottom:auto;margin-top:20px}.hero .sp{position:relative;right:auto;bottom:auto;width:auto;margin:24px 0 0}.tick{display:none}.fe,.nt,.ab{grid-template-columns:1fr}.fe .im{height:320px}.fe .tx{padding:36px 20px}.sec{padding:72px 20px 0}.sh{flex-direction:column;align-items:flex-start;gap:14px}.tl .d,.tl .th{display:none}.tl a{gap:12px}.col{display:block}.ex{margin:0 0 36px!important}.ar a{grid-template-columns:1fr auto}.ar a .m:first-child{grid-column:1/-1}.ar a .c{display:none}.fl input{width:100%;margin-left:0}.ab,.ft{margin-left:20px;margin-right:20px}.ls{position:relative;top:auto}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+<div class="p">
+<header class="hd"><a class="lg" href="#"><i></i>Vectorlab</a><nav class="nv" aria-label="Primary"><a href="#feature">Research</a><a href="#ex">Experiments</a><a href="#topics">Engineering</a><a href="#notes">Field Notes</a><a href="#about">About</a></nav><a class="sb" href="#archive">Search</a></header>
+<section class="hero"><span class="tick m">Issue 11 · November 2026</span><svg class="bg" id="hb" viewBox="0 0 900 640" preserveAspectRatio="xMaxYMid slice" role="img" aria-label="Generative phyllotaxis pattern connected by a nearest-neighbour network"></svg>
+<div class="tt"><h1><span>Exploring</span><span class="i2">the <em>systems</em></span><span>behind intelligence.</span></h1></div>
+<div class="sp"><p>Research, experiments, and engineering notes on artificial intelligence and computational systems.</p><a class="bt b1" href="#feature">Start reading</a><a class="bt b2" href="#topics">Topics</a></div></section>
+<div class="mq" aria-hidden="true"><div id="mq"></div></div>
+
+<section class="fe" id="feature"><div class="im"><svg id="fi" viewBox="0 0 700 720" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Network of agents with failing edges highlighted"></svg></div>
+<div class="tx"><span class="m">Lead research · AI agents and systems</span><h2>Beyond the Prompt: Building <em>Reliable</em> Agentic Systems</h2><p>Most agent failures are not failures of reasoning. We traced 312 failed runs and found 54% broke at the boundary between a model and a tool. Four contracts at those boundaries raised success on 30-step tasks from 41% to 83%.</p><div class="meta"><span><b>28 Oct 2026</b>Published</span><span><b>22 min</b>Reading time</span><span><b>312 runs</b>Dataset</span></div><a class="bt rd" href="#">Read the article</a></div></section>
+
+<section class="sec" id="topics"><div class="sh"><h2 class="big">Explore <em>topics</em></h2><p>Five areas of work. Hover a title to see its pattern.</p></div><div class="tl" id="tl"></div></section>
+
+<section class="sec" id="exs"><div class="sh"><h2 class="big">Experiments <em>&amp;</em> projects</h2><p>Things we built to find out something.</p></div><div class="col" id="ex"></div></section>
+
+<section class="sec" id="notes"><div class="sh"><h2 class="big">Engineering <em>notes</em></h2><p>Practical writing from the build.</p></div>
+<div class="nt"><a class="ls" href="#"><div class="fr"><svg id="ln" viewBox="0 0 500 360" role="img" aria-label="Memory pruning curves"></svg></div><span class="m" style="display:block;margin-top:14px">AI Agents · 28 Oct 2026 · 9 min</span><h3>Designing agent memory that can forget</h3><p>Pruning by recency cost 9% of task success. Pruning by reuse score cost under 1%, with 38% less context.</p></a><div class="nl" id="nl"></div></div></section>
+
+<section class="sec" id="archive"><div class="sh"><h2 class="big">The <em>archive</em></h2><p>412 pieces since 2024, filed by type and date.</p></div>
+<div class="fl" id="fl"></div><div class="ar" id="ar"></div></section>
+
+<section class="ab" id="about"><h2>A studio that <em>builds</em> to understand.</h2><div><p>Vectorlab is an independent research and engineering studio. We make small, honest systems, measure them and publish what we learn, including what failed.</p><a class="bt b1" href="#">About the studio</a></div></section>
+<footer class="ft"><span><b>Vectorlab</b> <span class="m">Set in Bricolage Grotesque and Instrument Serif. CC BY 4.0.</span></span><nav><a href="#">Research</a><a href="#">Experiments</a><a href="#">Engineering</a><a href="#">Field Notes</a><a href="#">RSS</a><a href="#">GitHub</a></nav></footer>
+</div>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)};
+function R(s){return function(){s|=0;s=s+0x6D2B79F5|0;var t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function f(n){return Math.round(n*10)/10}
+var PK='#e0457b',CB='#2b3bd6',LM='#c9e04a',IK='#1a1816',BG='#efeae0';
+// hero: phyllotaxis network
+function phy(cx,cy,n,sc,rot,cols,seed,net){var r=R(seed),P=[],s='',ga=Math.PI*(3-Math.sqrt(5));for(var i=1;i<=n;i++){var a=i*ga+rot,rad=sc*Math.sqrt(i);P.push([cx+rad*Math.cos(a),cy+rad*Math.sin(a),i])}
+if(net){for(i=0;i<P.length;i++){for(var j=i+1;j<Math.min(P.length,i+60);j++){var dx=P[i][0]-P[j][0],dy=P[i][1]-P[j][1],d=Math.sqrt(dx*dx+dy*dy);if(d<net&&d>2)s+='<path d="M'+f(P[i][0])+' '+f(P[i][1])+'L'+f(P[j][0])+' '+f(P[j][1])+'" stroke="'+IK+'" stroke-opacity="'+(.16+.3*(1-d/net))+'" stroke-width=".8"/>'}}}
+P.forEach(function(p,k){var c=cols[k%cols.length];s+='<circle cx="'+f(p[0])+'" cy="'+f(p[1])+'" r="'+f(1.4+p[2]/n*5.2)+'" fill="'+c+'"/>'});return s}
+$('#hb').innerHTML='<rect width="900" height="640" fill="#efeae0"/>'+phy(520,320,470,14.2,0,[IK,IK,PK,IK,CB],1,36);
+// marquee
+var words=['Agents','Retrieval','Evaluation','Tracing','Sparse attention','Memory','Routing','Reliability','Cost','Replay'],h='';for(var i=0;i<2;i++)words.forEach(function(w){h+=w+'<b>●</b>'});$('#mq').innerHTML=h+h;
+// feature art: agent network w/ failing edges
+(function(){var r=R(5),s='<rect width="700" height="720" fill="#1a1816"/>',N=[];for(var i=0;i<46;i++){var a=r()*6.283,rad=60+r()*260;N.push([350+rad*Math.cos(a)*1.05,360+rad*Math.sin(a),r()])}
+N.push([350,360,1]);var hub=N.length-1;
+N.forEach(function(n,i){if(i==hub)return;var near=[];N.forEach(function(m,j){if(j!=i&&j!=hub){var d=Math.hypot(n[0]-m[0],n[1]-m[1]);near.push([d,j])}});near.sort(function(a,b){return a[0]-b[0]});for(var k=0;k<2;k++){if(i<near[k][1]){var bad=((i*7+near[k][1])%9==0);s+='<path d="M'+f(n[0])+' '+f(n[1])+'L'+f(N[near[k][1]][0])+' '+f(N[near[k][1]][1])+'" stroke="'+(bad?PK:'#8e887b')+'" stroke-width="'+(bad?2.4:.9)+'" stroke-opacity="'+(bad?1:.55)+'"/>'}}if(i%5==0)s+='<path d="M'+f(n[0])+' '+f(n[1])+'L350 360" stroke="'+LM+'" stroke-opacity=".28" stroke-width=".8"/>'});
+N.forEach(function(n,i){s+='<circle cx="'+f(n[0])+'" cy="'+f(n[1])+'" r="'+(i==hub?16:3+n[2]*4)+'" fill="'+(i==hub?LM:(i%9==0?PK:'#efeae0'))+'"/>'});
+s+='<text x="40" y="690" font-family="Figtree,sans-serif" font-size="14" fill="#b8b1a2">Fig. 1  Each node is a tool call. Pink edges failed.</text>';$('#fi').innerHTML=s})();
+// topics
+var T=[['Artificial Intelligence',96,'Capability, evaluation and the limits of benchmarks.'],['Machine Learning',71,'Training, optimisation and generalisation in practice.'],['LLM Systems',108,'Retrieval, routing, prompts and context at scale.'],['Software Architecture',84,'Durable systems with models inside them.'],['Computational Research',53,'Numerics, simulation and the geometry of learning.']];
+function thumb(i){var s='<rect width="150" height="96" fill="#efeae0"/>';var c=[PK,CB,'#7a9a00',IK,PK][i];
+if(i==0)s+=phy(75,48,70,5.2,0,[IK,c],2,0);if(i==1){var d='M6 80';for(var k=1;k<=24;k++)d+='L'+(6+k*6)+' '+f(80-60*(1-Math.exp(-k/6)));s+='<path d="'+d+'" stroke="'+c+'" stroke-width="3" fill="none"/>'}
+if(i==2){for(k=0;k<6;k++)s+='<rect x="'+(10+k*23)+'" y="'+(70-k*10)+'" width="18" height="'+(16+k*10)+'" fill="'+(k==5?PK:IK)+'"/>'}
+if(i==3){s+='<rect x="12" y="12" width="40" height="30" fill="none" stroke="'+IK+'" stroke-width="3"/><rect x="96" y="54" width="40" height="30" fill="'+CB+'"/><path d="M52 27H116V54" stroke="'+PK+'" stroke-width="3" fill="none"/>'}
+if(i==4){for(k=0;k<6;k++)s+='<ellipse cx="75" cy="48" rx="'+(10+k*11)+'" ry="'+(6+k*6)+'" fill="none" stroke="'+(k==5?PK:IK)+'" stroke-width="1.6" transform="rotate(-20 75 48)"/>'}return s}
+$('#tl').innerHTML=T.map(function(t,i){return '<a href="#"><span class="n">'+(i+1<10?'0':'')+(i+1)+'<br>'+t[1]+' pieces</span><h3>'+t[0]+'</h3><span class="d">'+t[2]+'</span><svg class="th" viewBox="0 0 150 96" aria-hidden="true">'+thumb(i)+'</svg></a>'}).join('');
+// experiments
+function ex(i){var r=R(i*13+4),s='';
+if(i==0){s='<rect width="560" height="380" fill="'+PK+'"/>';for(var k=0;k<9;k++){var x=30+r()*140,w=60+r()*300;s+='<rect x="'+f(x)+'" y="'+(30+k*36)+'" width="'+f(w)+'" height="20" fill="'+(k==4?LM:IK)+'"/>'}}
+if(i==1){s='<rect width="440" height="400" fill="'+CB+'"/>';var d='M30 360';for(k=1;k<=30;k++)d+='L'+(30+k*13)+' '+f(360-290*(1-Math.exp(-k/8))+r()*5);s+='<path d="'+d+'" stroke="'+LM+'" stroke-width="5" fill="none"/><circle cx="'+(30+14*13)+'" cy="'+f(360-290*(1-Math.exp(-14/8)))+'" r="10" fill="#efeae0"/>'}
+if(i==2){s='<rect width="360" height="300" fill="'+LM+'"/>';for(k=0;k<20;k++){var h=14+230*Math.exp(-Math.pow((k-7)/4.4,2))+r()*14;s+='<rect x="'+(18+k*16)+'" y="'+f(280-h)+'" width="12" height="'+f(h)+'" fill="'+(k>15?PK:IK)+'"/>'}}
+if(i==3){s='<rect width="560" height="340" fill="#1a1816"/>';for(var p=0;p<28;p++)for(var q=0;q<14;q++){var on=Math.abs(p-q*2)<3.6||r()>.9;s+='<rect x="'+(16+p*19)+'" y="'+(14+q*22.5)+'" width="16" height="19" fill="'+(on?(p==Math.round(q*2)?LM:'#efeae0'):'#2a2724')+'"/>'}}
+return s}
+var VB=[[560,380],[440,400],[360,300],[560,340]];
+var X=[['Harbor','Durable runtime for tool-using agents. Every call is an event you can replay.',['TypeScript','Temporal']],['Tessera','Retrieval gated by an evaluation set, not by similarity alone.',['Python','pgvector']],['Plainsight','Tracing and cost accounting for LLM applications.',['Go','ClickHouse']],['Lattice','Sparse attention kernels for commodity GPUs.',['CUDA','Triton']]];
+$('#ex').innerHTML=X.map(function(x,i){return '<a class="ex e'+(i+1)+'" href="#"><div class="fr"><svg viewBox="0 0 '+VB[i][0]+' '+VB[i][1]+'" role="img" aria-label="'+x[0]+' preview">'+ex(i)+'</svg></div><h3>'+x[0]+'</h3><p>'+x[1]+'</p><div class="tg">'+x[2].map(function(t){return '<span>'+t+'</span>'}).join('')+'</div></a>'}).join('');
+// notes
+(function(){var s='<rect width="500" height="360" fill="#1a1816"/>',i;for(i=0;i<=5;i++)s+='<path d="M30 '+(30+i*54)+'H480" stroke="#34302b"/>';
+function cv(a,b,col,w){var d='';for(var k=0;k<=30;k++){var x=30+k*15,y=320-a*(1-Math.exp(-k/b))*270;d+=(k?'L':'M')+f(x)+' '+f(y)}return '<path d="'+d+'" fill="none" stroke="'+col+'" stroke-width="'+w+'"/>'}
+s+=cv(1,7,LM,4)+cv(.9,7,PK,4)+cv(.5,10,'#8e887b',2)+'<text x="470" y="60" text-anchor="end" font-family="Figtree,sans-serif" font-size="14" fill="'+LM+'">reuse score</text><text x="470" y="82" text-anchor="end" font-family="Figtree,sans-serif" font-size="14" fill="'+PK+'">recency only</text><text x="30" y="346" font-family="Figtree,sans-serif" font-size="13" fill="#b8b1a2">context kept, 0 to 100%</text>';$('#ln').innerHTML=s})();
+var NN=[['Idempotency keys for tool calls','A retried call should never charge a card twice.','6 min'],['Write the evaluation before the prompt','Keep a failing test for every prompt you ship.','7 min'],['A replay CLI for agent runs','Deterministic replays in under 200 lines of Go.','5 min'],['Cost accounting per trace','Every token attributed to a user action.','8 min'],['Streaming interfaces without breaking the back button','State, history and partial responses.','8 min']];
+$('#nl').innerHTML=NN.map(function(n){return '<a href="#"><div><h4>'+n[0]+'</h4><p>'+n[1]+'</p></div><span class="m">'+n[2]+'</span></a>'}).join('');
+// archive
+var A=[['2026-10-30','Agent memory pruned by reuse score','Experiment'],['2026-10-21','Idempotency keys for tool calls','Note'],['2026-10-12','Chunk size is a question about the reader','Article'],['2026-09-27','Cascade routing with confidence gates','Experiment'],['2026-08-14','A failure taxonomy for tool-using agents','Article'],['2026-07-19','What a loss landscape cannot tell you','Essay'],['2025-12-03','312 failed agent runs, annotated','Dataset']],ty='All',qq='',ts=['All','Article','Experiment','Note','Essay','Dataset'];
+$('#fl').innerHTML=ts.map(function(t){return '<button aria-pressed="'+(t=='All')+'" data-t="'+t+'">'+t+'</button>'}).join('')+'<input id="ai" type="search" placeholder="Search 412 pieces" aria-label="Search the archive">';
+function ar(){var L=A.filter(function(a){return(ty=='All'||a[2]==ty)&&(a[1]+a[2]).toLowerCase().indexOf(qq)>-1});$('#ar').innerHTML=L.length?L.map(function(a){return '<a href="#"><span class="m">'+a[0]+'</span><h4>'+a[1]+'</h4><span class="m c">'+a[2]+'</span><span class="m r">Read</span></a>'}).join(''):'<p class="m" style="padding:20px 0">Nothing matches. Clear the search or pick All.</p>'}
+Array.prototype.forEach.call(document.querySelectorAll('#fl button'),function(b){b.onclick=function(){ty=b.dataset.t;Array.prototype.forEach.call(document.querySelectorAll('#fl button'),function(x){x.setAttribute('aria-pressed',x==b)});ar()}});$('#ai').addEventListener('input',function(e){qq=e.target.value.toLowerCase();ar()});ar();
+})();
+</script>
+
+</body>
+</html>

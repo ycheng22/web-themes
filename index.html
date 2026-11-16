@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Web themes</title>
+<style>
+:root{--bg:#f7f7f5;--card:#fff;--ink:#141414;--mut:#5c5c58;--line:#e2e2de;--acc:#2346c9}
+@media(prefers-color-scheme:dark){:root{--bg:#121212;--card:#1b1b1b;--ink:#ededea;--mut:#a4a49f;--line:#2c2c2c;--acc:#8ea2ff}}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:inherit}
+.w{max-width:1200px;margin:0 auto;padding:48px 24px 64px}
+h1{font-size:clamp(36px,5vw,56px);line-height:1.02;letter-spacing:-.03em;margin:0 0 12px}
+.lead{max-width:60ch;color:var(--mut);margin:0 0 48px;font-size:18px}
+h2{font-size:22px;letter-spacing:-.01em;margin:48px 0 4px}.sub{color:var(--mut);margin:0 0 20px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.c{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:border-color .2s,transform .2s}
+.c:hover{border-color:var(--acc);transform:translateY(-2px)}.c:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.c img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border-bottom:1px solid var(--line)}
+.c div{padding:14px 16px 16px}.c b{display:block;font-size:17px;margin-bottom:2px}.c span{color:var(--mut);font-size:14.5px}
+footer{margin-top:56px;color:var(--mut);font-size:14px}
+@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:560px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body><div class="w">
+<h1>Web themes</h1>
+<p class="lead">Homepage design directions for technology and design portfolios. Each one is a complete, self-contained page with its own layout, type and interaction. Open a card to see it at full size.</p>
+
+<h2>Designer and engineer portfolios</h2>
+<p class="sub">Six new directions for one person who designs interfaces and builds them.</p>
+<div class="grid">
+<a class="c" href="themes/blueprint/"><img src="assets/thumbs/blueprint.jpg" alt="Blueprint theme preview" loading="lazy"><div><b>Blueprint</b><span>A cyanotype drawing sheet: exploded isometric hero, numbered sheets, parts list and a title block.</span></div></a>
+<a class="c" href="themes/specimen/"><img src="assets/thumbs/specimen.jpg" alt="Specimen theme preview" loading="lazy"><div><b>Specimen</b><span>A type specimen in one variable font: drag the weight, width, slant and optical-size axes of the name.</span></div></a>
+<a class="c" href="themes/riso/"><img src="assets/thumbs/riso.jpg" alt="Riso theme preview" loading="lazy"><div><b>Riso</b><span>A two-ink risograph zine: halftone prints, misregistered type, a sticker sheet and tear-off contact tabs.</span></div></a>
+<a class="c" href="themes/workbench/"><img src="assets/thumbs/workbench.jpg" alt="Workbench theme preview" loading="lazy"><div><b>Workbench</b><span>A one-bit desktop: draggable windows, a project folder, a working terminal and a sketch app.</span></div></a>
+<a class="c" href="themes/playground/"><img src="assets/thumbs/playground.jpg" alt="Playground theme preview" loading="lazy"><div><b>Playground</b><span>Bauhaus primaries with a physics hero: skills fall as shapes you can grab and throw.</span></div></a>
+<a class="c" href="themes/instrument/"><img src="assets/thumbs/instrument.jpg" alt="Instrument theme preview" loading="lazy"><div><b>Instrument</b><span>A hardware faceplate: LCD screen, program keys, a knob to browse work and a playable step sequencer.</span></div></a>
+</div>
+
+<h2>openloop design system</h2>
+<p class="sub">Twelve earlier directions, exported from the design system with its shared tokens.</p>
+<div class="grid">
+<a class="c" href="existing/editorial-minimal/"><img src="assets/thumbs/editorial-minimal.jpg" alt="" loading="lazy"><div><b>Editorial Minimal</b><span>Warm white, serif statement, index-style lists.</span></div></a>
+<a class="c" href="existing/ai-research-lab/"><img src="assets/thumbs/ai-research-lab.jpg" alt="" loading="lazy"><div><b>AI Research Lab</b><span>Dark, live trace and an interactive chart.</span></div></a>
+<a class="c" href="existing/bento-product/"><img src="assets/thumbs/bento-product.jpg" alt="" loading="lazy"><div><b>Bento Product</b><span>Modular tiles of unequal size.</span></div></a>
+<a class="c" href="existing/bento-systems/"><img src="assets/thumbs/bento-systems.jpg" alt="" loading="lazy"><div><b>Bento Systems</b><span>Terminal, latency histogram and an agent trace player.</span></div></a>
+<a class="c" href="existing/intelligent-editorial/"><img src="assets/thumbs/intelligent-editorial.jpg" alt="" loading="lazy"><div><b>Intelligent Editorial</b><span>Essay pacing with one drawn figure.</span></div></a>
+<a class="c" href="existing/vectorlab-handbook/"><img src="assets/thumbs/vectorlab-handbook.jpg" alt="" loading="lazy"><div><b>Vectorlab Handbook</b><span>Technical documentation with sidebar and search.</span></div></a>
+<a class="c" href="existing/vectorlab-journal/"><img src="assets/thumbs/vectorlab-journal.jpg" alt="" loading="lazy"><div><b>Vectorlab Digital Science Journal</b><span>Masthead, lead story and procedural scientific figures.</span></div></a>
+<a class="c" href="existing/swiss-journal/"><img src="assets/thumbs/swiss-journal.jpg" alt="" loading="lazy"><div><b>Swiss Scientific Journal</b><span>Ivory, ultramarine and vermilion on a modular grid.</span></div></a>
+<a class="c" href="existing/research-observatory/"><img src="assets/thumbs/research-observatory.jpg" alt="" loading="lazy"><div><b>Modern Research Observatory</b><span>Vector-field hero and instrument navigation.</span></div></a>
+<a class="c" href="existing/field-journal/"><img src="assets/thumbs/field-journal.jpg" alt="" loading="lazy"><div><b>Technical Field Journal</b><span>Notebook paper, index sidebar, margin notes.</span></div></a>
+<a class="c" href="existing/design-magazine/"><img src="assets/thumbs/design-magazine.jpg" alt="" loading="lazy"><div><b>Computational Design Magazine</b><span>Generative, image-led and asymmetric.</span></div></a>
+<a class="c" href="existing/knowledge-platform/"><img src="assets/thumbs/knowledge-platform.jpg" alt="" loading="lazy"><div><b>Premium Knowledge Platform</b><span>Command search, topic tabs and a faceted archive.</span></div></a>
+</div>
+<footer>All names, projects, numbers and addresses are placeholders. Fonts load from Google Fonts.</footer>
+</div></body>
+</html>
